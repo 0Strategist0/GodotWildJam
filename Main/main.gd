@@ -1,4 +1,4 @@
 extends Node
 
-func _init():
+func _init() -> void:
 	GlobalNodeReferences.main = self

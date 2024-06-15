@@ -6,7 +6,7 @@ const UI := preload("uid://b5kvf0loq0rxl")
 @onready var main := GlobalNodeReferences.main
 @onready var title_page := get_node("../..")
 
-func _on_pressed():
+func _on_pressed() -> void:
 	var world := WORLD.instantiate()
 	var ui := UI.instantiate()
 	
