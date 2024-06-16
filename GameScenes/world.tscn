@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp08dx7in60dn"]
+[gd_scene load_steps=7 format=3 uid="uid://cp08dx7in60dn"]
 
-[ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/character.tscn" id="1_oc1wt"]
+[ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="1_gjfmw"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="1_u0415"]
-[ext_resource type="PackedScene" uid="uid://cbvluptdpl86h" path="res://GameScenes/TestObjects/testNpc.tscn" id="3_d2uis"]
+[ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="3_8vdvc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6fsn"]
+size = Vector2(14, 128)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cluau"]
 texture = ExtResource("1_u0415")
@@ -408,17 +411,23 @@ sources/0 = SubResource("TileSetAtlasSource_cluau")
 
 [node name="World" type="Node2D"]
 
+[node name="Tree" type="Area2D" parent="." groups=["climbable"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree"]
+scale = Vector2(0.117188, 1)
+texture = ExtResource("1_gjfmw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree"]
+shape = SubResource("RectangleShape2D_u6fsn")
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_pmco1")
 format = 2
 layer_0/tile_data = PackedInt32Array(196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 196603, 0, 0, 262139, 0, 1, 327675, 0, 1, 327676, 0, 1, 327677, 0, 1, 327678, 0, 1, 327679, 0, 1, 262143, 0, 1, 196608, 0, 1, 196609, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 196611, 0, 1, 196612, 0, 1, 196610, 0, 1, 262142, 0, 1, 262141, 0, 1, 262140, 0, 1, 262144, 0, 1, 262148, 0, 1)
 
-[node name="Character" parent="." instance=ExtResource("1_oc1wt")]
-scale = Vector2(1.0185, 1.04095)
+[node name="Character" parent="." instance=ExtResource("3_8vdvc")]
+position = Vector2(6, -246)
+metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 zoom = Vector2(4, 4)
-
-[node name="TestNPC" parent="." instance=ExtResource("3_d2uis")]
-position = Vector2(-44, 20)
-scale = Vector2(0.145, 0.145)
