@@ -77,6 +77,10 @@ interact={
 ]
 }
 
+[physics]
+
+2d/solver/contact_max_allowed_penetration=0.01
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

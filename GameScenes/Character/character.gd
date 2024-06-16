@@ -6,6 +6,7 @@ const CLIMB_SPEED := 50.0
 const JUMP_VELOCITY := -300.0
 const MAX_FALL_SPEED := 500.0
 const MAX_COYOTE_TIME := 0.1
+const push_force = 100.0
 
 @onready var character_area := $CharacterArea
 
@@ -75,3 +76,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0.0
 
 	move_and_slide()
+	for i in get_slide_collision_count():
+		var c := get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
+
