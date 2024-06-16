@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b0kxtk2p027ml"]
+[gd_scene load_steps=27 format=3 uid="uid://b0kxtk2p027ml"]
 
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_jt75v"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="2_m2bqk"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d15mivc2vfwgv" path="res://GameScenes/Levels/tree4.svg" id="10_odts3"]
 [ext_resource type="Texture2D" uid="uid://dacsy0tlg3bnv" path="res://GameScenes/Levels/tree5.svg" id="11_5mpm7"]
 [ext_resource type="Texture2D" uid="uid://dxlsgicrxt3ev" path="res://GameScenes/Levels/tree6.svg" id="12_nb5jk"]
+[ext_resource type="Shader" path="res://GameScenes/Levels/fog.gdshader" id="13_u765n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yokt"]
 texture = ExtResource("2_m2bqk")
@@ -650,6 +651,11 @@ shader_parameter/color = Color(0.444667, 0.576399, 0.469529, 1)
 shader_parameter/hdr = false
 shader_parameter/seed = 5.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1w2l6"]
+shader = ExtResource("13_u765n")
+shader_parameter/speed = 0.8
+shader_parameter/scale = Vector2(1, 10)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hl33e"]
 shader = SubResource("Shader_pxndn")
 shader_parameter/angle = -0.37
@@ -1053,12 +1059,17 @@ polygon = PackedVector2Array(-608, 81, -577, 80, -563, 57, -531, 55, -507, 66, -
 [node name="FogLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(800, 402)
 motion_scale = Vector2(0.2, 0.2)
-metadata/_edit_group_ = true
 
 [node name="GodRays2" type="Sprite2D" parent="ParallaxBackground/FogLayer3"]
 material = SubResource("ShaderMaterial_ltvfy")
 position = Vector2(-474, -231)
 scale = Vector2(6.5625, 6.32812)
+texture = ExtResource("6_1dvnk")
+
+[node name="Fog" type="Sprite2D" parent="ParallaxBackground/FogLayer3"]
+material = SubResource("ShaderMaterial_1w2l6")
+position = Vector2(-441, -350)
+scale = Vector2(10, 1)
 texture = ExtResource("6_1dvnk")
 
 [node name="TreeLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -1207,6 +1218,12 @@ position = Vector2(-220, -235)
 scale = Vector2(6.5625, 6.32812)
 texture = ExtResource("6_1dvnk")
 
+[node name="Fog2" type="Sprite2D" parent="ParallaxBackground/FogLayer2"]
+material = SubResource("ShaderMaterial_1w2l6")
+position = Vector2(-73, -235)
+scale = Vector2(10, 1)
+texture = ExtResource("6_1dvnk")
+
 [node name="TreeLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color(0.303044, 0.409313, 0.323584, 1)
 position = Vector2(244, -65)
@@ -1341,6 +1358,16 @@ texture = ExtResource("12_nb5jk")
 
 [node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground/TreeLayer1"]
 polygon = PackedVector2Array(-672, 209, -642, 191, -598, 192, -524, 143, -427, 147, -384, 172, -316, 166, -275, 151, -214, 144, -117, 142, -32, 112, 28, 113, 145, 137, 270, 144, 367, 96, 516, 135, 603, 141, 647, 122, 674, 128, 679, 222, 689, 352, -682, 382)
+
+[node name="FogLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(461, 75)
+motion_scale = Vector2(0.6, 0.6)
+metadata/_edit_group_ = true
+
+[node name="Fog2" type="Sprite2D" parent="ParallaxBackground/FogLayer1"]
+material = SubResource("ShaderMaterial_1w2l6")
+scale = Vector2(10, 1)
+texture = ExtResource("6_1dvnk")
 
 [connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
 [connection signal="body_entered" from="TileMap/@Area2D@24589" to="TileMap/@Area2D@24589" method="_on_body_entered"]
