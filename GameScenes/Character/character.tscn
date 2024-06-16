@@ -43,13 +43,13 @@ animations = [{
 radius = 4.0
 height = 14.0
 
-[node name="Character" type="CharacterBody2D"]
+[node name="Character" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_1kgrh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1yq8t")
 autoplay = "default"
-frame_progress = 0.847481
+frame_progress = 0.28623
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp08dx7in60dn"]
+[gd_scene load_steps=8 format=3 uid="uid://cp08dx7in60dn"]
 
 [ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="1_gjfmw"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="1_u0415"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="3_8vdvc"]
+[ext_resource type="PackedScene" uid="uid://cbvluptdpl86h" path="res://GameScenes/TestNpc/testNpc.tscn" id="4_dpn5p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u6fsn"]
 size = Vector2(14, 128)
@@ -431,3 +432,6 @@ metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 zoom = Vector2(4, 4)
+
+[node name="TestNPC" parent="." instance=ExtResource("4_dpn5p")]
+position = Vector2(-52, 18)
