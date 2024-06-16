@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqenn1xn8mpei"]
+[gd_scene load_steps=4 format=3 uid="uid://brvw0fqobtrxf"]
 
 [ext_resource type="Script" path="res://GameScenes/Objects/pullable_object.gd" id="1_cjyqk"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="1_kysvp"]
