@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxv8ppef5x7rj"]
+[gd_scene load_steps=4 format=3 uid="uid://bxv8ppef5x7rj"]
 
+[ext_resource type="Script" path="res://GameScenes/Objects/pushable_object.gd" id="1_dbrtd"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="1_s5cbi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhk1r"]
 size = Vector2(16, 16)
 
-[node name="Pushable Object" type="RigidBody2D"]
-lock_rotation = true
-freeze_mode = 1
+[node name="Pushable Object" type="CharacterBody2D" groups=["pushable"]]
+script = ExtResource("1_dbrtd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_s5cbi")

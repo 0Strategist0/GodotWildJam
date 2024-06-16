@@ -158,7 +158,7 @@ position = Vector2(0, 56)
 shape = SubResource("RectangleShape2D_sqexy")
 
 [node name="Pullable Object" parent="." instance=ExtResource("5_nyaao")]
-position = Vector2(-56, 21)
+position = Vector2(-56, 24)
 
 [node name="Pushable Object" parent="." instance=ExtResource("3_rr5fs")]
-position = Vector2(26, 21)
+position = Vector2(25, 24)

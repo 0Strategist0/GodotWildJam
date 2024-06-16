@@ -78,6 +78,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	for i in get_slide_collision_count():
 		var c := get_slide_collision(i)
-		if c.get_collider() is RigidBody2D:
-			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
+		if c.get_collider() is CharacterBody2D and c.get_collider().is_in_group("pushable"):
+			if position.x + get_node("CollisionShape2D").shape.radius + (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2) < c.get_collider().position.x:
+				c.get_collider().velocity.x += 500
+			elif position.x - (get_node("CollisionShape2D").shape.radius + (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2)) > c.get_collider().position.x:
+					c.get_collider().velocity.x -= 500
 
