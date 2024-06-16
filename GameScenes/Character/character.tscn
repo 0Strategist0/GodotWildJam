@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://fj66b0r304fq"]
+[gd_scene load_steps=9 format=3 uid="uid://fj66b0r304fq"]
 
 [ext_resource type="Script" path="res://GameScenes/Character/character.gd" id="1_1kgrh"]
 [ext_resource type="Texture2D" uid="uid://dljkaywui5kgo" path="res://assets/knight.png" id="2_qgy77"]
@@ -39,11 +39,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p564f"]
-radius = 5.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_rhyf6"]
-radius = 5.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dy2iw"]
+radius = 4.0
+height = 14.0
 
 [node name="Character" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_1kgrh")
@@ -54,11 +52,11 @@ autoplay = "default"
 frame_progress = 0.28623
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
-shape = SubResource("CircleShape2D_p564f")
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_dy2iw")
 
 [node name="CharacterArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterArea"]
-position = Vector2(0, 7)
-shape = SubResource("CircleShape2D_rhyf6")
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_dy2iw")
