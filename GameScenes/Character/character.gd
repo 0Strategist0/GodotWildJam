@@ -21,9 +21,6 @@ var last_jump_press := 1.0
 func _ready() -> void:
 	GlobalNodeReferences.character = self
 
-func _ready() -> void:
-	GlobalNodeReferences.character = self
-
 func _physics_process(delta: float) -> void:
 	# Don't let the player move if they're talking to someone - FIX LATER
 	if DialogManager.is_dialog_active:
