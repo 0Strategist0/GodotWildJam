@@ -10,10 +10,10 @@ var interact: Callable = func():
 
 
 func _on_body_entered(body):
-	print("entered body")
-	InteractionManager.register_area(self)
+	if body.name == "Character":
+		InteractionManager.register_area(self)
 
 
 func _on_body_exited(body):
-	print("exited body")
-	InteractionManager.unregister_area(self)
+	if body.name == "Character":
+		InteractionManager.unregister_area(self)

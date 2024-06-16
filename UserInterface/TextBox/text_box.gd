@@ -10,9 +10,9 @@ const MAX_WIDTH = 256
 var text = ""
 var letter_index = 0
 
-var letter_time = 0.03
-var space_time = 0.06
-var punctuation_time = 0.2
+var letter_time = 0.02
+var space_time = 0.03
+var punctuation_time = 0.1
 
 
 signal finished_displaying()
@@ -45,6 +45,7 @@ func _display_letter():
 	if letter_index >= text.length():
 		finished_displaying.emit()
 		return
+	
 	
 	match text[letter_index]:
 		"!", ".", ",", "?":

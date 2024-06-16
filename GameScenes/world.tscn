@@ -426,12 +426,12 @@ tile_set = SubResource("TileSet_pmco1")
 format = 2
 layer_0/tile_data = PackedInt32Array(196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 196603, 0, 0, 262139, 0, 1, 327675, 0, 1, 327676, 0, 1, 327677, 0, 1, 327678, 0, 1, 327679, 0, 1, 262143, 0, 1, 196608, 0, 1, 196609, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 196611, 0, 1, 196612, 0, 1, 196610, 0, 1, 262142, 0, 1, 262141, 0, 1, 262140, 0, 1, 262144, 0, 1, 262148, 0, 1)
 
+[node name="TestNPC" parent="." instance=ExtResource("4_dpn5p")]
+position = Vector2(-48, 19)
+
 [node name="Character" parent="." instance=ExtResource("3_8vdvc")]
 position = Vector2(6, -246)
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 zoom = Vector2(4, 4)
-
-[node name="TestNPC" parent="." instance=ExtResource("4_dpn5p")]
-position = Vector2(-52, 18)
