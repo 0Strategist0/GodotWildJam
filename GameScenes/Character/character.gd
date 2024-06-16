@@ -16,7 +16,14 @@ var climbing := false
 var coyote_time := 0.0
 var jumped := false
 
+func _ready() -> void:
+	GlobalNodeReferences.character = self
+
 func _physics_process(delta: float) -> void:
+	# Don't let the player move if they're talking to someone - FIX LATER
+	if DialogManager.is_dialog_active:
+		return
+	
 	
 	# Check if you are climbing
 	if (Input.is_action_pressed("up") 

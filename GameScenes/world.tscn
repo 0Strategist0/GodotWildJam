@@ -1,7 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://cp08dx7in60dn"]
 
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="1_u0415"]
-[ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="3_dwm5v"]
+[ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="3_8vdvc"]
+[ext_resource type="PackedScene" uid="uid://cbvluptdpl86h" path="res://GameScenes/TestNpc/testNpc.tscn" id="4_dpn5p"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6fsn"]
+size = Vector2(14, 128)
 [ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/pushable_object.tscn" id="3_rr5fs"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="4_kwpsl"]
 
