@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-const SPEED := 130.0
+const SPEED := 100.0
 const ACCELERATION := 0.3 # out of 0.0 to 1.0
 const CLIMB_SPEED := 50.0
 const JUMP_VELOCITY := -300.0
 const MAX_FALL_SPEED := 500.0
-const MAX_COYOTE_TIME := 0.1
+const MAX_COYOTE_TIME := 0.2
+const JUMP_INPUT_BUFFERING := 0.2
 const push_force = 100.0
 
 @onready var character_area := $CharacterArea
@@ -15,6 +16,7 @@ var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var climbing := false
 var coyote_time := 0.0
 var jumped := false
+var last_jump_press := 1.0
 
 func _ready() -> void:
 	GlobalNodeReferences.character = self
@@ -57,7 +59,12 @@ func _physics_process(delta: float) -> void:
 	else: 
 		coyote_time += delta
 	
-	if (Input.is_action_just_pressed("jump") 
+	if Input.is_action_just_pressed("jump"):
+		last_jump_press = 0.0
+	else:
+		last_jump_press += delta
+	
+	if (last_jump_press <= JUMP_INPUT_BUFFERING
 			and coyote_time <= MAX_COYOTE_TIME
 			and not jumped):
 		velocity.y = JUMP_VELOCITY
@@ -76,6 +83,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0.0
 
 	move_and_slide()
+
 	for i in get_slide_collision_count():
 		var c := get_slide_collision(i)
 		if c.get_collider() is CharacterBody2D and c.get_collider().is_in_group("pushable"):
@@ -84,3 +92,6 @@ func _physics_process(delta: float) -> void:
 			elif position.x - (get_node("CollisionShape2D").shape.radius + (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2)) > c.get_collider().position.x:
 					c.get_collider().velocity.x -= 500
 
+
+func kill() -> void:
+	print("Oof ouch my bones (character died)")
