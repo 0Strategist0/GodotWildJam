@@ -12,12 +12,9 @@ const lines: Array[String] = [
 ]
 
 
-func _ready():
-	print("ready")
+func _ready() -> void:
 	interaction_area.interact = Callable(self, "_on_interact")
 
 
-func _on_interact():
-	print("on interact")
+func _on_interact() -> void:
 	DialogManager.start_dialog(global_position, lines)
-	await DialogManager.is_dialog_active == false

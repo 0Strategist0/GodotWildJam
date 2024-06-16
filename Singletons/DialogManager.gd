@@ -1,20 +1,20 @@
 extends Node
 
 
-@onready var text_box_scene = preload("res://UserInterface/TextBox/text_box.tscn")
+@onready var text_box_scene: PackedScene = preload("res://UserInterface/TextBox/text_box.tscn")
 
 
 var dialog_lines: Array[String] = []
-var current_line_index = 0
+var current_line_index: int = 0
 
-var text_box
+var text_box: MarginContainer
 var text_box_position: Vector2
 
-var is_dialog_active = false
-var can_advance_line = false
+var is_dialog_active: bool = false
+var can_advance_line: bool = false
 
 
-func start_dialog(position: Vector2, lines: Array[String]):
+func start_dialog(position: Vector2, lines: Array[String]) -> void:
 	if is_dialog_active:
 		return
 	
@@ -25,7 +25,7 @@ func start_dialog(position: Vector2, lines: Array[String]):
 	is_dialog_active = true
 
 
-func _show_text_box():
+func _show_text_box() -> void:
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(_on_text_box_finished_displaying)
 	get_tree().root.add_child(text_box)
@@ -34,20 +34,16 @@ func _show_text_box():
 	can_advance_line = false
 
 
-func _on_text_box_finished_displaying():
+func _on_text_box_finished_displaying() -> void:
 	can_advance_line = true
 
 
-func _unhandled_input(event):
-	if (event.is_action_pressed("advance_dialog")):
-		print("pressed E")
-	
+func _unhandled_input(event: InputEvent) -> void:	
 	if (
 		event.is_action_pressed("advance_dialog") &&
 		is_dialog_active &&
 		can_advance_line
 	):
-		print("string here")
 		text_box.queue_free()
 		
 		current_line_index += 1
