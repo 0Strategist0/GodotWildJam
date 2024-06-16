@@ -17,6 +17,9 @@ var coyote_time := 0.0
 var jumped := false
 var last_jump_press := 1.0
 
+func _ready() -> void:
+	GlobalNodeReferences.character = self
+
 func _physics_process(delta: float) -> void:
 	
 	# Check if you are climbing
