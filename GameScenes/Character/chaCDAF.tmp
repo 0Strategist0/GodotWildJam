@@ -46,7 +46,6 @@ radius = 5.0
 radius = 5.0
 
 [node name="Character" type="CharacterBody2D"]
-z_index = 1
 script = ExtResource("1_1kgrh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

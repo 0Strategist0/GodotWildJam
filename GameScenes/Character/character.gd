@@ -7,6 +7,7 @@ const JUMP_VELOCITY := -300.0
 const MAX_FALL_SPEED := 500.0
 const MAX_COYOTE_TIME := 0.2
 const JUMP_INPUT_BUFFERING := 0.2
+const push_force = 100.0
 
 @onready var character_area := $CharacterArea
 
@@ -20,7 +21,14 @@ var last_jump_press := 1.0
 func _ready() -> void:
 	GlobalNodeReferences.character = self
 
+func _ready() -> void:
+	GlobalNodeReferences.character = self
+
 func _physics_process(delta: float) -> void:
+	# Don't let the player move if they're talking to someone - FIX LATER
+	if DialogManager.is_dialog_active:
+		return
+	
 	
 	# Check if you are climbing
 	if (Input.is_action_pressed("up") 
@@ -78,6 +86,14 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0.0
 
 	move_and_slide()
+
+	for i in get_slide_collision_count():
+		var c := get_slide_collision(i)
+		if c.get_collider() is CharacterBody2D and c.get_collider().is_in_group("pushable"):
+			if position.x + get_node("CollisionShape2D").shape.radius + (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2) < c.get_collider().position.x:
+				c.get_collider().velocity.x += 500
+			elif position.x - (get_node("CollisionShape2D").shape.radius + (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2)) > c.get_collider().position.x:
+					c.get_collider().velocity.x -= 500
 
 
 func kill() -> void:
