@@ -25,7 +25,7 @@ extends StaticBody2D
 ## A fake button to run the code. Bakes collisions and adds colliders as children to this node!
 @export var run_script: bool = false : set = run_code
 
-func run_code(_fake_bool = null):
+func run_code(_fake_bool := false) -> void:
 	var tile_map: TileMap = get_node(tilemap_nodepath)
 	if tile_map == null:
 		print("Hey, you forgot to set your Tilemap Nodepath.")
@@ -34,8 +34,8 @@ func run_code(_fake_bool = null):
 	if delete_children_on_run:
 		delete_children()
 	
-	var tile_size = tile_map.tile_set.tile_size
-	var tilemap_locations = tile_map.get_used_cells(target_tiles_layer)
+	var tile_size := tile_map.tile_set.tile_size
+	var tilemap_locations := tile_map.get_used_cells(target_tiles_layer)
 	
 	if tilemap_locations.size() == 0:
 		print("Hey, this tilemap is empty (did you choose the correct layer?)")
@@ -46,21 +46,21 @@ func run_code(_fake_bool = null):
 	
 	var last_loc: Vector2i = Vector2i(-99999, -99999)
 	var size: Vector2i = Vector2i(1, 1)
-	var xMarginStart = 0
+	var xMarginStart := 0
 	
 	print("Starting first pass (Creating initial colliders)...")
 	
-	var first_colliders_arr = []
+	var first_colliders_arr := []
 	## First pass: add horizontal rect colliders starting from the top left
 	while true:
-		var temp_loc = tilemap_locations.pop_back()
+		var temp_loc : Vector2i = tilemap_locations.pop_back()
 		
 		if temp_loc == null:
 			# Add the last collider and break out of loop
-			var newXPos = (xMarginStart + abs(last_loc.x - xMarginStart) / 2.0 + 0.5) * tile_size.x
+			var newXPos : float = (xMarginStart + abs(last_loc.x - xMarginStart) / 2.0 + 0.5) * tile_size.x
 			@warning_ignore("integer_division")
-			var newYPos = last_loc.y * tile_size.y - (-tile_size.y / 2)
-			first_colliders_arr.append(createCollisionShape(Vector2i(newXPos, newYPos), size, tile_size))
+			var newYPos : int = last_loc.y * tile_size.y - (-tile_size.y / 2)
+			first_colliders_arr.append(createCollisionShape(Vector2i(int(newXPos), int(newYPos)), size, tile_size))
 			print("Finished calculating first pass!")
 			break
 		
@@ -72,10 +72,10 @@ func run_code(_fake_bool = null):
 		if last_loc.y == temp_loc.y and abs(last_loc.x - temp_loc.x) == 1:
 			size += Vector2i(1,0)
 		else:
-			var newXPos = (xMarginStart + abs(last_loc.x - xMarginStart) / 2.0 + 0.5) * tile_size.x
+			var newXPos : float = (xMarginStart + abs(last_loc.x - xMarginStart) / 2.0 + 0.5) * tile_size.x
 			@warning_ignore("integer_division")
-			var newYPos = last_loc.y * tile_size.y - (-tile_size.y / 2)
-			first_colliders_arr.append(createCollisionShape(Vector2i(newXPos, newYPos), size, tile_size))
+			var newYPos : int = last_loc.y * tile_size.y - (-tile_size.y / 2)
+			first_colliders_arr.append(createCollisionShape(Vector2i(int(newXPos), int(newYPos)), size, tile_size))
 			size = Vector2i(1, 1)
 			xMarginStart = temp_loc.x
 			#print("New row placed at (%s, %s)" % [newXPos, newYPos])
@@ -86,16 +86,16 @@ func run_code(_fake_bool = null):
 	first_colliders_arr.sort_custom(sortNodesByX)
 	
 	var last_collider_pos: Vector2 = Vector2(-99999, -99999)
-	var last_collider
-	var colliders_to_merge = 1 # Used to count how many colliders will merge
+	var last_collider: CollisionShape2D
+	var colliders_to_merge := 1 # Used to count how many colliders will merge
 	
-	var second_colliders_arr = []
+	var second_colliders_arr := []
 	
 	print("Starting second pass (Merging colliders)...")
 	
 	## Second pass: Merge colliders that are on top of eachother and are the same size
 	while true:
-		var temp_collider = first_colliders_arr.pop_back()
+		var temp_collider : CollisionShape2D = first_colliders_arr.pop_back()
 		
 		if temp_collider == null:
 			# Add final merged collider and break
@@ -111,7 +111,7 @@ func run_code(_fake_bool = null):
 			last_collider = temp_collider
 			continue
 		
-		var tile_y_distance = abs(temp_collider.position.y - last_collider_pos.y) / tile_size.y
+		var tile_y_distance: float = abs(temp_collider.position.y - last_collider_pos.y) / tile_size.y
 		if last_collider_pos.x == temp_collider.position.x and tile_y_distance == 1:
 			#print("Adding 1 to the merge")
 			colliders_to_merge += 1
@@ -128,16 +128,16 @@ func run_code(_fake_bool = null):
 		last_collider = temp_collider
 	
 	## Adds all colliders as children to this node
-	for collider in second_colliders_arr:
+	for collider: CollisionShape2D in second_colliders_arr:
 		add_child(collider, true)
 		collider.owner = get_tree().edited_scene_root
 	
 	## Move this node's position to cover the tilemap
 	position = tile_map.position
 
-func createCollisionShape(pos, size, tile_size) -> CollisionShape2D:
-	var collisionShape = CollisionShape2D.new()
-	var rectangleShape = RectangleShape2D.new()
+func createCollisionShape(pos: Vector2i, size: Vector2i, tile_size: Vector2i) -> CollisionShape2D:
+	var collisionShape := CollisionShape2D.new()
+	var rectangleShape := RectangleShape2D.new()
 	
 	rectangleShape.size = size * tile_size
 	collisionShape.set_shape(rectangleShape)
@@ -145,12 +145,12 @@ func createCollisionShape(pos, size, tile_size) -> CollisionShape2D:
 	
 	return collisionShape
 
-func delete_children():
+func delete_children() -> void:
 	for child in get_children():
 		child.queue_free()
 
 ## Sorts array of vectors in ascending order with respect to Y
-func sortVectorsByY(a, b):
+func sortVectorsByY(a: Vector2, b: Vector2) -> bool:
 	if a.y > b.y:
 		return true
 	if a.y == b.y:
@@ -159,7 +159,7 @@ func sortVectorsByY(a, b):
 	return false
 
 ## Sorts array of nodes in ascending order with respects to position
-func sortNodesByX(a, b):
+func sortNodesByX(a: Node2D, b: Node2D) -> bool:
 	if a.position.x > b.position.x:
 		return true
 	if a.position.x == b.position.x:
