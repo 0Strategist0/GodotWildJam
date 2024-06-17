@@ -410,8 +410,8 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0yokt")
 sources/1 = SubResource("TileSetScenesCollectionSource_p1fmf")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xffte"]
-size = Vector2(10, 175)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1mp41"]
+size = Vector2(2, 166)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7075u"]
 size = Vector2(20, 300)
@@ -708,7 +708,8 @@ texture = ExtResource("4_i8wdi")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/FirstTree"]
-shape = SubResource("RectangleShape2D_xffte")
+position = Vector2(1, -7)
+shape = SubResource("RectangleShape2D_1mp41")
 
 [node name="EventTriggers" type="Node2D" parent="."]
 
@@ -1369,5 +1370,21 @@ material = SubResource("ShaderMaterial_1w2l6")
 scale = Vector2(10, 1)
 texture = ExtResource("6_1dvnk")
 
+[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19505" to="TileMap/@Area2D@19505" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19506" to="TileMap/@Area2D@19506" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19507" to="TileMap/@Area2D@19507" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19508" to="TileMap/@Area2D@19508" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19509" to="TileMap/@Area2D@19509" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19510" to="TileMap/@Area2D@19510" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19511" to="TileMap/@Area2D@19511" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19512" to="TileMap/@Area2D@19512" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19513" to="TileMap/@Area2D@19513" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19514" to="TileMap/@Area2D@19514" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19515" to="TileMap/@Area2D@19515" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19516" to="TileMap/@Area2D@19516" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19517" to="TileMap/@Area2D@19517" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19518" to="TileMap/@Area2D@19518" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19519" to="TileMap/@Area2D@19519" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
