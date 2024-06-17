@@ -7,9 +7,12 @@ const JUMP_VELOCITY := -300.0
 const MAX_FALL_SPEED := 500.0
 const MAX_COYOTE_TIME := 0.2
 const JUMP_INPUT_BUFFERING := 0.2
-const push_force = 100.0
+const IDLE_SPEED_SQUARED := 100.0
+const FLIP_SPEED := 1.0
 
 @onready var character_area := $CharacterArea
+@onready var state_machine : AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/StateMachine/playback")
+@onready var sprite := $Sprite
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -81,9 +84,10 @@ func _physics_process(delta: float) -> void:
 			velocity.x = lerp(velocity.x, 0.0, pow(ACCELERATION, 60.0 * delta))
 	else:
 		velocity.x = 0.0
-
+	
 	move_and_slide()
-
+	
+	# Shove blocks
 	for i in get_slide_collision_count():
 		var c := get_slide_collision(i)
 		if c.get_collider() is CharacterBody2D and c.get_collider().is_in_group("pushable"):
@@ -95,6 +99,19 @@ func _physics_process(delta: float) -> void:
 					+ (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2)) 
 					> c.get_collider().position.x):
 				c.get_collider().velocity.x -= 500
+	
+	# Animate based on motion
+	if velocity.x > FLIP_SPEED:
+		sprite.scale.x = abs(sprite.scale.x)
+	elif velocity.x < -FLIP_SPEED:
+		sprite.scale.x = -abs(sprite.scale.x)
+	
+	if not is_on_floor() and not climbing:
+		state_machine.travel("jump")
+	elif velocity.length_squared() < IDLE_SPEED_SQUARED:
+		state_machine.travel("idle")
+	elif Input.is_action_pressed("left") or Input.is_action_pressed("right"):
+		state_machine.travel("run")
 
 
 func kill() -> void:
