@@ -28,8 +28,12 @@ gdscript/warnings/untyped_declaration=1
 
 [display]
 
+window/size/viewport_width=3024
+window/size/viewport_height=1964
 window/size/mode=2
 window/size/initial_position_type=3
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 
