@@ -5,14 +5,14 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const ACCELERATION := 0.3
-var selected = false
-var left_side = false
+var selected := false
+var left_side := false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -27,10 +27,10 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func _ready():
+func _ready() -> void:
 	interaction_area.interact = Callable(self, "_on_interact")
 	
-func _on_interact():
+func _on_interact() -> void:
 	if GlobalNodeReferences.character.is_on_floor():
 		selected = !selected
 		if selected:

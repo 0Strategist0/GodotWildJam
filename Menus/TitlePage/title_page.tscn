@@ -33,7 +33,7 @@ grow_vertical = 0
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "START"
+text = "GO TO FIRST LEVEL"
 script = ExtResource("1_nveqe")
 
 [node name="Spacer" type="Control" parent="VBoxContainer"]

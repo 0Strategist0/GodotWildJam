@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvcjh2lrghp6e"]
+[gd_scene load_steps=4 format=3 uid="uid://dvcjh2lrghp6e"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_4ke6x"]
 [ext_resource type="PackedScene" uid="uid://d0qappnyuuly6" path="res://Menus/TitlePage/title_page.tscn" id="2_xohwm"]
+[ext_resource type="AudioStream" uid="uid://cxti657bhx8bb" path="res://assets/forestambiance.mp3" id="3_mb1w1"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_4ke6x")
 
 [node name="TitlePage" parent="." instance=ExtResource("2_xohwm")]
+
+[node name="BackgroundAmbiance" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mb1w1")
+autoplay = true
