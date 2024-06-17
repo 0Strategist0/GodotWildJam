@@ -90,9 +90,9 @@ func _physics_process(delta: float) -> void:
 		var c := get_slide_collision(i)
 		if c.get_collider() is CharacterBody2D and c.get_collider().is_in_group("pushable"):
 			if position.x + get_node("CollisionShape2D").shape.radius + (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2) < c.get_collider().position.x:
-				c.get_collider().velocity.x += 500
+				c.get_collider().velocity.x += 400
 			elif position.x - (get_node("CollisionShape2D").shape.radius + (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2)) > c.get_collider().position.x:
-					c.get_collider().velocity.x -= 500
+				c.get_collider().velocity.x -= 400
 
 
 func kill() -> void:

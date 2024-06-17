@@ -18,7 +18,10 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	if selected == true:
-		velocity.x = GlobalNodeReferences.character.velocity.x
+		if left_side and GlobalNodeReferences.character.velocity.x < 0:
+			velocity.x = GlobalNodeReferences.character.velocity.x
+		if !left_side and GlobalNodeReferences.character.velocity.x > 0:
+			velocity.x = GlobalNodeReferences.character.velocity.x
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
@@ -28,9 +31,15 @@ func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
 	
 func _on_interact():
-	if GlobalNodeReferences.character.position.x < position.x:
-		left_side = true
-	else:
-		left_side = false
-	GlobalNodeReferences.character.can_jump = !GlobalNodeReferences.character.can_jump
-	selected = !selected
+	if GlobalNodeReferences.character.is_on_floor():
+		selected = !selected
+		if selected:
+			interaction_area.action_name = "Deselect"
+			if GlobalNodeReferences.character.position.x < position.x:
+				left_side = true
+			else:
+				left_side = false
+		else:
+			interaction_area.action_name = "Select"
+		GlobalNodeReferences.character.can_jump = !GlobalNodeReferences.character.can_jump
+	
