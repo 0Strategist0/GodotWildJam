@@ -5,10 +5,10 @@ extends CharacterBody2D
 
 
 const lines: Array[String] = [
-	"Hello, this is a test.",
-	"Can you hear me...?",
-	"LA LA LA LA LA LA!!!",
-	"Ok, it was nice to meet you."
+	"hello this is a test",
+	"can you hear me...",
+	"LA LA LA LA LA LA",
+	"ok it was nice to meet you"
 ]
 
 

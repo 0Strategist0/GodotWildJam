@@ -14,6 +14,8 @@ const FLIP_SPEED := 1.0
 @onready var state_machine : AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/StateMachine/playback")
 @onready var sprite := $Sprite
 
+@export var can_jump: bool = true
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var climbing := false
@@ -56,23 +58,24 @@ func _physics_process(delta: float) -> void:
 		velocity.y = min(velocity.y + gravity * delta, MAX_FALL_SPEED)
 
 	# Handle jump.
-	if climbing or is_on_floor():
-		coyote_time = 0.0
-		jumped = false
-	else: 
-		coyote_time += delta
-	
-	if Input.is_action_just_pressed("jump"):
-		last_jump_press = 0.0
-	else:
-		last_jump_press += delta
-	
-	if (last_jump_press <= JUMP_INPUT_BUFFERING
-			and coyote_time <= MAX_COYOTE_TIME
-			and not jumped):
-		velocity.y = JUMP_VELOCITY
-		climbing = false
-		jumped = true
+	if can_jump:
+		if climbing or is_on_floor():
+			coyote_time = 0.0
+			jumped = false
+		else: 
+			coyote_time += delta
+		
+		if Input.is_action_just_pressed("jump"):
+			last_jump_press = 0.0
+		else:
+			last_jump_press += delta
+		
+		if (last_jump_press <= JUMP_INPUT_BUFFERING
+				and coyote_time <= MAX_COYOTE_TIME
+				and not jumped):
+			velocity.y = JUMP_VELOCITY
+			climbing = false
+			jumped = true
 
 	# Get the input direction and handle the movement/deceleration.
 	if not climbing:
@@ -91,14 +94,10 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var c := get_slide_collision(i)
 		if c.get_collider() is CharacterBody2D and c.get_collider().is_in_group("pushable"):
-			if (position.x + get_node("CollisionShape2D").shape.radius + 
-					(c.get_collider().get_node("CollisionShape2D").shape.size.x / 2) 
-					< c.get_collider().position.x):
-				c.get_collider().velocity.x += 500
-			elif (position.x - (get_node("CollisionShape2D").shape.radius 
-					+ (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2)) 
-					> c.get_collider().position.x):
-				c.get_collider().velocity.x -= 500
+			if position.x + get_node("CollisionShape2D").shape.radius + (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2) < c.get_collider().position.x:
+				c.get_collider().velocity.x += 400
+			elif position.x - (get_node("CollisionShape2D").shape.radius + (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2)) > c.get_collider().position.x:
+				c.get_collider().velocity.x -= 400
 	
 	# Animate based on motion
 	if velocity.x > FLIP_SPEED:

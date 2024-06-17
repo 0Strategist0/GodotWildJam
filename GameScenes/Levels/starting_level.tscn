@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_jt75v"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="2_m2bqk"]
-[ext_resource type="PackedScene" uid="uid://csii8yc67jlex" path="res://GameScenes/death_area.tscn" id="3_n032g"]
+[ext_resource type="PackedScene" uid="uid://cusycd8j05p7" path="res://GameScenes/death_area.tscn" id="3_n032g"]
 [ext_resource type="Script" path="res://GameScenes/Levels/Hunter.gd" id="4_3lx7n"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="4_i8wdi"]
 [ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="6_1dvnk"]

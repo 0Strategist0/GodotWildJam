@@ -48,3 +48,4 @@ func _input(event: InputEvent) -> void:
 			await active_areas[0].interact.call()
 			
 			can_interact = true
+	
