@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="1_gjfmw"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="1_u0415"]
+[ext_resource type="PackedScene" uid="uid://cbvluptdpl86h" path="res://GameScenes/NPCs/testNpc.tscn" id="3_1s0mg"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="3_8vdvc"]
-[ext_resource type="PackedScene" uid="uid://cbvluptdpl86h" path="res://GameScenes/TestNpc/testNpc.tscn" id="4_dpn5p"]
 [ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/pushable_object.tscn" id="5_1dxhc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u6fsn"]
@@ -425,9 +425,30 @@ shape = SubResource("RectangleShape2D_u6fsn")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_pmco1")
 format = 2
-layer_0/tile_data = PackedInt32Array(196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 196603, 0, 0, 262139, 0, 1, 327675, 0, 1, 327676, 0, 1, 327677, 0, 1, 327678, 0, 1, 327679, 0, 1, 262143, 0, 1, 196608, 0, 1, 196609, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 196611, 0, 1, 196612, 0, 1, 196610, 0, 1, 262142, 0, 1, 262141, 0, 1, 262140, 0, 1, 262144, 0, 1, 262148, 0, 1)
+layer_0/tile_data = PackedInt32Array(196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 196603, 0, 0, 262139, 0, 1, 327675, 0, 1, 327676, 0, 1, 327677, 0, 1, 327678, 0, 1, 327679, 0, 1, 262143, 0, 1, 196608, 0, 1, 196609, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 196611, 0, 1, 196612, 0, 1, 196610, 0, 1, 262142, 0, 1, 262141, 0, 1, 262140, 0, 1, 262144, 0, 1, 262148, 0, 1, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 0, 0, 131089, 0, 0, 196613, 0, 1, 262149, 0, 1, 262150, 0, 1, 196614, 0, 1, 196615, 0, 1, 262151, 0, 1, 262152, 0, 1, 262153, 0, 1, 262154, 0, 1, 196618, 0, 1, 196617, 0, 1, 196616, 0, 1, 196619, 0, 1, 196620, 0, 1, 196621, 0, 1, 262156, 0, 1, 262155, 0, 1, 262157, 0, 1, 262158, 0, 1, 262159, 0, 1, 262160, 0, 1, 262161, 0, 1, 196622, 0, 1, 196623, 0, 1, 196624, 0, 1, 196625, 0, 1, 196602, 0, 0, 196601, 0, 0, 196600, 0, 0, 196599, 0, 0, 196598, 0, 0, 262138, 0, 1, 327674, 0, 1, 327673, 0, 1, 262137, 0, 1, 262136, 0, 1, 262135, 0, 1, 327671, 0, 1, 327672, 0, 1, 327670, 0, 1, 262134, 0, 1)
 
-[node name="TestNPC" parent="." instance=ExtResource("4_dpn5p")]
+[node name="Block" type="Label" parent="TileMap"]
+offset_left = 21.0
+offset_top = -20.0
+offset_right = 138.0
+offset_bottom = 3.0
+text = "pushable block"
+
+[node name="NPC" type="Label" parent="TileMap"]
+offset_left = -110.0
+offset_top = -11.0
+offset_right = -70.0
+offset_bottom = 12.0
+text = "NPC"
+
+[node name="Label" type="Label" parent="TileMap"]
+offset_left = -15.0
+offset_top = -92.0
+offset_right = 25.0
+offset_bottom = -69.0
+text = "Tree"
+
+[node name="TestNPC" parent="." instance=ExtResource("3_1s0mg")]
 position = Vector2(-48, 19)
 
 [node name="Character" parent="." instance=ExtResource("3_8vdvc")]
