@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cp08dx7in60dn"]
+[gd_scene load_steps=10 format=3 uid="uid://cp08dx7in60dn"]
 
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="1_u0415"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="3_dwm5v"]
@@ -134,9 +134,6 @@ texture = ExtResource("1_u0415")
 [sub_resource type="TileSet" id="TileSet_pmco1"]
 sources/0 = SubResource("TileSetAtlasSource_cluau")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygq88"]
-size = Vector2(240, 48)
-
 [node name="World" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -149,15 +146,11 @@ position = Vector2(-38, 20)
 collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
-zoom = Vector2(4, 4)
+zoom = Vector2(7, 7)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 script = ExtResource("4_kwpsl")
 tilemap_nodepath = NodePath("../TileMap")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(40, 56)
-shape = SubResource("RectangleShape2D_ygq88")
 
 [node name="Pullable Object" parent="." instance=ExtResource("5_nyaao")]
 position = Vector2(-61, 22)
