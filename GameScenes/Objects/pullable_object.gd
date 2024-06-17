@@ -18,12 +18,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	if selected == true:
-		var direction := Input.get_axis("left", "right")
-		if direction and ((left_side and direction < 0) or (!left_side and direction > 0)):
-			velocity.x = lerp(velocity.x, direction * SPEED, 
-					pow(ACCELERATION, 60.0 * delta))
-		else:
-			velocity.x = lerp(velocity.x, 0.0, pow(ACCELERATION, 60.0 * delta))	
+		velocity.x = GlobalNodeReferences.character.velocity.x
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
@@ -37,4 +32,5 @@ func _on_interact():
 		left_side = true
 	else:
 		left_side = false
+	GlobalNodeReferences.character.can_jump = !GlobalNodeReferences.character.can_jump
 	selected = !selected

@@ -10,6 +10,7 @@ const JUMP_INPUT_BUFFERING := 0.2
 const push_force = 100.0
 
 @onready var character_area := $CharacterArea
+@export var can_jump: bool = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -53,23 +54,24 @@ func _physics_process(delta: float) -> void:
 		velocity.y = min(velocity.y + gravity * delta, MAX_FALL_SPEED)
 
 	# Handle jump.
-	if climbing or is_on_floor():
-		coyote_time = 0.0
-		jumped = false
-	else: 
-		coyote_time += delta
-	
-	if Input.is_action_just_pressed("jump"):
-		last_jump_press = 0.0
-	else:
-		last_jump_press += delta
-	
-	if (last_jump_press <= JUMP_INPUT_BUFFERING
-			and coyote_time <= MAX_COYOTE_TIME
-			and not jumped):
-		velocity.y = JUMP_VELOCITY
-		climbing = false
-		jumped = true
+	if can_jump:
+		if climbing or is_on_floor():
+			coyote_time = 0.0
+			jumped = false
+		else: 
+			coyote_time += delta
+		
+		if Input.is_action_just_pressed("jump"):
+			last_jump_press = 0.0
+		else:
+			last_jump_press += delta
+		
+		if (last_jump_press <= JUMP_INPUT_BUFFERING
+				and coyote_time <= MAX_COYOTE_TIME
+				and not jumped):
+			velocity.y = JUMP_VELOCITY
+			climbing = false
+			jumped = true
 
 	# Get the input direction and handle the movement/deceleration.
 	if not climbing:
