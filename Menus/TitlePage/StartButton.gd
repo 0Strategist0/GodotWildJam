@@ -7,7 +7,8 @@ const UI := preload("uid://b5kvf0loq0rxl")
 @onready var main := GlobalNodeReferences.main
 @onready var title_page := get_node("../..")
 
-var debug_mode := false
+# Remove this later
+var debug_mode := true
 
 func _on_pressed() -> void:
 	var world := WORLD.instantiate()

@@ -7,6 +7,5 @@ extends Area2D
 # Move the player to specified scene when coming in contact with collision shape 
 func _on_body_entered(body: Node2D) -> void:
 	if body == GlobalNodeReferences.character:
-		var new_scene := next_level.instantiate()
-		main.add_child(new_scene)
-		owner.queue_free()
+		main.call_deferred("add_child", next_level.instantiate())
+		owner.call_deferred("queue_free")
