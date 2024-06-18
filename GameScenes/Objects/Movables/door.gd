@@ -20,8 +20,8 @@ func _ready() -> void:
 
 func _move(direction: Vector2) -> void:
 	currently_moving = true
-	var target_position = original_position if activated else original_position + direction
-	var tween = create_tween()
+	var target_position: Vector2 = original_position if activated else original_position + direction
+	var tween: Tween = create_tween()
 	tween.tween_property(self, "position", target_position, TIME_TO_MOVE)
 	tween.connect("finished", on_tween_finished)
 
@@ -52,5 +52,5 @@ func _handle_signal() -> void:
 	activated = !activated
 
 
-func _on_plate_switch_body_entered(body: Node2D) -> void:
+func _on_plate_switch_body_entered(_body: Node2D) -> void:
 	_handle_signal()
