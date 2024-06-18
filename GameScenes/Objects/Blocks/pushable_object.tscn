@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxv8ppef5x7rj"]
 
-[ext_resource type="Script" path="res://GameScenes/Objects/Blocks/pushable_object.gd" id="1_dbrtd"]
-[ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="1_s5cbi"]
+[ext_resource type="Script" path="res://GameScenes/Objects/Blocks/pushable_object.gd" id="1_htobp"]
+[ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="2_i417n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhk1r"]
 size = Vector2(18, 16)
 
 [node name="Pushable Object" type="CharacterBody2D" groups=["pushable"]]
 position = Vector2(0, -8)
-script = ExtResource("1_dbrtd")
+script = ExtResource("1_htobp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_s5cbi")
+texture = ExtResource("2_i417n")
 region_enabled = true
 region_rect = Rect2(0, 32, 16, 16)
 

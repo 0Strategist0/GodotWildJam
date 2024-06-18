@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/Blocks/pushable_object.tscn" id="5_igdms"]
 [ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="6_8wq5l"]
 [ext_resource type="PackedScene" uid="uid://b0kxtk2p027ml" path="res://GameScenes/Levels/starting_level.tscn" id="7_3adnk"]
-[ext_resource type="PackedScene" uid="uid://cqay0ugttwink" path="res://GameScenes/Objects/Teleporter/teleporter.tscn" id="8_qt8mg"]
-[ext_resource type="PackedScene" uid="uid://mm3djlck2npl" path="res://GameScenes/Objects/Teleporter/teleport_location.tscn" id="9_36skn"]
+[ext_resource type="PackedScene" uid="uid://cqay0ugttwink" path="res://GameScenes/Objects/Teleporter/teleporter.tscn" id="8_nebeb"]
+[ext_resource type="PackedScene" uid="uid://mm3djlck2npl" path="res://GameScenes/Objects/Teleporter/teleport_location.tscn" id="9_5h3yo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cluau"]
 texture = ExtResource("1_u0415")
@@ -206,9 +206,9 @@ position = Vector2(27, 23)
 position = Vector2(138, 20)
 next_level = ExtResource("7_3adnk")
 
-[node name="Teleporter" parent="." node_paths=PackedStringArray("teleport_location") instance=ExtResource("8_qt8mg")]
+[node name="Teleporter" parent="." node_paths=PackedStringArray("teleport_location") instance=ExtResource("8_nebeb")]
 position = Vector2(-187, -11)
 teleport_location = NodePath("../TeleportLocation")
 
-[node name="TeleportLocation" parent="." instance=ExtResource("9_36skn")]
+[node name="TeleportLocation" parent="." instance=ExtResource("9_5h3yo")]
 position = Vector2(-263, -79)
