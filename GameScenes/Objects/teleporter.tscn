@@ -1,18 +1,13 @@
-<<<<<<< HEAD
-[gd_scene load_steps=3 format=3 uid="uid://dlim6r7c0ahh8"]
-=======
-[gd_scene load_steps=3 format=3 uid="uid://b8h0ksimfqidb"]
->>>>>>> main
+[gd_scene load_steps=3 format=3 uid="uid://cqay0ugttwink"]
 
-[ext_resource type="Script" path="res://GameScenes/Objects/teleporter.gd" id="1_5ynxo"]
+[ext_resource type="Script" path="res://GameScenes/Objects/teleporter.gd" id="1_ixlx6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wp3xj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23hte"]
 
 [node name="Teleporter" type="Area2D"]
-script = ExtResource("1_5ynxo")
+script = ExtResource("1_ixlx6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_wp3xj")
-debug_color = Color(0.839085, 0.143874, 0.862186, 0.42)
+shape = SubResource("RectangleShape2D_23hte")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
