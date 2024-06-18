@@ -646,6 +646,7 @@ node_connections = [&"output", 0, &"StateMachine"]
 
 [node name="Character" type="CharacterBody2D"]
 position = Vector2(0, -12)
+floor_max_angle = 1.05592
 script = ExtResource("1_1kgrh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
