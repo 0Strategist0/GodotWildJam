@@ -22,6 +22,8 @@ var climbing := false
 var coyote_time := 0.0
 var jumped := false
 var last_jump_press := 1.0
+var lockout := 0.0
+var stored_speed := 0.0
 
 func _ready() -> void:
 	GlobalNodeReferences.character = self
@@ -91,17 +93,26 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	# Shove blocks
+	if lockout > 0.0:
+		if lockout - delta >= 0.0:
+			lockout -= delta
+		else:
+			lockout = 0.0
+		
 	for i in get_slide_collision_count():
 		var c := get_slide_collision(i)
-		if c.get_collider() is CharacterBody2D and c.get_collider().is_in_group("pushable"):
+		if c.get_collider() is CharacterBody2D and c.get_collider().is_in_group("pushable") and lockout == 0.0:
+			lockout += .1
 			if (position.x + get_node("CollisionShape2D").shape.radius 
 					+ (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2) 
 					< c.get_collider().position.x):
-				c.get_collider().velocity.x += 400
+				c.get_collider().velocity.x = stored_speed
 			elif (position.x - (get_node("CollisionShape2D").shape.radius 
 					+ (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2)) 
 					> c.get_collider().position.x):
-				c.get_collider().velocity.x -= 400
+				c.get_collider().velocity.x = stored_speed
+		else:
+			stored_speed = velocity.x
 	
 	# Animate based on motion
 	if velocity.x > FLIP_SPEED:

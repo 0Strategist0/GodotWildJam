@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b0kxtk2p027ml"]
+[gd_scene load_steps=28 format=3 uid="uid://b0kxtk2p027ml"]
 
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_jt75v"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="2_m2bqk"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dacsy0tlg3bnv" path="res://GameScenes/Levels/tree5.svg" id="11_5mpm7"]
 [ext_resource type="Texture2D" uid="uid://dxlsgicrxt3ev" path="res://GameScenes/Levels/tree6.svg" id="12_nb5jk"]
 [ext_resource type="Shader" path="res://GameScenes/Levels/fog.gdshader" id="13_u765n"]
+[ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/pushable_object.tscn" id="14_xi2na"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yokt"]
 texture = ExtResource("2_m2bqk")
@@ -1370,6 +1371,9 @@ metadata/_edit_group_ = true
 material = SubResource("ShaderMaterial_1w2l6")
 scale = Vector2(10, 1)
 texture = ExtResource("6_1dvnk")
+
+[node name="Pushable Object" parent="." instance=ExtResource("14_xi2na")]
+position = Vector2(744, -155)
 
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
