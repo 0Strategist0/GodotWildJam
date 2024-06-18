@@ -25,6 +25,9 @@ func _ready() -> void:
 
 
 func _move(direction: Vector2) -> void:
+	if not is_inside_tree():
+		return
+	
 	currently_moving = true
 	var target_position: Vector2 = original_position if activated else original_position + direction
 	var tween: Tween = create_tween()
