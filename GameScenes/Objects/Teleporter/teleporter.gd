@@ -1,5 +1,6 @@
 extends Area2D
 
+# When placing this, use the teleport_location.tscn in Objects/Teleporter path
 @export var teleport_location: Marker2D
 
 @onready var main := GlobalNodeReferences.main

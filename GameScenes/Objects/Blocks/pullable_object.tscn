@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bqenn1xn8mpei"]
 
-[ext_resource type="Script" path="res://GameScenes/Objects/pullable_object.gd" id="1_cjyqk"]
+[ext_resource type="Script" path="res://GameScenes/Objects/Blocks/pullable_object.gd" id="1_cjyqk"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="1_kysvp"]
 [ext_resource type="PackedScene" uid="uid://csrxm8kcu1vaf" path="res://Interaction/InteractionArea/interaction_area.tscn" id="3_8bbu8"]
 
