@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bqenn1xn8mpei" path="res://GameScenes/Objects/Blocks/pullable_object.tscn" id="4_1yfyn"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="4_kwpsl"]
 [ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/Blocks/pushable_object.tscn" id="5_igdms"]
-[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="6_8wq5l"]
+[ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="6_8wq5l"]
 [ext_resource type="PackedScene" uid="uid://b0kxtk2p027ml" path="res://GameScenes/Levels/starting_level.tscn" id="7_3adnk"]
 [ext_resource type="PackedScene" uid="uid://cqay0ugttwink" path="res://GameScenes/Objects/Teleporter/teleporter.tscn" id="8_nebeb"]
 [ext_resource type="PackedScene" uid="uid://mm3djlck2npl" path="res://GameScenes/Objects/Teleporter/teleport_location.tscn" id="9_5h3yo"]

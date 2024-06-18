@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://caicj44ceb3on"]
+
+[ext_resource type="PackedScene" uid="uid://cnk321ryr6j5e" path="res://GameScenes/Character/character_sprite.tscn" id="1_kqa8x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5whgy"]
+size = Vector2(4, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obbdv"]
+size = Vector2(6.66234, 4.55406)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3e4wm"]
+radius = 4.0
+
+[node name="DeadCharacter" type="RigidBody2D"]
+collision_mask = 33
+
+[node name="Offset" type="Node2D" parent="."]
+
+[node name="Sprite" parent="Offset" instance=ExtResource("1_kqa8x")]
+position = Vector2(-4, -7.10543e-15)
+rotation = 1.5708
+
+[node name="Body" parent="Offset/Sprite/Offset" index="0"]
+rotation = -0.231053
+
+[node name="Head" parent="Offset/Sprite/Offset/Body" index="0"]
+rotation = 0.825951
+
+[node name="RArm" parent="Offset/Sprite/Offset/Body" index="1"]
+rotation = -2.01737
+
+[node name="LArm" parent="Offset/Sprite/Offset/Body" index="2"]
+rotation = -0.54806
+
+[node name="RThigh" parent="Offset/Sprite/Offset/Body" index="3"]
+rotation = -1.05401
+
+[node name="LThigh" parent="Offset/Sprite/Offset/Body" index="4"]
+rotation = -0.275359
+
+[node name="Polygon2D" type="Polygon2D" parent="Offset/Sprite"]
+position = Vector2(-30, 0)
+rotation = 0.22931
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(10, -100, 20, -130, 50, -120, 50, -100, 40, -90)
+
+[node name="RightBody" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+rotation = 1.29154
+shape = SubResource("RectangleShape2D_5whgy")
+metadata/direction = 1.0
+
+[node name="RightLegs" type="CollisionShape2D" parent="."]
+position = Vector2(-5.92347, 2.06353)
+rotation = -0.877901
+shape = SubResource("RectangleShape2D_obbdv")
+metadata/direction = 1.0
+
+[node name="RightHead" type="CollisionShape2D" parent="."]
+position = Vector2(7, 1)
+shape = SubResource("CircleShape2D_3e4wm")
+metadata/direction = 1.0
+
+[node name="LeftBody" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+rotation = -1.29154
+shape = SubResource("RectangleShape2D_5whgy")
+disabled = true
+metadata/direction = -1.0
+
+[node name="LeftLegs" type="CollisionShape2D" parent="."]
+position = Vector2(5.923, 2.064)
+rotation = 0.877901
+shape = SubResource("RectangleShape2D_obbdv")
+disabled = true
+metadata/direction = -1.0
+
+[node name="LeftHead" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 1)
+shape = SubResource("CircleShape2D_3e4wm")
+disabled = true
+metadata/direction = -1.0
+
+[editable path="Offset/Sprite"]

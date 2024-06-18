@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://b0kxtk2p027ml"]
+[gd_scene load_steps=29 format=3 uid="uid://b0kxtk2p027ml"]
 
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_jt75v"]
+[ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_wiwad"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="2_m2bqk"]
 [ext_resource type="PackedScene" uid="uid://cusycd8j05p7" path="res://GameScenes/death_area.tscn" id="3_n032g"]
 [ext_resource type="Script" path="res://GameScenes/Levels/Hunter.gd" id="4_3lx7n"]
@@ -674,6 +675,8 @@ shader_parameter/hdr = false
 shader_parameter/seed = 5.0
 
 [node name="StartingLevel" type="Node2D"]
+script = ExtResource("1_wiwad")
+metadata/level = 1
 
 [node name="Character" parent="." instance=ExtResource("1_jt75v")]
 z_index = 2
