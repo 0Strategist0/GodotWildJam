@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cp08dx7in60dn"]
+[gd_scene load_steps=11 format=3 uid="uid://cp08dx7in60dn"]
 
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="1_u0415"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="3_dwm5v"]
@@ -134,58 +134,30 @@ texture = ExtResource("1_u0415")
 [sub_resource type="TileSet" id="TileSet_pmco1"]
 sources/0 = SubResource("TileSetAtlasSource_cluau")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_acw86"]
-size = Vector2(128, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_28br4"]
-size = Vector2(144, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vr4bg"]
-size = Vector2(448, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_im1by"]
-size = Vector2(336, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xt2vc"]
-size = Vector2(320, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hm0b8"]
+size = Vector2(240, 48)
 
 [node name="World" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_pmco1")
 format = 2
-layer_0/tile_data = PackedInt32Array(196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 196603, 0, 0, 262139, 0, 1, 327675, 0, 1, 327676, 0, 1, 327677, 0, 1, 327678, 0, 1, 327679, 0, 1, 262143, 0, 1, 196608, 0, 1, 196609, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 196611, 0, 1, 196612, 0, 1, 196610, 0, 1, 262142, 0, 1, 262141, 0, 1, 262140, 0, 1, 262144, 0, 1, 262148, 0, 1, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 196613, 0, 1, 196614, 0, 1, 196615, 0, 1, 196616, 0, 1, 196617, 0, 1, 262153, 0, 1, 262152, 0, 1, 262151, 0, 1, 262150, 0, 1, 262149, 0, 1, 196602, 0, 0, 196601, 0, 0, 196600, 0, 0, 196599, 0, 0, 131062, 0, 0, 65525, 0, 0, 65524, 0, 0, 65523, 0, 0, 65522, 0, 0, 65521, 0, 0, 65520, 0, 0, 65519, 0, 0, 131055, 0, 1, 131056, 0, 1, 131057, 0, 1, 131058, 0, 1, 131059, 0, 1, 131060, 0, 1, 131061, 0, 1, 196597, 0, 1, 196598, 0, 1, 262135, 0, 1, 262136, 0, 1, 262137, 0, 1, 262138, 0, 1, 327674, 0, 1, 327673, 0, 1, 327672, 0, 1, 327671, 0, 1, 262134, 0, 1, 262133, 0, 1, 196596, 0, 1, 196595, 0, 1, 196594, 0, 1, 196593, 0, 1, 196592, 0, 1, 196591, 0, 1, 196590, 0, 1, 131054, 0, 1, 65518, 0, 0, 327670, 0, 1)
+layer_0/tile_data = PackedInt32Array(196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 196603, 0, 0, 262139, 0, 1, 327675, 0, 1, 327676, 0, 1, 327677, 0, 1, 327678, 0, 1, 327679, 0, 1, 262143, 0, 1, 196608, 0, 1, 196609, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 196611, 0, 1, 196612, 0, 1, 196610, 0, 1, 262142, 0, 1, 262141, 0, 1, 262140, 0, 1, 262144, 0, 1, 262148, 0, 1, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 196613, 0, 1, 196614, 0, 1, 196615, 0, 1, 196616, 0, 1, 196617, 0, 1, 262153, 0, 1, 262152, 0, 1, 262151, 0, 1, 262150, 0, 1, 262149, 0, 1)
 
 [node name="Character" parent="." instance=ExtResource("3_dwm5v")]
 position = Vector2(-38, 20)
 collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
-zoom = Vector2(7, 7)
+zoom = Vector2(4, 4)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 script = ExtResource("4_kwpsl")
 tilemap_nodepath = NodePath("../TileMap")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-224, 8)
-shape = SubResource("RectangleShape2D_acw86")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-216, 24)
-shape = SubResource("RectangleShape2D_28br4")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-64, 40)
-shape = SubResource("RectangleShape2D_vr4bg")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-8, 56)
-shape = SubResource("RectangleShape2D_im1by")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 72)
-shape = SubResource("RectangleShape2D_xt2vc")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(40, 56)
+shape = SubResource("RectangleShape2D_hm0b8")
 
 [node name="Pullable Object" parent="." instance=ExtResource("5_nyaao")]
 position = Vector2(-61, 22)

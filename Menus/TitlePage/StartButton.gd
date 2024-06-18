@@ -8,14 +8,14 @@ const UI := preload("uid://b5kvf0loq0rxl")
 @onready var title_page := get_node("../..")
 
 # Remove this later
-var start_debug := true
+var debug_mode := true
 
 func _on_pressed() -> void:
 	var world := WORLD.instantiate()
 	var level := LEVEL1.instantiate()
 	var ui := UI.instantiate()
 	
-	if start_debug:
+	if debug_mode:
 		main.add_child(world)
 	else:
 		main.add_child(level)

@@ -645,6 +645,7 @@ nodes/output/position = Vector2(240, 120)
 node_connections = [&"output", 0, &"StateMachine"]
 
 [node name="Character" type="CharacterBody2D"]
+position = Vector2(0, -12)
 script = ExtResource("1_1kgrh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

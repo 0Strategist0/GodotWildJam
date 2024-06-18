@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=3 format=3 uid="uid://dlim6r7c0ahh8"]
+=======
+[gd_scene load_steps=3 format=3 uid="uid://b8h0ksimfqidb"]
+>>>>>>> main
 
 [ext_resource type="Script" path="res://GameScenes/Objects/teleporter.gd" id="1_5ynxo"]
 

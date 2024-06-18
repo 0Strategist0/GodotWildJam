@@ -53,7 +53,7 @@ func run_code(_fake_bool := false) -> void:
 	var first_colliders_arr := []
 	## First pass: add horizontal rect colliders starting from the top left
 	while true:
-		var temp_loc : Vector2i = tilemap_locations.pop_back()
+		var temp_loc = tilemap_locations.pop_back()
 		
 		if temp_loc == null:
 			# Add the last collider and break out of loop
