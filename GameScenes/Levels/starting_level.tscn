@@ -418,7 +418,7 @@ sources/0 = SubResource("TileSetAtlasSource_0yokt")
 sources/1 = SubResource("TileSetScenesCollectionSource_p1fmf")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mp41"]
-size = Vector2(2, 142)
+size = Vector2(5, 142)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7075u"]
 size = Vector2(20, 300)
@@ -718,7 +718,7 @@ texture = ExtResource("4_i8wdi")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/FirstTree"]
-position = Vector2(1, 5)
+position = Vector2(0.5, 5)
 shape = SubResource("RectangleShape2D_1mp41")
 
 [node name="EventTriggers" type="Node2D" parent="."]

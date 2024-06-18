@@ -21,6 +21,8 @@ const FLIP_SPEED := 1.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var climbing := false
+var peaked := false
+var bottomed := false
 var coyote_time := 0.0
 var jumped := false
 var last_jump_press := 1.0
@@ -57,17 +59,26 @@ func _physics_process(delta: float) -> void:
 		for area: Area2D in overlapping_areas:
 			if area.is_in_group("climbable"):
 				climbing = true
+				peaked = false
+				bottomed = false
 				break
 			else:
 				climbing = false
 		if overlapping_areas.is_empty():
-			climbing = false
+			if climbing and not peaked and not bottomed:
+				if Input.is_action_pressed("up"):
+					peaked = true
+				elif Input.is_action_pressed("down"):
+					bottomed = true
+	else:
+		peaked = false
+		bottomed = false
 	
 	# Climb or add gravity
 	if climbing:
-		if Input.is_action_pressed("up"):
+		if Input.is_action_pressed("up") and not peaked:
 			velocity.y = -CLIMB_SPEED
-		elif Input.is_action_pressed("down"):
+		elif Input.is_action_pressed("down") and not bottomed:
 			velocity.y = CLIMB_SPEED
 		else:
 			velocity.y = 0.0
