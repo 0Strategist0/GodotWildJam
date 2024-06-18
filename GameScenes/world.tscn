@@ -263,8 +263,9 @@ position = Vector2(88, 19)
 
 [node name="DoorTest" parent="." instance=ExtResource("11_07oyt")]
 position = Vector2(220, 19)
-door_behaviour = 2
 door_can_return = true
+distance = 50
+move_duration = 1
 
 [node name="ToggleSwitch" parent="." instance=ExtResource("12_ns7bc")]
 position = Vector2(141, 21)
