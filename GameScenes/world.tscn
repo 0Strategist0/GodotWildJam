@@ -267,7 +267,7 @@ door_behaviour = 2
 door_can_return = true
 
 [node name="ToggleSwitch" parent="." instance=ExtResource("12_ns7bc")]
-position = Vector2(-101, 21)
+position = Vector2(141, 21)
 
 [connection signal="body_entered" from="PlateSwitch" to="DoorTest" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="PlateSwitch" to="DoorTest" method="_on_plate_switch_body_exited"]
