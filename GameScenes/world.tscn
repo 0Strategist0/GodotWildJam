@@ -272,7 +272,9 @@ move_duration = 1
 position = Vector2(141, 21)
 
 [node name="Platform" parent="." instance=ExtResource("13_wf80d")]
-position = Vector2(-44, -32)
+position = Vector2(-154, -32)
+duration = 40
+distance = Vector2(500, 0)
 
 [connection signal="body_entered" from="PlateSwitch" to="DoorTest" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="PlateSwitch" to="DoorTest" method="_on_plate_switch_body_exited"]
