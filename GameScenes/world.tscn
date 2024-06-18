@@ -263,9 +263,11 @@ position = Vector2(88, 19)
 
 [node name="DoorTest" parent="." instance=ExtResource("11_07oyt")]
 position = Vector2(220, 19)
+door_behaviour = 2
 door_can_return = true
 
 [node name="ToggleSwitch" parent="." instance=ExtResource("12_ns7bc")]
 position = Vector2(-101, 21)
 
 [connection signal="body_entered" from="PlateSwitch" to="DoorTest" method="_on_plate_switch_body_entered"]
+[connection signal="body_exited" from="PlateSwitch" to="DoorTest" method="_on_plate_switch_body_exited"]

@@ -9,6 +9,8 @@ var activated := false
 var currently_moving := false
 var original_position: Vector2
 
+var objects_in_zone_counter := 0
+
 const DISTANCE_UP := Vector2(0, -50)
 const DISTANCE_DOWN := Vector2(0, 50)
 const TIME_TO_MOVE := 1
@@ -52,5 +54,14 @@ func _handle_signal() -> void:
 	activated = !activated
 
 
-func _on_plate_switch_body_entered(_body: Node2D) -> void:
-	_handle_signal()
+func _on_plate_switch_body_entered(body: Node2D) -> void:
+	objects_in_zone_counter += 1
+	if objects_in_zone_counter == 1:
+		_handle_signal()
+
+
+func _on_plate_switch_body_exited(body: Node2D) -> void:
+	objects_in_zone_counter -= 1
+	if objects_in_zone_counter == 0 and door_can_return:
+		currently_moving = false
+		_handle_signal()
