@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+enum {DEFAULT, BOB, MESSY, CURLY, PONY, BALD}
+
 const SPEED := 100.0
 const ACCELERATION := 0.3 # out of 0.0 to 1.0
 const CLIMB_SPEED := 50.0
@@ -25,10 +27,15 @@ var last_jump_press := 1.0
 var lockout := 0.0
 var stored_speed := 0.0
 var dying := false
-var sprite_type := "default"
+var sprite_type := randi_range(DEFAULT, BALD)
 
 func _ready() -> void:
 	GlobalNodeReferences.character = self
+	for hair in $Sprite/Offset/Body/Head.get_children():
+		if str(sprite_type) in hair.name:
+			hair.visible = true
+		else:
+			hair.visible = false
 
 func _physics_process(delta: float) -> void:
 	# TEMP <- debug kill button

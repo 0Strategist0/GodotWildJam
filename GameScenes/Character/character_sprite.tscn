@@ -24,7 +24,8 @@ texture = ExtResource("1_ii4tw")
 polygon = PackedVector2Array(387.755, 186.512, 338.265, 214.573, 341.327, 256.41, 384.184, 294.675, 432.143, 270.186, 431.122, 202.329)
 uv = PackedVector2Array(387.755, 186.512, 338.265, 214.573, 341.327, 256.41, 384.184, 294.675, 432.143, 270.186, 431.122, 202.329)
 
-[node name="Hair" type="Polygon2D" parent="Offset/Body/Head"]
+[node name="Hair0" type="Polygon2D" parent="Offset/Body/Head"]
+visible = false
 show_behind_parent = true
 position = Vector2(2, -65)
 offset = Vector2(-85, -76)
@@ -32,7 +33,7 @@ texture = ExtResource("1_ii4tw")
 polygon = PackedVector2Array(127.411, 41.403, 35.533, 60.6924, 30.4569, 105.87, 55.8376, 109.931, 58.8832, 96.2254, 138.071, 86.0731, 146.701, 64.2457)
 uv = PackedVector2Array(127.411, 41.403, 35.533, 60.6924, 30.4569, 105.87, 55.8376, 109.931, 58.8832, 96.2254, 138.071, 86.0731, 146.701, 64.2457)
 
-[node name="BobHair" type="Polygon2D" parent="Offset/Body/Head"]
+[node name="Hair1" type="Polygon2D" parent="Offset/Body/Head"]
 visible = false
 show_behind_parent = true
 position = Vector2(-0.546, -30)
@@ -40,6 +41,38 @@ offset = Vector2(-232.865, -91.04)
 texture = ExtResource("1_ii4tw")
 polygon = PackedVector2Array(286.207, 19.2991, 179.937, 28.7034, 175.235, 134.973, 293.103, 141.243)
 uv = PackedVector2Array(286.207, 19.2991, 179.937, 28.7034, 175.235, 134.973, 293.103, 141.243)
+
+[node name="Hair2" type="Polygon2D" parent="Offset/Body/Head"]
+visible = false
+position = Vector2(-19.4968, -66.588)
+offset = Vector2(-361.374, -77.8823)
+texture = ExtResource("1_ii4tw")
+polygon = PackedVector2Array(373.958, 44.0972, 314.931, 67.0139, 327.083, 132.292, 363.542, 131.944, 368.056, 91.6667, 429.167, 93.0556, 434.375, 57.2917)
+uv = PackedVector2Array(373.958, 44.0972, 314.931, 67.0139, 327.083, 132.292, 363.542, 131.944, 368.056, 91.6667, 429.167, 93.0556, 434.375, 57.2917)
+
+[node name="Hair3" type="Polygon2D" parent="Offset/Body/Head"]
+visible = false
+position = Vector2(-11.252, -67.688)
+offset = Vector2(-522.776, -83.0009)
+texture = ExtResource("1_ii4tw")
+polygon = PackedVector2Array(552.778, 24.3056, 445.833, 55.2083, 464.236, 163.194, 626.736, 123.611, 586.458, 20.1389)
+uv = PackedVector2Array(552.778, 24.3056, 445.833, 55.2083, 464.236, 163.194, 626.736, 123.611, 586.458, 20.1389)
+
+[node name="Hair4" type="Polygon2D" parent="Offset/Body/Head"]
+visible = false
+position = Vector2(-13.3485, -58.1487)
+offset = Vector2(-711.392, -73.0939)
+texture = ExtResource("1_ii4tw")
+polygon = PackedVector2Array(709.375, 35.0694, 629.514, 52.7778, 635.069, 130.556, 707.292, 135.069, 797.222, 81.5972, 750.347, 32.6389)
+uv = PackedVector2Array(709.375, 35.0694, 629.514, 52.7778, 635.069, 130.556, 707.292, 135.069, 797.222, 81.5972, 750.347, 32.6389)
+
+[node name="Hair5" type="Polygon2D" parent="Offset/Body/Head"]
+visible = false
+position = Vector2(-13.4566, -65.0983)
+offset = Vector2(-756.367, -195.945)
+texture = ExtResource("1_ii4tw")
+polygon = PackedVector2Array(754.861, 155.903, 697.569, 196.181, 715.625, 235.764, 790.972, 232.292, 839.236, 200.347)
+uv = PackedVector2Array(754.861, 155.903, 697.569, 196.181, 715.625, 235.764, 790.972, 232.292, 839.236, 200.347)
 
 [node name="RArm" type="Polygon2D" parent="Offset/Body"]
 position = Vector2(-15, -64)
