@@ -24,15 +24,23 @@ var jumped := false
 var last_jump_press := 1.0
 var lockout := 0.0
 var stored_speed := 0.0
+var dying := false
+var sprite_type := "default"
 
 func _ready() -> void:
 	GlobalNodeReferences.character = self
 
 func _physics_process(delta: float) -> void:
+	# TEMP <- debug kill button
+	if Input.is_action_just_pressed("debug_kill"):
+		kill()
+	
+	
+	
+	
 	# Don't let the player move if they're talking to someone - FIX LATER
 	if DialogManager.is_dialog_active:
 		return
-	
 	
 	# Check if you are climbing
 	if (Input.is_action_pressed("up") 
@@ -134,4 +142,16 @@ func _physics_process(delta: float) -> void:
 
 
 func kill() -> void:
-	print("Oof ouch my bones (character died)")
+	if not dying:
+		dying = true
+		# Code to save the body position when you die
+		if not Progress.bodies.has(owner.get_meta("level")):
+			Progress.bodies[owner.get_meta("level")] = {position: {"direction": sign(sprite.scale.x), 
+					"type": sprite_type}}
+		else:
+			Progress.bodies[owner.get_meta("level")][position] = {"direction": sign(sprite.scale.x), 
+					"type": sprite_type}
+		
+		var reloaded_scene : Node2D = load("uid://b0kxtk2p027ml").instantiate()
+		GlobalNodeReferences.main.call_deferred("add_child", reloaded_scene)
+		owner.queue_free()

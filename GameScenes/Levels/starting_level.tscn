@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://b0kxtk2p027ml"]
+[gd_scene load_steps=29 format=3 uid="uid://b0kxtk2p027ml"]
 
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_jt75v"]
+[ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_wiwad"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="2_m2bqk"]
 [ext_resource type="PackedScene" uid="uid://cusycd8j05p7" path="res://GameScenes/death_area.tscn" id="3_n032g"]
 [ext_resource type="Script" path="res://GameScenes/Levels/Hunter.gd" id="4_3lx7n"]
@@ -674,6 +675,8 @@ shader_parameter/hdr = false
 shader_parameter/seed = 5.0
 
 [node name="StartingLevel" type="Node2D"]
+script = ExtResource("1_wiwad")
+metadata/level = 1
 
 [node name="Character" parent="." instance=ExtResource("1_jt75v")]
 z_index = 2
@@ -1375,5 +1378,21 @@ texture = ExtResource("6_1dvnk")
 [node name="Pushable Object" parent="." instance=ExtResource("14_xi2na")]
 position = Vector2(744, -155)
 
+[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105438" to="TileMap/@Area2D@105438" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105439" to="TileMap/@Area2D@105439" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105440" to="TileMap/@Area2D@105440" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105441" to="TileMap/@Area2D@105441" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105442" to="TileMap/@Area2D@105442" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105443" to="TileMap/@Area2D@105443" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105444" to="TileMap/@Area2D@105444" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105445" to="TileMap/@Area2D@105445" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105446" to="TileMap/@Area2D@105446" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105447" to="TileMap/@Area2D@105447" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105448" to="TileMap/@Area2D@105448" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105449" to="TileMap/@Area2D@105449" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105450" to="TileMap/@Area2D@105450" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105451" to="TileMap/@Area2D@105451" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@105452" to="TileMap/@Area2D@105452" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
