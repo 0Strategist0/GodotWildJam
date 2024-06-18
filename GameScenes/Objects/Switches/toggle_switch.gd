@@ -9,4 +9,5 @@ func _ready() -> void:
 
 
 func _on_interact() -> void:
+	# There should be a signal here that gets sent out
 	print("switch")

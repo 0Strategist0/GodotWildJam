@@ -2,6 +2,8 @@ extends AnimatableBody2D
 
 enum BEHAVIOUR { MOVE_UP, MOVE_DOWN, DISAPPEAR }
 
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
 @export var door_behaviour: BEHAVIOUR
 @export var door_can_return: bool 
 
@@ -35,8 +37,10 @@ func on_tween_finished() -> void:
 func _disappear() -> void:
 	if (!activated):
 		self.hide()
+		collision_shape.call_deferred("set", "disabled", true)
 	else:
 		self.show()
+		collision_shape.call_deferred("set", "disabled", false)
 
 
 func _handle_signal() -> void:
@@ -54,12 +58,14 @@ func _handle_signal() -> void:
 	activated = !activated
 
 
+# The first object on the pressure plate should trigger it and no subsequent one
 func _on_plate_switch_body_entered(body: Node2D) -> void:
 	objects_in_zone_counter += 1
 	if objects_in_zone_counter == 1:
 		_handle_signal()
 
 
+# The last object to leave the pressure plate should reverse it
 func _on_plate_switch_body_exited(body: Node2D) -> void:
 	objects_in_zone_counter -= 1
 	if objects_in_zone_counter == 0 and door_can_return:
