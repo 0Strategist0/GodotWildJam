@@ -271,3 +271,4 @@ position = Vector2(-101, 21)
 
 [connection signal="body_entered" from="PlateSwitch" to="DoorTest" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="PlateSwitch" to="DoorTest" method="_on_plate_switch_body_exited"]
+[connection signal="switch_toggled" from="ToggleSwitch" to="DoorTest" method="_on_toggle_switch_switch_toggled"]

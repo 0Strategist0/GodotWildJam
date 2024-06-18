@@ -71,3 +71,7 @@ func _on_plate_switch_body_exited(body: Node2D) -> void:
 	if objects_in_zone_counter == 0 and door_can_return:
 		currently_moving = false
 		_handle_signal()
+
+
+func _on_toggle_switch_switch_toggled() -> void:
+	_handle_signal()
