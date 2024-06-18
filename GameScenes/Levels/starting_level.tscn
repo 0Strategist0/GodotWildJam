@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b0kxtk2p027ml"]
+[gd_scene load_steps=34 format=3 uid="uid://b0kxtk2p027ml"]
 
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_jt75v"]
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_wiwad"]
@@ -15,6 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://dxlsgicrxt3ev" path="res://GameScenes/Levels/tree6.svg" id="12_nb5jk"]
 [ext_resource type="Shader" path="res://GameScenes/Levels/fog.gdshader" id="13_u765n"]
 [ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/Blocks/pushable_object.tscn" id="14_xi2na"]
+[ext_resource type="Texture2D" uid="uid://dmt3wi0icmewh" path="res://GameScenes/Levels/grass1.svg" id="16_siaim"]
+[ext_resource type="Texture2D" uid="uid://biqaoxcol4jcf" path="res://GameScenes/Levels/grass2.svg" id="17_ygujd"]
+[ext_resource type="Texture2D" uid="uid://cmyrp14rj0sl6" path="res://GameScenes/Levels/grass3.svg" id="18_66yqk"]
+[ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="19_g57bf"]
+[ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="20_1uk1g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yokt"]
 texture = ExtResource("2_m2bqk")
@@ -413,7 +418,7 @@ sources/0 = SubResource("TileSetAtlasSource_0yokt")
 sources/1 = SubResource("TileSetScenesCollectionSource_p1fmf")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mp41"]
-size = Vector2(2, 142)
+size = Vector2(5, 142)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7075u"]
 size = Vector2(20, 300)
@@ -698,7 +703,7 @@ text = "Add a pushable block here"
 
 [node name="Ground" type="Polygon2D" parent="."]
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-118, -304, -96, -78, -95, 15, 143, 15, 144, -1, 257, -1, 257, 32, 288, 32, 287, -1, 575, -1, 575, -145, 653, -145, 752, -145, 752, -112, 847, -112, 847, -146, 993, -146, 995, -137, 993, -112, 1120, -111, 1120, -145, 1329, -146, 1329, -129, 1339, 129, 1342, 325, -598, 335, -603, -305)
+polygon = PackedVector2Array(-118, -304, -96, -78, -95, 15, 143, 15, 144, -1, 257, -1, 257, 32, 288, 32, 287, -1, 575, -1, 575, -145, 653, -145, 752, -145, 752, -112, 847, -112, 847, -146, 992, -145, 992, -132, 993, -112, 1120, -111, 1120, -145, 1329, -146, 1329, -129, 1339, 129, 1342, 325, -598, 335, -603, -305)
 
 [node name="Trees" type="Node2D" parent="."]
 
@@ -713,7 +718,7 @@ texture = ExtResource("4_i8wdi")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/FirstTree"]
-position = Vector2(1, 5)
+position = Vector2(0.5, 5)
 shape = SubResource("RectangleShape2D_1mp41")
 
 [node name="EventTriggers" type="Node2D" parent="."]
@@ -1366,7 +1371,7 @@ texture = ExtResource("12_nb5jk")
 polygon = PackedVector2Array(-672, 209, -642, 191, -598, 192, -524, 143, -427, 147, -384, 172, -316, 166, -275, 151, -214, 144, -117, 142, -32, 112, 28, 113, 145, 137, 270, 144, 367, 96, 516, 135, 603, 141, 647, 122, 674, 128, 679, 222, 689, 352, -682, 382)
 
 [node name="FogLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(461, 75)
+position = Vector2(461, 76)
 motion_scale = Vector2(0.6, 0.6)
 metadata/_edit_group_ = true
 
@@ -1378,5 +1383,188 @@ texture = ExtResource("6_1dvnk")
 [node name="Pushable Object" parent="." instance=ExtResource("14_xi2na")]
 position = Vector2(744, -155)
 
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="Grass1" type="Sprite2D" parent="Decorations"]
+position = Vector2(-30, 12)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("16_siaim")
+
+[node name="Grass11" type="Sprite2D" parent="Decorations"]
+position = Vector2(1326, -149)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("16_siaim")
+
+[node name="Grass5" type="Sprite2D" parent="Decorations"]
+position = Vector2(-62, 12)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("16_siaim")
+
+[node name="Grass6" type="Sprite2D" parent="Decorations"]
+position = Vector2(95, 12)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("16_siaim")
+
+[node name="Grass7" type="Sprite2D" parent="Decorations"]
+position = Vector2(140, 13)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("16_siaim")
+
+[node name="Grass2" type="Sprite2D" parent="Decorations"]
+position = Vector2(47, 11)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("17_ygujd")
+
+[node name="Grass8" type="Sprite2D" parent="Decorations"]
+position = Vector2(133, 10)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("17_ygujd")
+
+[node name="Grass3" type="Sprite2D" parent="Decorations"]
+position = Vector2(78, 10)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("18_66yqk")
+
+[node name="Grass9" type="Sprite2D" parent="Decorations"]
+position = Vector2(119, 10)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("18_66yqk")
+
+[node name="Grass10" type="Sprite2D" parent="Decorations"]
+position = Vector2(8.00001, 9)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("18_66yqk")
+
+[node name="Grass4" type="Sprite2D" parent="Decorations"]
+position = Vector2(104, 10)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("18_66yqk")
+
+[node name="Widegrass" type="Sprite2D" parent="Decorations"]
+position = Vector2(-44, -14)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("19_g57bf")
+
+[node name="Widegrass4" type="Sprite2D" parent="Decorations"]
+position = Vector2(341, -29)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("19_g57bf")
+
+[node name="Widegrass6" type="Sprite2D" parent="Decorations"]
+position = Vector2(438, -29)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("19_g57bf")
+
+[node name="Widegrass9" type="Sprite2D" parent="Decorations"]
+position = Vector2(701, -175)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("19_g57bf")
+
+[node name="Widegrass10" type="Sprite2D" parent="Decorations"]
+position = Vector2(898, -175)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("19_g57bf")
+
+[node name="Widegrass11" type="Sprite2D" parent="Decorations"]
+position = Vector2(934, -175)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("19_g57bf")
+
+[node name="Widegrass12" type="Sprite2D" parent="Decorations"]
+position = Vector2(1172, -175)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("19_g57bf")
+
+[node name="Widegrass13" type="Sprite2D" parent="Decorations"]
+position = Vector2(1274, -176)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("19_g57bf")
+
+[node name="Widegrass7" type="Sprite2D" parent="Decorations"]
+position = Vector2(526, -29)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("19_g57bf")
+
+[node name="Widegrass8" type="Sprite2D" parent="Decorations"]
+position = Vector2(626, -174)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("19_g57bf")
+
+[node name="Widegrass2" type="Sprite2D" parent="Decorations"]
+position = Vector2(61, -14)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("19_g57bf")
+
+[node name="Widegrass5" type="Sprite2D" parent="Decorations"]
+position = Vector2(158, -14)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("19_g57bf")
+
+[node name="Widegrass3" type="Sprite2D" parent="Decorations"]
+position = Vector2(200, -30)
+scale = Vector2(-0.102125, 0.09)
+texture = ExtResource("19_g57bf")
+
+[node name="Edgegrass" type="Sprite2D" parent="Decorations"]
+position = Vector2(142, -2)
+scale = Vector2(-0.05, 0.05)
+texture = ExtResource("20_1uk1g")
+
+[node name="Edgegrass4" type="Sprite2D" parent="Decorations"]
+position = Vector2(572, -147)
+scale = Vector2(-0.05, 0.05)
+texture = ExtResource("20_1uk1g")
+
+[node name="Edgegrass7" type="Sprite2D" parent="Decorations"]
+position = Vector2(846, -147)
+scale = Vector2(-0.05, 0.05)
+texture = ExtResource("20_1uk1g")
+
+[node name="Edgegrass8" type="Sprite2D" parent="Decorations"]
+position = Vector2(1118, -147)
+scale = Vector2(-0.05, 0.05)
+texture = ExtResource("20_1uk1g")
+
+[node name="Edgegrass3" type="Sprite2D" parent="Decorations"]
+position = Vector2(285, -3)
+scale = Vector2(-0.05, 0.05)
+texture = ExtResource("20_1uk1g")
+
+[node name="Edgegrass2" type="Sprite2D" parent="Decorations"]
+position = Vector2(259, -2)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("20_1uk1g")
+
+[node name="Edgegrass5" type="Sprite2D" parent="Decorations"]
+position = Vector2(753, -147)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("20_1uk1g")
+
+[node name="Edgegrass6" type="Sprite2D" parent="Decorations"]
+position = Vector2(992, -148)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("20_1uk1g")
+
+[node name="Edgegrass9" type="Sprite2D" parent="Decorations"]
+position = Vector2(1330, -149)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("20_1uk1g")
+
+[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49577" to="TileMap/@Area2D@49577" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49578" to="TileMap/@Area2D@49578" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49579" to="TileMap/@Area2D@49579" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49580" to="TileMap/@Area2D@49580" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49581" to="TileMap/@Area2D@49581" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49582" to="TileMap/@Area2D@49582" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49583" to="TileMap/@Area2D@49583" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49584" to="TileMap/@Area2D@49584" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49585" to="TileMap/@Area2D@49585" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49586" to="TileMap/@Area2D@49586" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49587" to="TileMap/@Area2D@49587" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49588" to="TileMap/@Area2D@49588" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49589" to="TileMap/@Area2D@49589" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49590" to="TileMap/@Area2D@49590" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@49591" to="TileMap/@Area2D@49591" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]

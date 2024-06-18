@@ -586,7 +586,7 @@ xfade_time = 0.2
 reset = false
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nm88m"]
-xfade_time = 0.1
+xfade_time = 0.05
 reset = false
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n7vpq"]
@@ -594,7 +594,7 @@ xfade_time = 0.2
 reset = false
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uco2r"]
-xfade_time = 0.1
+xfade_time = 0.05
 reset = false
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kbt8l"]
@@ -635,10 +635,10 @@ states/jump/position = Vector2(594.5, 227.34)
 states/run/node = SubResource("AnimationNodeAnimation_k8vrn")
 states/run/position = Vector2(348, 227.672)
 transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_gvysv"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_ypswp"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_dtr71"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_8xbm8"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_gdvlw"), "jump", "run", SubResource("AnimationNodeStateMachineTransition_nm88m"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_n7vpq"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_uco2r"), "run", "climb", SubResource("AnimationNodeStateMachineTransition_kbt8l"), "climb", "run", SubResource("AnimationNodeStateMachineTransition_utwr5"), "climb", "jump", SubResource("AnimationNodeStateMachineTransition_3c8x6"), "jump", "climb", SubResource("AnimationNodeStateMachineTransition_6yo5t"), "idle", "climb", SubResource("AnimationNodeStateMachineTransition_c1o4m"), "climb", "idle", SubResource("AnimationNodeStateMachineTransition_k3gga"), "climb", "hold", SubResource("AnimationNodeStateMachineTransition_fmyf0"), "hold", "climb", SubResource("AnimationNodeStateMachineTransition_lxqcg")]
-graph_offset = Vector2(44, 294)
+graph_offset = Vector2(138, 174)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wmpk0"]
-graph_offset = Vector2(-337.874, 0.967163)
+graph_offset = Vector2(-125, 103)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_a3ffe")
 nodes/StateMachine/position = Vector2(20, 110)
 nodes/output/position = Vector2(240, 120)
