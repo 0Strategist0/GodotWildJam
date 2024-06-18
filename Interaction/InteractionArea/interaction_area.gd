@@ -2,7 +2,7 @@ extends Area2D
 class_name InteractionArea
 
 
-@export var action_name: String = "Interact"
+@export var action_name: String = "Switch"
 
 
 var interact: Callable = func() -> void:
