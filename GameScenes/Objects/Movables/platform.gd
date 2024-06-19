@@ -1,7 +1,5 @@
 extends AnimatableBody2D
 
-@export var continuous := true
-@export var requires_signal := false
 ## The time in seconds it takes to reach a single point.
 @export var duration: int
 ## An array of markers that the platform will travel to. Requires at least 2 points.
@@ -17,11 +15,13 @@ func _ready() -> void:
 	#if is_connected() set requires_signal to true
 	#assert(points.size() > 1, "Platform must have at least 2 points!")
 	
-	if continuous:
-		currently_moving = true
+	#var tween: Tween = create_tween()
+	#tween.tween_property(self, "position", distance, duration)
 	
-	var tween: Tween = create_tween()
-	tween.tween_property(self, "position", distance, duration)
+	var tween: Tween = create_tween().set_loops()
+	tween.tween_property(self, "position", position + distance, duration).from_current()
+	if tween.finished:
+		print(position)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

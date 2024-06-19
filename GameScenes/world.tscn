@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cp08dx7in60dn"]
+[gd_scene load_steps=28 format=3 uid="uid://cp08dx7in60dn"]
 
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="1_u0415"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="3_dwm5v"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://blempiyqsp5tu" path="res://GameScenes/Objects/Switches/plate_switch.tscn" id="10_yh6b6"]
 [ext_resource type="PackedScene" uid="uid://di53u75kivwsj" path="res://GameScenes/Objects/Movables/door.tscn" id="11_07oyt"]
 [ext_resource type="PackedScene" uid="uid://c3jvbgobgodgr" path="res://GameScenes/Objects/Switches/toggle_switch.tscn" id="12_ns7bc"]
-[ext_resource type="PackedScene" uid="uid://cfbgqr2bhcf4y" path="res://GameScenes/Objects/Movables/platform.tscn" id="13_wf80d"]
 [ext_resource type="PackedScene" uid="uid://cbvluptdpl86h" path="res://GameScenes/NPCs/testNpc.tscn" id="14_ur051"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cluau"]
@@ -266,16 +265,10 @@ position = Vector2(88, 19)
 [node name="DoorTest" parent="." instance=ExtResource("11_07oyt")]
 position = Vector2(220, 19)
 door_can_return = true
-distance = 50
-move_duration = 1
+speed = 50
 
 [node name="ToggleSwitch" parent="." instance=ExtResource("12_ns7bc")]
 position = Vector2(141, 21)
-
-[node name="Platform" parent="." instance=ExtResource("13_wf80d")]
-position = Vector2(-350, -107)
-duration = 40
-distance = Vector2(500, 0)
 
 [node name="TestNPC" parent="." instance=ExtResource("14_ur051")]
 position = Vector2(-119, 19)
