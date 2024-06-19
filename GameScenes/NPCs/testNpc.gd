@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 @onready var interaction_area: InteractionArea = $InteractionArea
-@onready var speech_sound = preload("res://GameScenes/NPCs/adult_voice.wav")
+@onready var speech_sound: AudioStream = preload("res://GameScenes/NPCs/adult_voice.wav")
 
 const lines: Array[String] = [
 	"hello this is a test",
