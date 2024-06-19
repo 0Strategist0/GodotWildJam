@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://egifm4edyjqs"]
+[gd_scene load_steps=5 format=3 uid="uid://egifm4edyjqs"]
 
 [ext_resource type="Script" path="res://UserInterface/TextBox/text_box.gd" id="1_qv03t"]
 [ext_resource type="Texture2D" uid="uid://ctgmmbhualrcu" path="res://UserInterface/TextBox/dialog_background.svg" id="2_mcb3g"]
 [ext_resource type="FontFile" uid="uid://c2xicsbvnm0lv" path="res://assets/Cute Love.otf" id="3_43ays"]
+[ext_resource type="Texture2D" uid="uid://nbi4qsnukg2o" path="res://UserInterface/TextBox/tail.svg" id="3_86do8"]
 
 [node name="TextBox" type="MarginContainer"]
 offset_right = 40.0
@@ -17,6 +18,24 @@ patch_margin_left = 9
 patch_margin_top = 10
 patch_margin_right = 11
 patch_margin_bottom = 8
+
+[node name="Control" type="Control" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/Control"]
+position = Vector2(20, 43.7523)
+scale = Vector2(0.103316, 0.101412)
+texture = ExtResource("3_86do8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -34,5 +53,7 @@ vertical_alignment = 1
 
 [node name="LetterDisplayTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]
