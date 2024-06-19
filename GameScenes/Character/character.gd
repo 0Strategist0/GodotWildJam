@@ -11,6 +11,7 @@ const MAX_COYOTE_TIME := 0.2
 const JUMP_INPUT_BUFFERING := 0.2
 const IDLE_SPEED_SQUARED := 100.0
 const FLIP_SPEED := 1.0
+const MIN_SPEED := 50
 
 @onready var character_area := $CharacterArea
 @onready var state_machine : AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/StateMachine/playback")
@@ -30,6 +31,7 @@ var lockout := 0.0
 var stored_speed := 0.0
 var dying := false
 var sprite_type := randi_range(DEFAULT, BALD)
+var stored_fall := 0.0
 
 func _ready() -> void:
 	GlobalNodeReferences.character = self
@@ -43,7 +45,6 @@ func _physics_process(delta: float) -> void:
 	# TEMP <- debug kill button
 	if Input.is_action_just_pressed("debug_kill"):
 		kill()
-	
 	
 	
 	
@@ -118,7 +119,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	# Shove blocks
+	# Shove & destroy blocks
 	if lockout > 0.0:
 		if lockout - delta >= 0.0:
 			lockout -= delta
@@ -132,13 +133,16 @@ func _physics_process(delta: float) -> void:
 			if (position.x + get_node("CollisionShape2D").shape.radius 
 					+ (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2) 
 					< c.get_collider().position.x):
-				c.get_collider().velocity.x = stored_speed
+				c.get_collider().velocity.x = max(stored_speed, MIN_SPEED)
 			elif (position.x - (get_node("CollisionShape2D").shape.radius 
 					+ (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2)) 
 					> c.get_collider().position.x):
-				c.get_collider().velocity.x = stored_speed
-		else:
-			stored_speed = velocity.x
+				c.get_collider().velocity.x = max(stored_speed, MIN_SPEED)
+		if c.get_collider() is CharacterBody2D and c.get_collider().is_in_group("breakable") and stored_speed > 0.0:
+			c.get_collider().queue_free()
+				
+	stored_speed = velocity.x
+	stored_fall = velocity.y
 	
 	# Animate based on motion
 	if velocity.x > FLIP_SPEED:

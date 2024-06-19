@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddmql6mo68k6k"]
+
+[ext_resource type="Script" path="res://GameScenes/Objects/Switches/toggle_switch.gd" id="1_e3xre"]
+[ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="2_pq0an"]
+[ext_resource type="Script" path="res://Interaction/InteractionArea/interaction_area.gd" id="3_5jgue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5xlv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vb6h2"]
+radius = 14.0357
+
+[node name="ToggleSwitch" type="Area2D"]
+script = ExtResource("1_e3xre")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o5xlv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -9.53674e-07)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("2_pq0an")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+script = ExtResource("3_5jgue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_vb6h2")
+
+[connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
