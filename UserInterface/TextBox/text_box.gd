@@ -3,7 +3,7 @@ extends MarginContainer
 
 @onready var label: Label = $MarginContainer/Label
 @onready var timer: Timer = $LetterDisplayTimer
-@onready var audio_player = $AudioStreamPlayer
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 const MAX_WIDTH = 256
@@ -57,7 +57,7 @@ func _display_letter() -> void:
 		_:
 			timer.start(letter_time)
 			
-			var new_audio_player = audio_player.duplicate()
+			var new_audio_player: AudioStreamPlayer = audio_player.duplicate()
 			new_audio_player.pitch_scale += randf_range(-0.1, 0.1)
 			if text[letter_index] in ["a", "e", "i", "o", "u"]:
 				new_audio_player.pitch_scale += 0.2

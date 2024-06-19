@@ -2,6 +2,7 @@ extends Area2D
 
 
 @onready var interaction_area: InteractionArea = $InteractionArea
+@onready var toggle_sfx: AudioStreamPlayer = $AudioStreamPlayer
 
 signal switch_toggled()
 
@@ -11,4 +12,4 @@ func _ready() -> void:
 
 func _on_interact() -> void:
 	switch_toggled.emit()
-	print("switch")
+	toggle_sfx.play()

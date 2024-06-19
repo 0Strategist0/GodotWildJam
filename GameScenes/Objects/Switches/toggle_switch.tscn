@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3jvbgobgodgr"]
+[gd_scene load_steps=7 format=3 uid="uid://c3jvbgobgodgr"]
 
 [ext_resource type="Script" path="res://GameScenes/Objects/Switches/toggle_switch.gd" id="1_qafkl"]
 [ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="1_send4"]
 [ext_resource type="Script" path="res://Interaction/InteractionArea/interaction_area.gd" id="3_f1pw0"]
+[ext_resource type="AudioStream" uid="uid://5ewnqplkkic8" path="res://GameScenes/Objects/Switches/toggle_sfx.wav" id="4_pqlkl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5xlv"]
 
@@ -25,6 +26,9 @@ script = ExtResource("3_f1pw0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_vb6h2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_pqlkl")
 
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
