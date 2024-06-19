@@ -7,11 +7,11 @@ enum BEHAVIOUR { MOVE_UP, MOVE_DOWN, DISAPPEAR }
 ## What the door should do upon triggering a switch.
 @export var door_behaviour: BEHAVIOUR
 ## Determines if the door can return to its original position after triggering the switch again.
-@export var door_can_return: bool
+@export var door_can_return := true
 ## How far the door should move away from its current location.
 @export var distance := 100
 ## How fast the door should move.
-@export var speed := 1
+@export var speed := 50
 
 var activated := false 
 var currently_moving := false
