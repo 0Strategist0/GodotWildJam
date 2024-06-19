@@ -266,7 +266,7 @@ position = Vector2(166, 17)
 position = Vector2(-119, 19)
 
 [node name="Platform" parent="." node_paths=PackedStringArray("points") instance=ExtResource("13_wf80d")]
-position = Vector2(-75, -19)
+position = Vector2(10, -39)
 points = [NodePath("../Marker2D"), NodePath("../Marker2D2")]
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -276,7 +276,7 @@ position = Vector2(113, -40)
 position = Vector2(57, -89)
 
 [node name="Door" parent="." instance=ExtResource("13_lkq82")]
-position = Vector2(263, -67)
+position = Vector2(273, -17)
 
 [connection signal="body_entered" from="PlateSwitch" to="Platform" method="_on_plate_switch_body_entered"]
 [connection signal="body_entered" from="PlateSwitch" to="Door" method="_on_plate_switch_body_entered"]
