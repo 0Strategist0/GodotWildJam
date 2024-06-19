@@ -10,7 +10,7 @@ enum BEHAVIOUR { MOVE_UP, MOVE_DOWN, DISAPPEAR }
 @export var door_can_return: bool
 ## How far the door should move away from its current location.
 @export var distance := 100
-## How long it takes in seconds for the door to reach its destination.
+## How fast the door should move.
 @export var speed := 1
 
 var activated := false 
