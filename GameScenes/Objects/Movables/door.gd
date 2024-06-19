@@ -9,26 +9,38 @@ enum BEHAVIOUR { MOVE_UP, MOVE_DOWN, DISAPPEAR }
 ## Determines if the door can return to its original position after triggering the switch again.
 @export var door_can_return: bool
 ## How far the door should move away from its current location.
-@export var distance: int 
-## How long it takes in seconds for the door to reach its destination.
-@export var move_duration: int
+@export var distance := 100
+## How fast the door should move.
+@export var speed := 1
 
 var activated := false 
 var currently_moving := false
 var original_position: Vector2
 
 var objects_in_zone_counter := 0
-
+var tween: Tween
 
 func _ready() -> void:
 	original_position = position
 
 
 func _move(direction: Vector2) -> void:
+	# This is needed to resolve a crash when creating tween when not in tree
+	if not is_inside_tree():
+		return
+	
+	if currently_moving:
+		tween.kill()
 	currently_moving = true
-	var target_position: Vector2 = original_position if activated else original_position + direction
-	var tween: Tween = create_tween()
-	tween.tween_property(self, "position", target_position, move_duration)
+	
+	# Calculate position and speed
+	var target_position := original_position if activated else original_position + direction
+	var tween_distance := position.distance_to(target_position) 
+	var tween_time := tween_distance / speed
+
+	# Create tween to move to desired location
+	tween = create_tween()
+	tween.tween_property(self, "position", target_position, tween_time)
 	tween.connect("finished", on_tween_finished)
 
 
