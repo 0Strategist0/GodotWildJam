@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://egifm4edyjqs"]
+[gd_scene load_steps=4 format=3 uid="uid://egifm4edyjqs"]
 
 [ext_resource type="Script" path="res://UserInterface/TextBox/text_box.gd" id="1_qv03t"]
 [ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="2_ht8wa"]
+[ext_resource type="FontFile" uid="uid://c2xicsbvnm0lv" path="res://assets/Cute Love.otf" id="3_43ays"]
 
 [node name="TextBox" type="MarginContainer"]
 offset_right = 84.0
@@ -26,7 +27,8 @@ theme_override_constants/margin_bottom = 8
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_43ays")
 vertical_alignment = 1
 
 [node name="LetterDisplayTimer" type="Timer" parent="."]

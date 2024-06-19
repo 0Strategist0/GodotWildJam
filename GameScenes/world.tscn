@@ -265,7 +265,7 @@ position = Vector2(166, 17)
 position = Vector2(-119, 19)
 
 [node name="Platform" parent="." node_paths=PackedStringArray("points") instance=ExtResource("13_wf80d")]
-position = Vector2(-13, -40)
+position = Vector2(-101, -20)
 points = [NodePath("../Marker2D"), NodePath("../Marker2D2")]
 
 [node name="Marker2D" type="Marker2D" parent="."]
