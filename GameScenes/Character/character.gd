@@ -11,7 +11,7 @@ const MAX_COYOTE_TIME := 0.2
 const JUMP_INPUT_BUFFERING := 0.2
 const IDLE_SPEED_SQUARED := 100.0
 const FLIP_SPEED := 1.0
-const MIN_SPEED := 50
+const MIN_SPEED := 80
 
 @onready var character_area := $CharacterArea
 @onready var state_machine : AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/StateMachine/playback")
@@ -137,9 +137,11 @@ func _physics_process(delta: float) -> void:
 			elif (position.x - (get_node("CollisionShape2D").shape.radius 
 					+ (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2)) 
 					> c.get_collider().position.x):
-				c.get_collider().velocity.x = max(stored_speed, MIN_SPEED)
+				c.get_collider().velocity.x = min(stored_speed, -MIN_SPEED)
 		if c.get_collider() is CharacterBody2D and c.get_collider().is_in_group("breakable") and stored_speed > 0.0:
 			c.get_collider().queue_free()
+		if c.get_collider() is StaticBody2D and c.get_collider().is_in_group("dropdown") and Input.is_action_pressed("down"):
+			c.get_collider().area.set_deferred("monitoring", true)
 				
 	stored_speed = velocity.x
 	stored_fall = velocity.y
