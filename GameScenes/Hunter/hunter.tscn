@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bodgm7uio32y"]
+[gd_scene load_steps=5 format=3 uid="uid://bodgm7uio32y"]
 
 [ext_resource type="Texture2D" uid="uid://bq0bjvfyjys45" path="res://GameScenes/Hunter/Hunter.svg" id="1_ol418"]
+[ext_resource type="Texture2D" uid="uid://qkcmktkr2rwn" path="res://GameScenes/Hunter/EyeParticles.svg" id="2_teapw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ab4ys"]
 radius = 34.0
 height = 82.0
 
 [sub_resource type="Gradient" id="Gradient_6o8br"]
-colors = PackedColorArray(0.6, 1, 0.6, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.6, 1, 0.6, 1, 1, 1, 1, 0)
 
 [node name="Hunter" type="Area2D"]
 
@@ -42,13 +43,20 @@ uv = PackedVector2Array(617.347, 354.082, 713.265, 384.694, 773.98, 415.306, 744
 [node name="CPUParticles2D" type="CPUParticles2D" parent="HunterSprite/Body/Head"]
 z_index = 1
 position = Vector2(79.89, -117.19)
-amount = 20
-lifetime = 0.4
+amount = 50
+lifetime = 0.3
+randomness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource("2_teapw")
+emission_shape = 1
+emission_sphere_radius = 6.17
 direction = Vector2(-2, 2.08165e-12)
-spread = 35.0
-gravity = Vector2(2.08165e-12, -50)
-initial_velocity_min = 90.0
-initial_velocity_max = 120.0
+spread = 17.73
+gravity = Vector2(2.08165e-12, -30)
+initial_velocity_min = 75.76
+initial_velocity_max = 75.76
+scale_amount_min = 0.01
+scale_amount_max = 0.02
 color_ramp = SubResource("Gradient_6o8br")
 
 [node name="LThigh" type="Polygon2D" parent="HunterSprite/Body"]
