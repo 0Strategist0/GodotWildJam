@@ -34,6 +34,10 @@ func _move() -> void:
 
 
 func _move_to_next_point() -> void:
+	# This is needed to resolve a crash when creating tween when not in tree
+	if not is_inside_tree():
+		return
+
 	# Find next position to move towards
 	next_point_idx += 1
 	next_point_idx %= points.size()

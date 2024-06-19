@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cp08dx7in60dn"]
+[gd_scene load_steps=29 format=3 uid="uid://cp08dx7in60dn"]
 
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="1_u0415"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="3_dwm5v"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://blempiyqsp5tu" path="res://GameScenes/Objects/Switches/plate_switch.tscn" id="10_yh6b6"]
 [ext_resource type="PackedScene" uid="uid://di53u75kivwsj" path="res://GameScenes/Objects/Movables/door.tscn" id="13_lkq82"]
 [ext_resource type="PackedScene" uid="uid://cfbgqr2bhcf4y" path="res://GameScenes/Objects/Movables/platform.tscn" id="13_wf80d"]
+[ext_resource type="PackedScene" uid="uid://c3jvbgobgodgr" path="res://GameScenes/Objects/Switches/toggle_switch.tscn" id="14_dg8c1"]
 [ext_resource type="PackedScene" uid="uid://cbvluptdpl86h" path="res://GameScenes/NPCs/testNpc.tscn" id="14_ur051"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cluau"]
@@ -260,7 +261,7 @@ teleport_location = NodePath("../TeleportLocation")
 position = Vector2(-263, -79)
 
 [node name="PlateSwitch" parent="." instance=ExtResource("10_yh6b6")]
-position = Vector2(166, 17)
+position = Vector2(168, 26)
 
 [node name="TestNPC" parent="." instance=ExtResource("14_ur051")]
 position = Vector2(-119, 19)
@@ -277,6 +278,9 @@ position = Vector2(57, -89)
 
 [node name="Door" parent="." instance=ExtResource("13_lkq82")]
 position = Vector2(273, -17)
+
+[node name="ToggleSwitch" parent="." instance=ExtResource("14_dg8c1")]
+position = Vector2(86, 20)
 
 [connection signal="body_entered" from="PlateSwitch" to="Platform" method="_on_plate_switch_body_entered"]
 [connection signal="body_entered" from="PlateSwitch" to="Door" method="_on_plate_switch_body_entered"]
