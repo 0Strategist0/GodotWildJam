@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b0kxtk2p027ml"]
+[gd_scene load_steps=34 format=3 uid="uid://b0kxtk2p027ml"]
 
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_jt75v"]
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_wiwad"]
@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://cmyrp14rj0sl6" path="res://GameScenes/Levels/grass3.svg" id="18_66yqk"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="19_g57bf"]
 [ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="20_1uk1g"]
-[ext_resource type="PackedScene" uid="uid://blempiyqsp5tu" path="res://GameScenes/Objects/Switches/plate_switch.tscn" id="21_hvqqg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yokt"]
 texture = ExtResource("2_m2bqk")
@@ -1551,8 +1550,21 @@ position = Vector2(1330, -149)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("20_1uk1g")
 
-[node name="PlateSwitch" parent="." instance=ExtResource("21_hvqqg")]
-position = Vector2(73, 10)
-
+[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116956" to="TileMap/@Area2D@116956" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116957" to="TileMap/@Area2D@116957" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116958" to="TileMap/@Area2D@116958" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116959" to="TileMap/@Area2D@116959" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116960" to="TileMap/@Area2D@116960" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116961" to="TileMap/@Area2D@116961" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116962" to="TileMap/@Area2D@116962" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116963" to="TileMap/@Area2D@116963" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116964" to="TileMap/@Area2D@116964" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116965" to="TileMap/@Area2D@116965" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116966" to="TileMap/@Area2D@116966" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116967" to="TileMap/@Area2D@116967" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116968" to="TileMap/@Area2D@116968" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116969" to="TileMap/@Area2D@116969" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@116970" to="TileMap/@Area2D@116970" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
