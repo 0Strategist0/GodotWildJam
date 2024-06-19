@@ -1,0 +1,146 @@
+[gd_scene load_steps=4 format=3 uid="uid://bodgm7uio32y"]
+
+[ext_resource type="Texture2D" uid="uid://bq0bjvfyjys45" path="res://GameScenes/Hunter/Hunter.svg" id="1_ol418"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ab4ys"]
+radius = 34.0
+height = 82.0
+
+[sub_resource type="Gradient" id="Gradient_6o8br"]
+colors = PackedColorArray(0.6, 1, 0.6, 1, 1, 1, 1, 1)
+
+[node name="Hunter" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 0)
+shape = SubResource("CapsuleShape2D_ab4ys")
+
+[node name="HunterSprite" type="Node2D" parent="."]
+scale = Vector2(0.1, 0.1)
+
+[node name="Body" type="Polygon2D" parent="HunterSprite"]
+position = Vector2(-89, 20)
+offset = Vector2(-220, -446)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(185.714, 482.143, 238.776, 507.653, 268.367, 452.041, 267.857, 398.469, 431.633, 361.224, 450, 304.082, 371.939, 196.939, 214.286, 220.918, 171.429, 309.694, 151.02, 442.857)
+uv = PackedVector2Array(185.714, 482.143, 238.776, 507.653, 268.367, 452.041, 267.857, 398.469, 431.633, 361.224, 450, 304.082, 371.939, 196.939, 214.286, 220.918, 171.429, 309.694, 151.02, 442.857)
+
+[node name="Head" type="Polygon2D" parent="HunterSprite/Body"]
+position = Vector2(187, -127)
+offset = Vector2(-543, -346)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(510.204, 261.735, 506.122, 370.918, 550.51, 390.306, 630.102, 336.735, 702.041, 371.939, 781.122, 310.714, 668.878, 199.49, 700, 174.49, 783.673, 175.51, 792.857, 113.265, 660.204, -31.1224, 473.98, 19.898, 485.714, 130.612, 526.02, 178.061)
+uv = PackedVector2Array(510.204, 261.735, 506.122, 370.918, 550.51, 390.306, 630.102, 336.735, 702.041, 371.939, 781.122, 310.714, 668.878, 199.49, 700, 174.49, 783.673, 175.51, 792.857, 113.265, 660.204, -31.1224, 473.98, 19.898, 485.714, 130.612, 526.02, 178.061)
+
+[node name="Tongue" type="Polygon2D" parent="HunterSprite/Body/Head"]
+position = Vector2(62, -68)
+offset = Vector2(-627, -375)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(617.347, 354.082, 713.265, 384.694, 773.98, 415.306, 744.898, 435.204, 640.306, 412.245, 602.041, 379.082)
+uv = PackedVector2Array(617.347, 354.082, 713.265, 384.694, 773.98, 415.306, 744.898, 435.204, 640.306, 412.245, 602.041, 379.082)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="HunterSprite/Body/Head"]
+z_index = 1
+position = Vector2(79.89, -117.19)
+amount = 20
+lifetime = 0.4
+direction = Vector2(-2, 2.08165e-12)
+spread = 35.0
+gravity = Vector2(2.08165e-12, -50)
+initial_velocity_min = 90.0
+initial_velocity_max = 120.0
+color_ramp = SubResource("Gradient_6o8br")
+
+[node name="LThigh" type="Polygon2D" parent="HunterSprite/Body"]
+position = Vector2(-6, -2)
+rotation = -0.615247
+offset = Vector2(-205, -544)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(167.347, 498.469, 264.286, 504.082, 270.408, 570.918, 185.204, 750.51, 145.918, 758.673, 125, 715.816, 154.592, 612.245)
+uv = PackedVector2Array(167.347, 498.469, 264.286, 504.082, 270.408, 570.918, 185.204, 750.51, 145.918, 758.673, 125, 715.816, 154.592, 612.245)
+
+[node name="LShin" type="Polygon2D" parent="HunterSprite/Body/LThigh"]
+position = Vector2(-45, 176)
+rotation = 1.16982
+offset = Vector2(-233, -745)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(225, 707.653, 56.6327, 852.041, 98.4694, 897.959, 273.98, 754.082)
+uv = PackedVector2Array(225, 707.653, 56.6327, 852.041, 98.4694, 897.959, 273.98, 754.082)
+
+[node name="LAnkle" type="Polygon2D" parent="HunterSprite/Body/LThigh/LShin"]
+position = Vector2(-135, 114)
+rotation = -0.549828
+offset = Vector2(-348, -894)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(319.388, 875, 394.388, 871.939, 517.857, 1094.39, 393.878, 1093.37, 402.551, 1032.14)
+uv = PackedVector2Array(319.388, 875, 394.388, 871.939, 517.857, 1094.39, 393.878, 1093.37, 402.551, 1032.14)
+
+[node name="RThigh" type="Polygon2D" parent="HunterSprite/Body"]
+position = Vector2(0, -12)
+rotation = -0.393376
+offset = Vector2(-298, -425)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(279.082, 397.959, 261.224, 473.98, 310.714, 572.449, 420.918, 662.245, 454.592, 637.245, 344.898, 392.857)
+uv = PackedVector2Array(279.082, 397.959, 261.224, 473.98, 310.714, 572.449, 420.918, 662.245, 454.592, 637.245, 344.898, 392.857)
+
+[node name="RShin" type="Polygon2D" parent="HunterSprite/Body/RThigh"]
+position = Vector2(109, 198)
+rotation = 0.945474
+offset = Vector2(-386, -687)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(358.673, 659.184, 257.143, 833.163, 300, 870.918, 337.755, 844.898, 438.265, 680.612, 396.939, 655.102)
+uv = PackedVector2Array(358.673, 659.184, 257.143, 833.163, 300, 870.918, 337.755, 844.898, 438.265, 680.612, 396.939, 655.102)
+
+[node name="RAnkle" type="Polygon2D" parent="HunterSprite/Body/RThigh/RShin"]
+position = Vector2(-96.544, 146.967)
+rotation = -0.578371
+offset = Vector2(-348, -894)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(319.388, 875, 394.388, 871.939, 517.857, 1094.39, 393.878, 1093.37, 402.551, 1032.14)
+uv = PackedVector2Array(319.388, 875, 394.388, 871.939, 517.857, 1094.39, 393.878, 1093.37, 402.551, 1032.14)
+
+[node name="LUpperArm" type="Polygon2D" parent="HunterSprite/Body"]
+position = Vector2(166, -128)
+rotation = -1.01602
+offset = Vector2(-187, -34)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(182.143, -12.7551, 1.02041, 266.327, 50.5102, 300, 233.163, 21.9388)
+uv = PackedVector2Array(182.143, -12.7551, 1.02041, 266.327, 50.5102, 300, 233.163, 21.9388)
+
+[node name="LForearm" type="Polygon2D" parent="HunterSprite/Body/LUpperArm"]
+position = Vector2(-146.146, 227.61)
+offset = Vector2(-140, -204)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(191.327, 178.061, 115.816, 184.694, 120.918, 233.673, 191.327, 240.306, 321.429, 197.959, 304.592, 150)
+uv = PackedVector2Array(191.327, 178.061, 115.816, 184.694, 120.918, 233.673, 191.327, 240.306, 321.429, 197.959, 304.592, 150)
+
+[node name="LStabber" type="Polygon2D" parent="HunterSprite/Body/LUpperArm/LForearm"]
+position = Vector2(142.909, -16.7893)
+offset = Vector2(-137.407, -266.186)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(116.327, 239.286, 169.898, 246.939, 111.224, 544.388, 27.551, 525, 34.6939, 476.531, 58.6735, 483.163)
+uv = PackedVector2Array(116.327, 239.286, 169.898, 246.939, 111.224, 544.388, 27.551, 525, 34.6939, 476.531, 58.6735, 483.163)
+
+[node name="RUpperArm" type="Polygon2D" parent="HunterSprite/Body"]
+position = Vector2(187, -133)
+rotation = 0.314487
+offset = Vector2(-467, -385)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(463.776, 350.51, 496.429, 372.449, 509.694, 667.857, 485.714, 693.878, 454.082, 665.816, 434.694, 375)
+uv = PackedVector2Array(463.776, 350.51, 496.429, 372.449, 509.694, 667.857, 485.714, 693.878, 454.082, 665.816, 434.694, 375)
+
+[node name="RForearm" type="Polygon2D" parent="HunterSprite/Body/RUpperArm"]
+position = Vector2(20, 271)
+offset = Vector2(-516, -725)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(610.714, 595.918, 483.163, 719.898, 511.735, 772.959, 666.327, 636.224, 629.592, 586.735)
+uv = PackedVector2Array(610.714, 595.918, 483.163, 719.898, 511.735, 772.959, 666.327, 636.224, 629.592, 586.735)
+
+[node name="RStabber" type="Polygon2D" parent="HunterSprite/Body/RUpperArm/RForearm"]
+position = Vector2(105, -99)
+offset = Vector2(-619, -717)
+texture = ExtResource("1_ol418")
+polygon = PackedVector2Array(604.592, 681.122, 645.408, 694.898, 756.633, 951.02, 684.184, 985.714, 667.347, 946.939, 695.918, 939.286, 585.714, 718.878)
+uv = PackedVector2Array(604.592, 681.122, 645.408, 694.898, 756.633, 951.02, 684.184, 985.714, 667.347, 946.939, 695.918, 939.286, 585.714, 718.878)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
