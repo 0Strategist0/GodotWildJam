@@ -25,14 +25,16 @@ func _ready() -> void:
 
 
 func _move(direction: Vector2) -> void:
-	# This conditional statement needed to resolve a crash when creating tween when not in tree
+	# This is needed to resolve a crash when creating tween when not in tree
 	if not is_inside_tree():
 		return
+	
+	if currently_moving:
+		tween.kill()
 	currently_moving = true
 	
 	# Calculate position and speed
 	var target_position := original_position if activated else original_position + direction
-	var current_position := target_position
 	var tween_distance := position.distance_to(target_position) 
 	var tween_time := tween_distance / speed
 
@@ -58,9 +60,6 @@ func _disappear() -> void:
 func _handle_signal() -> void:
 	if not door_can_return and activated:
 		return
-	
-	if currently_moving:
-		tween.kill()
 	
 	match door_behaviour:
 		BEHAVIOUR.MOVE_UP:
