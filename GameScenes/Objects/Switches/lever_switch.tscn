@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3jvbgobgodgr"]
+[gd_scene load_steps=6 format=3 uid="uid://c7a84huofxckc"]
 
 [ext_resource type="Script" path="res://GameScenes/Objects/Switches/lever_switch.gd" id="1_1gc7f"]
 [ext_resource type="Texture2D" uid="uid://rtg5fu18jxi6" path="res://assets/black.svg" id="2_u848i"]

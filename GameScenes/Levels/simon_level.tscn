@@ -1,6 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://c4c0m1vjycehs"]
+[gd_scene load_steps=43 format=3 uid="uid://c4c0m1vjycehs"]
 
-[ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_k68qg"]
+[ext_resource type="Script" path="res://GameScenes/Levels/simon_level.gd" id="1_0csr7"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="2_t7x40"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="3_t8xgq"]
 [ext_resource type="PackedScene" uid="uid://cusycd8j05p7" path="res://GameScenes/death_area.tscn" id="4_qqb8c"]
@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dxlsgicrxt3ev" path="res://GameScenes/Levels/tree6.svg" id="13_eqoxt"]
 [ext_resource type="Shader" path="res://GameScenes/Levels/fog.gdshader" id="14_ybudq"]
 [ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/Blocks/pushable_object.tscn" id="15_4j4wj"]
-[ext_resource type="PackedScene" uid="uid://c3jvbgobgodgr" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="15_utku5"]
+[ext_resource type="PackedScene" uid="uid://c7a84huofxckc" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="15_utku5"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="16_7xwwd"]
 [ext_resource type="PackedScene" uid="uid://c1tsd86p4rqem" path="res://GameScenes/Objects/Movables/static_platform.tscn" id="17_lcbr7"]
 
@@ -676,26 +676,47 @@ shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
 shader_parameter/hdr = false
 shader_parameter/seed = 5.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iy34a"]
+[sub_resource type="Gradient" id="Gradient_24fyr"]
+offsets = PackedFloat32Array(0, 0.512397)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ps6wq"]
+gradient = SubResource("Gradient_24fyr")
+fill = 1
+fill_from = Vector2(0.5, 0.508547)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnv1g"]
 size = Vector2(16, 48)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_521a1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvuiw"]
 size = Vector2(160, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ii77y"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcqip"]
 size = Vector2(16, 112)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_et3r0"]
-size = Vector2(448, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmo5m"]
+size = Vector2(576, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmyow"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rryoi"]
 size = Vector2(304, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fg0aj"]
-size = Vector2(16, 176)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mst6m"]
+size = Vector2(16, 112)
 
-[node name="StartingLevel" type="Node2D"]
-script = ExtResource("1_k68qg")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atlqp"]
+size = Vector2(144, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_da1wv"]
+size = Vector2(16, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4dhq"]
+size = Vector2(6, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_msgnx"]
+size = Vector2(16, 46)
+
+[node name="SimonLevel" type="Node2D"]
+script = ExtResource("1_0csr7")
 metadata/level = 1
 
 [node name="Character" parent="." instance=ExtResource("2_t7x40")]
@@ -707,7 +728,7 @@ zoom = Vector2(7, 7)
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_i5pvu")
 format = 2
-layer_0/tile_data = PackedInt32Array(131066, 131072, 0, 131067, 131072, 0, 131068, 131072, 0, 131069, 131072, 0, 131070, 131072, 0, 131071, 131072, 0, 65536, 131072, 0, 65537, 131072, 0, 65538, 131072, 0, 65539, 131072, 0, 65540, 131072, 0, 65541, 131072, 0, 65542, 131072, 0, 65543, 131072, 0, 65544, 131072, 0, 65545, 131072, 0, 65546, 131072, 0, 65547, 131072, 0, 65548, 131072, 0, 65549, 131072, 0, 65550, 131072, 0, 65551, 131072, 0, 65552, 131072, 0, 65553, 131072, 0, 65554, 131072, 0, 65555, 131072, 0, 65556, 131072, 0, 65557, 131072, 0, 21, 131072, 0, -65515, 131072, 0, -131051, 131072, 0, -196587, 131072, 0, -262123, 131072, 0, -327659, 131072, 0, -393195, 131072, 0, -458731, 131072, 0, -524267, 131072, 0, -524285, 131072, 0, -458749, 131072, 0, -393213, 131072, 0, -327677, 131072, 0, -262141, 131072, 0, -196605, 131072, 0, -196606, 131072, 0, -196607, 131072, 0, -196608, 131072, 0, -131073, 131072, 0, -131074, 131072, 0, -131075, 131072, 0, -131076, 131072, 0, -131077, 131072, 0, -131078, 131072, 0, -65542, 131072, 0, -6, 131072, 0, 65530, 131072, 0, -589821, 131072, 0, -655357, 131072, 0, -720893, 131072, 0, -720892, 131072, 0, -720891, 131072, 0, -720890, 131072, 0, -720889, 131072, 0, -720888, 131072, 0, -720887, 131072, 0, -720886, 131072, 0, -720885, 131072, 0, -720884, 131072, 0, -720883, 131072, 0, -720882, 131072, 0, -720881, 131072, 0, -720880, 131072, 0, -720879, 131072, 0, -720878, 131072, 0, -720877, 131072, 0, -720876, 131072, 0, -720875, 131072, 0, -655339, 131072, 0, -589803, 131072, 0)
+layer_0/tile_data = PackedInt32Array(131066, 131072, 0, 131067, 131072, 0, 131068, 131072, 0, 131069, 131072, 0, 131070, 131072, 0, 131071, 131072, 0, 65536, 131072, 0, 65537, 131072, 0, 65538, 131072, 0, 65539, 131072, 0, 65540, 131072, 0, 65541, 131072, 0, 65542, 131072, 0, 65543, 131072, 0, 65544, 131072, 0, 65545, 131072, 0, 65546, 131072, 0, 65547, 131072, 0, 65548, 131072, 0, 65549, 131072, 0, 65550, 131072, 0, 65551, 131072, 0, 65552, 131072, 0, 65553, 131072, 0, 65554, 131072, 0, 65555, 131072, 0, 65556, 131072, 0, 65557, 131072, 0, -196587, 131072, 0, -262123, 131072, 0, -327659, 131072, 0, -393195, 131072, 0, -458731, 131072, 0, -524267, 131072, 0, -524285, 131072, 0, -458749, 131072, 0, -393213, 131072, 0, -327677, 131072, 0, -262141, 131072, 0, -196605, 131072, 0, -196606, 131072, 0, -196607, 131072, 0, -196608, 131072, 0, -131073, 131072, 0, -131074, 131072, 0, -131075, 131072, 0, -131076, 131072, 0, -131077, 131072, 0, -131078, 131072, 0, -65542, 131072, 0, -6, 131072, 0, 65530, 131072, 0, -589821, 131072, 0, -655357, 131072, 0, -720893, 131072, 0, -720892, 131072, 0, -720891, 131072, 0, -720890, 131072, 0, -720889, 131072, 0, -720888, 131072, 0, -720887, 131072, 0, -720886, 131072, 0, -720885, 131072, 0, -720884, 131072, 0, -720883, 131072, 0, -720882, 131072, 0, -720881, 131072, 0, -720880, 131072, 0, -720879, 131072, 0, -720878, 131072, 0, -720877, 131072, 0, -720876, 131072, 0, -720875, 131072, 0, -655339, 131072, 0, -589803, 131072, 0, -196586, 131072, 0, -196585, 131072, 0, -196584, 131072, 0, -196583, 131072, 0, -196582, 131072, 0, -196581, 131072, 0, -196580, 131072, 0, -196579, 131072, 0, -131043, 131072, 0, -65507, 131072, 0, 29, 131072, 0, 65565, 131072, 0, 65558, 131072, 0, 65559, 131072, 0, 65560, 131072, 0, 65561, 131072, 0, 65562, 131072, 0, 65563, 131072, 0, 65564, 131072, 0)
 
 [node name="Note" type="Label" parent="TileMap"]
 offset_left = 595.0
@@ -1210,7 +1231,7 @@ texture = ExtResource("13_eqoxt")
 polygon = PackedVector2Array(-527, -68, -470, -59, -376, 9, -342, -35, -198, -27, -128, -54, -47, -30, -6, -61, 113, -54, 153, -38, 217, -54, 321, -50, 348, -74, 421, -70, 542, -36, 587, -61, 716, -54, 742, -45, 746, 229, -554, 219)
 
 [node name="FogLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(427, 292)
+position = Vector2(460, 288)
 motion_scale = Vector2(0.4, 0.4)
 metadata/_edit_group_ = true
 
@@ -1374,32 +1395,88 @@ texture = ExtResource("7_kk53x")
 [node name="Pushable Object" parent="." instance=ExtResource("15_4j4wj")]
 position = Vector2(744, -155)
 
-[node name="LeverSwitch" parent="." instance=ExtResource("15_utku5")]
+[node name="Levers" type="Node" parent="."]
+
+[node name="LeverSwitch1" parent="Levers" instance=ExtResource("15_utku5")]
 position = Vector2(120, 5)
+lever_number = 1
+single_use = true
 
-[node name="LeverSwitch2" parent="." instance=ExtResource("15_utku5")]
+[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch1"]
+enabled = false
+texture = SubResource("GradientTexture2D_ps6wq")
+
+[node name="LeverSwitch2" parent="Levers" instance=ExtResource("15_utku5")]
 position = Vector2(120, -43)
+lever_number = 2
+single_use = true
 
-[node name="LeverSwitch3" parent="." instance=ExtResource("15_utku5")]
+[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch2"]
+enabled = false
+texture = SubResource("GradientTexture2D_ps6wq")
+
+[node name="LeverSwitch3" parent="Levers" instance=ExtResource("15_utku5")]
 position = Vector2(120, -91)
+lever_number = 3
+single_use = true
 
-[node name="LeverSwitch4" parent="." instance=ExtResource("15_utku5")]
+[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch3"]
+enabled = false
+texture = SubResource("GradientTexture2D_ps6wq")
+
+[node name="LeverSwitch4" parent="Levers" instance=ExtResource("15_utku5")]
 position = Vector2(200, -91)
+lever_number = 4
+single_use = true
 
-[node name="LeverSwitch5" parent="." instance=ExtResource("15_utku5")]
+[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch4"]
+enabled = false
+texture = SubResource("GradientTexture2D_ps6wq")
+
+[node name="LeverSwitch5" parent="Levers" instance=ExtResource("15_utku5")]
 position = Vector2(200, -43)
+lever_number = 5
+single_use = true
 
-[node name="LeverSwitch6" parent="." instance=ExtResource("15_utku5")]
+[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch5"]
+enabled = false
+texture = SubResource("GradientTexture2D_ps6wq")
+
+[node name="LeverSwitch6" parent="Levers" instance=ExtResource("15_utku5")]
 position = Vector2(200, 5)
+lever_number = 6
+single_use = true
 
-[node name="LeverSwitch7" parent="." instance=ExtResource("15_utku5")]
+[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch6"]
+enabled = false
+texture = SubResource("GradientTexture2D_ps6wq")
+
+[node name="LeverSwitch7" parent="Levers" instance=ExtResource("15_utku5")]
 position = Vector2(280, 5)
+lever_number = 7
+single_use = true
 
-[node name="LeverSwitch8" parent="." instance=ExtResource("15_utku5")]
+[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch7"]
+enabled = false
+texture = SubResource("GradientTexture2D_ps6wq")
+
+[node name="LeverSwitch8" parent="Levers" instance=ExtResource("15_utku5")]
 position = Vector2(280, -43)
+lever_number = 8
+single_use = true
 
-[node name="LeverSwitch9" parent="." instance=ExtResource("15_utku5")]
+[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch8"]
+enabled = false
+texture = SubResource("GradientTexture2D_ps6wq")
+
+[node name="LeverSwitch9" parent="Levers" instance=ExtResource("15_utku5")]
 position = Vector2(280, -91)
+lever_number = 9
+single_use = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch9"]
+enabled = false
+texture = SubResource("GradientTexture2D_ps6wq")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 script = ExtResource("16_7xwwd")
@@ -1407,45 +1484,84 @@ tilemap_nodepath = NodePath("../TileMap")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-88, -8)
-shape = SubResource("RectangleShape2D_iy34a")
+shape = SubResource("RectangleShape2D_vnv1g")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-16, -40)
-shape = SubResource("RectangleShape2D_521a1")
+shape = SubResource("RectangleShape2D_jvuiw")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(56, -104)
-shape = SubResource("RectangleShape2D_ii77y")
+shape = SubResource("RectangleShape2D_rcqip")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(128, 24)
-shape = SubResource("RectangleShape2D_et3r0")
+position = Vector2(192, 24)
+shape = SubResource("RectangleShape2D_kmo5m")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(200, -168)
-shape = SubResource("RectangleShape2D_qmyow")
+shape = SubResource("RectangleShape2D_rryoi")
 
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(344, -72)
-shape = SubResource("RectangleShape2D_fg0aj")
+position = Vector2(344, -104)
+shape = SubResource("RectangleShape2D_mst6m")
 
-[node name="Platform" parent="." instance=ExtResource("17_lcbr7")]
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(408, -40)
+shape = SubResource("RectangleShape2D_atlqp")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(472, -8)
+shape = SubResource("RectangleShape2D_da1wv")
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Platform1" parent="Platforms" instance=ExtResource("17_lcbr7")]
 position = Vector2(120, -75)
 
-[node name="Platform" parent="Platform" instance=ExtResource("17_lcbr7")]
-position = Vector2(80, 0)
+[node name="Platform2" parent="Platforms" instance=ExtResource("17_lcbr7")]
+position = Vector2(200, -75)
 
-[node name="Platform" parent="Platform/Platform" instance=ExtResource("17_lcbr7")]
-position = Vector2(81, 0)
+[node name="Platform3" parent="Platforms" instance=ExtResource("17_lcbr7")]
+position = Vector2(281, -75)
 
-[node name="Platform" parent="Platform/Platform/Platform" instance=ExtResource("17_lcbr7")]
-position = Vector2(-1, 48)
+[node name="Platform4" parent="Platforms" instance=ExtResource("17_lcbr7")]
+position = Vector2(280, -27)
 
-[node name="Platform" parent="Platform/Platform/Platform/Platform" instance=ExtResource("17_lcbr7")]
-position = Vector2(-80, 0)
+[node name="Platform5" parent="Platforms" instance=ExtResource("17_lcbr7")]
+position = Vector2(200, -27)
 
-[node name="Platform" parent="Platform/Platform/Platform/Platform/Platform" instance=ExtResource("17_lcbr7")]
-position = Vector2(-81, 0)
+[node name="Platform6" parent="Platforms" instance=ExtResource("17_lcbr7")]
+position = Vector2(119, -27)
+
+[node name="TriggerPuzzle" type="Area2D" parent="."]
+position = Vector2(61, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerPuzzle"]
+shape = SubResource("RectangleShape2D_l4dhq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Door" type="RigidBody2D" parent="."]
+position = Vector2(344, -8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Door"]
+texture = ExtResource("3_t8xgq")
+region_enabled = true
+region_rect = Rect2(80, 48, 16, 47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+shape = SubResource("RectangleShape2D_msgnx")
 
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
+[connection signal="lever_toggled" from="Levers/LeverSwitch1" to="." method="_on_lever_switch_lever_toggled"]
+[connection signal="lever_toggled" from="Levers/LeverSwitch2" to="." method="_on_lever_switch_lever_toggled"]
+[connection signal="lever_toggled" from="Levers/LeverSwitch3" to="." method="_on_lever_switch_lever_toggled"]
+[connection signal="lever_toggled" from="Levers/LeverSwitch4" to="." method="_on_lever_switch_lever_toggled"]
+[connection signal="lever_toggled" from="Levers/LeverSwitch5" to="." method="_on_lever_switch_lever_toggled"]
+[connection signal="lever_toggled" from="Levers/LeverSwitch6" to="." method="_on_lever_switch_lever_toggled"]
+[connection signal="lever_toggled" from="Levers/LeverSwitch7" to="." method="_on_lever_switch_lever_toggled"]
+[connection signal="lever_toggled" from="Levers/LeverSwitch8" to="." method="_on_lever_switch_lever_toggled"]
+[connection signal="lever_toggled" from="Levers/LeverSwitch9" to="." method="_on_lever_switch_lever_toggled"]
+[connection signal="body_entered" from="TriggerPuzzle" to="." method="_on_trigger_puzzle_body_entered"]
