@@ -1511,9 +1511,10 @@ position = Vector2(118, -27)
 [node name="Triggers" type="Node" parent="."]
 
 [node name="TriggerPuzzle" type="Area2D" parent="Triggers"]
-position = Vector2(71, -9)
+position = Vector2(72, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerPuzzle"]
+position = Vector2(-2, -3)
 shape = SubResource("RectangleShape2D_55jkm")
 
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
