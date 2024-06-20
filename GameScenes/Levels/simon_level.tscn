@@ -15,7 +15,7 @@
 [ext_resource type="Shader" path="res://GameScenes/Levels/fog.gdshader" id="14_ybudq"]
 [ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/Blocks/pushable_object.tscn" id="15_4j4wj"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="16_7xwwd"]
-[ext_resource type="PackedScene" uid="uid://c3jvbgobgodgr" path="res://GameScenes/Objects/Switches/toggle_switch.tscn" id="16_dy0f7"]
+[ext_resource type="PackedScene" uid="uid://c3jvbgobgodgr" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="16_dy0f7"]
 [ext_resource type="PackedScene" uid="uid://c1tsd86p4rqem" path="res://GameScenes/Objects/Movables/static_platform.tscn" id="17_lcbr7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yokt"]

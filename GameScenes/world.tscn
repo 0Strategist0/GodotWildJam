@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://blempiyqsp5tu" path="res://GameScenes/Objects/Switches/plate_switch.tscn" id="10_yh6b6"]
 [ext_resource type="PackedScene" uid="uid://di53u75kivwsj" path="res://GameScenes/Objects/Movables/door.tscn" id="13_lkq82"]
 [ext_resource type="PackedScene" uid="uid://cfbgqr2bhcf4y" path="res://GameScenes/Objects/Movables/platform.tscn" id="13_wf80d"]
-[ext_resource type="PackedScene" uid="uid://c3jvbgobgodgr" path="res://GameScenes/Objects/Switches/toggle_switch.tscn" id="14_dg8c1"]
+[ext_resource type="PackedScene" uid="uid://c3jvbgobgodgr" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="14_48r0f"]
 [ext_resource type="PackedScene" uid="uid://cbvluptdpl86h" path="res://GameScenes/NPCs/testNpc.tscn" id="14_ur051"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cluau"]
@@ -279,7 +279,7 @@ position = Vector2(57, -89)
 [node name="Door" parent="." instance=ExtResource("13_lkq82")]
 position = Vector2(273, -17)
 
-[node name="ToggleSwitch" parent="." instance=ExtResource("14_dg8c1")]
+[node name="ToggleSwitch" parent="." instance=ExtResource("14_48r0f")]
 position = Vector2(86, 22)
 
 [connection signal="body_entered" from="PlateSwitch" to="Platform" method="_on_plate_switch_body_entered"]

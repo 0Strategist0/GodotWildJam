@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var interaction_area: InteractionArea = $InteractionArea
-@onready var toggle_sfx: AudioStreamPlayer = $AudioStreamPlayer
+@onready var lever_sfx: AudioStreamPlayer = $AudioStreamPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 
 var in_use := false
@@ -10,7 +10,7 @@ var original_rotation: int
 var tween: Tween
 
 
-signal switch_toggled()
+signal lever_toggled()
 
 
 func _ready() -> void:
@@ -25,8 +25,8 @@ func _on_interact() -> void:
 	in_use = true
 	activated = !activated
 	
-	switch_toggled.emit()
-	toggle_sfx.play()
+	lever_toggled.emit()
+	lever_sfx.play()
 
 	# Change the rotation of the handle
 	tween = create_tween()

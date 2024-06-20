@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://5ewnqplkkic8"
-path="res://.godot/imported/toggle_sfx.wav-625f483affbe61d3df5ccac563c63d32.sample"
+path="res://.godot/imported/lever_sfx.wav-cc57eed6062c57646bd7374930c0f8e5.sample"
 
 [deps]
 
-source_file="res://GameScenes/Objects/Switches/toggle_sfx.wav"
-dest_files=["res://.godot/imported/toggle_sfx.wav-625f483affbe61d3df5ccac563c63d32.sample"]
+source_file="res://GameScenes/Objects/Switches/lever_sfx.wav"
+dest_files=["res://.godot/imported/lever_sfx.wav-cc57eed6062c57646bd7374930c0f8e5.sample"]
 
 [params]
 
