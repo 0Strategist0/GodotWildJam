@@ -1,25 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1tsd86p4rqem"]
+[gd_scene load_steps=7 format=3 uid="uid://c1tsd86p4rqem"]
 
 [ext_resource type="Script" path="res://GameScenes/Objects/Movables/static_platform.gd" id="1_6ngrp"]
-[ext_resource type="Texture2D" uid="uid://b2ehr20niyigm" path="res://assets/platforms.png" id="2_qb05u"]
+[ext_resource type="Texture2D" uid="uid://rtg5fu18jxi6" path="res://assets/black.svg" id="2_bfhd6"]
+[ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="3_uxa82"]
+[ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="4_asi84"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyqg7"]
-size = Vector2(42, 6)
+size = Vector2(42, 4.58187)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whg1f"]
-size = Vector2(42, 8)
+size = Vector2(42, 6.59668)
 
 [node name="Static Platform" type="StaticBody2D" groups=["dropdown"]]
 script = ExtResource("1_6ngrp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -3.57628e-07)
-scale = Vector2(1.3125, 0.666667)
-texture = ExtResource("2_qb05u")
+position = Vector2(0, -0.690373)
+scale = Vector2(1.3125, 0.513251)
+texture = ExtResource("2_bfhd6")
 region_enabled = true
 region_rect = Rect2(16, 0, 32, 9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.709066)
 shape = SubResource("RectangleShape2D_jyqg7")
 one_way_collision = true
 
@@ -29,8 +32,26 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -1)
+position = Vector2(0, -1.70166)
 shape = SubResource("RectangleShape2D_whg1f")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="EdgeGrassR" type="Sprite2D" parent="Node2D"]
+position = Vector2(21.6875, -3.88404)
+scale = Vector2(0.0269207, 0.0269207)
+texture = ExtResource("3_uxa82")
+
+[node name="EdgeGrassL" type="Sprite2D" parent="Node2D"]
+position = Vector2(-22.3125, -3.88404)
+scale = Vector2(0.0269207, 0.0269207)
+texture = ExtResource("3_uxa82")
+flip_h = true
+
+[node name="WideGrass" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, -15)
+scale = Vector2(0.0379408, 0.0379408)
+texture = ExtResource("4_asi84")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
