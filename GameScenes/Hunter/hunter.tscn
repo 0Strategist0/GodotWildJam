@@ -40,7 +40,7 @@ texture = ExtResource("1_ol418")
 polygon = PackedVector2Array(617.347, 354.082, 713.265, 384.694, 773.98, 415.306, 744.898, 435.204, 640.306, 412.245, 602.041, 379.082)
 uv = PackedVector2Array(617.347, 354.082, 713.265, 384.694, 773.98, 415.306, 744.898, 435.204, 640.306, 412.245, 602.041, 379.082)
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="HunterSprite/Body/Head"]
+[node name="EyeParticles" type="CPUParticles2D" parent="HunterSprite/Body/Head"]
 z_index = 1
 position = Vector2(79.89, -117.19)
 amount = 50
@@ -52,11 +52,11 @@ emission_shape = 1
 emission_sphere_radius = 6.17
 direction = Vector2(-2, 2.08165e-12)
 spread = 17.73
-gravity = Vector2(2.08165e-12, -30)
-initial_velocity_min = 75.76
-initial_velocity_max = 75.76
+gravity = Vector2(2.08165e-12, -40)
+initial_velocity_min = 171.35
+initial_velocity_max = 171.35
 scale_amount_min = 0.01
-scale_amount_max = 0.02
+scale_amount_max = 0.03
 color_ramp = SubResource("Gradient_6o8br")
 
 [node name="LThigh" type="Polygon2D" parent="HunterSprite/Body"]
@@ -150,5 +150,3 @@ offset = Vector2(-619, -717)
 texture = ExtResource("1_ol418")
 polygon = PackedVector2Array(604.592, 681.122, 645.408, 694.898, 756.633, 951.02, 684.184, 985.714, 667.347, 946.939, 695.918, 939.286, 585.714, 718.878)
 uv = PackedVector2Array(604.592, 681.122, 645.408, 694.898, 756.633, 951.02, 684.184, 985.714, 667.347, 946.939, 695.918, 939.286, 585.714, 718.878)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

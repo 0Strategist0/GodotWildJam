@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="4_i8wdi"]
 [ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="6_1dvnk"]
 [ext_resource type="Texture2D" uid="uid://bmaibao06omck" path="res://GameScenes/Levels/spikes.svg" id="6_m3bfl"]
+[ext_resource type="PackedScene" uid="uid://bodgm7uio32y" path="res://GameScenes/Hunter/hunter.tscn" id="8_hdbob"]
 [ext_resource type="Texture2D" uid="uid://bb2eted15mh1c" path="res://GameScenes/Levels/tree2.svg" id="8_hjwky"]
 [ext_resource type="Texture2D" uid="uid://cosfl00qlxjvc" path="res://GameScenes/Levels/tree3.svg" id="9_kio8b"]
 [ext_resource type="Texture2D" uid="uid://d15mivc2vfwgv" path="res://GameScenes/Levels/tree4.svg" id="10_odts3"]
@@ -423,10 +424,203 @@ size = Vector2(5, 142)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7075u"]
 size = Vector2(20, 300)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a01wk"]
-size = Vector2(20, 75)
+[sub_resource type="Animation" id="Animation_sgxis"]
+resource_name = "Hunt"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.8, 1, 1.2, 1.8, 2.3, 2.6, 3.1, 3.6, 3.7, 4.2, 5.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(519, -41), Vector2(507, -107), Vector2(522, -138), Vector2(538, -147), Vector2(561, -150), Vector2(561, -150), Vector2(576, -179), Vector2(594, -173), Vector2(594, -173), Vector2(678, -191), Vector2(720, -187), Vector2(720, -187), Vector2(720, -187), Vector2(721, -179), Vector2(721, -179)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HunterSprite/Body/LUpperArm:rotation")
+tracks/2/interp = 4
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.3, 1.8, 2.3, 2.6, 3.1, 3.9, 5.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-3.07682, 4.64155, 4.64155, 4.62318, 4.94444, 5.7964, 5.7964, 5.42733, 4.9982, 5.44456, 5.44456]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HunterSprite/Body/LUpperArm/LForearm:rotation")
+tracks/3/interp = 4
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.3, 1.6, 1.8, 2.3, 2.6, 3.1, 3.9, 5.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.254807, 7.54649, 7.54649, 1.02573, 0.690211, 7.01902, 0.192719, 0.192719, -0.473959, 7.00184, 0.939304, 0.939304]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HunterSprite/Body/LUpperArm/LForearm/LStabber:rotation")
+tracks/4/interp = 4
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.3, 1.8, 2.3, 2.6, 3.1, 3.9, 5.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [6.31341, 5.21231, 5.21231, 5.39667, 4.89325, 5.6244, 5.6244, 5.62317, 5.23152, 5.53287, 5.53287]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HunterSprite/Body/RUpperArm:rotation")
+tracks/5/interp = 4
+tracks/5/loop_wrap = false
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.6, 2.3, 2.6, 3.1, 3.3, 3.5, 3.8, 4.8, 4.9, 5.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-2.57235, 0.423712, 0.423712, 0.754432, 6.17445, 5.89156, 6.00548, 0.599738, 1.07217, 1.07217, -0.226728, -0.226728, -0.226728, -0.226728]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HunterSprite/Body/RUpperArm/RForearm:rotation")
+tracks/6/interp = 4
+tracks/6/loop_wrap = false
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.2, 1.4, 1.6, 1.8, 2.1, 2.3, 2.6, 3.1, 3.3, 3.5, 3.7, 3.8, 4.3, 4.8, 4.9, 5.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.19563, -0.404883, 1.19563, 1.19563, 1.74913, -0.608125, -0.500382, 5.63706, -0.238326, 6.6982, 0.70731, 0.561123, 0.845194, 0.901095, 0.901095, -0.380785, 7.28082, 7.28082, 0.611312, 0.611312]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HunterSprite/Body/RUpperArm/RForearm/RStabber:rotation")
+tracks/7/interp = 4
+tracks/7/loop_wrap = false
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.2, 1.4, 1.6, 1.8, 2.1, 2.3, 2.6, 3.1, 3.3, 3.5, 3.7, 3.8, 4.3, 4.8, 4.9, 5.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.495561, 0.787637, -0.495561, -0.495561, -1.41442, 7.1378, 6.92511, 1.04069, 6.18451, 5.40357, 6.0966, 5.60149, 5.03564, 5.05663, 5.05663, 6.87788, -0.580013, -0.580013, 6.01443, 6.01443]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HunterSprite/Body/LThigh:rotation")
+tracks/8/interp = 4
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.8, 2.3, 2.6, 2.9, 3.1, 3.2, 3.5, 3.7, 3.8, 5.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.615247, -1.39543, -1.39543, 5.04435, 4.56101, 4.56101, 4.84634, 5.58763, 6.01482, 4.64232, 5.06355, 5.06355, 4.63359, 4.63359]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HunterSprite/Body/RThigh:rotation")
+tracks/9/interp = 4
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.8, 2.3, 2.6, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.5, 3.6, 3.9, 5.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.393376, -0.726855, -0.726855, 5.92309, 5.6647, 5.6647, 6.49913, 7.07223, 5.39355, -1.03085, 5.55232, 5.72189, 6.32669, 0.262871, 0.262871, -0.123635, -0.123635]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:rotation")
+tracks/10/interp = 4
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.8, 2.3, 2.6, 3.1, 3.6, 3.7, 4.2, 5.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.657328, 0.0, 0.0, 0.319713, 0.0, 0.0, 0.0, 0.16646, 0.16646]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("HunterSprite/Body/LThigh/LShin:rotation")
+tracks/11/interp = 4
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.2, 1.8, 2, 2.3, 2.6, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.5, 3.7, 4, 5.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.16982, 0.169744, 1.89542, 2.07992, 2.07992, 1.47247, 1.04568, 1.0088, 0.638994, 0.270967, 1.29549, 1.93232, 1.11777, 1.11777, 1.64825, 1.64825]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("HunterSprite/Body/LThigh/LShin/LAnkle:rotation")
+tracks/12/interp = 4
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1.2, 1.8, 2, 2.3, 2.6, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.5, 3.7, 4, 5.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.549828, 0.979292, -1.10751, 5.90714, 5.90714, -0.984377, -0.158165, -0.225101, 0.208903, 0.533425, -0.516401, 5.75756, 6.25482, 6.25482, 6.01664, 6.01664]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("HunterSprite/Body/RThigh/RShin:rotation")
+tracks/13/interp = 4
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(1.2, 1.8, 2, 2.3, 2.6, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.5, 3.6, 3.9, 5.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.945474, -0.239634, 1.34163, 1.68039, 1.68039, 1.18815, -0.0710846, 1.22055, 7.49933, -0.000390291, 6.87335, 0.861374, 0.647271, 0.647271, 1.39132, 1.39132]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("HunterSprite/Body/RThigh/RShin/RAnkle:rotation")
+tracks/14/interp = 4
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(1.2, 1.8, 2, 2.3, 2.6, 2.8, 2.9, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.9, 5.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.578371, 6.70268, 4.85099, 5.16351, 5.16351, 5.44776, 6.2747, 5.16643, 6.59999, -0.25815, 5.64927, 5.48015, 5.29506, 5.29506, 5.29558, 5.29558]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("HunterSprite/Body/Head:rotation")
+tracks/15/interp = 4
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(1.2, 1.8, 2.3, 2.6, 2.9, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.44158, 0.214175, 0.428608, 0.214175, 0.214175]
+}
 
-[sub_resource type="Animation" id="Animation_nft1r"]
+[sub_resource type="Animation" id="Animation_vinwb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -440,95 +634,191 @@ tracks/0/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/1/type = "bezier"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:x")
+tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(595, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(460, -409)]
 }
-tracks/2/type = "bezier"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:y")
+tracks/2/path = NodePath("HunterSprite/Body/LUpperArm:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-181, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-3.07682]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:monitoring")
+tracks/3/path = NodePath("HunterSprite/Body/LUpperArm/LForearm:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [1.05621]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HunterSprite/Body/LUpperArm/LForearm/LStabber:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.751107]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HunterSprite/Body/RUpperArm:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-2.57235]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HunterSprite/Body/RUpperArm/RForearm:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.19563]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HunterSprite/Body/RUpperArm/RForearm/RStabber:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.495561]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HunterSprite/Body/LThigh:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.615247]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HunterSprite/Body/RThigh:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.393376]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("HunterSprite/Body/LThigh/LShin:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.16982]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("HunterSprite/Body/LThigh/LShin/LAnkle:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.549828]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("HunterSprite/Body/RThigh/RShin:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.945474]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("HunterSprite/Body/RThigh/RShin/RAnkle:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.578371]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("HunterSprite/Body/Head:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_go7gw"]
-resource_name = "hunter1_animation"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(595, -0.25, 0, 0.25, 0, 740, -0.25, 0, 0.25, 0, 729, -0.25, 0, 0, 0, 880, 0, -3, 0.25, 0, 867, -0.25, 0, 0.25, 0, 981, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.5, 3, 4.1, 4.4, 9.4)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(-181, -0.25, 0, 0.25, 0, -180, -0.25, 0, 0.25, 0, -181, -0.25, 0, 0.25, 0, -181, -0.25, 0, 0, -1, -231, -0.147654, 0, 0.152347, 0, -181, 0, -4, 0.25, 0, -182, -0.25, 0, 0.25, 0, -181, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.5, 3, 3.2, 3.5, 3.8, 4.1, 9.4)
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:monitoring")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gp2pm"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h3y14"]
 _data = {
-"RESET": SubResource("Animation_nft1r"),
-"hunter1_animation": SubResource("Animation_go7gw")
+"Hunt": SubResource("Animation_sgxis"),
+"RESET": SubResource("Animation_vinwb")
 }
 
 [sub_resource type="Shader" id="Shader_pxndn"]
@@ -730,25 +1020,34 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EventTriggers/TriggerHunt"]
 shape = SubResource("RectangleShape2D_7075u")
 
-[node name="Hunter" type="Area2D" parent="."]
+[node name="Hunter" parent="." instance=ExtResource("8_hdbob")]
 visible = false
-position = Vector2(595, -181)
-monitoring = false
+position = Vector2(460, -409)
 script = ExtResource("4_3lx7n")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hunter"]
-shape = SubResource("RectangleShape2D_a01wk")
-debug_color = Color(1, 0, 0, 0.419608)
+[node name="LUpperArm" parent="Hunter/HunterSprite/Body" index="3"]
+rotation = -3.07682
+
+[node name="LForearm" parent="Hunter/HunterSprite/Body/LUpperArm" index="0"]
+rotation = 1.05621
+
+[node name="LStabber" parent="Hunter/HunterSprite/Body/LUpperArm/LForearm" index="0"]
+rotation = -0.751107
+
+[node name="RUpperArm" parent="Hunter/HunterSprite/Body" index="4"]
+rotation = -2.57235
+
+[node name="RForearm" parent="Hunter/HunterSprite/Body/RUpperArm" index="0"]
+rotation = 1.19563
+
+[node name="RStabber" parent="Hunter/HunterSprite/Body/RUpperArm/RForearm" index="0"]
+rotation = -0.495561
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hunter"]
 libraries = {
-"": SubResource("AnimationLibrary_gp2pm")
+"": SubResource("AnimationLibrary_h3y14")
 }
-
-[node name="Sprite2D" type="Sprite2D" parent="Hunter"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("6_1dvnk")
 
 [node name="Hazards" type="Node2D" parent="."]
 
@@ -777,6 +1076,7 @@ modulate = Color(0.59261, 0.725878, 0.616676, 1)
 position = Vector2(220, 34)
 motion_scale = Vector2(0.1, 0.1)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Tree1" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(642.4, 4.69992)
@@ -1070,24 +1370,30 @@ polygon = PackedVector2Array(-608, 81, -577, 80, -563, 57, -531, 55, -507, 66, -
 [node name="FogLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(800, 402)
 motion_scale = Vector2(0.2, 0.2)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="GodRays2" type="Sprite2D" parent="ParallaxBackground/FogLayer3"]
 material = SubResource("ShaderMaterial_ltvfy")
 position = Vector2(-474, -231)
 scale = Vector2(6.5625, 6.32812)
 texture = ExtResource("6_1dvnk")
+metadata/_edit_lock_ = true
 
 [node name="Fog" type="Sprite2D" parent="ParallaxBackground/FogLayer3"]
 material = SubResource("ShaderMaterial_1w2l6")
 position = Vector2(-441, -350)
 scale = Vector2(10, 1)
 texture = ExtResource("6_1dvnk")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="TreeLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color(0.452126, 0.584627, 0.477089, 1)
 position = Vector2(255, 96)
 motion_scale = Vector2(0.3, 0.3)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Tree1" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(-491.45, -135.775)
@@ -1222,6 +1528,7 @@ polygon = PackedVector2Array(-527, -68, -470, -59, -376, 9, -342, -35, -198, -27
 position = Vector2(432, 287)
 motion_scale = Vector2(0.4, 0.4)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="GodRays" type="Sprite2D" parent="ParallaxBackground/FogLayer2"]
 material = SubResource("ShaderMaterial_hl33e")
@@ -1240,6 +1547,7 @@ modulate = Color(0.303044, 0.409313, 0.323584, 1)
 position = Vector2(244, -65)
 motion_scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Tree1" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(-309.6, 64.2999)
@@ -1374,6 +1682,7 @@ polygon = PackedVector2Array(-672, 209, -642, 191, -598, 192, -524, 143, -427, 1
 position = Vector2(461, 76)
 motion_scale = Vector2(0.6, 0.6)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Fog2" type="Sprite2D" parent="ParallaxBackground/FogLayer1"]
 material = SubResource("ShaderMaterial_1w2l6")
@@ -1550,5 +1859,23 @@ position = Vector2(1330, -149)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("20_1uk1g")
 
+[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33000" to="TileMap/@Area2D@33000" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33001" to="TileMap/@Area2D@33001" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33002" to="TileMap/@Area2D@33002" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33003" to="TileMap/@Area2D@33003" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33004" to="TileMap/@Area2D@33004" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33005" to="TileMap/@Area2D@33005" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33006" to="TileMap/@Area2D@33006" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33007" to="TileMap/@Area2D@33007" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33008" to="TileMap/@Area2D@33008" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33009" to="TileMap/@Area2D@33009" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33010" to="TileMap/@Area2D@33010" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33011" to="TileMap/@Area2D@33011" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33012" to="TileMap/@Area2D@33012" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33013" to="TileMap/@Area2D@33013" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33014" to="TileMap/@Area2D@33014" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
+
+[editable path="Hunter"]
