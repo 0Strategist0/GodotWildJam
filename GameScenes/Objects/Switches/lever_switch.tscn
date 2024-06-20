@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3jvbgobgodgr"]
+
+[ext_resource type="Script" path="res://GameScenes/Objects/Switches/lever_switch.gd" id="1_1gc7f"]
+[ext_resource type="Texture2D" uid="uid://rtg5fu18jxi6" path="res://assets/black.svg" id="2_u848i"]
+[ext_resource type="Script" path="res://Interaction/InteractionArea/interaction_area.gd" id="3_r3rwf"]
+[ext_resource type="AudioStream" uid="uid://5ewnqplkkic8" path="res://GameScenes/Objects/Switches/lever_sfx.wav" id="4_2qtua"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vb6h2"]
+radius = 11.0
+
+[node name="LeverSwitch" type="Node2D"]
+script = ExtResource("1_1gc7f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.863683, 7.60902)
+rotation = -0.523599
+scale = Vector2(0.00790771, 0.0360085)
+texture = ExtResource("2_u848i")
+offset = Vector2(-4.20148, -208.201)
+metadata/_edit_group_ = true
+
+[node name="InteractionArea" type="Area2D" parent="."]
+script = ExtResource("3_r3rwf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_vb6h2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2qtua")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(1.5445, 2.46238)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-7.32575, 3.35012, -9.357, 3.88137, -11.2152, 5.29032, -11.5445, 7.64451, 10.0215, 7.6028, 9, 5, 7.36175, 3.81887, 5.0805, 3.19387)
+
+[connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]

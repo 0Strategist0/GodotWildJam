@@ -13,7 +13,7 @@ var timer := Timer.new()
 func _ready() -> void:
 	for i in range(9):
 		var num = i + 1
-		Lights.append(get_node("Switches/ToggleSwitch" + str(num) + "/PointLight2D"))
+		Lights.append(get_node("Switches/LeverSwitch" + str(num) + "/PointLight2D"))
 	
 	var bodies : Dictionary = (Progress.bodies[get_meta("level")] 
 			if Progress.bodies.has(get_meta("level")) else {})
@@ -88,7 +88,7 @@ func check_solution():
 	puzzle_length += 1
 	load_puzzle()
 
-func _on_toggle_switch_switch_toggled(number: int):
+func _on_lever_switch_lever_toggled(number: int):
 	current.append(number)
 	print(current)
 	if !solved:

@@ -9,7 +9,7 @@ const SIMON := preload("uid://c4c0m1vjycehs")
 @onready var title_page := get_node("../..")
 
 # Remove this later
-var debug_mode := 3
+var debug_mode := 1
 
 func _on_pressed() -> void:
 	var world := WORLD.instantiate()

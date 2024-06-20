@@ -86,7 +86,7 @@ float perlinNoise(vec3 vector)
 }
 float fbm(vec3 vector) 
 {
-	const int OCTAVES = 6;
+	const int OCTAVES = 2;
 	const float LACUNARITY = 1.8;
 	const float GAIN = 0.5;
 	
