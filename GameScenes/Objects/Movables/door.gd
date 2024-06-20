@@ -87,5 +87,4 @@ func _on_plate_switch_body_exited(_body: Node2D) -> void:
 
 
 func _on_toggle_switch_switch_toggled() -> void:
-	if not currently_moving:
-		_handle_signal()
+	_handle_signal()

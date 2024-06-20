@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _on_body_entered(_body: Node2D) -> void:
 	objects_inside_body += 1
-	if (objects_inside_body == 1):
+	if objects_inside_body == 1:
 		plate_sfx.play()
 		var tween: Tween = create_tween()
 		tween.tween_property(sprite, "position", sprite.position + Vector2(0, 4), 0.1)
@@ -21,5 +21,6 @@ func _on_body_entered(_body: Node2D) -> void:
 
 func _on_body_exited(_body: Node2D) -> void:
 	objects_inside_body -= 1
-	var tween: Tween = create_tween()
-	tween.tween_property(sprite, "position", original_position, 0.1)
+	if objects_inside_body == 0:
+		var tween: Tween = create_tween()
+		tween.tween_property(sprite, "position", original_position, 0.1)

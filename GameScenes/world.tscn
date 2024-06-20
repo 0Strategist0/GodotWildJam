@@ -280,7 +280,7 @@ position = Vector2(57, -89)
 position = Vector2(273, -17)
 
 [node name="ToggleSwitch" parent="." instance=ExtResource("14_dg8c1")]
-position = Vector2(86, 20)
+position = Vector2(86, 22)
 
 [connection signal="body_entered" from="PlateSwitch" to="Platform" method="_on_plate_switch_body_entered"]
 [connection signal="body_entered" from="PlateSwitch" to="Door" method="_on_plate_switch_body_entered"]

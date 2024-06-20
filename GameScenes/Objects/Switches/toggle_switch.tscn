@@ -1,25 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3jvbgobgodgr"]
+[gd_scene load_steps=6 format=3 uid="uid://c3jvbgobgodgr"]
 
 [ext_resource type="Script" path="res://GameScenes/Objects/Switches/toggle_switch.gd" id="1_qafkl"]
-[ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="1_send4"]
+[ext_resource type="Texture2D" uid="uid://rtg5fu18jxi6" path="res://assets/black.svg" id="2_sh6mx"]
 [ext_resource type="Script" path="res://Interaction/InteractionArea/interaction_area.gd" id="3_f1pw0"]
 [ext_resource type="AudioStream" uid="uid://5ewnqplkkic8" path="res://GameScenes/Objects/Switches/toggle_sfx.wav" id="4_pqlkl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5xlv"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_vb6h2"]
-radius = 14.0357
+radius = 11.0
 
-[node name="ToggleSwitch" type="Area2D"]
+[node name="ToggleSwitch" type="Node2D"]
 script = ExtResource("1_qafkl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_o5xlv")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -9.53674e-07)
-scale = Vector2(0.15625, 0.15625)
-texture = ExtResource("1_send4")
+position = Vector2(0.863683, 7.60902)
+rotation = -0.523599
+scale = Vector2(0.00790771, 0.0360085)
+texture = ExtResource("2_sh6mx")
+offset = Vector2(-4.20148, -208.201)
+metadata/_edit_group_ = true
 
 [node name="InteractionArea" type="Area2D" parent="."]
 script = ExtResource("3_f1pw0")
@@ -29,6 +27,11 @@ shape = SubResource("CircleShape2D_vb6h2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_pqlkl")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(1.5445, 2.46238)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-7.51243, 3.20228, -9.357, 3.88137, -11.2152, 5.29032, -11.5445, 7.64451, 10.0215, 7.6028, 9, 5, 7.36175, 3.81887, 5.0805, 3.19387)
 
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
