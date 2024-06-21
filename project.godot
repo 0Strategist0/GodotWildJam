@@ -21,6 +21,7 @@ GlobalNodeReferences="*res://Globals/GlobalNodeReferences.gd"
 InteractionManager="*res://Interaction/InteractionManager.tscn"
 DialogManager="*res://Singletons/DialogManager.gd"
 Progress="*res://Globals/Progress.gd"
+HunterSignalling="*res://Singletons/HunterSignalling.gd"
 
 [debug]
 
