@@ -86,5 +86,5 @@ func _on_plate_switch_body_exited(_body: Node2D) -> void:
 		_handle_signal()
 
 
-func _on_lever_switch_lever_toggled() -> void:
+func _on_lever_switch_lever_toggled(_number: int) -> void:
 	_handle_signal()
