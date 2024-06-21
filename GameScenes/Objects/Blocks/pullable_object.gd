@@ -23,7 +23,8 @@ func _physics_process(delta: float) -> void:
 		if !left_side and GlobalNodeReferences.character.velocity.x > 0:
 			velocity.x = GlobalNodeReferences.character.velocity.x
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = 0
+		velocity.y = 0
 	
 	move_and_slide()
 
@@ -43,3 +44,8 @@ func _on_interact() -> void:
 			interaction_area.action_name = "Select"
 		GlobalNodeReferences.character.can_jump = !GlobalNodeReferences.character.can_jump
 	
+
+
+func _on_interaction_area_body_exited(body):
+	selected = false
+	GlobalNodeReferences.character.can_jump = true

@@ -32,6 +32,7 @@ var stored_speed := 0.0
 var dying := false
 var sprite_type := randi_range(DEFAULT, BALD)
 var stored_fall := 0.0
+var is_fat := true
 
 func _ready() -> void:
 	GlobalNodeReferences.character = self
@@ -138,10 +139,11 @@ func _physics_process(delta: float) -> void:
 					+ (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2)) 
 					> c.get_collider().position.x):
 				c.get_collider().velocity.x = min(stored_speed, -MIN_SPEED)
-		if c.get_collider() is CharacterBody2D and c.get_collider().is_in_group("breakable") and stored_speed > 0.0:
+		if c.get_collider() is StaticBody2D and c.get_collider().is_in_group("breakable") and stored_fall > 1.0 and is_fat:
 			c.get_collider().queue_free()
 		if c.get_collider() is StaticBody2D and c.get_collider().is_in_group("dropdown") and Input.is_action_pressed("down"):
-			c.get_collider().area.set_deferred("monitoring", true)
+			#c.get_collider().area.set_deferred("monitoring", true)
+			position.y += 1
 				
 	stored_speed = velocity.x
 	stored_fall = velocity.y
