@@ -278,4 +278,8 @@ position = Vector2(273, -17)
 [node name="LeverSwitch" parent="." instance=ExtResource("14_48r0f")]
 position = Vector2(127, 23)
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-288, -80, -240, -80, -240, 0, -160, 0, -160, 16, -144, 16, -144, 32, 427, 32, 431, 2, 415, -1, 417, -17, 399, -17, 398, -32, 370, -31, 367, -47, 347, -49, 348, -64, 362, -63, 369, -83, 417, -83, 418, -50, 472, -51, 471, 82, -160, 83, -198, 54, -294, 47)
+
 [connection signal="lever_toggled" from="LeverSwitch" to="Door" method="_on_lever_switch_lever_toggled"]

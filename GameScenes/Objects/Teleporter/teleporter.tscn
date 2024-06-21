@@ -1,25 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqay0ugttwink"]
+[gd_scene load_steps=7 format=3 uid="uid://cqay0ugttwink"]
 
 [ext_resource type="Script" path="res://GameScenes/Objects/Teleporter/teleporter.gd" id="1_d5yqh"]
-[ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="2_elq02"]
 [ext_resource type="AudioStream" uid="uid://bktsbu84oep4o" path="res://GameScenes/Objects/Teleporter/teleport_sfx.wav" id="3_p4vee"]
+[ext_resource type="Texture2D" uid="uid://d12nhxwkqht6p" path="res://GameScenes/Objects/Teleporter/offset_glow.png" id="4_fisqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23hte"]
+size = Vector2(20, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vrr6x"]
+
+[sub_resource type="Gradient" id="Gradient_m57lp"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Teleporter" type="Area2D"]
 script = ExtResource("1_d5yqh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9.5)
 shape = SubResource("RectangleShape2D_23hte")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(4.17233e-07, 0.0273976)
-scale = Vector2(0.15625, 0.160531)
-texture = ExtResource("2_elq02")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_p4vee")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_vrr6x")
+amount = 20
+texture = ExtResource("4_fisqa")
+gravity = Vector2(0, -100)
+angle_min = 360.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+color_ramp = SubResource("Gradient_m57lp")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(0.371975, -0.940809)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-9, 12, -10.677, 11.0372, -12.2459, 9.04849, -14, 5, -11.315, 6.03931, -10.1325, 6.57801, -8, 8, -8.29306, 7.14298, -8.27992, 6.13128, -8, 5, -5.70468, 5.78967, -3.87836, 6.98531, -3, 8, -2.45934, 7.01159, -1.32939, 5.9342, 0, 5, 1.4298, 5.90792, 2.55976, 6.91962, 3, 8, 3.92621, 6.93276, 5.68684, 5.80281, 8, 5, 8.18325, 6.06559, 8.27522, 7.32693, 8, 8, 9.27379, 6.80137, 10.8373, 5.85536, 13, 5, 11.4864, 8.76123, 9.54187, 10.8605, 8, 12)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

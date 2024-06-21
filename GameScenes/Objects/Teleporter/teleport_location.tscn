@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://mm3djlck2npl"]
+[gd_scene load_steps=3 format=3 uid="uid://mm3djlck2npl"]
+
+[ext_resource type="Script" path="res://GameScenes/Objects/Teleporter/teleport_location.gd" id="1_wn7d1"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yj14n"]
 
 [node name="TeleportLocation" type="Marker2D"]
+script = ExtResource("1_wn7d1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
 texture = SubResource("PlaceholderTexture2D_yj14n")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(0, -14)
+offset = Vector2(0.363607, -7.48167)
+polygon = PackedVector2Array(0.636393, 6.48167, 2.63639, 7.48167, 0.636393, 8.48167, -0.363607, 10.4817, -1.36361, 8.48167, -3.36361, 7.48167, -1.36361, 6.48167, -0.363607, 4.48167)
