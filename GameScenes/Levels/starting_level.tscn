@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b0kxtk2p027ml"]
+[gd_scene load_steps=35 format=3 uid="uid://b0kxtk2p027ml"]
 
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_jt75v"]
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_wiwad"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="4_i8wdi"]
 [ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="6_1dvnk"]
 [ext_resource type="Texture2D" uid="uid://bmaibao06omck" path="res://GameScenes/Levels/spikes.svg" id="6_m3bfl"]
+[ext_resource type="AudioStream" uid="uid://bthw6tqyuqxot" path="res://GameScenes/Hunter/demonic-woman-scream-6333.mp3" id="8_f45xk"]
 [ext_resource type="PackedScene" uid="uid://bodgm7uio32y" path="res://GameScenes/Hunter/hunter.tscn" id="8_hdbob"]
 [ext_resource type="Texture2D" uid="uid://bb2eted15mh1c" path="res://GameScenes/Levels/tree2.svg" id="8_hjwky"]
 [ext_resource type="Texture2D" uid="uid://cosfl00qlxjvc" path="res://GameScenes/Levels/tree3.svg" id="9_kio8b"]
@@ -620,6 +621,30 @@ tracks/15/keys = {
 "update": 0,
 "values": [0.0, -0.44158, 0.214175, 0.428608, 0.214175, 0.214175, 0.214175, -0.262436, 6.52243, 0.568594, -0.0517573, -0.0517573, -0.0517573, -0.0517573, 6.66237, 5.9808, 5.9808, 6.28535]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("HunterScreech:playing")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.1, 10.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("HunterScreech:pitch_scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 4.85, 9.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.9, 0.9, 0.8]
+}
 
 [sub_resource type="Animation" id="Animation_vinwb"]
 length = 0.001
@@ -814,6 +839,30 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("HunterScreech:playing")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("HunterScreech:pitch_scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.9]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h3y14"]
@@ -1049,6 +1098,11 @@ rotation = -0.495561
 libraries = {
 "": SubResource("AnimationLibrary_h3y14")
 }
+
+[node name="HunterScreech" type="AudioStreamPlayer2D" parent="Hunter"]
+stream = ExtResource("8_f45xk")
+pitch_scale = 0.9
+attenuation = 2.2974
 
 [node name="Hazards" type="Node2D" parent="."]
 
@@ -1860,22 +1914,6 @@ position = Vector2(1330, -149)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("20_1uk1g")
 
-[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180461" to="TileMap/@Area2D@180461" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180462" to="TileMap/@Area2D@180462" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180463" to="TileMap/@Area2D@180463" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180464" to="TileMap/@Area2D@180464" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180465" to="TileMap/@Area2D@180465" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180466" to="TileMap/@Area2D@180466" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180467" to="TileMap/@Area2D@180467" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180468" to="TileMap/@Area2D@180468" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180469" to="TileMap/@Area2D@180469" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180470" to="TileMap/@Area2D@180470" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180471" to="TileMap/@Area2D@180471" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180472" to="TileMap/@Area2D@180472" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180473" to="TileMap/@Area2D@180473" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180474" to="TileMap/@Area2D@180474" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@180475" to="TileMap/@Area2D@180475" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
 

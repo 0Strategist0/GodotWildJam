@@ -162,6 +162,7 @@ func _physics_process(delta: float) -> void:
 func kill() -> void:
 	if not dying:
 		dying = true
+		HunterSignalling.end_hunt.emit()
 		# Code to save the body position when you die
 		if not Progress.bodies.has(owner.get_meta("level")):
 			Progress.bodies[owner.get_meta("level")] = {position: {"direction": sign(sprite.scale.x), 
