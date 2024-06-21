@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0qappnyuuly6"]
+[gd_scene load_steps=3 format=3 uid="uid://d0qappnyuuly6"]
 
 [ext_resource type="Script" path="res://Menus/TitlePage/StartButton.gd" id="1_nveqe"]
+[ext_resource type="Script" path="res://Menus/TitlePage/Settings.gd" id="2_osxgx"]
 
 [node name="TitlePage" type="Control"]
 layout_mode = 3
@@ -27,6 +28,9 @@ anchor_left = 0.2
 anchor_top = 0.5
 anchor_right = 0.8
 anchor_bottom = 0.9
+offset_left = -2.12193e-05
+offset_right = -8.4877e-05
+offset_bottom = 2.24113e-05
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -46,4 +50,58 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "OPTIONS"
 
+[node name="Settings" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_osxgx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="SettingsTitle" type="Label" parent="Settings/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="Settings/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.05
+text = "X"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Fog" type="HBoxContainer" parent="Settings/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FogCheck" type="CheckButton" parent="Settings/VBoxContainer/VBoxContainer/Fog"]
+layout_mode = 2
+size_flags_vertical = 3
+button_pressed = true
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/VBoxContainer/Fog"]
+layout_mode = 2
+text = "Fog (can slow down lower-end computers)"
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="Settings" method="_on_options_button_pressed"]
+[connection signal="pressed" from="Settings/VBoxContainer/HBoxContainer/Exit" to="Settings" method="_on_exit_pressed"]
+[connection signal="toggled" from="Settings/VBoxContainer/VBoxContainer/Fog/FogCheck" to="Settings" method="_on_fog_check_toggled"]

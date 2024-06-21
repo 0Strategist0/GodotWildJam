@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="2_i417n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhk1r"]
-size = Vector2(18, 17)
+size = Vector2(22, 21)
 
 [node name="Pushable Object" type="CharacterBody2D" groups=["pushable"]]
 position = Vector2(0, -8)
@@ -16,5 +16,9 @@ region_enabled = true
 region_rect = Rect2(0, 32, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_vhk1r")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-11, -13, -11, 8, 11, 8, 11, -13)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b0kxtk2p027ml"]
+[gd_scene load_steps=36 format=3 uid="uid://b0kxtk2p027ml"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_843t4"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="2_w6cac"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dmt3wi0icmewh" path="res://GameScenes/Levels/grass1.svg" id="16_4nl4s"]
 [ext_resource type="Texture2D" uid="uid://biqaoxcol4jcf" path="res://GameScenes/Levels/grass2.svg" id="17_78f18"]
 [ext_resource type="Texture2D" uid="uid://cmyrp14rj0sl6" path="res://GameScenes/Levels/grass3.svg" id="18_5j82a"]
+[ext_resource type="PackedScene" uid="uid://cfhbexmwfpwh" path="res://GameScenes/position_saver.tscn" id="18_ssa27"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="19_jlvb2"]
 [ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="20_rqtdn"]
 
@@ -1045,7 +1046,7 @@ shader_parameter/seed = 5.0
 
 [node name="StartingLevel" type="Node2D"]
 script = ExtResource("1_843t4")
-metadata/level = 1
+metadata/level = "b1"
 
 [node name="Character" parent="." instance=ExtResource("2_w6cac")]
 z_index = 2
@@ -1058,13 +1059,6 @@ zoom = Vector2(7, 7)
 tile_set = SubResource("TileSet_i5pvu")
 format = 2
 layer_0/tile_data = PackedInt32Array(131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 131067, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 1, 65546, 0, 1, 131066, 0, 0, 65529, 0, 1, 65528, 0, 1, -8, 0, 1, -65544, 0, 1, -131080, 0, 0, -131081, 0, 1, -196617, 65536, 0, -262153, 0, 0, -262154, 0, 0, -262155, 0, 1, -262156, 0, 1, -327692, 0, 1, -393228, 0, 1, -458764, 0, 1, -524301, 0, 0, -524302, 0, 1, -524303, 0, 1, -524304, 0, 0, -589839, 0, 1, -655376, 0, 1, -720912, 0, 1, -720913, 0, 1, -786448, 0, 1, -655375, 0, 1, -720911, 0, 1, -786447, 0, 1, -851983, 0, 1, -917520, 0, 1, -983056, 0, 1, -1048592, 0, 1, -1114128, 0, 1, -1179664, 0, 1, -589838, 0, 1, -917519, 0, 1, -851984, 0, 1, -589840, 0, 1, -458765, 0, 1, -327691, 0, 1, -196619, 0, 1, -196618, 0, 1, -131082, 0, 1, -65545, 0, 1, 131065, 0, 1, 131064, 0, 1, 65527, 0, 1, -9, 0, 1, -10, 0, 1, -65546, 0, 1, -131083, 0, 1, -196620, 0, 1, -262157, 0, 1, -327693, 0, 1, -393229, 0, 1, -393230, 0, 1, -458766, 0, 1, -458767, 0, 1, -131084, 0, 1, 65547, 0, 1, 65548, 0, 1, 65549, 0, 1, 65550, 0, 1, 65551, 0, 1, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 65554, 0, 1, 18, 0, 0, 21, 0, 0, 20, 0, 0, 19, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 33, 0, 0, 35, 0, 0, 36, 65536, 0, -65500, 65536, 0, -131036, 65536, 0, -196572, 65536, 0, -262108, 65536, 0, -327644, 65536, 0, -393180, 65536, 0, -458716, 65536, 0, -524252, 65536, 0, -589787, 0, 0, -589786, 0, 0, -589785, 0, 0, -589784, 0, 0, -589783, 0, 0, -589782, 0, 0, -589781, 0, 0, -589780, 0, 0, -589779, 0, 0, -589778, 0, 0, -524242, 0, 1, -524235, 0, 1, -589771, 0, 0, 131087, 0, 1, 131088, 0, 1, 65552, 1, 65536, 65553, 1, 65536, 131089, 0, 1, 131090, 0, 1, -458706, 0, 1, -458699, 0, 1, -458700, 0, 1, -458701, 0, 1, -458702, 0, 1, -458703, 0, 1, -458704, 0, 1, -458705, 0, 1, -524241, 1, 65536, -524240, 1, 65536, -524239, 1, 65536, -524238, 1, 65536, -524237, 1, 65536, -524236, 1, 65536, -589770, 0, 0, -589769, 0, 0, -589768, 0, 0, -589767, 0, 0, -589766, 0, 0, -589765, 0, 0, -589764, 0, 0, -589763, 0, 0, -524227, 0, 1, -458691, 0, 1, -458690, 0, 1, -458689, 0, 1, -458688, 0, 1, -458687, 0, 1, -458686, 0, 1, -458685, 0, 1, -458684, 0, 1, -458683, 0, 1, -458682, 0, 1, -524218, 0, 1, -589754, 0, 0, -589753, 0, 0, -589752, 0, 0, -589751, 0, 0, -589750, 0, 0, -589749, 0, 0, -589748, 0, 0, -589747, 0, 0, -589746, 0, 0, -589745, 0, 0, -589744, 0, 0, -589743, 0, 0, -589742, 0, 0, -524226, 1, 65536, -524225, 1, 65536, -524224, 1, 65536, -524223, 1, 65536, -524222, 1, 65536, -524221, 1, 65536, -524220, 1, 65536, -524219, 1, 65536, -7, 65536, 0, -65543, 65536, 0, -131079, 65536, 0, -196615, 65536, 0, -262151, 65536, 0, -327688, 65536, 0, -393224, 65536, 0, -458760, 65536, 0, -524296, 65536, 0, -589832, 65536, 0, -655368, 65536, 0, -720904, 65536, 0, -786440, 65536, 0, -851976, 65536, 0, -917513, 65536, 0, -983049, 65536, 0, -1048585, 65536, 0, -1114121, 65536, 0, -1179657, 65536, 0, 34, 0, 0, -589788, 0, 0)
-
-[node name="Note" type="Label" parent="TileMap"]
-offset_left = 595.0
-offset_top = -197.0
-offset_right = 800.0
-offset_bottom = -174.0
-text = "Add a pushable block here"
 
 [node name="Ground" type="Polygon2D" parent="."]
 color = Color(0, 0, 0, 1)
@@ -1460,7 +1454,7 @@ position = Vector2(-474, -231)
 scale = Vector2(6.5625, 6.32812)
 texture = ExtResource("7_ebtph")
 
-[node name="Fog" type="Sprite2D" parent="ParallaxBackground/FogLayer3"]
+[node name="Fog" type="Sprite2D" parent="ParallaxBackground/FogLayer3" groups=["fog"]]
 material = SubResource("ShaderMaterial_1w2l6")
 position = Vector2(-441, -350)
 scale = Vector2(10, 1)
@@ -1614,7 +1608,7 @@ position = Vector2(-220, -235)
 scale = Vector2(6.5625, 6.32812)
 texture = ExtResource("7_ebtph")
 
-[node name="Fog2" type="Sprite2D" parent="ParallaxBackground/FogLayer2"]
+[node name="Fog2" type="Sprite2D" parent="ParallaxBackground/FogLayer2" groups=["fog"]]
 material = SubResource("ShaderMaterial_1w2l6")
 position = Vector2(-73, -235)
 scale = Vector2(10, 1)
@@ -1762,13 +1756,15 @@ motion_scale = Vector2(0.6, 0.6)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="Fog2" type="Sprite2D" parent="ParallaxBackground/FogLayer1"]
+[node name="Fog2" type="Sprite2D" parent="ParallaxBackground/FogLayer1" groups=["fog"]]
 material = SubResource("ShaderMaterial_1w2l6")
 scale = Vector2(10, 1)
 texture = ExtResource("7_ebtph")
 
 [node name="Pushable Object" parent="." instance=ExtResource("15_degu0")]
 position = Vector2(744, -155)
+
+[node name="PositionSaver" parent="Pushable Object" instance=ExtResource("18_ssa27")]
 
 [node name="Decorations" type="Node2D" parent="."]
 
@@ -1937,6 +1933,22 @@ position = Vector2(1330, -149)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("20_rqtdn")
 
+[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131589" to="TileMap/@Area2D@131589" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131590" to="TileMap/@Area2D@131590" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131591" to="TileMap/@Area2D@131591" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131592" to="TileMap/@Area2D@131592" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131593" to="TileMap/@Area2D@131593" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131594" to="TileMap/@Area2D@131594" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131595" to="TileMap/@Area2D@131595" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131596" to="TileMap/@Area2D@131596" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131597" to="TileMap/@Area2D@131597" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131598" to="TileMap/@Area2D@131598" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131599" to="TileMap/@Area2D@131599" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131600" to="TileMap/@Area2D@131600" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131601" to="TileMap/@Area2D@131601" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131602" to="TileMap/@Area2D@131602" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@131603" to="TileMap/@Area2D@131603" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
 
