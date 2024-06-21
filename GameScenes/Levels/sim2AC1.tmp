@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://c7a84huofxckc" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="15_utku5"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="16_7xwwd"]
 [ext_resource type="PackedScene" uid="uid://c1tsd86p4rqem" path="res://GameScenes/Objects/Movables/static_platform.tscn" id="17_lcbr7"]
+[ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="18_tligl"]
+[ext_resource type="PackedScene" uid="uid://di53u75kivwsj" path="res://GameScenes/Objects/Movables/door.tscn" id="19_w7cvm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yokt"]
 texture = ExtResource("3_t8xgq")
@@ -414,9 +416,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0yokt")
 sources/1 = SubResource("TileSetScenesCollectionSource_p1fmf")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1mp41"]
-size = Vector2(5, 142)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7075u"]
 size = Vector2(20, 300)
 
@@ -712,9 +711,6 @@ size = Vector2(16, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4dhq"]
 size = Vector2(6, 46)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_msgnx"]
-size = Vector2(16, 46)
-
 [node name="SimonLevel" type="Node2D"]
 script = ExtResource("1_0csr7")
 metadata/level = 1
@@ -736,22 +732,6 @@ offset_top = -197.0
 offset_right = 800.0
 offset_bottom = -174.0
 text = "Add a pushable block here"
-
-[node name="Trees" type="Node2D" parent="."]
-
-[node name="FirstTree" type="Area2D" parent="Trees" groups=["climbable"]]
-position = Vector2(552, -75)
-
-[node name="Sprite2D" type="Sprite2D" parent="Trees/FirstTree"]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(11, -24)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_bevru")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/FirstTree"]
-position = Vector2(0.5, 5)
-shape = SubResource("RectangleShape2D_1mp41")
 
 [node name="EventTriggers" type="Node2D" parent="."]
 
@@ -1231,7 +1211,7 @@ texture = ExtResource("13_eqoxt")
 polygon = PackedVector2Array(-527, -68, -470, -59, -376, 9, -342, -35, -198, -27, -128, -54, -47, -30, -6, -61, 113, -54, 153, -38, 217, -54, 321, -50, 348, -74, 421, -70, 542, -36, 587, -61, 716, -54, 742, -45, 746, 229, -554, 219)
 
 [node name="FogLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(460, 288)
+position = Vector2(462, 282)
 motion_scale = Vector2(0.4, 0.4)
 metadata/_edit_group_ = true
 
@@ -1540,18 +1520,41 @@ position = Vector2(61, -8)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerPuzzle"]
 shape = SubResource("RectangleShape2D_l4dhq")
 
+[node name="Ground" type="Polygon2D" parent="TriggerPuzzle/CollisionShape2D"]
+position = Vector2(-170, 105.929)
+scale = Vector2(0.402018, 0.428786)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(72.1361, -191.072, 1425.31, -191.072, 1425.31, -303.016, 1106.92, -303.016, 1106.92, -601.533, 430.329, -601.533, 430.329, -303.016, -402.967, -303.016, -402.967, -879.061, 1900.41, -876.729, 1902.9, 403.63, -402.967, 401.298, -402.967, -305.348, 72.1361, -303.016)
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
-[node name="Door" type="RigidBody2D" parent="."]
-position = Vector2(344, -8)
+[node name="Widegrass" type="Sprite2D" parent="."]
+position = Vector2(-17, -20)
+scale = Vector2(0.11541, 0.111304)
+texture = ExtResource("18_tligl")
 
-[node name="Sprite2D" type="Sprite2D" parent="Door"]
-texture = ExtResource("3_t8xgq")
-region_enabled = true
-region_rect = Rect2(80, 48, 16, 47)
+[node name="Widegrass2" type="Sprite2D" parent="."]
+position = Vector2(109.436, -19.1635)
+scale = Vector2(0.119161, 0.110419)
+texture = ExtResource("18_tligl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
-shape = SubResource("RectangleShape2D_msgnx")
+[node name="Widegrass3" type="Sprite2D" parent="."]
+position = Vector2(234, -19)
+scale = Vector2(0.119161, 0.110419)
+texture = ExtResource("18_tligl")
+
+[node name="Widegrass4" type="Sprite2D" parent="."]
+position = Vector2(352, -19)
+scale = Vector2(0.119161, 0.110419)
+texture = ExtResource("18_tligl")
+
+[node name="Widegrass5" type="Sprite2D" parent="."]
+position = Vector2(402, -19)
+scale = Vector2(0.119161, 0.110419)
+texture = ExtResource("18_tligl")
+
+[node name="Door" parent="." instance=ExtResource("19_w7cvm")]
+position = Vector2(346, -9)
 
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
