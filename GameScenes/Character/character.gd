@@ -33,8 +33,10 @@ var dying := false
 var sprite_type := randi_range(DEFAULT, BALD)
 var stored_fall := 0.0
 
-func _ready() -> void:
+func _init() -> void:
 	GlobalNodeReferences.character = self
+
+func _ready() -> void:
 	for hair in $Sprite/Offset/Body/Head.get_children():
 		if str(sprite_type) in hair.name:
 			hair.visible = true
