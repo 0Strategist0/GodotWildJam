@@ -5,14 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://rtg5fu18jxi6" path="res://assets/black.svg" id="2_o7hl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22o52"]
-size = Vector2(12, 3.5)
+size = Vector2(15, 2)
 
 [node name="PlateSwitch" type="Area2D"]
 script = ExtResource("1_tt8tl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(5.96046e-07, 0)
-scale = Vector2(0.0295567, 0.00862069)
+scale = Vector2(0.0369458, 0.00492611)
 texture = ExtResource("2_o7hl0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -21,10 +20,12 @@ shape = SubResource("RectangleShape2D_22o52")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_jn0s7")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(1, -1.605)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-7.51243, 3.20228, -9.90672, 3.87045, -11.2152, 5.29032, -11.5445, 7.64451, 10.0215, 7.6028, 9.51845, 4.72173, 7.96805, 3.32899, 5, 3)
+[node name="Base" type="Node2D" parent="."]
+
+[node name="BaseImage" type="Sprite2D" parent="Base"]
+position = Vector2(3.72529e-09, 4)
+scale = Vector2(0.0589594, 0.0147783)
+texture = ExtResource("2_o7hl0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

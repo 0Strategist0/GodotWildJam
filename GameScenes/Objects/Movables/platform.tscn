@@ -1,17 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfbgqr2bhcf4y"]
+[gd_scene load_steps=6 format=3 uid="uid://cfbgqr2bhcf4y"]
 
-[ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="1_elvti"]
 [ext_resource type="Script" path="res://GameScenes/Objects/Movables/platform.gd" id="1_hxv2q"]
+[ext_resource type="Texture2D" uid="uid://rtg5fu18jxi6" path="res://assets/black.svg" id="2_1bj7b"]
+[ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="3_n3kms"]
+[ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="4_qikmq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyqg7"]
+size = Vector2(50, 12.5)
 
 [node name="Platform" type="AnimatableBody2D"]
 script = ExtResource("1_hxv2q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.90735e-06, 1.90735e-06)
-scale = Vector2(0.15625, 0.15625)
-texture = ExtResource("1_elvti")
+position = Vector2(0, 0.25)
+scale = Vector2(0.123153, 0.0307882)
+texture = ExtResource("2_1bj7b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_jyqg7")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, 1.5)
+
+[node name="EdgeGrassR" type="Sprite2D" parent="Node2D"]
+position = Vector2(25, -8.5)
+scale = Vector2(0.0362091, 0.0362091)
+texture = ExtResource("3_n3kms")
+
+[node name="EdgeGrassL" type="Sprite2D" parent="Node2D"]
+position = Vector2(-25, -8.5)
+scale = Vector2(0.0362091, 0.0362091)
+texture = ExtResource("3_n3kms")
+flip_h = true
+
+[node name="WideGrass" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, -21.5)
+scale = Vector2(0.0434509, 0.0434509)
+texture = ExtResource("4_qikmq")
