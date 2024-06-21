@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d12nhxwkqht6p" path="res://GameScenes/Objects/Teleporter/offset_glow.png" id="4_fisqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23hte"]
-size = Vector2(20, 1)
+size = Vector2(20, 3.69953)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vrr6x"]
 
@@ -16,7 +16,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 script = ExtResource("1_d5yqh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 9.5)
+position = Vector2(0, 9.09976)
 shape = SubResource("RectangleShape2D_23hte")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
