@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://dacsy0tlg3bnv" path="res://GameScenes/Levels/tree5.svg" id="12_iuqew"]
 [ext_resource type="Texture2D" uid="uid://dxlsgicrxt3ev" path="res://GameScenes/Levels/tree6.svg" id="13_eqoxt"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="16_7xwwd"]
-[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="16_lu1un"]
 [ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="16_lu1un"]
 [ext_resource type="PackedScene" uid="uid://bqenn1xn8mpei" path="res://GameScenes/Objects/Blocks/pullable_object.tscn" id="16_voneb"]
 [ext_resource type="PackedScene" uid="uid://b0kxtk2p027ml" path="res://GameScenes/Levels/level_b1.tscn" id="17_jj2ig"]
@@ -1119,11 +1118,13 @@ position = Vector2(-177, -16)
 
 [node name="Platform" parent="." node_paths=PackedStringArray("points") instance=ExtResource("17_yv7id")]
 position = Vector2(-84, -63)
-points = [NodePath("../Marker2D")]
+points = [NodePath("../Marker2D"), NodePath("../Marker2D6")]
+
+[node name="Marker2D6" type="Marker2D" parent="."]
+position = Vector2(-84, -63)
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(117, -63)
-gizmo_extents = 0.0
+position = Vector2(160, -63)
 
 [node name="Pushable Object" parent="." instance=ExtResource("18_acb72")]
 position = Vector2(424, -56)
@@ -1168,10 +1169,13 @@ polygon = PackedVector2Array(996.173, -505.827, 996.176, 1414.14, 2184.16, 1414.
 [node name="Platform2" parent="." node_paths=PackedStringArray("points") instance=ExtResource("17_yv7id")]
 position = Vector2(459, 294.5)
 uses_switch = true
-points = [NodePath("../Marker2D2")]
+points = [NodePath("../Marker2D2"), NodePath("../Marker2D5")]
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(459, 294.5)
 
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(579, 215.5)
+position = Vector2(576, 214)
 
 [node name="Pushable Object3" parent="." instance=ExtResource("23_3kpo7")]
 position = Vector2(474, -73)
@@ -1179,11 +1183,16 @@ position = Vector2(474, -73)
 [node name="PlateSwitch" parent="." instance=ExtResource("24_nbuvh")]
 position = Vector2(566, -133)
 
-[node name="Platform3" parent="." instance=ExtResource("17_yv7id")]
+[node name="Platform3" parent="." node_paths=PackedStringArray("points") instance=ExtResource("17_yv7id")]
+position = Vector2(911, -121)
+uses_switch = true
+points = [NodePath("../Marker2D3"), NodePath("../Marker2D4")]
+
+[node name="Marker2D4" type="Marker2D" parent="."]
 position = Vector2(911, -121)
 
 [node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(738, -121)
+position = Vector2(728, -121)
 
 [node name="Pullable Object2" parent="." instance=ExtResource("16_voneb")]
 position = Vector2(630, -137)
@@ -1325,3 +1334,5 @@ position = Vector2(920, -72)
 position = Vector2(936, -72)
 
 [connection signal="lever_toggled" from="LeverSwitch" to="Platform2" method="_on_lever_switch_lever_toggled"]
+[connection signal="body_entered" from="PlateSwitch" to="Platform3" method="_on_plate_switch_body_entered"]
+[connection signal="body_exited" from="PlateSwitch" to="Platform3" method="_on_plate_switch_body_exited"]
