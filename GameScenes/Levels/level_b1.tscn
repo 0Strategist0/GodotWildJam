@@ -1757,7 +1757,7 @@ texture = ExtResource("13_rqpxb")
 polygon = PackedVector2Array(-672, 209, -642, 191, -598, 192, -524, 143, -427, 147, -384, 172, -316, 166, -275, 151, -214, 144, -117, 142, -32, 112, 28, 113, 145, 137, 270, 144, 367, 96, 516, 135, 603, 141, 647, 122, 674, 128, 679, 222, 689, 352, -682, 382)
 
 [node name="FogLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-539, 76)
+position = Vector2(461, 76)
 motion_scale = Vector2(0.6, 0.6)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
