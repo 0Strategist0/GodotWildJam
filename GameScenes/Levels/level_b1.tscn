@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_843t4"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="2_w6cac"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="3_yy0pf"]
-[ext_resource type="PackedScene" uid="uid://cusycd8j05p7" path="res://GameScenes/death_area.tscn" id="4_ar3wq"]
 [ext_resource type="Script" path="res://GameScenes/Levels/Hunter.gd" id="4_3lx7n"]
+[ext_resource type="PackedScene" uid="uid://cusycd8j05p7" path="res://GameScenes/death_area.tscn" id="4_ar3wq"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="5_j855o"]
 [ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="7_ebtph"]
-[ext_resource type="Texture2D" uid="uid://bmaibao06omck" path="res://GameScenes/Levels/spikes.svg" id="8_kmitc"]
 [ext_resource type="AudioStream" uid="uid://bthw6tqyuqxot" path="res://GameScenes/Hunter/demonic-woman-scream-6333.mp3" id="8_f45xk"]
 [ext_resource type="PackedScene" uid="uid://bodgm7uio32y" path="res://GameScenes/Hunter/hunter.tscn" id="8_hdbob"]
+[ext_resource type="Texture2D" uid="uid://bmaibao06omck" path="res://GameScenes/Levels/spikes.svg" id="8_kmitc"]
 [ext_resource type="Texture2D" uid="uid://bb2eted15mh1c" path="res://GameScenes/Levels/tree2.svg" id="9_4rkkt"]
 [ext_resource type="Texture2D" uid="uid://cosfl00qlxjvc" path="res://GameScenes/Levels/tree3.svg" id="10_0mfvu"]
 [ext_resource type="Texture2D" uid="uid://d15mivc2vfwgv" path="res://GameScenes/Levels/tree4.svg" id="11_7lhyu"]
@@ -645,6 +645,18 @@ tracks/17/keys = {
 "update": 0,
 "values": [0.9, 0.9, 0.8]
 }
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath(".:monitoring")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_vinwb"]
 length = 0.001
@@ -863,6 +875,18 @@ tracks/17/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.9]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath(".:monitoring")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h3y14"]
@@ -1913,6 +1937,22 @@ position = Vector2(1330, -149)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("20_rqtdn")
 
+[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20755" to="TileMap/@Area2D@20755" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20756" to="TileMap/@Area2D@20756" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20757" to="TileMap/@Area2D@20757" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20758" to="TileMap/@Area2D@20758" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20759" to="TileMap/@Area2D@20759" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20760" to="TileMap/@Area2D@20760" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20761" to="TileMap/@Area2D@20761" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20762" to="TileMap/@Area2D@20762" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20763" to="TileMap/@Area2D@20763" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20764" to="TileMap/@Area2D@20764" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20765" to="TileMap/@Area2D@20765" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20766" to="TileMap/@Area2D@20766" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20767" to="TileMap/@Area2D@20767" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20768" to="TileMap/@Area2D@20768" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20769" to="TileMap/@Area2D@20769" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
 
