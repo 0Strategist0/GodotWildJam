@@ -7,6 +7,9 @@ func _ready() -> void:
 	var bodies : Dictionary = (Progress.bodies[get_meta("level")] 
 			if Progress.bodies.has(get_meta("level")) else {})
 	
+	for fog in get_tree().get_nodes_in_group("fog"):
+		fog.visible = Settings.fog
+	
 	# Spawn each body in the correct place and direction
 	for location: Vector2 in bodies.keys():
 		var new_body := DEAD_CHARACTER_SCENE.instantiate()

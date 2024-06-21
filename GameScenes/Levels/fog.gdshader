@@ -4,8 +4,6 @@ render_mode unshaded;
 uniform float speed = 1.0;
 uniform vec2 scale = vec2(1.0, 1.0);
 
-const float MIN_STAR_COL = 0.9;
-
 // One iteration of one at a time hashing
 uint hash(uint x) 
 {
@@ -38,10 +36,10 @@ float floatConstruct(uint m) {
     return f - 1.0;                        //  Range [0:1]
 }
 // Returns a random float
-float rand(float seed) {
-// 	return texture(randTexture, fract(vec2(seed) / 300.0)).r;
-	return floatConstruct(hash(floatBitsToUint(seed)));
-}
+//float rand(float seed) {
+//// 	return texture(randTexture, fract(vec2(seed) / 300.0)).r;
+	//return floatConstruct(hash(floatBitsToUint(seed)));
+//}
 // Using the hash, converts a vec2 to a uvec2, hashes it, the returns a float
 float rand2(vec2 v) 
 { 
@@ -54,40 +52,60 @@ float rand3(vec3 v) {
 	return floatConstruct(hash3(floatBitsToUint(v))); 
 }
 
-float perlinNoise(vec3 vector) 
+float perlinNoise(vec2 vector) 
 {
-	vec3 square = floor(vector);
-	vec3 pos = fract(vector);
+	vec2 square = floor(vector);
+	vec2 pos = fract(vector);
 	
-	vec3 pt1 = vec3(rand3(square) * 2.0 - 1.0, rand3(square + vec3(0.1)) * 2.0 - 1.0, rand3(square - vec3(0.1)) * 2.0 - 1.0);
-	vec3 pt2 = vec3(rand3(square + vec3(1.0, 0.0, 0.0)) * 2.0 - 1.0, rand3(square + vec3(1.0, 0.0, 0.0) + vec3(0.1)) * 2.0 - 1.0, rand3(square + vec3(1.0, 0.0, 0.0) - vec3(0.1)) * 2.0 - 1.0);
-	vec3 pt3 = vec3(rand3(square + vec3(0.0, 1.0, 0.0)) * 2.0 - 1.0, rand3(square + vec3(0.0, 1.0, 0.0) + vec3(0.1)) * 2.0 - 1.0, rand3(square + vec3(0.0, 1.0, 0.0) - vec3(0.1)) * 2.0 - 1.0);
-	vec3 pt4 = vec3(rand3(square + vec3(1.0, 1.0, 0.0)) * 2.0 - 1.0, rand3(square + vec3(1.0, 1.0, 0.0) + vec3(0.1)) * 2.0 - 1.0, rand3(square + vec3(1.0, 1.0, 0.0) - vec3(0.1)) * 2.0 - 1.0);
-	vec3 pt5 = vec3(rand3(square + vec3(0.0, 0.0, 1.0)) * 2.0 - 1.0, rand3(square + vec3(0.0, 0.0, 1.0) + vec3(0.1)) * 2.0 - 1.0, rand3(square + vec3(0.0, 0.0, 1.0) - vec3(0.1)) * 2.0 - 1.0);
-	vec3 pt6 = vec3(rand3(square + vec3(1.0, 0.0, 1.0)) * 2.0 - 1.0, rand3(square + vec3(1.0, 0.0, 1.0) + vec3(0.1)) * 2.0 - 1.0, rand3(square + vec3(1.0, 0.0, 1.0) - vec3(0.1)) * 2.0 - 1.0);
-	vec3 pt7 = vec3(rand3(square + vec3(0.0, 1.0, 1.0)) * 2.0 - 1.0, rand3(square + vec3(0.0, 1.0, 1.0) + vec3(0.1)) * 2.0 - 1.0, rand3(square + vec3(0.0, 1.0, 1.0) - vec3(0.1)) * 2.0 - 1.0);
-	vec3 pt8 = vec3(rand3(square + vec3(1.0, 1.0, 1.0)) * 2.0 - 1.0, rand3(square + vec3(1.0, 1.0, 1.0) + vec3(0.1)) * 2.0 - 1.0, rand3(square + vec3(1.0, 1.0, 1.0) - vec3(0.1)) * 2.0 - 1.0);
+	vec2 pt1 = vec2(rand2(square) * 2.0 - 1.0, rand2(square + vec2(0.1)) * 2.0 - 1.0);
+	vec2 pt2 = vec2(rand2(square + vec2(1.0, 0.0)) * 2.0 - 1.0, rand2(square + vec2(1.0, 0.0) + vec2(0.1)) * 2.0 - 1.0);
+	vec2 pt3 = vec2(rand2(square + vec2(0.0, 1.0)) * 2.0 - 1.0, rand2(square + vec2(0.0, 1.0) + vec2(0.1)) * 2.0 - 1.0);
+	vec2 pt4 = vec2(rand2(square + vec2(1.0, 1.0)) * 2.0 - 1.0, rand2(square + vec2(1.0, 1.0) + vec2(0.1)) * 2.0 - 1.0);
 	
-	return 	0.5 + 0.5 * (
+	return 0.5 + 0.5 * (
 				mix(
-					mix(
-						mix(dot(pt1, pos - vec3(0.0, 0.0, 0.0)), dot(pt2, pos - vec3(1.0, 0.0, 0.0)), smoothstep(0.0, 1.0, pos.x)), 
-						mix(dot(pt3, pos - vec3(0.0, 1.0, 0.0)), dot(pt4, pos - vec3(1.0, 1.0, 0.0)), smoothstep(0.0, 1.0, pos.x)), 
+						mix(dot(pt1, pos - vec2(0.0, 0.0)), dot(pt2, pos - vec2(1.0, 0.0)), smoothstep(0.0, 1.0, pos.x)), 
+						mix(dot(pt3, pos - vec2(0.0, 1.0)), dot(pt4, pos - vec2(1.0, 1.0)), smoothstep(0.0, 1.0, pos.x)), 
 						smoothstep(0.0, 1.0, pos.y)
-					), 
-					mix(
-						mix(dot(pt5, pos - vec3(0.0, 0.0, 1.0)), dot(pt6, pos - vec3(1.0, 0.0, 1.0)), smoothstep(0.0, 1.0, pos.x)), 
-						mix(dot(pt7, pos - vec3(0.0, 1.0, 1.0)), dot(pt8, pos - vec3(1.0, 1.0, 1.0)), smoothstep(0.0, 1.0, pos.x)), 
-						smoothstep(0.0, 1.0, pos.y)
-					), 
-					smoothstep(0.0, 1.0, pos.z)
 				)
 			);
 }
-float fbm(vec3 vector) 
+
+//float perlinNoise(vec3 vector) 
+//{
+	//vec3 square = floor(vector);
+	//vec3 pos = fract(vector);
+	//
+	//vec3 pt1 = vec3(rand3(square) * 2.0 - 1.0, rand3(square + vec3(0.1)) * 2.0 - 1.0, rand3(square - vec3(0.1)) * 2.0 - 1.0);
+	//vec3 pt2 = vec3(rand3(square + vec3(1.0, 0.0, 0.0)) * 2.0 - 1.0, rand3(square + vec3(1.0, 0.0, 0.0) + vec3(0.1)) * 2.0 - 1.0, rand3(square + vec3(1.0, 0.0, 0.0) - vec3(0.1)) * 2.0 - 1.0);
+	//vec3 pt3 = vec3(rand3(square + vec3(0.0, 1.0, 0.0)) * 2.0 - 1.0, rand3(square + vec3(0.0, 1.0, 0.0) + vec3(0.1)) * 2.0 - 1.0, rand3(square + vec3(0.0, 1.0, 0.0) - vec3(0.1)) * 2.0 - 1.0);
+	//vec3 pt4 = vec3(rand3(square + vec3(1.0, 1.0, 0.0)) * 2.0 - 1.0, rand3(square + vec3(1.0, 1.0, 0.0) + vec3(0.1)) * 2.0 - 1.0, rand3(square + vec3(1.0, 1.0, 0.0) - vec3(0.1)) * 2.0 - 1.0);
+	//vec3 pt5 = vec3(rand3(square + vec3(0.0, 0.0, 1.0)) * 2.0 - 1.0, rand3(square + vec3(0.0, 0.0, 1.0) + vec3(0.1)) * 2.0 - 1.0, rand3(square + vec3(0.0, 0.0, 1.0) - vec3(0.1)) * 2.0 - 1.0);
+	//vec3 pt6 = vec3(rand3(square + vec3(1.0, 0.0, 1.0)) * 2.0 - 1.0, rand3(square + vec3(1.0, 0.0, 1.0) + vec3(0.1)) * 2.0 - 1.0, rand3(square + vec3(1.0, 0.0, 1.0) - vec3(0.1)) * 2.0 - 1.0);
+	//vec3 pt7 = vec3(rand3(square + vec3(0.0, 1.0, 1.0)) * 2.0 - 1.0, rand3(square + vec3(0.0, 1.0, 1.0) + vec3(0.1)) * 2.0 - 1.0, rand3(square + vec3(0.0, 1.0, 1.0) - vec3(0.1)) * 2.0 - 1.0);
+	//vec3 pt8 = vec3(rand3(square + vec3(1.0, 1.0, 1.0)) * 2.0 - 1.0, rand3(square + vec3(1.0, 1.0, 1.0) + vec3(0.1)) * 2.0 - 1.0, rand3(square + vec3(1.0, 1.0, 1.0) - vec3(0.1)) * 2.0 - 1.0);
+	//
+	//return 	0.5 + 0.5 * (
+				//mix(
+					//mix(
+						//mix(dot(pt1, pos - vec3(0.0, 0.0, 0.0)), dot(pt2, pos - vec3(1.0, 0.0, 0.0)), smoothstep(0.0, 1.0, pos.x)), 
+						//mix(dot(pt3, pos - vec3(0.0, 1.0, 0.0)), dot(pt4, pos - vec3(1.0, 1.0, 0.0)), smoothstep(0.0, 1.0, pos.x)), 
+						//smoothstep(0.0, 1.0, pos.y)
+					//), 
+					//mix(
+						//mix(dot(pt5, pos - vec3(0.0, 0.0, 1.0)), dot(pt6, pos - vec3(1.0, 0.0, 1.0)), smoothstep(0.0, 1.0, pos.x)), 
+						//mix(dot(pt7, pos - vec3(0.0, 1.0, 1.0)), dot(pt8, pos - vec3(1.0, 1.0, 1.0)), smoothstep(0.0, 1.0, pos.x)), 
+						//smoothstep(0.0, 1.0, pos.y)
+					//), 
+					//smoothstep(0.0, 1.0, pos.z)
+				//)
+			//);
+//}
+
+float fbm(vec2 vector) 
 {
 	const int OCTAVES = 2;
-	const float LACUNARITY = 1.8;
+	const float LACUNARITY = 2.0;
 	const float GAIN = 0.5;
 	
 	float value = 0.0;
@@ -105,10 +123,38 @@ float fbm(vec3 vector)
 	return value / normalizer;
 }
 
+//float fbm(vec3 vector) 
+//{
+	//const int OCTAVES = 2;
+	//const float LACUNARITY = 1.8;
+	//const float GAIN = 0.5;
+	//
+	//float value = 0.0;
+	//float amplitude = GAIN;
+	//float normalizer = 0.0;
+	//
+	//for (int index = 0; index < OCTAVES; index ++)
+	//{
+		//normalizer += amplitude;
+		//value += amplitude * perlinNoise(vector);
+		//vector *= LACUNARITY;
+		//amplitude *= GAIN;
+	//}
+	//
+	//return value / normalizer;
+//}
+
+vec2 wiggle(vec2 input, float time) {
+	const float WIGGLE_INTENSITY = 0.15;
+	const float WAVENUMBER = 2.0;
+	const float SPEED = 0.5;
+	
+	return vec2(input.x + WIGGLE_INTENSITY * sin(WAVENUMBER * (input.y - SPEED * time)), input.y + WIGGLE_INTENSITY * cos(WAVENUMBER * (input.x - SPEED * time)));
+}
 
 void fragment() {
 	// Add background nebula
-	float nebula = fbm(vec3(100.0 * UV.xy / scale, 0.5 * TIME * speed));
+	float nebula = fbm(wiggle(100.0 * UV.xy / scale, TIME));
 	
 	// Assign the colour to the screen
 	COLOR = vec4(vec3(1.0), pow(smoothstep(0.0, 1.0, nebula), 2.0) * smoothstep(0.0, 1.0, UV.y));
