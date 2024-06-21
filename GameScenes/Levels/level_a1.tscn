@@ -1309,9 +1309,12 @@ next_level = ExtResource("5_iircx")
 [node name="Marker2D" type="Marker2D" parent="FirstBridgePlatform"]
 position = Vector2(374, -26)
 
+[node name="Marker2D2" type="Marker2D" parent="FirstBridgePlatform"]
+position = Vector2(218, -26)
+
 [node name="Platform" parent="FirstBridgePlatform" node_paths=PackedStringArray("points") instance=ExtResource("14_cs0gd")]
 position = Vector2(218, -26)
-points = [NodePath("../Marker2D")]
+points = [NodePath("../Marker2D"), NodePath("../Marker2D2")]
 
 [node name="FirstLeverPlatform" type="Node2D" parent="."]
 
@@ -1321,10 +1324,13 @@ position = Vector2(645, -42)
 [node name="Marker2D" type="Marker2D" parent="FirstLeverPlatform"]
 position = Vector2(702, -44)
 
+[node name="Marker2D2" type="Marker2D" parent="FirstLeverPlatform"]
+position = Vector2(702, -122)
+
 [node name="Platform" parent="FirstLeverPlatform" node_paths=PackedStringArray("points") instance=ExtResource("14_cs0gd")]
 position = Vector2(702, -122)
 uses_switch = true
-points = [NodePath("../Marker2D")]
+points = [NodePath("../Marker2D"), NodePath("../Marker2D2")]
 speed = 30
 
 [node name="Decorations" type="Node2D" parent="."]
