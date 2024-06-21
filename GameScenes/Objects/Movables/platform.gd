@@ -11,6 +11,7 @@ var movable: bool = true
 var objects_in_zone_counter: int = 0
 
 # Variables used for moving calculation
+var activated: bool = false
 var currently_moving: bool = false
 var next_point_idx: int = 0
 
@@ -23,7 +24,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if not uses_switch:
+	if not uses_switch or activated:
 		_move()
 
 
@@ -60,14 +61,14 @@ func on_tween_finished() -> void:
 func _on_plate_switch_body_entered(_body: Node2D) -> void:
 	objects_in_zone_counter += 1
 	if objects_in_zone_counter == 1:
-		_move()
+		activated = true
 
 
 func _on_plate_switch_body_exited(_body: Node2D) -> void:
 	objects_in_zone_counter -= 1
 	if objects_in_zone_counter == 0:
-		_move()
+		activated = false
 
 
 func _on_lever_switch_lever_toggled(_number: int) -> void:
-	_move() 
+	activated = !activated
