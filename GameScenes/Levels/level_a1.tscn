@@ -184,7 +184,7 @@ layer_0/tile_data = PackedInt32Array(131078, 0, 0, 131077, 0, 0, 131076, 0, 0, 1
 position = Vector2(-170, 105.929)
 scale = Vector2(0.402018, 0.428786)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-671.612, -135.099, 223.871, -135.099, 223.871, -172.414, 701.461, -172.414, 701.461, -135.099, 2910.32, -135.099, 2910.32, 517.908, -671.612, 517.908)
+polygon = PackedVector2Array(223.871, -172.414, 701.461, -172.414, 701.461, 499.251, 223.871, 499.251)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 script = ExtResource("3_3n02r")
@@ -193,10 +193,6 @@ tilemap_nodepath = NodePath("../TileMap")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(16, 40)
 shape = SubResource("RectangleShape2D_600fi")
-
-[node name="TransitionArea" parent="." instance=ExtResource("4_22sb1")]
-position = Vector2(96, 16)
-next_level = ExtResource("5_iircx")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -807,3 +803,9 @@ metadata/_edit_group_ = true
 material = SubResource("ShaderMaterial_m0vwu")
 scale = Vector2(10, 1)
 texture = ExtResource("12_oe37a")
+
+[node name="Transitions" type="Node2D" parent="."]
+
+[node name="GoToB1" parent="Transitions" instance=ExtResource("4_22sb1")]
+position = Vector2(96, 16)
+next_level = ExtResource("5_iircx")

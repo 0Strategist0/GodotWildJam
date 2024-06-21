@@ -685,6 +685,7 @@ metadata/level = 1
 
 [node name="Character" parent="." instance=ExtResource("2_w6cac")]
 z_index = 2
+position = Vector2(0, 4)
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 zoom = Vector2(7, 7)
