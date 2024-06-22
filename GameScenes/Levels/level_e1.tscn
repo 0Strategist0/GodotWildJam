@@ -1206,9 +1206,6 @@ texture = ExtResource("7_c714f")
 [node name="Character" parent="." instance=ExtResource("9_767c3")]
 position = Vector2(263, -284)
 
-[node name="Camera2D" type="Camera2D" parent="Character"]
-zoom = Vector2(7, 7)
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_il5md")
 format = 2

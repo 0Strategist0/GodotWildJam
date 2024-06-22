@@ -782,9 +782,6 @@ texture = ExtResource("12_c4el8")
 [node name="Character" parent="." instance=ExtResource("1_sm00s")]
 position = Vector2(8, 24)
 
-[node name="Camera2D" type="Camera2D" parent="Character"]
-zoom = Vector2(7, 7)
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_qbglg")
 format = 2

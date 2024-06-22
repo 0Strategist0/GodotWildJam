@@ -2,9 +2,7 @@ extends CharacterBody2D
 
 enum {DEFAULT, BOB, MESSY, CURLY, PONY, BALD}
 
-const SPEED := 100.0
 const ACCELERATION := 0.3 # out of 0.0 to 1.0
-const CLIMB_SPEED := 50.0
 const JUMP_VELOCITY := -300.0
 const MAX_FALL_SPEED := 500.0
 const MAX_COYOTE_TIME := 0.2
@@ -13,14 +11,24 @@ const IDLE_SPEED_SQUARED := 100.0
 const FLIP_SPEED := 1.0
 const MIN_SPEED := 80
 
+const FAST_SPEED_MULTIPLE := 1.5
+const SMALL_SIZE_MULTIPLE := 0.7
+const FAT_SPEED_MULTIPLE := 0.75
+const HARD_FALL_SCALE := 300.0
+const HARD_FALL_TIME := 0.2
+
 @onready var character_area := $CharacterArea
 @onready var state_machine : AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/StateMachine/playback")
 @onready var sprite := $Sprite
+@onready var camera := $Camera2D
 
 @export var can_jump: bool = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var speed := 100.0
+var climb_speed := 50.0
+var climbing_object : Area2D
 var climbing := false
 var peaked := false
 var bottomed := false
@@ -32,11 +40,40 @@ var stored_speed := 0.0
 var dying := false
 var sprite_type := randi_range(DEFAULT, BALD)
 var stored_fall := 0.0
-var is_fat := true
+var is_fat := false
+var is_strong := false
 
 
 func _ready() -> void:
 	GlobalNodeReferences.character = self
+	
+	# Initialize with attributes
+	print("fat: ", CharacterAttributes.fat)
+	print("fast: ", CharacterAttributes.fast)
+	print("strong: ", CharacterAttributes.strong)
+	print("small: ", CharacterAttributes.small)
+	# Fatness
+	is_fat = CharacterAttributes.fat
+	if CharacterAttributes.fat:
+		speed *= FAT_SPEED_MULTIPLE
+		climb_speed *= FAT_SPEED_MULTIPLE
+	for fat in $Sprite/Offset/Body.find_children("*Fat*"):
+		fat.visible = is_fat
+	# Speediness
+	if CharacterAttributes.fast:
+		speed *= FAST_SPEED_MULTIPLE
+		climb_speed *= FAST_SPEED_MULTIPLE
+	# Strength
+	is_strong = CharacterAttributes.strong
+	# Smallness
+	if CharacterAttributes.small:
+		sprite.scale *= SMALL_SIZE_MULTIPLE
+		$CollisionShape2D.shape.radius *= SMALL_SIZE_MULTIPLE
+		$CollisionShape2D.shape.height *= SMALL_SIZE_MULTIPLE
+		for collision in [$CollisionShape2D, $CharacterArea/CollisionShape2D]:
+			collision.position.y += (1.0 - SMALL_SIZE_MULTIPLE) * 4.5
+	# Hair
+	sprite_type = CharacterAttributes.hair
 	for hair in $Sprite/Offset/Body/Head.get_children():
 		if str(sprite_type) in hair.name:
 			hair.visible = true
@@ -61,6 +98,7 @@ func _physics_process(delta: float) -> void:
 		var overlapping_areas : Array = character_area.get_overlapping_areas()
 		for area: Area2D in overlapping_areas:
 			if area.is_in_group("climbable"):
+				climbing_object = area
 				climbing = true
 				peaked = false
 				bottomed = false
@@ -80,9 +118,9 @@ func _physics_process(delta: float) -> void:
 	# Climb or add gravity
 	if climbing:
 		if Input.is_action_pressed("up") and not peaked:
-			velocity.y = -CLIMB_SPEED
+			velocity.y = -climb_speed
 		elif Input.is_action_pressed("down") and not bottomed:
-			velocity.y = CLIMB_SPEED
+			velocity.y = climb_speed
 		else:
 			velocity.y = 0.0
 	elif not is_on_floor():
@@ -107,19 +145,33 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 			climbing = false
 			jumped = true
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	if not climbing:
 		var direction := Input.get_axis("left", "right")
 		if direction:
-			velocity.x = lerp(velocity.x, direction * SPEED, 
+			velocity.x = lerp(velocity.x, direction * speed, 
 					pow(ACCELERATION, 60.0 * delta))
 		else:
 			velocity.x = lerp(velocity.x, 0.0, pow(ACCELERATION, 60.0 * delta))
 	else:
 		velocity.x = 0.0
 	
+	# TEMP DEV HAX
+	if Input.is_action_pressed("devhax"):
+		if Input.is_action_pressed("jump"):
+			velocity.y = JUMP_VELOCITY
+		var direction := Input.get_axis("left", "right")
+		if direction:
+			velocity.x = lerp(velocity.x, direction * speed * 4.0, 
+					pow(ACCELERATION, 60.0 * delta))
+		else:
+			velocity.x = lerp(velocity.x, 0.0, pow(ACCELERATION, 60.0 * delta))
+	
+	#var pre_move_velocity = velocity.y
 	move_and_slide()
+	#if is_fat and is_on_floor() and pre_move_velocity > 0.0:
+		#camera.shake(pow(pre_move_velocity / HARD_FALL_SCALE, 3.0), HARD_FALL_TIME)
 	
 	# Shove & destroy blocks
 	if lockout > 0.0:
@@ -150,6 +202,8 @@ func _physics_process(delta: float) -> void:
 	stored_fall = velocity.y
 	
 	# Animate based on motion
+	if climbing:
+		sprite.scale.x = sign(climbing_object.global_position.x - global_position.x) * abs(sprite.scale.x)
 	if velocity.x > FLIP_SPEED:
 		sprite.scale.x = abs(sprite.scale.x)
 	elif velocity.x < -FLIP_SPEED:
@@ -175,11 +229,13 @@ func kill() -> void:
 		# Code to save the body position when you die
 		if not Progress.bodies.has(owner.get_meta("level")):
 			Progress.bodies[owner.get_meta("level")] = {position: {"direction": sign(sprite.scale.x), 
-					"type": sprite_type}}
+					"type": sprite_type, "size": SMALL_SIZE_MULTIPLE if CharacterAttributes.small else 1.0,
+					"fat": is_fat}}
 		else:
 			Progress.bodies[owner.get_meta("level")][position] = {"direction": sign(sprite.scale.x), 
-					"type": sprite_type}
-		
+					"type": sprite_type, "size": SMALL_SIZE_MULTIPLE if CharacterAttributes.small else 1.0,
+					"fat": is_fat}
+		CharacterAttributes.randomize_attributes()
 		var reloaded_scene : Node2D = load("uid://b0kxtk2p027ml").instantiate()
 		GlobalNodeReferences.main.call_deferred("add_child", reloaded_scene)
 		owner.queue_free()

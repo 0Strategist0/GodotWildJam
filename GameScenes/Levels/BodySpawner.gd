@@ -15,6 +15,7 @@ func _ready() -> void:
 		var new_body := DEAD_CHARACTER_SCENE.instantiate()
 		var direction : float = bodies[location].direction
 		var hair_type : int = bodies[location].type
+		
 		for child in new_body.get_children():
 			if child.get_class() == "Node2D":
 				child.scale.x = direction
@@ -23,10 +24,19 @@ func _ready() -> void:
 						hair.visible = true
 					else:
 						hair.visible = false
+				for fat in child.find_children("*Fat*"):
+					fat.visible = bodies[location].fat
 			elif child is CollisionShape2D:
+				child.position *= bodies[location].size
+				if child.shape.get("size") != null:
+					child.shape.size *= bodies[location].size
+				if child.shape.get("radius") != null:
+					child.shape.radius *= bodies[location].size
 				if child.get_meta("direction", 0.0) == direction:
 					child.disabled = false
 				else:
 					child.disabled = true
+		
+		new_body.get_node("Offset").scale *= bodies[location].size
 		new_body.position = location
 		add_child(new_body)

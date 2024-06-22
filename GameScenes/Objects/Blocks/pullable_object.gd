@@ -46,6 +46,6 @@ func _on_interact() -> void:
 	
 
 
-func _on_interaction_area_body_exited(body):
+func _on_interaction_area_body_exited(_body: Node2D) -> void:
 	selected = false
 	GlobalNodeReferences.character.can_jump = true

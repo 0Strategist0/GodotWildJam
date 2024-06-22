@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cfhbexmwfpwh" path="res://GameScenes/position_saver.tscn" id="18_ssa27"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="19_jlvb2"]
 [ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="20_rqtdn"]
-[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="24_vpq12"]
+[ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="24_vpq12"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yokt"]
 texture = ExtResource("3_yy0pf")
@@ -1052,9 +1052,6 @@ metadata/level = "b1"
 [node name="Character" parent="." instance=ExtResource("2_w6cac")]
 z_index = 2
 position = Vector2(0, 4)
-
-[node name="Camera2D" type="Camera2D" parent="Character"]
-zoom = Vector2(7, 7)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_i5pvu")

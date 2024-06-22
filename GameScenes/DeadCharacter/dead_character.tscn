@@ -3,12 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://b373kfvbfcsgd" path="res://GameScenes/Character/character_sprite.tscn" id="1_kqa8x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5whgy"]
+resource_local_to_scene = true
 size = Vector2(4, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obbdv"]
+resource_local_to_scene = true
 size = Vector2(6.66234, 4.55406)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3e4wm"]
+resource_local_to_scene = true
 radius = 4.0
 
 [node name="DeadCharacter" type="RigidBody2D"]

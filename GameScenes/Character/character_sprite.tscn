@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b373kfvbfcsgd"]
+[gd_scene load_steps=3 format=3 uid="uid://b373kfvbfcsgd"]
 
 [ext_resource type="Texture2D" uid="uid://domldt6yjwfks" path="res://GameScenes/Character/CharacterSprite.svg" id="1_ii4tw"]
+[ext_resource type="Texture2D" uid="uid://d0o2tabx334rc" path="res://GameScenes/Character/FAT.svg" id="2_3ai2l"]
 
 [node name="Sprite" type="Node2D"]
 position = Vector2(2.08165e-12, 5.5)
@@ -107,6 +108,13 @@ texture = ExtResource("1_ii4tw")
 polygon = PackedVector2Array(345.076, 556.274, 289.394, 563.471, 301.894, 605.895, 316.667, 588.092, 348.106, 576.35)
 uv = PackedVector2Array(345.076, 556.274, 289.394, 563.471, 301.894, 605.895, 316.667, 588.092, 348.106, 576.35)
 
+[node name="RFatLeg" type="Polygon2D" parent="Offset/Body/RThigh/RLeg"]
+visible = false
+position = Vector2(24.8327, -5.77375)
+rotation = 0.896244
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-15.9758, 21.1637, -20.6016, 26.1305, -23.3354, 29.7991, -25.4511, 35.0599, -25.8649, 38.5327, -25.7831, 43.6453, -15.391, 48.6317, -3.87176, 24.5696)
+
 [node name="LThigh" type="Polygon2D" parent="Offset/Body"]
 position = Vector2(6, 1)
 rotation = 0.316152
@@ -122,3 +130,35 @@ offset = Vector2(-451, -561)
 texture = ExtResource("1_ii4tw")
 polygon = PackedVector2Array(450.47, 548.139, 436.991, 558.797, 434.483, 599.863, 476.176, 602.371, 472.1, 586.697, 461.442, 579.487, 460.815, 555.349)
 uv = PackedVector2Array(450.47, 548.139, 436.991, 558.797, 434.483, 599.863, 476.176, 602.371, 472.1, 586.697, 461.442, 579.487, 460.815, 555.349)
+
+[node name="LFatLeg2" type="Polygon2D" parent="Offset/Body/LThigh/LLeg"]
+visible = false
+position = Vector2(1.73121, -26.4294)
+rotation = -0.364694
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-15.9758, 21.1637, -20.6016, 26.1305, -23.3354, 29.7991, -25.4511, 35.0599, -25.8649, 38.5327, -25.7831, 43.6453, -15.391, 48.6317, -3.87176, 24.5696)
+
+[node name="BellyFat" type="Sprite2D" parent="Offset/Body"]
+visible = false
+position = Vector2(7.77072, -30.3305)
+scale = Vector2(0.131794, 0.118098)
+texture = ExtResource("2_3ai2l")
+
+[node name="AssFat" type="Sprite2D" parent="Offset/Body"]
+visible = false
+position = Vector2(-8.22453, -7.36226)
+rotation = -0.2793
+scale = Vector2(0.0632604, 0.0610209)
+texture = ExtResource("2_3ai2l")
+
+[node name="NeckFat" type="Polygon2D" parent="Offset/Body"]
+visible = false
+position = Vector2(8, -75)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-19.7019, -14.8252, -23.1901, -11.2982, -23.6949, -7.43684, -23.6677, -2.52614, -21.8877, 2.19946, -19.4207, 4.29046, 18.6789, 11.6213, 24.451, 8.78316, 25.8366, 5.61852, 24.762, 1.59056, 21.5876, -1.54886, 24.3831, -3.49358, 26.9944, -7.01577, 25.9178, -11.3945, 20.6389, -14.5223, 14.1468, -15.0125)
+
+[node name="FrontFat" type="Polygon2D" parent="Offset/Body"]
+visible = false
+position = Vector2(34.478, 3.48064)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-1.67945, -10.9525, -23.9049, 9.14209, -14.2903, 13.2934, -9.2983, 13.1344, -5.23835, 10.7469, -2.76089, 7.31699, -0.810421, 3.62722, 1.78026, -3.08811, 1.75336, -7.94947)
