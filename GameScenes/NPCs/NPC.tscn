@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://cbvluptdpl86h"]
+[gd_scene load_steps=36 format=3 uid="uid://cbvluptdpl86h"]
 
 [ext_resource type="Script" path="res://GameScenes/NPCs/NPC.gd" id="1_7h6d2"]
 [ext_resource type="Script" path="res://Interaction/InteractionArea/interaction_area.gd" id="3_nctbh"]
+[ext_resource type="Texture2D" uid="uid://btknobl706bhp" path="res://GameScenes/NPCs/Hoods.svg" id="4_k2bb8"]
 [ext_resource type="PackedScene" uid="uid://b373kfvbfcsgd" path="res://GameScenes/Character/character_sprite.tscn" id="4_l31ux"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6oyk"]
@@ -644,6 +645,7 @@ nodes/output/position = Vector2(240, 120)
 node_connections = [&"output", 0, &"StateMachine"]
 
 [node name="NPC" type="Node2D"]
+z_index = -1
 scale = Vector2(1, 1.01991)
 script = ExtResource("1_7h6d2")
 
@@ -655,7 +657,42 @@ action_name = "Talk"
 shape = SubResource("CircleShape2D_h6oyk")
 
 [node name="Sprite" parent="." instance=ExtResource("4_l31ux")]
-scale = Vector2(0.14, 0.14)
+position = Vector2(0, 3.92191)
+rotation = 0.0827008
+scale = Vector2(0.17, 0.17)
+metadata/_edit_group_ = true
+
+[node name="Body" parent="Sprite/Offset" index="0"]
+position = Vector2(2.08165e-12, 2)
+rotation = 0.0
+
+[node name="Hood" type="Sprite2D" parent="Sprite/Offset/Body/Head" index="6"]
+show_behind_parent = true
+position = Vector2(-10.5429, -22.4845)
+rotation = -0.00349652
+texture = ExtResource("4_k2bb8")
+
+[node name="RArm" parent="Sprite/Offset/Body" index="1"]
+rotation = -1.92187
+
+[node name="LArm" parent="Sprite/Offset/Body" index="2"]
+rotation = -0.51105
+
+[node name="RThigh" parent="Sprite/Offset/Body" index="3"]
+rotation = -0.337309
+
+[node name="RLeg" parent="Sprite/Offset/Body/RThigh" index="0"]
+rotation = -0.783019
+
+[node name="LThigh" parent="Sprite/Offset/Body" index="4"]
+rotation = 0.0
+
+[node name="LLeg" parent="Sprite/Offset/Body/LThigh" index="0"]
+rotation = 0.0
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite/Offset/Body" index="9"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-13.4243, 0.43504, -20.1925, 7.80119, -24.7708, 57.1307, 10.8949, 55.2695, 46.1957, 46.4144, 27.5497, -36.7679)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -669,3 +706,5 @@ anim_player = NodePath("../AnimationPlayer")
 
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
+
+[editable path="Sprite"]
