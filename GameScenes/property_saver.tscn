@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://0sl86j4i2eum"]
+
+[ext_resource type="Script" path="res://PropertySaver.gd" id="1_nbr8n"]
+
+[node name="PropertySaver" type="Node"]
+script = ExtResource("1_nbr8n")

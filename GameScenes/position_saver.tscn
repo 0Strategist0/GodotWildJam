@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfhbexmwfpwh"]
+[gd_scene load_steps=2 format=3 uid="uid://cj0xscq2hmsxm"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/PositionSaver.gd" id="1_0urbj"]
 
