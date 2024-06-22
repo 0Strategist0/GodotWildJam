@@ -9,6 +9,6 @@ extends Node
 # 				  position_n: sprite_type_n}}
 var bodies := {}
 
-var object_positions := {}
+var object_variables := {}
 
 var triggered_first_hunt := false
