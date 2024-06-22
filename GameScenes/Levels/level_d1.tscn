@@ -1,33 +1,173 @@
-[gd_scene load_steps=32 format=3 uid="uid://bqkwlu556h1em"]
+[gd_scene load_steps=40 format=3 uid="uid://bg1pmqcqol4c1"]
 
-[ext_resource type="Script" path="res://GameScenes/Levels/level_c1.gd" id="1_0csr7"]
-[ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="2_t7x40"]
-[ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="3_t8xgq"]
-[ext_resource type="PackedScene" uid="uid://cusycd8j05p7" path="res://GameScenes/death_area.tscn" id="4_qqb8c"]
-[ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="5_bevru"]
-[ext_resource type="Texture2D" uid="uid://bb2eted15mh1c" path="res://GameScenes/Levels/tree2.svg" id="9_jcgmk"]
-[ext_resource type="Texture2D" uid="uid://cosfl00qlxjvc" path="res://GameScenes/Levels/tree3.svg" id="10_nceme"]
-[ext_resource type="Texture2D" uid="uid://d15mivc2vfwgv" path="res://GameScenes/Levels/tree4.svg" id="11_0fiyk"]
-[ext_resource type="Texture2D" uid="uid://dacsy0tlg3bnv" path="res://GameScenes/Levels/tree5.svg" id="12_iuqew"]
-[ext_resource type="Texture2D" uid="uid://dxlsgicrxt3ev" path="res://GameScenes/Levels/tree6.svg" id="13_eqoxt"]
-[ext_resource type="PackedScene" uid="uid://c7a84huofxckc" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="15_utku5"]
-[ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="16_7xwwd"]
-[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="16_lu1un"]
-[ext_resource type="PackedScene" uid="uid://b0kxtk2p027ml" path="res://GameScenes/Levels/level_b1.tscn" id="17_jj2ig"]
-[ext_resource type="PackedScene" uid="uid://c1tsd86p4rqem" path="res://GameScenes/Objects/Movables/static_platform.tscn" id="17_lcbr7"]
-[ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="18_tligl"]
-[ext_resource type="PackedScene" uid="uid://di53u75kivwsj" path="res://GameScenes/Objects/Movables/door.tscn" id="19_w7cvm"]
+[ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="1_qnh6e"]
+[ext_resource type="Texture2D" uid="uid://bb2eted15mh1c" path="res://GameScenes/Levels/tree2.svg" id="2_j10ek"]
+[ext_resource type="Texture2D" uid="uid://cosfl00qlxjvc" path="res://GameScenes/Levels/tree3.svg" id="3_h6xk2"]
+[ext_resource type="Texture2D" uid="uid://d15mivc2vfwgv" path="res://GameScenes/Levels/tree4.svg" id="4_ntucc"]
+[ext_resource type="Texture2D" uid="uid://dacsy0tlg3bnv" path="res://GameScenes/Levels/tree5.svg" id="5_jjqgw"]
+[ext_resource type="Texture2D" uid="uid://dxlsgicrxt3ev" path="res://GameScenes/Levels/tree6.svg" id="6_lmlbg"]
+[ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="7_qom30"]
+[ext_resource type="Shader" path="res://GameScenes/Levels/fog.gdshader" id="8_kky0l"]
+[ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="9_mci2d"]
+[ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="10_3dr3m"]
+[ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="10_sptpm"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g3vd1"]
-texture = ExtResource("3_t8xgq")
+[sub_resource type="Shader" id="Shader_1dbm7"]
+code = "/*
+Shader from Godot Shaders - the free shader library.
+godotshaders.com/shader/god-rays
+
+Feel free to use, improve and change this shader according to your needs
+and consider sharing the modified result on godotshaders.com.
+*/
+
+shader_type canvas_item;
+
+uniform float angle = -0.3;
+uniform float position = -0.2;
+uniform float spread : hint_range(0.0, 1.0) = 0.5;
+uniform float cutoff : hint_range(-1.0, 1.0) = 0.1;
+uniform float falloff : hint_range(0.0, 1.0) = 0.2;
+uniform float edge_fade : hint_range(0.0, 1.0) = 0.15;
+
+uniform float speed = 1.0;
+uniform float ray1_density = 8.0;
+uniform float ray2_density = 30.0;
+uniform float ray2_intensity : hint_range(0.0, 1.0) = 0.3;
+
+uniform vec4 color : source_color = vec4(1.0, 0.9, 0.65, 0.8);
+
+uniform bool hdr = false;
+uniform float seed = 5.0;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+// Random and noise functions from Book of Shader's chapter on Noise.
+float random(vec2 _uv) {
+    return fract(sin(dot(_uv.xy,
+                         vec2(12.9898, 78.233))) *
+        43758.5453123);
+}
+
+float noise (in vec2 uv) {
+    vec2 i = floor(uv);
+    vec2 f = fract(uv);
+
+    // Four corners in 2D of a tile
+    float a = random(i);
+    float b = random(i + vec2(1.0, 0.0));
+    float c = random(i + vec2(0.0, 1.0));
+    float d = random(i + vec2(1.0, 1.0));
+
+
+    // Smooth Interpolation
+
+    // Cubic Hermine Curve. Same as SmoothStep()
+    vec2 u = f * f * (3.0-2.0 * f);
+
+    // Mix 4 coorners percentages
+    return mix(a, b, u.x) +
+            (c - a)* u.y * (1.0 - u.x) +
+            (d - b) * u.x * u.y;
+}
+
+mat2 rotate(float _angle){
+    return mat2(vec2(cos(_angle), -sin(_angle)),
+                vec2(sin(_angle), cos(_angle)));
+}
+
+vec4 screen(vec4 base, vec4 blend){
+	return 1.0 - (1.0 - base) * (1.0 - blend);
+}
+
+void fragment()
+{
+	
+	// Rotate, skew and move the UVs
+	vec2 transformed_uv = ( rotate(angle) * (UV - position) )  / ( (UV.y + spread) - (UV.y * spread) );
+	
+	// Animate the ray according the the new transformed UVs
+	vec2 ray1 = vec2(transformed_uv.x * ray1_density + sin(TIME * 0.1 * speed) * (ray1_density * 0.2) + seed, 1.0);
+	vec2 ray2 = vec2(transformed_uv.x * ray2_density + sin(TIME * 0.2 * speed) * (ray1_density * 0.2) + seed, 1.0);
+	
+	// Cut off the ray's edges
+	float cut = step(cutoff, transformed_uv.x) * step(cutoff, 1.0 - transformed_uv.x);
+	ray1 *= cut;
+	ray2 *= cut;
+	
+	// Apply the noise pattern (i.e. create the rays)
+	float rays;
+	
+	if (hdr){
+		// This is not really HDR, but check this to not clamp the two merged rays making 
+		// their values go over 1.0. Can make for some nice effect
+		rays = noise(ray1) + (noise(ray2) * ray2_intensity);
+	}
+	else{
+		 rays = clamp(noise(ray1) + (noise(ray2) * ray2_intensity), 0., 1.);
+	}
+	
+	// Fade out edges
+	rays *= smoothstep(0.0, falloff, (1.0 - UV.y)); // Bottom
+	rays *= smoothstep(0.0 + cutoff, edge_fade + cutoff, transformed_uv.x); // Left
+	rays *= smoothstep(0.0 + cutoff, edge_fade + cutoff, 1.0 - transformed_uv.x); // Right
+	
+	// Color to the rays
+	vec3 shine = vec3(rays) * color.rgb;
+
+	// Try different blending modes for a nicer effect. \"Screen\" is included in the code,
+	// but take a look at https://godotshaders.com/snippet/blending-modes/ for more.
+	// With \"Screen\" blend mode:
+	shine = screen(texture(SCREEN_TEXTURE, SCREEN_UV), vec4(color)).rgb;
+	
+	COLOR = vec4(shine, rays * color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5k67b"]
+shader = SubResource("Shader_1dbm7")
+shader_parameter/angle = -0.37
+shader_parameter/position = 0.08
+shader_parameter/spread = 0.06
+shader_parameter/cutoff = 0.156
+shader_parameter/falloff = 1.0
+shader_parameter/edge_fade = 0.257
+shader_parameter/speed = 3.0
+shader_parameter/ray1_density = 9.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Color(0.444667, 0.576399, 0.469529, 1)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7x66a"]
+shader = ExtResource("8_kky0l")
+shader_parameter/speed = 0.8
+shader_parameter/scale = Vector2(1, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0m241"]
+shader = SubResource("Shader_1dbm7")
+shader_parameter/angle = -0.37
+shader_parameter/position = 0.08
+shader_parameter/spread = 0.06
+shader_parameter/cutoff = 0.156
+shader_parameter/falloff = 1.0
+shader_parameter/edge_fade = 0.257
+shader_parameter/speed = 3.0
+shader_parameter/ray1_density = 9.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wu01m"]
+texture = ExtResource("10_sptpm")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8)
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, -8, -8)
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
@@ -61,11 +201,9 @@ texture = ExtResource("3_t8xgq")
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
@@ -406,64 +544,77 @@ texture = ExtResource("3_t8xgq")
 3:15/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:15/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_sasbf"]
-scenes/1/scene = ExtResource("4_qqb8c")
-
-[sub_resource type="TileSet" id="TileSet_trygk"]
+[sub_resource type="TileSet" id="TileSet_67eta"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_g3vd1")
-sources/1 = SubResource("TileSetScenesCollectionSource_sasbf")
+sources/2 = SubResource("TileSetAtlasSource_wu01m")
 
-[sub_resource type="Gradient" id="Gradient_24fyr"]
-offsets = PackedFloat32Array(0, 0.77686)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lji44"]
+size = Vector2(16, 16)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ps6wq"]
-gradient = SubResource("Gradient_24fyr")
-fill = 1
-fill_from = Vector2(0.5, 0.508547)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl5si"]
+size = Vector2(80, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hl3li"]
-size = Vector2(16, 80)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t11n2"]
+size = Vector2(64, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_exqrf"]
-size = Vector2(160, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0bk2"]
+size = Vector2(80, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_blt2u"]
-size = Vector2(16, 80)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfm2y"]
+size = Vector2(32, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkift"]
-size = Vector2(576, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkoss"]
+size = Vector2(16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pv0f"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_on80b"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0efs"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_talj1"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl8ro"]
+size = Vector2(96, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gju6v"]
+size = Vector2(16, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n1d5"]
+size = Vector2(128, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8x6bp"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc1gp"]
+size = Vector2(112, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6hde"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5b4fw"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2p6k"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agou7"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r875e"]
+size = Vector2(16, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mclpr"]
 size = Vector2(304, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_168jw"]
-size = Vector2(16, 80)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jij1h"]
+size = Vector2(1504, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sr8rg"]
-size = Vector2(144, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uog75"]
+size = Vector2(16, 224)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jn85"]
-size = Vector2(16, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4dhq"]
-size = Vector2(6, 78)
-
-[node name="SimonLevel" type="Node2D"]
-script = ExtResource("1_0csr7")
-metadata/level = 1
-
-[node name="Character" parent="." instance=ExtResource("2_t7x40")]
-z_index = 2
-
-[node name="Camera2D" type="Camera2D" parent="Character"]
-zoom = Vector2(7, 7)
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_trygk")
-format = 2
-layer_0/tile_data = PackedInt32Array(131066, 131072, 0, 131067, 131072, 0, 131068, 131072, 0, 131069, 131072, 0, 131070, 131072, 0, 131071, 131072, 0, 65536, 131072, 0, 65537, 131072, 0, 65538, 131072, 0, 65539, 131072, 0, 65540, 131072, 0, 65541, 131072, 0, 65542, 131072, 0, 65543, 131072, 0, 65544, 131072, 0, 65545, 131072, 0, 65546, 131072, 0, 65547, 131072, 0, 65548, 131072, 0, 65549, 131072, 0, 65550, 131072, 0, 65551, 131072, 0, 65552, 131072, 0, 65553, 131072, 0, 65554, 131072, 0, 65555, 131072, 0, 65556, 131072, 0, 65557, 131072, 0, -327659, 131072, 0, -393195, 131072, 0, -458731, 131072, 0, -524267, 131072, 0, -524285, 131072, 0, -458749, 131072, 0, -393213, 131072, 0, -327677, 131072, 0, -131078, 131072, 0, -65542, 131072, 0, -6, 131072, 0, 65530, 131072, 0, -589821, 131072, 0, -655357, 131072, 0, -720893, 131072, 0, -720892, 131072, 0, -720891, 131072, 0, -720890, 131072, 0, -720889, 131072, 0, -720888, 131072, 0, -720887, 131072, 0, -720886, 131072, 0, -720885, 131072, 0, -720884, 131072, 0, -720883, 131072, 0, -720882, 131072, 0, -720881, 131072, 0, -720880, 131072, 0, -720879, 131072, 0, -720878, 131072, 0, -720877, 131072, 0, -720876, 131072, 0, -720875, 131072, 0, -655339, 131072, 0, -589803, 131072, 0, -196579, 131072, 0, -131043, 131072, 0, -65507, 131072, 0, 29, 131072, 0, 65565, 131072, 0, 65558, 131072, 0, 65559, 131072, 0, 65560, 131072, 0, 65561, 131072, 0, 65562, 131072, 0, 65563, 131072, 0, 65564, 131072, 0, -196614, 131072, 0, -262115, 131072, 0, -262150, 131072, 0, -262149, 131072, 0, -262148, 131072, 0, -262147, 131072, 0, -262146, 131072, 0, -262145, 131072, 0, -327680, 131072, 0, -327679, 131072, 0, -327678, 131072, 0, -327658, 131072, 0, -327657, 131072, 0, -327656, 131072, 0, -327655, 131072, 0, -327654, 131072, 0, -327653, 131072, 0, -327652, 131072, 0, -327651, 131072, 0)
+[node name="LevelD1" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -476,291 +627,307 @@ metadata/_edit_group_ = true
 [node name="Tree1" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(642.4, 4.69992)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 flip_h = true
 
 [node name="Tree2" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-181.6, 13.15)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 flip_h = true
 
 [node name="Tree3" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(31.4001, 30.6999)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 flip_h = true
 
 [node name="Tree4" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(153.5, -20.3)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 flip_h = true
 
 [node name="Tree5" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-103.6, 7.14997)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 
 [node name="Tree6" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(691.4, -11.3)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 flip_h = true
 
 [node name="Tree7" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(463.4, -15.3)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 flip_h = true
 
 [node name="Tree8" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-557.6, 10.15)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 flip_h = true
 
 [node name="Tree9" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-332.6, 38.1499)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 flip_h = true
 
 [node name="Tree10" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(559.5, -33.85)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 flip_h = true
 
 [node name="Tree11" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(128.4, 27.6999)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 flip_h = true
 
 [node name="Tree12" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-67.5999, 10.15)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 flip_h = true
 
 [node name="Tree13" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-395.6, 10.15)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 flip_h = true
 
 [node name="Tree14" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(542.4, 7.69992)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 flip_h = true
 
 [node name="Tree15" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(608.4, -16.3)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 flip_h = true
 
 [node name="Tree16" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-251.6, 0.149998)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 flip_h = true
 
 [node name="Tree17" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(219.4, -3.30001)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 flip_h = true
 
 [node name="Tree18" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-303.6, 9.14997)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 flip_h = true
 
 [node name="Tree19" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-503.6, 19.15)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 flip_h = true
 
 [node name="Tree20" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(323.4, 6.69992)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 flip_h = true
 
 [node name="Tree21" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-19.5999, 11.15)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 flip_h = true
 
 [node name="Tree22" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(421.4, -20.3)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 flip_h = true
 
 [node name="Tree23" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-454.6, -1.85)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 flip_h = true
 
 [node name="Tree24" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(473.4, 14.6999)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 flip_h = true
 
 [node name="Tree25" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(28.7, 5.99997)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 flip_h = true
 
 [node name="Tree26" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(507.7, -13)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 flip_h = true
 
 [node name="Tree27" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-582.3, 32)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 flip_h = true
 
 [node name="Tree28" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-460.2, -19)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 flip_h = true
 
 [node name="Tree29" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(585.7, -19)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 
 [node name="Tree30" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(77.7, -10)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 flip_h = true
 
 [node name="Tree31" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-150.3, -14)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 flip_h = true
 
 [node name="Tree32" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(131.7, -16)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 flip_h = true
 
 [node name="Tree33" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(356.7, 12)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 flip_h = true
 
 [node name="Tree34" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-54.2, -32.55)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 flip_h = true
 
 [node name="Tree35" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-485.3, 29)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 flip_h = true
 
 [node name="Tree36" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(621.7, -16)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 flip_h = true
 
 [node name="Tree37" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(293.7, -16)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 flip_h = true
 
 [node name="Tree38" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-71.3, 8.99997)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 flip_h = true
 
 [node name="Tree39" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-5.29999, -15)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 flip_h = true
 
 [node name="Tree40" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(437.7, -26)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 flip_h = true
 
 [node name="Tree41" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-394.3, -2.00003)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 flip_h = true
 
 [node name="Tree42" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(385.7, -17)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 flip_h = true
 
 [node name="Tree43" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(185.7, -7.00003)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 flip_h = true
 
 [node name="Tree44" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-290.3, 7.99997)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 flip_h = true
 
 [node name="Tree45" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(669.7, -15)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 flip_h = true
 
 [node name="Tree46" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-192.3, -19)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 flip_h = true
 
 [node name="Tree47" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(234.7, -28)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 flip_h = true
 
 [node name="Tree48" type="Sprite2D" parent="ParallaxBackground/TreeLayer3"]
 position = Vector2(-140.3, 16)
 scale = Vector2(-0.1, 0.1)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 flip_h = true
 
 [node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground/TreeLayer3"]
 polygon = PackedVector2Array(-608, 81, -577, 80, -563, 57, -531, 55, -507, 66, -477, 26, -434, 36, -389, 37, -344, 75, -297, 52, -230, 41, -212, 18, -134, 32, -112, 47, -63, 11, -4, 25, 74, 28, 133, 27, 169, 18, 223, 15, 295, 23, 340, 38, 386, 25, 440, 11, 528, 37, 558, 7, 627, 18, 710, 31, 715, 226, -606, 242)
+
+[node name="FogLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(800, 402)
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="GodRays2" type="Sprite2D" parent="ParallaxBackground/FogLayer3"]
+material = SubResource("ShaderMaterial_5k67b")
+position = Vector2(-474, -231)
+scale = Vector2(6.5625, 6.32812)
+texture = ExtResource("7_qom30")
+
+[node name="Fog" type="Sprite2D" parent="ParallaxBackground/FogLayer3"]
+material = SubResource("ShaderMaterial_7x66a")
+position = Vector2(-441, -350)
+scale = Vector2(10, 1)
+texture = ExtResource("7_qom30")
 
 [node name="TreeLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color(0.452126, 0.584627, 0.477089, 1)
@@ -771,131 +938,148 @@ metadata/_edit_group_ = true
 [node name="Tree1" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(-491.45, -135.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 
 [node name="Tree2" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(-54, -92)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 
 [node name="Tree3" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(-319.45, -107.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 
 [node name="Tree4" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(107.55, -121.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 
 [node name="Tree5" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(-334.45, -35.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 
 [node name="Tree6" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(161.55, -96.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 
 [node name="Tree7" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(-136.45, -121.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 flip_h = true
 
 [node name="Tree8" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(-216.45, -97.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 flip_h = true
 
 [node name="Tree9" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(645.55, -101.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 flip_h = true
 
 [node name="Tree10" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(-452.45, -104.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 flip_h = true
 
 [node name="Tree11" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(-281.45, -103.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 flip_h = true
 
 [node name="Tree12" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(456.55, -117.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 flip_h = true
 
 [node name="Tree13" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(601.55, -127.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 
 [node name="Tree14" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(357.55, -139.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 
 [node name="Tree15" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(-252.45, -87.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 
 [node name="Tree16" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(324.55, -115.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 
 [node name="Tree17" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(431.55, -137.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 
 [node name="Tree18" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(637.55, -94.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 
 [node name="Tree19" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(53.55, -124.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 
 [node name="Tree20" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(550.55, -106.325)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 
 [node name="Tree21" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(10.55, -121.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 
 [node name="Tree22" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(704.55, -124.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 
 [node name="Tree23" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(387.55, -113.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 
 [node name="Tree24" type="Sprite2D" parent="ParallaxBackground/TreeLayer2"]
 position = Vector2(224.55, -113.775)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 
 [node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground/TreeLayer2"]
 polygon = PackedVector2Array(-527, -68, -470, -59, -376, 9, -342, -35, -198, -27, -128, -54, -47, -30, -6, -61, 113, -54, 153, -38, 217, -54, 321, -50, 348, -74, 421, -70, 542, -36, 587, -61, 716, -54, 742, -45, 746, 229, -554, 219)
+
+[node name="FogLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(432, 287)
+motion_scale = Vector2(0.4, 0.4)
+metadata/_edit_group_ = true
+
+[node name="GodRays" type="Sprite2D" parent="ParallaxBackground/FogLayer2"]
+material = SubResource("ShaderMaterial_0m241")
+position = Vector2(-220, -235)
+scale = Vector2(6.5625, 6.32812)
+texture = ExtResource("7_qom30")
+
+[node name="Fog2" type="Sprite2D" parent="ParallaxBackground/FogLayer2"]
+material = SubResource("ShaderMaterial_7x66a")
+position = Vector2(-73, -235)
+scale = Vector2(10, 1)
+texture = ExtResource("7_qom30")
 
 [node name="TreeLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color(0.303044, 0.409313, 0.323584, 1)
@@ -906,327 +1090,248 @@ metadata/_edit_group_ = true
 [node name="Tree1" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(-309.6, 64.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 
 [node name="Tree2" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(-413.6, 84.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 
 [node name="Tree3" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(-609.6, 94.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 
 [node name="Tree4" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(-487.5, 43.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 
 [node name="Tree5" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(-457.6, 74.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 
 [node name="Tree6" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(65.4001, 63.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 
 [node name="Tree7" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(-177.6, 48.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 flip_h = true
 
 [node name="Tree8" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(-266.6, 68.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 flip_h = true
 
 [node name="Tree9" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(329.4, 74.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 flip_h = true
 
 [node name="Tree10" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(-81.4999, 29.7499)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 flip_h = true
 
 [node name="Tree11" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(-512.6, 91.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 flip_h = true
 
 [node name="Tree12" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(594.4, 46.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 flip_h = true
 
 [node name="Tree13" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(266.4, 46.3)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 
 [node name="Tree14" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(-98.6, 71.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 
 [node name="Tree15" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(182.4, 43.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 
 [node name="Tree16" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(-5.59991, 52.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 
 [node name="Tree17" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(388.4, 5.29993)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 
 [node name="Tree18" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(114.4, 70.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 
 [node name="Tree19" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(4.40009, 14.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_bevru")
+texture = ExtResource("1_qnh6e")
 
 [node name="Tree20" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(507.4, 36.7499)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_jcgmk")
+texture = ExtResource("2_j10ek")
 
 [node name="Tree21" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(654.4, 34.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("10_nceme")
+texture = ExtResource("3_h6xk2")
 
 [node name="Tree22" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(-219.6, 43.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("11_0fiyk")
+texture = ExtResource("4_ntucc")
 
 [node name="Tree23" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(442.4, 30.7499)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("12_iuqew")
+texture = ExtResource("5_jjqgw")
 
 [node name="Tree24" type="Sprite2D" parent="ParallaxBackground/TreeLayer1"]
 position = Vector2(562.4, 62.2999)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("13_eqoxt")
+texture = ExtResource("6_lmlbg")
 
 [node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground/TreeLayer1"]
 polygon = PackedVector2Array(-672, 209, -642, 191, -598, 192, -524, 143, -427, 147, -384, 172, -316, 166, -275, 151, -214, 144, -117, 142, -32, 112, 28, 113, 145, 137, 270, 144, 367, 96, 516, 135, 603, 141, 647, 122, 674, 128, 679, 222, 689, 352, -682, 382)
 
-[node name="Levers" type="Node" parent="."]
+[node name="FogLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(461, 76)
+motion_scale = Vector2(0.6, 0.6)
+metadata/_edit_group_ = true
 
-[node name="LeverSwitch1" parent="Levers" instance=ExtResource("15_utku5")]
-position = Vector2(120, 5)
-lever_number = 1
-single_use = true
+[node name="Fog2" type="Sprite2D" parent="ParallaxBackground/FogLayer1"]
+material = SubResource("ShaderMaterial_7x66a")
+scale = Vector2(10, 1)
+texture = ExtResource("7_qom30")
 
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch1"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
+[node name="Character" parent="." instance=ExtResource("9_mci2d")]
+position = Vector2(-136, 24)
 
-[node name="LeverSwitch2" parent="Levers" instance=ExtResource("15_utku5")]
-position = Vector2(120, -43)
-lever_number = 2
-single_use = true
+[node name="Camera2D" type="Camera2D" parent="Character"]
+zoom = Vector2(7, 7)
 
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch2"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
-
-[node name="LeverSwitch3" parent="Levers" instance=ExtResource("15_utku5")]
-position = Vector2(120, -91)
-lever_number = 3
-single_use = true
-
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch3"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
-
-[node name="LeverSwitch4" parent="Levers" instance=ExtResource("15_utku5")]
-position = Vector2(200, -91)
-lever_number = 4
-single_use = true
-
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch4"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
-
-[node name="LeverSwitch5" parent="Levers" instance=ExtResource("15_utku5")]
-position = Vector2(200, -43)
-lever_number = 5
-single_use = true
-
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch5"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
-
-[node name="LeverSwitch6" parent="Levers" instance=ExtResource("15_utku5")]
-position = Vector2(200, 5)
-lever_number = 6
-single_use = true
-
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch6"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
-
-[node name="LeverSwitch7" parent="Levers" instance=ExtResource("15_utku5")]
-position = Vector2(280, 5)
-lever_number = 7
-single_use = true
-
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch7"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
-
-[node name="LeverSwitch8" parent="Levers" instance=ExtResource("15_utku5")]
-position = Vector2(280, -43)
-lever_number = 8
-single_use = true
-
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch8"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
-
-[node name="LeverSwitch9" parent="Levers" instance=ExtResource("15_utku5")]
-position = Vector2(280, -91)
-lever_number = 9
-single_use = true
-
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch9"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-script = ExtResource("16_7xwwd")
-tilemap_nodepath = NodePath("../TileMap")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-88, -24)
-shape = SubResource("RectangleShape2D_hl3li")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-16, -72)
-shape = SubResource("RectangleShape2D_exqrf")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(56, -120)
-shape = SubResource("RectangleShape2D_blt2u")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(192, 24)
-shape = SubResource("RectangleShape2D_qkift")
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(200, -168)
-shape = SubResource("RectangleShape2D_2pv0f")
-
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(344, -120)
-shape = SubResource("RectangleShape2D_168jw")
-
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(408, -72)
-shape = SubResource("RectangleShape2D_sr8rg")
-
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(472, -24)
-shape = SubResource("RectangleShape2D_3jn85")
-
-[node name="Platforms" type="Node" parent="."]
-
-[node name="Platform1" parent="Platforms" instance=ExtResource("17_lcbr7")]
-position = Vector2(120, -75)
-
-[node name="Platform2" parent="Platforms" instance=ExtResource("17_lcbr7")]
-position = Vector2(200, -75)
-
-[node name="Platform3" parent="Platforms" instance=ExtResource("17_lcbr7")]
-position = Vector2(281, -75)
-
-[node name="Platform4" parent="Platforms" instance=ExtResource("17_lcbr7")]
-position = Vector2(280, -27)
-
-[node name="Platform5" parent="Platforms" instance=ExtResource("17_lcbr7")]
-position = Vector2(200, -27)
-
-[node name="Platform6" parent="Platforms" instance=ExtResource("17_lcbr7")]
-position = Vector2(119, -27)
-
-[node name="TriggerPuzzle" type="Area2D" parent="."]
-position = Vector2(61, -8)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerPuzzle"]
-position = Vector2(0, -16)
-shape = SubResource("RectangleShape2D_l4dhq")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
-[node name="Door" parent="." instance=ExtResource("19_w7cvm")]
-position = Vector2(346, -25)
-
-[node name="grass" type="Node" parent="."]
-
-[node name="Widegrass" type="Sprite2D" parent="grass"]
-position = Vector2(-17, -20)
-scale = Vector2(0.11541, 0.111304)
-texture = ExtResource("18_tligl")
-
-[node name="Widegrass2" type="Sprite2D" parent="grass"]
-position = Vector2(109.436, -19.1635)
-scale = Vector2(0.119161, 0.110419)
-texture = ExtResource("18_tligl")
-
-[node name="Widegrass3" type="Sprite2D" parent="grass"]
-position = Vector2(234, -19)
-scale = Vector2(0.119161, 0.110419)
-texture = ExtResource("18_tligl")
-
-[node name="Widegrass4" type="Sprite2D" parent="grass"]
-position = Vector2(352, -19)
-scale = Vector2(0.119161, 0.110419)
-texture = ExtResource("18_tligl")
-
-[node name="Widegrass5" type="Sprite2D" parent="grass"]
-position = Vector2(402, -19)
-scale = Vector2(0.119161, 0.110419)
-texture = ExtResource("18_tligl")
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_67eta")
+format = 2
+layer_0/tile_data = PackedInt32Array(131078, 2, 0, 131077, 2, 0, 131076, 2, 0, 131075, 2, 0, 131074, 2, 0, 131073, 2, 0, 131072, 2, 0, 196607, 2, 0, 196606, 2, 0, 196605, 2, 0, 196604, 2, 0, 196603, 2, 0, 131079, 2, 0, 131080, 2, 0, 131081, 2, 0, 131082, 2, 0, 131083, 2, 0, 131084, 2, 0, 131085, 2, 0, 131086, 2, 0, 131087, 2, 0, 131088, 2, 0, 131089, 2, 0, 131090, 2, 0, 131091, 2, 0, 131092, 2, 0, 131093, 2, 0, 131094, 2, 0, 131095, 2, 0, 131096, 2, 0, 131097, 2, 0, 131098, 2, 0, 131099, 2, 0, 131100, 2, 0, 131101, 2, 0, 131102, 2, 0, 131103, 2, 0, 131104, 2, 0, 131105, 2, 0, 131106, 2, 0, 131107, 2, 0, 131108, 2, 0, 131109, 2, 0, 131110, 2, 0, 131111, 2, 0, 131112, 2, 0, 131113, 2, 0, 131114, 2, 0, 131115, 2, 0, 131116, 2, 0, 131117, 2, 0, 131118, 2, 0, 131119, 2, 0, 131120, 2, 0, 131121, 2, 0, 131122, 2, 0, 131123, 2, 0, 131124, 2, 0, 131125, 2, 0, 131126, 2, 0, 131127, 2, 0, 131128, 2, 0, 131129, 2, 0, 131130, 2, 0, 131131, 2, 0, 131132, 2, 0, 131133, 2, 0, 131134, 2, 0, 131135, 2, 0, 131136, 2, 0, 131137, 2, 0, 131138, 2, 0, 131139, 2, 0, 131140, 2, 0, 131141, 2, 0, 131142, 2, 0, 131143, 2, 0, 131144, 2, 0, 131145, 2, 0, 131146, 2, 0, 131147, 2, 0, 131148, 2, 0, 131149, 2, 0, 131150, 2, 0, 131151, 2, 0, 131152, 2, 0, 196602, 2, 0, 196601, 2, 0, 196600, 2, 0, 196599, 2, 0, 196598, 2, 0, 196597, 2, 0, 196596, 2, 0, 196595, 2, 0, 65534, 2, 0, 4, 2, 0, 65540, 2, 0, 65535, 2, 0, 0, 2, 0, -262105, 2, 0, -196569, 2, 0, -131033, 2, 0, -65497, 2, 0, 39, 2, 0, 65575, 2, 0, 65557, 2, 0, 21, 2, 0, -65515, 2, 0, -131051, 2, 0, -196587, 2, 0, -262123, 2, 0, -851964, 2, 0, -851965, 2, 0, -851966, 2, 0, -851967, 2, 0, -851968, 2, 0, -786433, 2, 0, -786434, 2, 0, -851970, 2, 0, -917506, 2, 0, -983042, 2, 0, -1048578, 2, 0, -1114114, 2, 0, -1179650, 2, 0, -1245187, 2, 0, -1310723, 2, 0, -1310724, 2, 0, -1376260, 2, 0, -1441797, 2, 0, -1441798, 2, 0, -1507334, 2, 0, -1507335, 2, 0, -1507336, 2, 0, -1507337, 2, 0, -720894, 2, 0, -720895, 2, 0, -720896, 2, 0, -655361, 2, 0, -655362, 2, 0, -655363, 2, 0, -655364, 2, 0, -589828, 2, 0, -589829, 2, 0, -589830, 2, 0, -589831, 2, 0, -589832, 2, 0, -524296, 2, 0, -524297, 2, 0, -524298, 2, 0, -524299, 2, 0, -524300, 2, 0, -458764, 2, 0, -786428, 2, 0, -720893, 2, 0, -851947, 2, 0, -851946, 2, 0, -851945, 2, 0, -851944, 2, 0, -851943, 2, 0, -851942, 2, 0, -851941, 2, 0, -851940, 2, 0, -851939, 2, 0, -851938, 2, 0, -851937, 2, 0, -851936, 2, 0, -851935, 2, 0, -851934, 2, 0, -851933, 2, 0, -851932, 2, 0, -851931, 2, 0, -851930, 2, 0, -327641, 2, 0, -327659, 2, 0, -393195, 2, 0, -458731, 2, 0, -524267, 2, 0, -589803, 2, 0, -655339, 2, 0, -720875, 2, 0, -786411, 2, 0, -851929, 2, 0, -786393, 2, 0, -720857, 2, 0, -655321, 2, 0, -589785, 2, 0, -524249, 2, 0, -458713, 2, 0, -393177, 2, 0, 65536, 2, 0, 5, 2, 0, 6, 2, 0, 7, 2, 0, 65533, 2, 0, 65532, 2, 0, 65531, 2, 0, 131067, 2, 0, 65543, 2, 0)
 
 [node name="Ground" type="Polygon2D" parent="."]
-position = Vector2(-109, 99)
+visible = false
+position = Vector2(-170, 105.929)
 scale = Vector2(0.402018, 0.428786)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(72.1361, -191.072, 1425.31, -191.072, 1425.31, -380.143, 1106.92, -380.143, 1106.92, -601.533, 430.329, -601.533, 430.329, -380.143, -880.557, -377.811, -880.557, -876.729, 2437.7, -879.061, 2440.19, 405.962, -878.07, 403.63, -880.557, -377.811, 72.1361, -380.143)
+polygon = PackedVector2Array(223.871, -172.414, 701.461, -172.414, 701.461, 480.593, 223.871, 480.593)
 
-[node name="TransitionArea" parent="." instance=ExtResource("16_lu1un")]
-position = Vector2(446, 1)
-next_level = ExtResource("17_jj2ig")
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+script = ExtResource("10_3dr3m")
+tilemap_nodepath = NodePath("../TileMap")
 
-[connection signal="lever_toggled" from="Levers/LeverSwitch1" to="." method="_on_lever_switch_lever_toggled"]
-[connection signal="lever_toggled" from="Levers/LeverSwitch2" to="." method="_on_lever_switch_lever_toggled"]
-[connection signal="lever_toggled" from="Levers/LeverSwitch3" to="." method="_on_lever_switch_lever_toggled"]
-[connection signal="lever_toggled" from="Levers/LeverSwitch4" to="." method="_on_lever_switch_lever_toggled"]
-[connection signal="lever_toggled" from="Levers/LeverSwitch5" to="." method="_on_lever_switch_lever_toggled"]
-[connection signal="lever_toggled" from="Levers/LeverSwitch6" to="." method="_on_lever_switch_lever_toggled"]
-[connection signal="lever_toggled" from="Levers/LeverSwitch7" to="." method="_on_lever_switch_lever_toggled"]
-[connection signal="lever_toggled" from="Levers/LeverSwitch8" to="." method="_on_lever_switch_lever_toggled"]
-[connection signal="lever_toggled" from="Levers/LeverSwitch9" to="." method="_on_lever_switch_lever_toggled"]
-[connection signal="body_entered" from="TriggerPuzzle" to="." method="_on_trigger_puzzle_body_entered"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-184, -120)
+shape = SubResource("RectangleShape2D_lji44")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-152, -136)
+shape = SubResource("RectangleShape2D_rl5si")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-112, -376)
+shape = SubResource("RectangleShape2D_t11n2")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-88, -152)
+shape = SubResource("RectangleShape2D_i0bk2")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-80, -360)
+shape = SubResource("RectangleShape2D_qfm2y")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-72, 24)
+shape = SubResource("RectangleShape2D_nkoss")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-56, -344)
+shape = SubResource("RectangleShape2D_on80b")
+
+[node name="CollisionShape2D45" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-48, -328)
+shape = SubResource("RectangleShape2D_s0efs")
+
+[node name="CollisionShape2D46" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-40, -312)
+shape = SubResource("RectangleShape2D_talj1")
+
+[node name="CollisionShape2D47" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-32, 8)
+shape = SubResource("RectangleShape2D_sl8ro")
+
+[node name="CollisionShape2D48" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-24, -256)
+shape = SubResource("RectangleShape2D_gju6v")
+
+[node name="CollisionShape2D49" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -168)
+shape = SubResource("RectangleShape2D_7n1d5")
+
+[node name="CollisionShape2D50" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(8, 24)
+shape = SubResource("RectangleShape2D_8x6bp")
+
+[node name="CollisionShape2D51" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(24, -200)
+shape = SubResource("RectangleShape2D_mc1gp")
+
+[node name="CollisionShape2D52" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(72, -184)
+shape = SubResource("RectangleShape2D_n6hde")
+
+[node name="CollisionShape2D53" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(72, 24)
+shape = SubResource("RectangleShape2D_5b4fw")
+
+[node name="CollisionShape2D54" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(96, 8)
+shape = SubResource("RectangleShape2D_t2p6k")
+
+[node name="CollisionShape2D55" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(120, 24)
+shape = SubResource("RectangleShape2D_agou7")
+
+[node name="CollisionShape2D56" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(344, -80)
+shape = SubResource("RectangleShape2D_r875e")
+
+[node name="CollisionShape2D57" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(488, -200)
+shape = SubResource("RectangleShape2D_mclpr")
+
+[node name="CollisionShape2D58" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(544, 40)
+shape = SubResource("RectangleShape2D_jij1h")
+
+[node name="CollisionShape2D59" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(632, -80)
+shape = SubResource("RectangleShape2D_uog75")
