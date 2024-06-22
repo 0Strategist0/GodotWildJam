@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var next_level: PackedScene = null
+@export var next_level: PackedScene
 
 @onready var main := GlobalNodeReferences.main
 
