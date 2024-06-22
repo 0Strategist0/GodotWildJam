@@ -8,6 +8,7 @@ const A1 := preload("uid://b757fjeorrns1")
 
 @onready var main := GlobalNodeReferences.main
 @onready var title_page := get_node("../..")
+@onready var arrow_label := $Label
 
 # Remove this later
 var debug_mode := 4
@@ -32,3 +33,19 @@ func _on_pressed() -> void:
 	main.add_child(ui)
 	
 	title_page.queue_free()
+
+
+func _on_mouse_entered() -> void:
+	arrow_label.visible = true
+
+
+func _on_mouse_exited() -> void:
+	arrow_label.visible = false
+
+
+func _on_focus_entered() -> void:
+	arrow_label.visible = true
+
+
+func _on_focus_exited() -> void:
+	arrow_label.visible = false
