@@ -23,6 +23,7 @@ DialogManager="*res://Singletons/DialogManager.gd"
 Progress="*res://Globals/Progress.gd"
 HunterSignalling="*res://Singletons/HunterSignalling.gd"
 Settings="*res://Singletons/Settings.gd"
+CharacterAttributes="*res://Singletons/CharacterAttributes.gd"
 
 [debug]
 

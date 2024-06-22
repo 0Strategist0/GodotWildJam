@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b373kfvbfcsgd" path="res://GameScenes/Character/character_sprite.tscn" id="2_seolr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nvfka"]
+resource_local_to_scene = true
 radius = 4.0
 height = 22.0
 

@@ -6,8 +6,9 @@ func _ready() -> void:
 
 
 func start_hunt() -> void:
-	volume_db = -5.0
-	play(0.5)
+	if not playing:
+		volume_db = -5.0
+		play(0.5)
 
 func end_hunt() -> void:
 	if playing:
