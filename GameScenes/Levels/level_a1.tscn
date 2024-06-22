@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b757fjeorrns1"]
+[gd_scene load_steps=39 format=3 uid="uid://b757fjeorrns1"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_03xtt"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_bts5d"]

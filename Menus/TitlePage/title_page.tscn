@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0qappnyuuly6"]
+[gd_scene load_steps=4 format=3 uid="uid://d0qappnyuuly6"]
 
 [ext_resource type="Script" path="res://Menus/TitlePage/StartButton.gd" id="1_nveqe"]
+[ext_resource type="FontFile" uid="uid://c2xicsbvnm0lv" path="res://assets/Cute Love.otf" id="1_omxbu"]
 [ext_resource type="Script" path="res://Menus/TitlePage/Settings.gd" id="2_osxgx"]
 
 [node name="TitlePage" type="Control"]
@@ -11,33 +12,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.301961, 0.407843, 0.32549, 1)
+
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.159
+offset_top = 347.0
+offset_bottom = 476.724
 grow_horizontal = 2
-text = "GAME TITLE"
+theme_override_fonts/font = ExtResource("1_omxbu")
+theme_override_font_sizes/font_size = 350
+text = "SCARY GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 0.8
-anchor_bottom = 0.9
-offset_left = -2.12193e-05
-offset_right = -8.4877e-05
-offset_bottom = 2.24113e-05
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = 77.0
+offset_right = 195.0
+offset_bottom = 491.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-text = "GO TO FIRST LEVEL"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_omxbu")
+theme_override_font_sizes/font_size = 150
+text = "start"
+flat = true
 script = ExtResource("1_nveqe")
 
 [node name="Spacer" type="Control" parent="VBoxContainer"]
@@ -47,8 +66,12 @@ size_flags_stretch_ratio = 0.2
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-text = "OPTIONS"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_omxbu")
+theme_override_font_sizes/font_size = 150
+text = "options"
+flat = true
 
 [node name="Settings" type="PanelContainer" parent="."]
 visible = false
