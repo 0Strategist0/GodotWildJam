@@ -50,7 +50,7 @@ func _display_letter() -> void:
 	
 	
 	match text[letter_index]:
-		"!", ".", ",", "?":
+		".", ",", "?":
 			timer.start(punctuation_time)
 		" ":
 			timer.start(space_time)

@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cfbgqr2bhcf4y" path="res://GameScenes/Objects/Movables/platform.tscn" id="13_wf80d"]
 [ext_resource type="PackedScene" uid="uid://blempiyqsp5tu" path="res://GameScenes/Objects/Switches/plate_switch.tscn" id="14_4g3jl"]
 [ext_resource type="PackedScene" uid="uid://c7a84huofxckc" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="14_48r0f"]
-[ext_resource type="PackedScene" uid="uid://cbvluptdpl86h" path="res://GameScenes/NPCs/testNpc.tscn" id="14_ur051"]
+[ext_resource type="PackedScene" uid="uid://cbvluptdpl86h" path="res://GameScenes/NPCs/NPC.tscn" id="14_ur051"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cluau"]
 texture = ExtResource("1_u0415")
