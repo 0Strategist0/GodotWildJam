@@ -12,3 +12,5 @@ data_*/
 
 # Godot 4+ specific ignores
 .godot/
+
+*.DS_Store
