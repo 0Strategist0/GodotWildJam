@@ -24,6 +24,7 @@ const SMALL_SIZE_MULTIPLE := 0.7
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var speed := 100.0
 var climb_speed := 50.0
+var climbing_object : Area2D
 var climbing := false
 var peaked := false
 var bottomed := false
@@ -88,6 +89,7 @@ func _physics_process(delta: float) -> void:
 		var overlapping_areas : Array = character_area.get_overlapping_areas()
 		for area: Area2D in overlapping_areas:
 			if area.is_in_group("climbable"):
+				climbing_object = area
 				climbing = true
 				peaked = false
 				bottomed = false
@@ -177,6 +179,8 @@ func _physics_process(delta: float) -> void:
 	stored_fall = velocity.y
 	
 	# Animate based on motion
+	if climbing:
+		sprite.scale.x = sign(climbing_object.global_position.x - global_position.x) * abs(sprite.scale.x)
 	if velocity.x > FLIP_SPEED:
 		sprite.scale.x = abs(sprite.scale.x)
 	elif velocity.x < -FLIP_SPEED:
