@@ -1774,13 +1774,6 @@ position = Vector2(17, 85)
 [node name="LeverSwitch" parent="Entrance Platform" instance=ExtResource("20_a3yvg")]
 position = Vector2(96, 231)
 
-[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@31177" to="TileMap/@Area2D@31177" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@31178" to="TileMap/@Area2D@31178" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@31179" to="TileMap/@Area2D@31179" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@31180" to="TileMap/@Area2D@31180" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@31181" to="TileMap/@Area2D@31181" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@31182" to="TileMap/@Area2D@31182" method="_on_body_entered"]
 [connection signal="body_entered" from="Vertical Platform/PlateSwitch" to="Vertical Platform/Platform2" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="Vertical Platform/PlateSwitch" to="Vertical Platform/Platform2" method="_on_plate_switch_body_exited"]
 [connection signal="lever_toggled" from="Final Door/LeverSwitch" to="Final Door/Door" method="_on_lever_switch_lever_toggled"]
