@@ -10,6 +10,7 @@ const JUMP_INPUT_BUFFERING := 0.2
 const IDLE_SPEED_SQUARED := 100.0
 const FLIP_SPEED := 1.0
 const MIN_SPEED := 80
+const PROBABLY_SOFTLOCKED_TIME := 5.0
 
 const FAST_SPEED_MULTIPLE := 1.5
 const SMALL_SIZE_MULTIPLE := 0.7
@@ -144,8 +145,9 @@ func _physics_process(delta: float) -> void:
 			last_jump_press += delta
 		
 		if (last_jump_press <= JUMP_INPUT_BUFFERING
-				and coyote_time <= MAX_COYOTE_TIME
-				and not jumped):
+				and (coyote_time <= MAX_COYOTE_TIME
+					and not jumped)
+				or coyote_time > PROBABLY_SOFTLOCKED_TIME):
 			velocity.y = JUMP_VELOCITY
 			climbing = false
 			jumped = true
