@@ -1,8 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://fj66b0r304fq"]
+[gd_scene load_steps=41 format=3 uid="uid://fj66b0r304fq"]
 
 [ext_resource type="Script" path="res://GameScenes/Character/character.gd" id="1_1kgrh"]
 [ext_resource type="PackedScene" uid="uid://b373kfvbfcsgd" path="res://GameScenes/Character/character_sprite.tscn" id="2_seolr"]
 [ext_resource type="Script" path="res://GameScenes/Character/CharacterCamera.gd" id="3_1k8yo"]
+[ext_resource type="Texture2D" uid="uid://d0o2tabx334rc" path="res://GameScenes/Character/FAT.svg" id="4_wknrd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nvfka"]
 resource_local_to_scene = true
@@ -543,8 +544,13 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8)
 }
 
+[sub_resource type="Animation" id="Animation_lqil8"]
+resource_name = "Death"
+step = 0.01
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_owntt"]
 _data = {
+"Death": SubResource("Animation_lqil8"),
 "RESET": SubResource("Animation_cxuy8"),
 "climb": SubResource("Animation_nujvq"),
 "hold": SubResource("Animation_h48qo"),
@@ -640,11 +646,122 @@ transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_g
 graph_offset = Vector2(138, 174)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wmpk0"]
-graph_offset = Vector2(-244.829, -12.1753)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_a3ffe")
 nodes/StateMachine/position = Vector2(20, 110)
 nodes/output/position = Vector2(240, 120)
 node_connections = [&"output", 0, &"StateMachine"]
+
+[sub_resource type="Animation" id="Animation_w2tfm"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Death:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Death:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_3tf6s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Death:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Death:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Life:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Life:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5yjy3"]
+resource_name = "Life"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Life:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Life:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8dvvi"]
+_data = {
+"Death": SubResource("Animation_w2tfm"),
+"Life": SubResource("Animation_5yjy3"),
+"RESET": SubResource("Animation_3tf6s")
+}
 
 [node name="Character2" type="CharacterBody2D"]
 position = Vector2(0, -12)
@@ -676,3 +793,20 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(7, 7)
 script = ExtResource("3_1k8yo")
+
+[node name="Life" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("4_wknrd")
+
+[node name="Death" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 2)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_wknrd")
+
+[node name="TransitionAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8dvvi")
+}
+
+[connection signal="animation_finished" from="TransitionAnimations" to="." method="_on_death_animation_animation_finished"]

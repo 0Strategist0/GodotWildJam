@@ -79,6 +79,10 @@ func _ready() -> void:
 			hair.visible = true
 		else:
 			hair.visible = false
+	
+	
+	# Fade in
+	$TransitionAnimations.play("Life")
 
 func _physics_process(delta: float) -> void:
 	# TEMP <- debug kill button
@@ -235,6 +239,12 @@ func kill() -> void:
 			Progress.bodies[owner.get_meta("level")][position] = {"direction": sign(sprite.scale.x), 
 					"type": sprite_type, "size": SMALL_SIZE_MULTIPLE if CharacterAttributes.small else 1.0,
 					"fat": is_fat}
+		
+		$TransitionAnimations.play("Death")
+
+
+func _on_death_animation_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Death":
 		CharacterAttributes.randomize_attributes()
 		var reloaded_scene : Node2D = load("uid://b0kxtk2p027ml").instantiate()
 		GlobalNodeReferences.main.call_deferred("add_child", reloaded_scene)
