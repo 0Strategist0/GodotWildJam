@@ -188,7 +188,7 @@ layer_0/tile_data = PackedInt32Array(196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 1
 position = Vector2(-38, 20)
 collision_mask = 3
 
-[node name="Camera2D" type="Camera2D" parent="Character"]
+[node name="Camera2D2" type="Camera2D" parent="Character"]
 zoom = Vector2(7, 7)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
