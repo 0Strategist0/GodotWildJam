@@ -461,9 +461,6 @@ metadata/level = 1
 z_index = 2
 position = Vector2(-55, -134)
 
-[node name="Camera2D" type="Camera2D" parent="Character"]
-zoom = Vector2(7, 7)
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_i5pvu")
 format = 2

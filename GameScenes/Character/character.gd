@@ -14,10 +14,13 @@ const MIN_SPEED := 80
 const FAST_SPEED_MULTIPLE := 1.5
 const SMALL_SIZE_MULTIPLE := 0.7
 const FAT_SPEED_MULTIPLE := 0.75
+const HARD_FALL_SCALE := 300.0
+const HARD_FALL_TIME := 0.2
 
 @onready var character_area := $CharacterArea
 @onready var state_machine : AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/StateMachine/playback")
 @onready var sprite := $Sprite
+@onready var camera := $Camera2D
 
 @export var can_jump: bool = true
 
@@ -163,7 +166,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = lerp(velocity.x, 0.0, pow(ACCELERATION, 60.0 * delta))
 	
+	var pre_move_velocity = velocity.y
 	move_and_slide()
+	if is_fat and is_on_floor() and pre_move_velocity > 0.0:
+		camera.shake(pow(pre_move_velocity / HARD_FALL_SCALE, 3.0), HARD_FALL_TIME)
 	
 	# Shove & destroy blocks
 	if lockout > 0.0:

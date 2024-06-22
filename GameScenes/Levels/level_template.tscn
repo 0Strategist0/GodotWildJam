@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_sm00s"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="3_s6to8"]
-[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="4_ln5a5"]
+[ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="4_ln5a5"]
 [ext_resource type="PackedScene" uid="uid://b0kxtk2p027ml" path="res://GameScenes/Levels/level_b1.tscn" id="5_6mgpo"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="6_albdn"]
 [ext_resource type="Texture2D" uid="uid://bb2eted15mh1c" path="res://GameScenes/Levels/tree2.svg" id="7_t1cds"]
@@ -781,9 +781,6 @@ texture = ExtResource("12_c4el8")
 
 [node name="Character" parent="." instance=ExtResource("1_sm00s")]
 position = Vector2(8, 24)
-
-[node name="Camera2D" type="Camera2D" parent="Character"]
-zoom = Vector2(7, 7)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_qbglg")
