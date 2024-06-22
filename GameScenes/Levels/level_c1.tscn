@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c7a84huofxckc" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="19_snasv"]
 [ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/Blocks/pushable_object.tscn" id="23_knr2a"]
 [ext_resource type="PackedScene" uid="uid://blempiyqsp5tu" path="res://GameScenes/Objects/Switches/plate_switch.tscn" id="24_4n5ok"]
+[ext_resource type="PackedScene" uid="uid://baxs24dippmn" path="res://GameScenes/Levels/level_d2.tscn" id="26_706ct"]
 
 [sub_resource type="Shader" id="Shader_vo8rx"]
 code = "/*
@@ -753,6 +754,7 @@ script = ExtResource("1_6g5l3")
 metadata/level = "c2"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2(-5206.77, -1194.39)
 
 [node name="TreeLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color(0.59261, 0.725878, 0.616676, 1)
