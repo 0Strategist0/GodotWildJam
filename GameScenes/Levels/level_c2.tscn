@@ -1357,7 +1357,7 @@ scale = Vector2(10, 1)
 texture = ExtResource("7_byp5q")
 
 [node name="Character" parent="." instance=ExtResource("9_n23bq")]
-position = Vector2(-227, -540)
+position = Vector2(802, -342)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_4gfb6")
@@ -1707,6 +1707,20 @@ position = Vector2(1223, -298)
 [node name="Marker2D2" type="Marker2D" parent="Section4"]
 position = Vector2(1118, -140)
 
+[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@31699" to="TileMap/@Area2D@31699" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@31700" to="TileMap/@Area2D@31700" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@31701" to="TileMap/@Area2D@31701" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@31702" to="TileMap/@Area2D@31702" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@31703" to="TileMap/@Area2D@31703" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@31704" to="TileMap/@Area2D@31704" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@31705" to="TileMap/@Area2D@31705" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@31706" to="TileMap/@Area2D@31706" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@31707" to="TileMap/@Area2D@31707" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@31708" to="TileMap/@Area2D@31708" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@31709" to="TileMap/@Area2D@31709" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@31710" to="TileMap/@Area2D@31710" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@31711" to="TileMap/@Area2D@31711" method="_on_body_entered"]
 [connection signal="body_entered" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_exited"]
 [connection signal="lever_toggled" from="Section4/LeverSwitch" to="Section4/Platform" method="_on_lever_switch_lever_toggled"]

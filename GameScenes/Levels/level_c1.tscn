@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="10_2ffug"]
 [ext_resource type="PackedScene" uid="uid://cusycd8j05p7" path="res://GameScenes/death_area.tscn" id="11_80lmh"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="12_08exj"]
-[ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="13_3fand"]
+[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="13_3fand"]
 [ext_resource type="PackedScene" uid="uid://b0kxtk2p027ml" path="res://GameScenes/Levels/level_b1.tscn" id="14_r8hsk"]
 [ext_resource type="PackedScene" uid="uid://c1tsd86p4rqem" path="res://GameScenes/Objects/Movables/static_platform.tscn" id="15_087te"]
 [ext_resource type="PackedScene" uid="uid://bqenn1xn8mpei" path="res://GameScenes/Objects/Blocks/pullable_object.tscn" id="16_i6hhj"]
