@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="12_c4el8"]
 [ext_resource type="Shader" path="res://GameScenes/Levels/fog.gdshader" id="13_xl10a"]
 
-[sub_resource type="Shader" id="Shader_bx7om"]
+[sub_resource type="Shader" id="Shader_1dbm7"]
 code = "/*
 Shader from Godot Shaders - the free shader library.
 godotshaders.com/shader/god-rays
@@ -125,7 +125,7 @@ void fragment()
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bwlnv"]
-shader = SubResource("Shader_bx7om")
+shader = SubResource("Shader_1dbm7")
 shader_parameter/angle = -0.37
 shader_parameter/position = 0.08
 shader_parameter/spread = 0.06
@@ -146,7 +146,7 @@ shader_parameter/speed = 0.8
 shader_parameter/scale = Vector2(1, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_skqhu"]
-shader = SubResource("Shader_bx7om")
+shader = SubResource("Shader_1dbm7")
 shader_parameter/angle = -0.37
 shader_parameter/position = 0.08
 shader_parameter/spread = 0.06
