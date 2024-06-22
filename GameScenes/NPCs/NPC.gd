@@ -28,7 +28,7 @@ const lines_3: Array[String] = [
 const lines_4: Array[String] = [
 	"we're not really sure why it wants kids",
 	"but who are we to argue",
-	"i heard once we didn't offer anything",
+	"i heard once we offered an adult",
 	"and the whole village burned down"
 ]
 
