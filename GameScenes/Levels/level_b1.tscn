@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b0kxtk2p027ml"]
+[gd_scene load_steps=38 format=3 uid="uid://b0kxtk2p027ml"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_843t4"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="2_w6cac"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="19_jlvb2"]
 [ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="20_rqtdn"]
 [ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="24_vpq12"]
+[ext_resource type="PackedScene" uid="uid://b56ad0a7axq28" path="res://GameScenes/Levels/level_c1.tscn" id="25_hyl85"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yokt"]
 texture = ExtResource("3_yy0pf")
@@ -1060,7 +1061,7 @@ layer_0/tile_data = PackedInt32Array(131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 1
 
 [node name="Ground" type="Polygon2D" parent="."]
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-118, -304, -96, -78, -95, 15, 143, 15, 144, -1, 257, -1, 257, 32, 288, 32, 287, -1, 575, -1, 575, -145, 653, -145, 752, -145, 752, -112, 847, -112, 847, -146, 992, -145, 992, -132, 993, -112, 1120, -111, 1120, -145, 1328, -145, 1333, -97, 1339, -31, 1339, 80, 1328, 128, 1488, 128, 1482, 104, 1485, -25, 1486, -109, 1475, -152, 1448, -183, 1406, -203, 1379.78, -197.512, 1363, -194, 1344, -176, 1328, -176, 1307, -276, 1275, -318, 1241, -407, 1210, -530, 1124, -784, 2895, -855, 2618, 437, -598, 335, -603, -305)
+polygon = PackedVector2Array(-118, -304, -96, -78, -95, 15, 143, 15, 144, -1, 257, -1, 257, 32, 288, 32, 287, -1, 575, -1, 575, -145, 653, -145, 752, -145, 752, -112, 847, -112, 847, -146, 992, -145, 992, -132, 993, -112, 1120, -111, 1120, -145, 1328, -145, 1333, -97, 1339, -31, 1339, -0.0968933, 1339, 80, 1328, 128, 1488, 128, 1482, 104, 1485, -25, 1486, -109, 1475, -152, 1448, -183, 1406, -203, 1379.78, -197.512, 1363, -194, 1344, -176, 1328, -176, 1307, -276, 1275, -318, 1241, -407, 1210, -530, 1124, -784, 2895, -855, 2618, 437, -598, 335, -603, -305)
 
 [node name="Trees" type="Node2D" parent="."]
 
@@ -1944,24 +1945,9 @@ scale = Vector2(-0.09, 0.09)
 texture = ExtResource("19_jlvb2")
 
 [node name="TransitionArea" parent="." instance=ExtResource("24_vpq12")]
-position = Vector2(1339, -162)
+position = Vector2(1339, -160)
+next_level = ExtResource("25_hyl85")
 
-[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37035" to="TileMap/@Area2D@37035" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37036" to="TileMap/@Area2D@37036" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37037" to="TileMap/@Area2D@37037" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37038" to="TileMap/@Area2D@37038" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37039" to="TileMap/@Area2D@37039" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37040" to="TileMap/@Area2D@37040" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37041" to="TileMap/@Area2D@37041" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37042" to="TileMap/@Area2D@37042" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37043" to="TileMap/@Area2D@37043" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37044" to="TileMap/@Area2D@37044" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37045" to="TileMap/@Area2D@37045" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37046" to="TileMap/@Area2D@37046" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37047" to="TileMap/@Area2D@37047" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37048" to="TileMap/@Area2D@37048" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@37049" to="TileMap/@Area2D@37049" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
 
