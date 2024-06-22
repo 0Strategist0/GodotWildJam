@@ -50,10 +50,18 @@ scale = Vector2(0.0269207, 0.0269207)
 texture = ExtResource("3_uxa82")
 flip_h = true
 
-[node name="WideGrass" type="Sprite2D" parent="Node2D"]
-position = Vector2(0, -15)
-scale = Vector2(0.0379408, 0.0379408)
+[node name="Widegrass" type="Sprite2D" parent="Node2D"]
+position = Vector2(4.24149, -31.9022)
+scale = Vector2(-0.09, 0.09)
 texture = ExtResource("4_asi84")
+hframes = 3
+
+[node name="Widegrass2" type="Sprite2D" parent="Node2D"]
+position = Vector2(-10.8298, -31.5484)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("4_asi84")
+flip_h = true
+hframes = 5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
