@@ -1,5 +1,6 @@
-[gd_scene load_steps=40 format=3 uid="uid://db44wgy2to8bm"]
+[gd_scene load_steps=41 format=3 uid="uid://db44wgy2to8bm"]
 
+[ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_ixe5q"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="1_qnh6e"]
 [ext_resource type="Texture2D" uid="uid://bb2eted15mh1c" path="res://GameScenes/Levels/tree2.svg" id="2_j10ek"]
 [ext_resource type="Texture2D" uid="uid://cosfl00qlxjvc" path="res://GameScenes/Levels/tree3.svg" id="3_h6xk2"]
@@ -615,6 +616,8 @@ size = Vector2(1504, 16)
 size = Vector2(16, 224)
 
 [node name="LevelD1" type="Node2D"]
+script = ExtResource("1_ixe5q")
+metadata/level = "d1"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -1228,9 +1231,6 @@ texture = ExtResource("7_qom30")
 
 [node name="Character" parent="." instance=ExtResource("9_mci2d")]
 position = Vector2(-136, 24)
-
-[node name="Camera2D" type="Camera2D" parent="Character"]
-zoom = Vector2(7, 7)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_67eta")

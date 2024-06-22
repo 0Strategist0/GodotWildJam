@@ -1,5 +1,6 @@
-[gd_scene load_steps=88 format=3 uid="uid://b56ad0a7axq28"]
+[gd_scene load_steps=89 format=3 uid="uid://b56ad0a7axq28"]
 
+[ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_hyjqt"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="1_r4c1n"]
 [ext_resource type="Texture2D" uid="uid://bb2eted15mh1c" path="res://GameScenes/Levels/tree2.svg" id="2_ekrfk"]
 [ext_resource type="Texture2D" uid="uid://cosfl00qlxjvc" path="res://GameScenes/Levels/tree3.svg" id="3_a4fjr"]
@@ -742,6 +743,8 @@ size = Vector2(16, 80)
 size = Vector2(3.5, 265)
 
 [node name="LevelC2" type="Node2D"]
+script = ExtResource("1_hyjqt")
+metadata/level = "c2"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -1704,20 +1707,6 @@ position = Vector2(1223, -298)
 [node name="Marker2D2" type="Marker2D" parent="Section4"]
 position = Vector2(1118, -140)
 
-[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@22047" to="TileMap/@Area2D@22047" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@22048" to="TileMap/@Area2D@22048" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@22049" to="TileMap/@Area2D@22049" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@22050" to="TileMap/@Area2D@22050" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@22051" to="TileMap/@Area2D@22051" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@22052" to="TileMap/@Area2D@22052" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@22053" to="TileMap/@Area2D@22053" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@22054" to="TileMap/@Area2D@22054" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@22055" to="TileMap/@Area2D@22055" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@22056" to="TileMap/@Area2D@22056" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@22057" to="TileMap/@Area2D@22057" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@22058" to="TileMap/@Area2D@22058" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@22059" to="TileMap/@Area2D@22059" method="_on_body_entered"]
 [connection signal="body_entered" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_exited"]
 [connection signal="lever_toggled" from="Section4/LeverSwitch" to="Section4/Platform" method="_on_lever_switch_lever_toggled"]
