@@ -1061,7 +1061,7 @@ layer_0/tile_data = PackedInt32Array(131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 1
 
 [node name="Ground" type="Polygon2D" parent="."]
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-118, -304, -96, -78, -95, 15, 143, 15, 144, -1, 257, -1, 257, 32, 288, 32, 287, -1, 575, -1, 575, -145, 653, -145, 752, -145, 752, -112, 847, -112, 847, -146, 992, -145, 992, -132, 993, -112, 1120, -111, 1120, -145, 1328, -145, 1333, -97, 1339, -31, 1339, -0.0968933, 1339, 80, 1328, 128, 1488, 128, 1482, 104, 1485, -25, 1486, -109, 1475, -152, 1448, -183, 1406, -203, 1379.78, -197.512, 1363, -194, 1344, -176, 1328, -176, 1307, -276, 1275, -318, 1241, -407, 1210, -530, 1124, -784, 2895, -855, 2618, 437, -598, 335, -603, -305)
+polygon = PackedVector2Array(-118, -304, -96, -78, -95, 15, 143, 15, 144, -1, 257, -1, 257, 32, 288, 32, 287, -1, 575, -1, 575, -145, 653, -145, 752, -145, 752, -112, 847, -112, 847, -146, 992, -145, 992, -132, 993, -112, 1120, -111, 1120, -145, 1328, -145, 1333, -97, 1339, -31, 1339, -0.0968933, 1339, 80, 1328, 128, 1488, 128, 1407, 102, 1410, 21, 1392, -97, 1390, -163, 1383, -179, 1359, -185, 1344, -176, 1328, -176, 1307, -276, 1275, -318, 1241, -407, 1210, -530, 1124, -784, 2895, -855, 2618, 437, -598, 335, -603, -305)
 
 [node name="Trees" type="Node2D" parent="."]
 
@@ -1948,6 +1948,22 @@ texture = ExtResource("19_jlvb2")
 position = Vector2(1339, -160)
 next_level = ExtResource("25_hyl85")
 
+[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19165" to="TileMap/@Area2D@19165" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19166" to="TileMap/@Area2D@19166" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19167" to="TileMap/@Area2D@19167" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19168" to="TileMap/@Area2D@19168" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19169" to="TileMap/@Area2D@19169" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19170" to="TileMap/@Area2D@19170" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19171" to="TileMap/@Area2D@19171" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19172" to="TileMap/@Area2D@19172" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19173" to="TileMap/@Area2D@19173" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19174" to="TileMap/@Area2D@19174" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19175" to="TileMap/@Area2D@19175" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19176" to="TileMap/@Area2D@19176" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19177" to="TileMap/@Area2D@19177" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19178" to="TileMap/@Area2D@19178" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@19179" to="TileMap/@Area2D@19179" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
 
