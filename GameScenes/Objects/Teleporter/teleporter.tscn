@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cqay0ugttwink"]
 
 [ext_resource type="Script" path="res://GameScenes/Objects/Teleporter/teleporter.gd" id="1_d5yqh"]
-[ext_resource type="AudioStream" uid="uid://bktsbu84oep4o" path="res://GameScenes/Objects/Teleporter/teleport_sfx.wav" id="3_p4vee"]
+[ext_resource type="AudioStream" uid="uid://j7j28opou31w" path="res://GameScenes/Objects/Teleporter/teleport_wind.wav" id="2_1rdaa"]
 [ext_resource type="Texture2D" uid="uid://d12nhxwkqht6p" path="res://GameScenes/Objects/Teleporter/offset_glow.png" id="4_fisqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23hte"]
@@ -20,10 +20,11 @@ position = Vector2(0, 9.09976)
 shape = SubResource("RectangleShape2D_23hte")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_p4vee")
+stream = ExtResource("2_1rdaa")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_vrr6x")
+position = Vector2(0, -4)
 amount = 20
 texture = ExtResource("4_fisqa")
 gravity = Vector2(0, -100)

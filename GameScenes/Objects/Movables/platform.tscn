@@ -24,17 +24,18 @@ shape = SubResource("RectangleShape2D_jyqg7")
 position = Vector2(0, 1.5)
 
 [node name="EdgeGrassR" type="Sprite2D" parent="Node2D"]
-position = Vector2(25, -8.5)
+position = Vector2(25.4177, -7.70927)
 scale = Vector2(0.0362091, 0.0362091)
 texture = ExtResource("3_n3kms")
 
 [node name="EdgeGrassL" type="Sprite2D" parent="Node2D"]
-position = Vector2(-25, -8.5)
+position = Vector2(-25.2902, -7.84027)
 scale = Vector2(0.0362091, 0.0362091)
 texture = ExtResource("3_n3kms")
 flip_h = true
 
-[node name="WideGrass" type="Sprite2D" parent="Node2D"]
-position = Vector2(0, -21.5)
-scale = Vector2(0.0434509, 0.0434509)
+[node name="Widegrass" type="Sprite2D" parent="Node2D"]
+position = Vector2(0.679428, -36.3913)
+scale = Vector2(-0.09, 0.09)
 texture = ExtResource("4_qikmq")
+hframes = 2
