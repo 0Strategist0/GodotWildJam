@@ -3,7 +3,7 @@ extends Node
 enum {DEFAULT, BOB, MESSY, CURLY, PONY, BALD}
 
 var fat := false
-var fast := true
+var fast := false
 var strong := false
 var small := false
 var hair := DEFAULT
