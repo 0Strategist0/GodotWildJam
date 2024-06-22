@@ -24,6 +24,7 @@ Progress="*res://Globals/Progress.gd"
 HunterSignalling="*res://Singletons/HunterSignalling.gd"
 Settings="*res://Singletons/Settings.gd"
 CharacterAttributes="*res://Singletons/CharacterAttributes.gd"
+TransitionScreen="*res://Singletons/transition_screen.tscn"
 
 [debug]
 

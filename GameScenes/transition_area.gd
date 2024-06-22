@@ -8,5 +8,11 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	if body == GlobalNodeReferences.character:
 		HunterSignalling.end_hunt.emit()
+		
+		# Play fade animation
+		TransitionScreen.transition()
+		await TransitionScreen.on_transition_finished
+		
+		# Move to next scene
 		main.call_deferred("add_child", next_level.instantiate())
 		owner.call_deferred("queue_free")
