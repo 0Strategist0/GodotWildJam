@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b0kxtk2p027ml"]
+[gd_scene load_steps=37 format=3 uid="uid://b0kxtk2p027ml"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_843t4"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="2_w6cac"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cfhbexmwfpwh" path="res://GameScenes/position_saver.tscn" id="18_ssa27"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="19_jlvb2"]
 [ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="20_rqtdn"]
+[ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="24_vpq12"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yokt"]
 texture = ExtResource("3_yy0pf")
@@ -1932,6 +1933,29 @@ texture = ExtResource("20_rqtdn")
 position = Vector2(1330, -149)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("20_rqtdn")
+
+[node name="Widegrass14" type="Sprite2D" parent="Decorations"]
+position = Vector2(1376, -176)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("19_jlvb2")
+
+[node name="Widegrass15" type="Sprite2D" parent="Decorations"]
+position = Vector2(1467, -176)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("19_jlvb2")
+
+[node name="Widegrass16" type="Sprite2D" parent="Decorations"]
+position = Vector2(1556, -176)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("19_jlvb2")
+
+[node name="Widegrass17" type="Sprite2D" parent="Decorations"]
+position = Vector2(1650, -176)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("19_jlvb2")
+
+[node name="TransitionArea" parent="." instance=ExtResource("24_vpq12")]
+position = Vector2(1339, -162)
 
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
