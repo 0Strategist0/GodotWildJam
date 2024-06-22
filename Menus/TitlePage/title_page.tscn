@@ -125,6 +125,10 @@ anchor_left = 0.1
 anchor_top = 0.2
 anchor_right = 0.9
 anchor_bottom = 0.95
+offset_left = 1.60001
+offset_top = -96.8
+offset_right = 1.6001
+offset_bottom = -96.8
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_osxgx")
@@ -141,15 +145,20 @@ size_flags_stretch_ratio = 0.1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_omxbu")
+theme_override_font_sizes/font_size = 150
 text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Exit" type="Button" parent="Settings/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
 size_flags_stretch_ratio = 0.05
+theme_override_fonts/font = ExtResource("1_omxbu")
+theme_override_font_sizes/font_size = 150
 text = "X"
+flat = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings/VBoxContainer"]
 layout_mode = 2
@@ -166,6 +175,9 @@ button_pressed = true
 
 [node name="Label" type="Label" parent="Settings/VBoxContainer/VBoxContainer/Fog"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_omxbu")
+theme_override_font_sizes/font_size = 100
 text = "Fog (can slow down lower-end computers)"
 
 [connection signal="focus_entered" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_focus_entered"]
