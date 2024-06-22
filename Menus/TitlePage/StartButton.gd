@@ -10,7 +10,7 @@ const A1 := preload("uid://b757fjeorrns1")
 @onready var title_page := get_node("../..")
 
 # Remove this later
-var debug_mode := 1
+var debug_mode := 4
 
 func _on_pressed() -> void:
 	var world := WORLD.instantiate()
