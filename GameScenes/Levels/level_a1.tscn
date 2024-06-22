@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_bts5d"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="2_2vguc"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="3_3n02r"]
-[ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="4_22sb1"]
+[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="4_22sb1"]
 [ext_resource type="PackedScene" uid="uid://b0kxtk2p027ml" path="res://GameScenes/Levels/level_b1.tscn" id="5_iircx"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="6_c4xv2"]
 [ext_resource type="Texture2D" uid="uid://bb2eted15mh1c" path="res://GameScenes/Levels/tree2.svg" id="7_wdwpx"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cfbgqr2bhcf4y" path="res://GameScenes/Objects/Movables/platform.tscn" id="14_cs0gd"]
 [ext_resource type="PackedScene" uid="uid://c7a84huofxckc" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="15_n10tj"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="16_as37r"]
+[ext_resource type="PackedScene" uid="uid://cbvluptdpl86h" path="res://GameScenes/NPCs/NPC.tscn" id="17_p3r6a"]
 
 [sub_resource type="Shader" id="Shader_n1rnj"]
 code = "/*
@@ -1410,5 +1411,50 @@ texture = ExtResource("16_as37r")
 position = Vector2(113, -43)
 scale = Vector2(0.0827834, 0.0827834)
 texture = ExtResource("16_as37r")
+
+[node name="VillageNPCs" type="Node2D" parent="."]
+
+[node name="NPC" parent="VillageNPCs" instance=ExtResource("17_p3r6a")]
+position = Vector2(121, -31)
+flip_sprite = true
+
+[node name="NPC2" parent="VillageNPCs" instance=ExtResource("17_p3r6a")]
+position = Vector2(294, 32)
+adult_num = 2
+
+[node name="NPC3" parent="VillageNPCs" instance=ExtResource("17_p3r6a")]
+position = Vector2(468, -46)
+adult_num = 3
+flip_sprite = true
+
+[node name="NPC4" parent="VillageNPCs" instance=ExtResource("17_p3r6a")]
+position = Vector2(608, -46)
+adult_num = 4
+
+[node name="NPC5" parent="VillageNPCs" instance=ExtResource("17_p3r6a")]
+position = Vector2(781, -142)
+adult_num = 5
+flip_sprite = true
+
+[node name="NPC6" parent="VillageNPCs" instance=ExtResource("17_p3r6a")]
+position = Vector2(841, -142)
+adult_num = 6
+
+[node name="NPC7" parent="VillageNPCs" instance=ExtResource("17_p3r6a")]
+position = Vector2(975, -142)
+adult_num = 7
+
+[node name="NPC8" parent="VillageNPCs" instance=ExtResource("17_p3r6a")]
+position = Vector2(1067, -142)
+adult_num = 8
+flip_sprite = true
+
+[node name="NPC9" parent="VillageNPCs" instance=ExtResource("17_p3r6a")]
+position = Vector2(1112, -142)
+adult_num = 9
+
+[node name="NPC10" parent="VillageNPCs" instance=ExtResource("17_p3r6a")]
+position = Vector2(1141, -142)
+adult_num = 10
 
 [connection signal="lever_toggled" from="FirstLeverPlatform/LeverSwitch" to="FirstLeverPlatform/Platform" method="_on_lever_switch_lever_toggled"]
