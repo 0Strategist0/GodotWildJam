@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_sm00s"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="3_s6to8"]
-[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="4_ln5a5"]
+[ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="4_ln5a5"]
 [ext_resource type="PackedScene" uid="uid://b0kxtk2p027ml" path="res://GameScenes/Levels/level_b1.tscn" id="5_6mgpo"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="6_albdn"]
 [ext_resource type="Texture2D" uid="uid://bb2eted15mh1c" path="res://GameScenes/Levels/tree2.svg" id="7_t1cds"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cxqhqltntwaq8" path="res://icon.svg" id="12_c4el8"]
 [ext_resource type="Shader" path="res://GameScenes/Levels/fog.gdshader" id="13_xl10a"]
 
-[sub_resource type="Shader" id="Shader_bx7om"]
+[sub_resource type="Shader" id="Shader_1dbm7"]
 code = "/*
 Shader from Godot Shaders - the free shader library.
 godotshaders.com/shader/god-rays
@@ -125,7 +125,7 @@ void fragment()
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bwlnv"]
-shader = SubResource("Shader_bx7om")
+shader = SubResource("Shader_1dbm7")
 shader_parameter/angle = -0.37
 shader_parameter/position = 0.08
 shader_parameter/spread = 0.06
@@ -146,7 +146,7 @@ shader_parameter/speed = 0.8
 shader_parameter/scale = Vector2(1, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_skqhu"]
-shader = SubResource("Shader_bx7om")
+shader = SubResource("Shader_1dbm7")
 shader_parameter/angle = -0.37
 shader_parameter/position = 0.08
 shader_parameter/spread = 0.06
