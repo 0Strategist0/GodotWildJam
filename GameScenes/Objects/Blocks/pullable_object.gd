@@ -24,7 +24,6 @@ func _physics_process(delta: float) -> void:
 			velocity.x = GlobalNodeReferences.character.velocity.x
 	else:
 		velocity.x = 0
-		velocity.y = 0
 	
 	move_and_slide()
 
