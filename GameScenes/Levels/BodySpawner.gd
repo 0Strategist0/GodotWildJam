@@ -24,6 +24,8 @@ func _ready() -> void:
 						hair.visible = true
 					else:
 						hair.visible = false
+				for fat in child.find_children("*Fat*"):
+					fat.visible = bodies[location].fat
 			elif child is CollisionShape2D:
 				child.position *= bodies[location].size
 				if child.shape.get("size") != null:

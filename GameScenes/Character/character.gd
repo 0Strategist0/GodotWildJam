@@ -11,7 +11,7 @@ const IDLE_SPEED_SQUARED := 100.0
 const FLIP_SPEED := 1.0
 const MIN_SPEED := 80
 
-const FAST_SPEED_MULTIPLE := 1.5
+const FAST_SPEED_MULTIPLE := 3.0
 const SMALL_SIZE_MULTIPLE := 0.7
 const FAT_SPEED_MULTIPLE := 0.75
 const HARD_FALL_SCALE := 300.0
@@ -57,6 +57,8 @@ func _ready() -> void:
 	if CharacterAttributes.fat:
 		speed *= FAT_SPEED_MULTIPLE
 		climb_speed *= FAT_SPEED_MULTIPLE
+	for fat in $Sprite/Offset/Body.find_children("*Fat*"):
+		fat.visible = is_fat
 	# Speediness
 	if CharacterAttributes.fast:
 		speed *= FAST_SPEED_MULTIPLE
@@ -227,10 +229,12 @@ func kill() -> void:
 		# Code to save the body position when you die
 		if not Progress.bodies.has(owner.get_meta("level")):
 			Progress.bodies[owner.get_meta("level")] = {position: {"direction": sign(sprite.scale.x), 
-					"type": sprite_type, "size": SMALL_SIZE_MULTIPLE if CharacterAttributes.small else 1.0}}
+					"type": sprite_type, "size": SMALL_SIZE_MULTIPLE if CharacterAttributes.small else 1.0,
+					"fat": is_fat}}
 		else:
 			Progress.bodies[owner.get_meta("level")][position] = {"direction": sign(sprite.scale.x), 
-					"type": sprite_type, "size": SMALL_SIZE_MULTIPLE if CharacterAttributes.small else 1.0}
+					"type": sprite_type, "size": SMALL_SIZE_MULTIPLE if CharacterAttributes.small else 1.0,
+					"fat": is_fat}
 		CharacterAttributes.randomize_attributes()
 		var reloaded_scene : Node2D = load("uid://b0kxtk2p027ml").instantiate()
 		GlobalNodeReferences.main.call_deferred("add_child", reloaded_scene)
