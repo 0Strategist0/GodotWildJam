@@ -1,8 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://b757fjeorrns1"]
+[gd_scene load_steps=40 format=3 uid="uid://b757fjeorrns1"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_03xtt"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_bts5d"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="2_2vguc"]
+[ext_resource type="Texture2D" uid="uid://dpkw18k4iisp1" path="res://GameScenes/Levels/Houses.svg" id="2_p7fl1"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="3_3n02r"]
 [ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="4_22sb1"]
 [ext_resource type="PackedScene" uid="uid://b0kxtk2p027ml" path="res://GameScenes/Levels/level_b1.tscn" id="5_iircx"]
@@ -1210,6 +1211,35 @@ metadata/_edit_group_ = true
 material = SubResource("ShaderMaterial_m0vwu")
 scale = Vector2(10, 1)
 texture = ExtResource("12_oe37a")
+
+[node name="Houses" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.119655, 0.174602, 0.130409, 1)
+position = Vector2(0, 26)
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Scale" type="Node2D" parent="ParallaxBackground/Houses"]
+scale = Vector2(0.1, 0.1)
+
+[node name="House1" type="Polygon2D" parent="ParallaxBackground/Houses/Scale"]
+position = Vector2(640, -570)
+offset = Vector2(-1066, -2912)
+texture = ExtResource("2_p7fl1")
+polygon = PackedVector2Array(1412.9, 1616.13, 2170.97, 2829.03, 1958.06, 3729.03, 235.484, 3690.32, 103.226, 2764.52, 441.935, 1722.58)
+uv = PackedVector2Array(1412.9, 1616.13, 2170.97, 2829.03, 1958.06, 3729.03, 235.484, 3690.32, 103.226, 2764.52, 441.935, 1722.58)
+
+[node name="House2" type="Polygon2D" parent="ParallaxBackground/Houses/Scale"]
+position = Vector2(5560, -340)
+offset = Vector2(-3055.33, -3091.33)
+texture = ExtResource("2_p7fl1")
+polygon = PackedVector2Array(2554.84, 1941.94, 2200, 3048.39, 2348.39, 3651.61, 3906.45, 3641.94, 3883.87, 2709.68)
+uv = PackedVector2Array(2554.84, 1941.94, 2200, 3048.39, 2348.39, 3651.61, 3906.45, 3641.94, 3883.87, 2709.68)
+
+[node name="TownHall" type="Polygon2D" parent="ParallaxBackground/Houses/Scale"]
+position = Vector2(8420, -1260)
+offset = Vector2(-5887.67, -3023.33)
+texture = ExtResource("2_p7fl1")
+polygon = PackedVector2Array(4383.87, 1638.71, 4096.77, 3712.9, 7764.52, 3674.19, 7512.9, 1909.68, 5932.26, 1658.06)
+uv = PackedVector2Array(4383.87, 1638.71, 4096.77, 3712.9, 7764.52, 3674.19, 7512.9, 1909.68, 5932.26, 1658.06)
 
 [node name="Character" parent="." instance=ExtResource("1_bts5d")]
 position = Vector2(8, -26)
