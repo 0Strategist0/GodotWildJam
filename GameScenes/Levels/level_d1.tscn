@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bg1pmqcqol4c1"]
+[gd_scene load_steps=40 format=3 uid="uid://db44wgy2to8bm"]
 
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="1_qnh6e"]
 [ext_resource type="Texture2D" uid="uid://bb2eted15mh1c" path="res://GameScenes/Levels/tree2.svg" id="2_j10ek"]
