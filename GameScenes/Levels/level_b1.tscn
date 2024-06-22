@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b0kxtk2p027ml"]
+[gd_scene load_steps=37 format=3 uid="uid://b0kxtk2p027ml"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_843t4"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="2_w6cac"]
@@ -24,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="19_jlvb2"]
 [ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="20_rqtdn"]
 [ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="24_vpq12"]
-[ext_resource type="PackedScene" uid="uid://bqkwlu556h1em" path="res://GameScenes/Levels/level_c1.tscn" id="25_yrvdn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yokt"]
 texture = ExtResource("3_yy0pf")
@@ -1958,24 +1957,23 @@ texture = ExtResource("19_jlvb2")
 
 [node name="TransitionArea" parent="." instance=ExtResource("24_vpq12")]
 position = Vector2(1339, -162)
-next_level = ExtResource("25_yrvdn")
 
 [connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35509" to="TileMap/@Area2D@35509" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35510" to="TileMap/@Area2D@35510" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35511" to="TileMap/@Area2D@35511" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35512" to="TileMap/@Area2D@35512" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35513" to="TileMap/@Area2D@35513" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35514" to="TileMap/@Area2D@35514" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35515" to="TileMap/@Area2D@35515" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35516" to="TileMap/@Area2D@35516" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35517" to="TileMap/@Area2D@35517" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35518" to="TileMap/@Area2D@35518" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35519" to="TileMap/@Area2D@35519" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35520" to="TileMap/@Area2D@35520" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35521" to="TileMap/@Area2D@35521" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35522" to="TileMap/@Area2D@35522" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@35523" to="TileMap/@Area2D@35523" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39272" to="TileMap/@Area2D@39272" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39273" to="TileMap/@Area2D@39273" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39274" to="TileMap/@Area2D@39274" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39275" to="TileMap/@Area2D@39275" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39276" to="TileMap/@Area2D@39276" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39277" to="TileMap/@Area2D@39277" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39278" to="TileMap/@Area2D@39278" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39279" to="TileMap/@Area2D@39279" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39280" to="TileMap/@Area2D@39280" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39281" to="TileMap/@Area2D@39281" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39282" to="TileMap/@Area2D@39282" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39283" to="TileMap/@Area2D@39283" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39284" to="TileMap/@Area2D@39284" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39285" to="TileMap/@Area2D@39285" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@39286" to="TileMap/@Area2D@39286" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
 
