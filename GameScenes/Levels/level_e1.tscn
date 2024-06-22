@@ -1,5 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://dxaacdtwh4ia4"]
+[gd_scene load_steps=34 format=3 uid="uid://dxaacdtwh4ia4"]
 
+[ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_et1d1"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="1_pybly"]
 [ext_resource type="Texture2D" uid="uid://bb2eted15mh1c" path="res://GameScenes/Levels/tree2.svg" id="2_6aat6"]
 [ext_resource type="Texture2D" uid="uid://cosfl00qlxjvc" path="res://GameScenes/Levels/tree3.svg" id="3_4mbkf"]
@@ -592,6 +593,8 @@ size = Vector2(16, 272)
 size = Vector2(1488, 16)
 
 [node name="LevelE1" type="Node2D"]
+script = ExtResource("1_et1d1")
+metadata/level = "e1"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

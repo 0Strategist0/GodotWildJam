@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dmt3wi0icmewh" path="res://GameScenes/Levels/grass1.svg" id="16_4nl4s"]
 [ext_resource type="Texture2D" uid="uid://biqaoxcol4jcf" path="res://GameScenes/Levels/grass2.svg" id="17_78f18"]
 [ext_resource type="Texture2D" uid="uid://cmyrp14rj0sl6" path="res://GameScenes/Levels/grass3.svg" id="18_5j82a"]
-[ext_resource type="PackedScene" uid="uid://cfhbexmwfpwh" path="res://GameScenes/position_saver.tscn" id="18_ssa27"]
+[ext_resource type="PackedScene" uid="uid://0sl86j4i2eum" path="res://GameScenes/property_saver.tscn" id="18_6yl13"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="19_jlvb2"]
 [ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="20_rqtdn"]
 [ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="24_vpq12"]
@@ -1763,7 +1763,8 @@ texture = ExtResource("7_ebtph")
 [node name="Pushable Object" parent="." instance=ExtResource("15_degu0")]
 position = Vector2(744, -155)
 
-[node name="PositionSaver" parent="Pushable Object" instance=ExtResource("18_ssa27")]
+[node name="PropertySaver" parent="Pushable Object" instance=ExtResource("18_6yl13")]
+variables_to_save = Array[String](["position"])
 
 [node name="Decorations" type="Node2D" parent="."]
 
