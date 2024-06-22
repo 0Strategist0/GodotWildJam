@@ -2,10 +2,10 @@ extends Node
 
 enum {DEFAULT, BOB, MESSY, CURLY, PONY, BALD}
 
-var fat := false
+var fat := true
 var fast := false
 var strong := false
-var small := true
+var small := false
 var hair := DEFAULT
 
 func randomize_attributes() -> void:

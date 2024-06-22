@@ -13,6 +13,7 @@ const MIN_SPEED := 80
 
 const FAST_SPEED_MULTIPLE := 1.5
 const SMALL_SIZE_MULTIPLE := 0.7
+const FAT_SPEED_MULTIPLE := 0.75
 
 @onready var character_area := $CharacterArea
 @onready var state_machine : AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/StateMachine/playback")
@@ -50,6 +51,9 @@ func _ready() -> void:
 	print("small: ", CharacterAttributes.small)
 	# Fatness
 	is_fat = CharacterAttributes.fat
+	if CharacterAttributes.fat:
+		speed *= FAT_SPEED_MULTIPLE
+		climb_speed *= FAT_SPEED_MULTIPLE
 	# Speediness
 	if CharacterAttributes.fast:
 		speed *= FAST_SPEED_MULTIPLE
@@ -136,7 +140,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 			climbing = false
 			jumped = true
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	if not climbing:
 		var direction := Input.get_axis("left", "right")
@@ -147,6 +151,17 @@ func _physics_process(delta: float) -> void:
 			velocity.x = lerp(velocity.x, 0.0, pow(ACCELERATION, 60.0 * delta))
 	else:
 		velocity.x = 0.0
+	
+	# TEMP DEV HAX
+	if Input.is_action_pressed("devhax"):
+		if Input.is_action_pressed("jump"):
+			velocity.y = JUMP_VELOCITY
+		var direction := Input.get_axis("left", "right")
+		if direction:
+			velocity.x = lerp(velocity.x, direction * speed * 4.0, 
+					pow(ACCELERATION, 60.0 * delta))
+		else:
+			velocity.x = lerp(velocity.x, 0.0, pow(ACCELERATION, 60.0 * delta))
 	
 	move_and_slide()
 	
@@ -203,15 +218,14 @@ func kill() -> void:
 	if not dying:
 		dying = true
 		HunterSignalling.end_hunt.emit()
-		CharacterAttributes.randomize_attributes()
 		# Code to save the body position when you die
 		if not Progress.bodies.has(owner.get_meta("level")):
 			Progress.bodies[owner.get_meta("level")] = {position: {"direction": sign(sprite.scale.x), 
-					"type": sprite_type, "small": CharacterAttributes.small}}
+					"type": sprite_type, "size": SMALL_SIZE_MULTIPLE if CharacterAttributes.small else 1.0}}
 		else:
 			Progress.bodies[owner.get_meta("level")][position] = {"direction": sign(sprite.scale.x), 
-					"type": sprite_type, "small": CharacterAttributes.small}
-		
+					"type": sprite_type, "size": SMALL_SIZE_MULTIPLE if CharacterAttributes.small else 1.0}
+		CharacterAttributes.randomize_attributes()
 		var reloaded_scene : Node2D = load("uid://b0kxtk2p027ml").instantiate()
 		GlobalNodeReferences.main.call_deferred("add_child", reloaded_scene)
 		owner.queue_free()
