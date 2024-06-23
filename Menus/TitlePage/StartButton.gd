@@ -11,7 +11,7 @@ const A1 := preload("uid://b757fjeorrns1")
 @onready var arrow_label := $Label
 
 # Remove this later
-var debug_mode := 2
+var debug_mode := 4
 
 func _on_pressed() -> void:
 	var world := WORLD.instantiate()
