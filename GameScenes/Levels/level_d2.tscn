@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://baxs24dippmn"]
+[gd_scene load_steps=34 format=3 uid="uid://baxs24dippmn"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/level_d2.gd" id="1_7fbjy"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="2_tpa4f"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="15_63bli"]
 [ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="16_1cfxr"]
 [ext_resource type="PackedScene" uid="uid://d35bwgvoepnqf" path="res://GameScenes/Levels/level_d3.tscn" id="17_0aamh"]
+[ext_resource type="PackedScene" uid="uid://dxaacdtwh4ia4" path="res://GameScenes/Levels/level_e1.tscn" id="18_3gjwt"]
+[ext_resource type="PackedScene" uid="uid://b56ad0a7axq28" path="res://GameScenes/Levels/level_c2.tscn" id="19_faepy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yokt"]
 texture = ExtResource("3_p1l6e")
@@ -423,35 +425,32 @@ gradient = SubResource("Gradient_24fyr")
 fill = 1
 fill_from = Vector2(0.5, 0.508547)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjnhm"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qbe0"]
+size = Vector2(16, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_duj4h"]
+size = Vector2(640, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkm5p"]
 size = Vector2(16, 96)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bx4p"]
-size = Vector2(96, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uadmo"]
-size = Vector2(16, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_du5ls"]
-size = Vector2(576, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5g7ay"]
-size = Vector2(304, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8urd3"]
-size = Vector2(16, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2s5w"]
-size = Vector2(208, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1s2rx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xd035"]
 size = Vector2(16, 240)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl31s"]
-size = Vector2(16, 336)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpa2m"]
+size = Vector2(16, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2e4ki"]
+size = Vector2(416, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gx4yg"]
+size = Vector2(224, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rggjn"]
+size = Vector2(16, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4dhq"]
-size = Vector2(6, 78)
+size = Vector2(6, 223)
 
 [node name="SimonLevel" type="Node2D"]
 script = ExtResource("1_7fbjy")
@@ -460,12 +459,7 @@ metadata/level = "d2"
 [node name="Character" parent="." instance=ExtResource("2_tpa4f")]
 visible = false
 z_index = 2
-position = Vector2(-55, -134)
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_i5pvu")
-format = 2
-layer_0/tile_data = PackedInt32Array(131066, 131072, 0, 131067, 131072, 0, 131068, 131072, 0, 131069, 131072, 0, 131070, 131072, 0, 131071, 131072, 0, 65536, 131072, 0, 65537, 131072, 0, 65538, 131072, 0, 65539, 131072, 0, 65540, 131072, 0, 65541, 131072, 0, 65542, 131072, 0, 65543, 131072, 0, 65544, 131072, 0, 65545, 131072, 0, 65546, 131072, 0, 65547, 131072, 0, 65548, 131072, 0, 65549, 131072, 0, 65550, 131072, 0, 65551, 131072, 0, 65552, 131072, 0, 65553, 131072, 0, 65554, 131072, 0, 65555, 131072, 0, 65556, 131072, 0, 65557, 131072, 0, -327659, 131072, 0, -393195, 131072, 0, -458731, 131072, 0, -524267, 131072, 0, -524285, 131072, 0, -458749, 131072, 0, -393213, 131072, 0, -327677, 131072, 0, -131078, 131072, 0, -65542, 131072, 0, -6, 131072, 0, 65530, 131072, 0, -589821, 131072, 0, -655357, 131072, 0, -720893, 131072, 0, -720892, 131072, 0, -720891, 131072, 0, -720890, 131072, 0, -720889, 131072, 0, -720888, 131072, 0, -720887, 131072, 0, -720886, 131072, 0, -720885, 131072, 0, -720884, 131072, 0, -720883, 131072, 0, -720882, 131072, 0, -720881, 131072, 0, -720880, 131072, 0, -720879, 131072, 0, -720878, 131072, 0, -720877, 131072, 0, -720876, 131072, 0, -720875, 131072, 0, -655339, 131072, 0, -589803, 131072, 0, 65565, 131072, 0, 65558, 131072, 0, 65559, 131072, 0, 65560, 131072, 0, 65561, 131072, 0, 65562, 131072, 0, 65563, 131072, 0, 65564, 131072, 0, -196614, 131072, 0, -262150, 131072, 0, -262146, 131072, 0, -262145, 131072, 0, -327680, 131072, 0, -327679, 131072, 0, -327678, 131072, 0, -327658, 131072, 0, -327657, 131072, 0, -327656, 131072, 0, -327655, 131072, 0, -327654, 131072, 0, -327653, 131072, 0, -327652, 131072, 0, -327651, 131072, 0, 131101, 131072, 0, 196637, 131072, 0, 262173, 131072, 0, 327709, 131072, 0, 393245, 131072, 0, 458781, 131072, 0, 524317, 131072, 0, 589853, 131072, 0, -327650, 131072, 0, -327649, 131072, 0, -327648, 131072, 0, -327647, 131072, 0, -262111, 131072, 0, -196575, 131072, 0, -131039, 131072, 0, -65503, 131072, 0, 33, 131072, 0, 65569, 131072, 0, 131105, 131072, 0, 196641, 131072, 0, 262177, 131072, 0, 327713, 131072, 0, 393249, 131072, 0, 458785, 131072, 0, 524321, 131072, 0, 589857, 131072, 0, 655389, 131072, 0, 655393, 131072, 0, 720925, 131072, 0, 786461, 131072, 0, 851997, 131072, 0, 917533, 131072, 0, 983069, 131072, 0, 1048605, 131072, 0, 720929, 131072, 0, 786465, 131072, 0, 852001, 131072, 0, 917537, 131072, 0, 983073, 131072, 0, 1048609, 131072, 0)
+position = Vector2(-47, -190)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -1034,10 +1028,15 @@ texture = ExtResource("10_qd4ou")
 [node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground/TreeLayer1"]
 polygon = PackedVector2Array(-672, 209, -642, 191, -598, 192, -524, 143, -427, 147, -384, 172, -316, 166, -275, 151, -214, 144, -117, 142, -32, 112, 28, 113, 145, 137, 270, 144, 367, 96, 516, 135, 603, 141, 647, 122, 674, 128, 679, 222, 689, 352, -682, 382)
 
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_i5pvu")
+format = 2
+layer_0/tile_data = PackedInt32Array(131066, 131072, 0, 131067, 131072, 0, 131068, 131072, 0, 131069, 131072, 0, 131070, 131072, 0, 131071, 131072, 0, 65536, 131072, 0, 65537, 131072, 0, 65538, 131072, 0, 65539, 131072, 0, 65540, 131072, 0, 65541, 131072, 0, 65542, 131072, 0, 65543, 131072, 0, 65544, 131072, 0, 65545, 131072, 0, 65546, 131072, 0, 65547, 131072, 0, 65548, 131072, 0, 65549, 131072, 0, 65550, 131072, 0, 65551, 131072, 0, 65552, 131072, 0, 65553, 131072, 0, 65554, 131072, 0, 65555, 131072, 0, 65556, 131072, 0, 65557, 131072, 0, -327659, 131072, 0, -393195, 131072, 0, -458731, 131072, 0, -524267, 131072, 0, -720875, 131072, 0, -655339, 131072, 0, -589803, 131072, 0, 65565, 131072, 0, 65558, 131072, 0, 65559, 131072, 0, 65560, 131072, 0, 65561, 131072, 0, 65562, 131072, 0, 65563, 131072, 0, 65564, 131072, 0, -327658, 131072, 0, -327657, 131072, 0, -327656, 131072, 0, -327655, 131072, 0, -327654, 131072, 0, -327653, 131072, 0, -327652, 131072, 0, -327651, 131072, 0, 131101, 131072, 0, 196637, 131072, 0, 262173, 131072, 0, 327709, 131072, 0, 393245, 131072, 0, 458781, 131072, 0, 524317, 131072, 0, 589853, 131072, 0, -327650, 131072, 0, -327649, 131072, 0, -327648, 131072, 0, -327647, 131072, 0, 65569, 131072, 0, 131105, 131072, 0, 196641, 131072, 0, 262177, 131072, 0, 327713, 131072, 0, 393249, 131072, 0, 458785, 131072, 0, 524321, 131072, 0, 589857, 131072, 0, 655389, 131072, 0, 655393, 131072, 0, 720925, 131072, 0, 786461, 131072, 0, 851997, 131072, 0, 917533, 131072, 0, 983069, 131072, 0, 1048605, 131072, 0, 720929, 131072, 0, 786465, 131072, 0, 852001, 131072, 0, 917537, 131072, 0, 983073, 131072, 0, 1048609, 131072, 0, 131065, 131072, 0, 131064, 131072, 0, 131063, 131072, 0, 131062, 131072, 0, -196618, 131072, 0, -131082, 131072, 0, -65546, 131072, 0, -10, 131072, 0, 65526, 131072, 0, 65570, 131072, 0, 65571, 131072, 0, 65572, 131072, 0, 65573, 131072, 0, 65574, 131072, 0, 65575, 131072, 0, 65576, 131072, 0, 65577, 131072, 0, 65578, 131072, 0, 65579, 131072, 0, 65580, 131072, 0, 65581, 131072, 0, 65582, 131072, 0, -327646, 131072, 0, -327645, 131072, 0, -327644, 131072, 0, -327643, 131072, 0, -327642, 131072, 0, -327641, 131072, 0, -327640, 131072, 0, -327639, 131072, 0, -327638, 131072, 0, -327637, 131072, 0, -327636, 131072, 0, -327635, 131072, 0, 46, 131072, 0, -65490, 131072, 0, -131026, 131072, 0, -196562, 131072, 0, -262098, 131072, 0, -327634, 131072, 0)
+
 [node name="Levers" type="Node" parent="."]
 
 [node name="LeverSwitch1" parent="Levers" instance=ExtResource("11_n8nea")]
-position = Vector2(120, 5)
+position = Vector2(118, 6)
 lever_number = 1
 single_use = true
 
@@ -1046,7 +1045,7 @@ enabled = false
 texture = SubResource("GradientTexture2D_ps6wq")
 
 [node name="LeverSwitch2" parent="Levers" instance=ExtResource("11_n8nea")]
-position = Vector2(120, -43)
+position = Vector2(119, -40)
 lever_number = 2
 single_use = true
 
@@ -1055,7 +1054,7 @@ enabled = false
 texture = SubResource("GradientTexture2D_ps6wq")
 
 [node name="LeverSwitch3" parent="Levers" instance=ExtResource("11_n8nea")]
-position = Vector2(120, -91)
+position = Vector2(120, -88)
 lever_number = 3
 single_use = true
 
@@ -1064,7 +1063,7 @@ enabled = false
 texture = SubResource("GradientTexture2D_ps6wq")
 
 [node name="LeverSwitch4" parent="Levers" instance=ExtResource("11_n8nea")]
-position = Vector2(200, -91)
+position = Vector2(200, -88)
 lever_number = 4
 single_use = true
 
@@ -1073,7 +1072,7 @@ enabled = false
 texture = SubResource("GradientTexture2D_ps6wq")
 
 [node name="LeverSwitch5" parent="Levers" instance=ExtResource("11_n8nea")]
-position = Vector2(200, -43)
+position = Vector2(200, -40)
 lever_number = 5
 single_use = true
 
@@ -1082,7 +1081,7 @@ enabled = false
 texture = SubResource("GradientTexture2D_ps6wq")
 
 [node name="LeverSwitch6" parent="Levers" instance=ExtResource("11_n8nea")]
-position = Vector2(200, 5)
+position = Vector2(200, 7)
 lever_number = 6
 single_use = true
 
@@ -1091,7 +1090,7 @@ enabled = false
 texture = SubResource("GradientTexture2D_ps6wq")
 
 [node name="LeverSwitch7" parent="Levers" instance=ExtResource("11_n8nea")]
-position = Vector2(280, 5)
+position = Vector2(280, 7)
 lever_number = 7
 single_use = true
 
@@ -1100,7 +1099,7 @@ enabled = false
 texture = SubResource("GradientTexture2D_ps6wq")
 
 [node name="LeverSwitch8" parent="Levers" instance=ExtResource("11_n8nea")]
-position = Vector2(280, -43)
+position = Vector2(280, -40)
 lever_number = 8
 single_use = true
 
@@ -1109,7 +1108,7 @@ enabled = false
 texture = SubResource("GradientTexture2D_ps6wq")
 
 [node name="LeverSwitch9" parent="Levers" instance=ExtResource("11_n8nea")]
-position = Vector2(280, -91)
+position = Vector2(280, -88)
 lever_number = 9
 single_use = true
 
@@ -1122,40 +1121,36 @@ script = ExtResource("12_q3407")
 tilemap_nodepath = NodePath("../TileMap")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-88, -32)
-shape = SubResource("RectangleShape2D_fjnhm")
+position = Vector2(-152, -24)
+shape = SubResource("RectangleShape2D_7qbe0")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(16, -72)
-shape = SubResource("RectangleShape2D_5bx4p")
+position = Vector2(160, 24)
+shape = SubResource("RectangleShape2D_duj4h")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(56, -120)
-shape = SubResource("RectangleShape2D_uadmo")
+position = Vector2(344, -128)
+shape = SubResource("RectangleShape2D_rkm5p")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(192, 24)
-shape = SubResource("RectangleShape2D_du5ls")
+position = Vector2(472, 152)
+shape = SubResource("RectangleShape2D_xd035")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(200, -168)
-shape = SubResource("RectangleShape2D_5g7ay")
+position = Vector2(536, 152)
+shape = SubResource("RectangleShape2D_jpa2m")
 
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(344, -120)
-shape = SubResource("RectangleShape2D_8urd3")
+position = Vector2(544, -72)
+shape = SubResource("RectangleShape2D_2e4ki")
 
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(440, -72)
-shape = SubResource("RectangleShape2D_l2s5w")
+position = Vector2(640, 24)
+shape = SubResource("RectangleShape2D_gx4yg")
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(472, 152)
-shape = SubResource("RectangleShape2D_1s2rx")
-
-[node name="CollisionShape2D17" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(536, 104)
-shape = SubResource("RectangleShape2D_sl31s")
+position = Vector2(744, -24)
+shape = SubResource("RectangleShape2D_rggjn")
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -1181,7 +1176,7 @@ position = Vector2(119, -27)
 position = Vector2(61, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerPuzzle"]
-position = Vector2(0, -16)
+position = Vector2(0, -88.5)
 shape = SubResource("RectangleShape2D_l4dhq")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -1216,16 +1211,31 @@ position = Vector2(402, -19)
 scale = Vector2(0.119161, 0.110419)
 texture = ExtResource("15_63bli")
 
+[node name="Widegrass6" type="Sprite2D" parent="grass"]
+position = Vector2(412, -19)
+scale = Vector2(0.119161, 0.110419)
+texture = ExtResource("15_63bli")
+
 [node name="Ground" type="Polygon2D" parent="."]
 position = Vector2(-109, 99)
 scale = Vector2(0.402018, 0.428786)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(72.1361, -191.072, 1465.11, -193.57, 1465.11, 398.8, 1584.51, 398.8, 1584.51, -380.143, 1106.92, -380.143, 1106.92, -601.533, 430.329, -601.533, 430.329, -380.143, 191.534, -380.143, 191.534, -876.894, 2437.7, -879.061, 2440.19, 405.962, -878.07, 403.63, -885.532, -879.226, 72.1361, -879.226)
+polygon = PackedVector2Array(1584.51, -193.57, 2101.9, -193.57, 2101.9, -380.143, 1106.92, -380.143, 1101.94, -629.685, 1077.07, -739.296, 967.618, -1441.28, 2877.98, -1513.58, 2900.37, 736.964, -1022.34, 746.293, -965.131, -1287.36, -82.0859, -1261.7, 482.565, -998.167, 440.279, -482.758, 288.544, -508.412, 174.122, -555.055, 29.8494, -559.72, -84.5733, -454.772, -87.0608, -193.57, 1465.11, -193.57, 1467.6, 396.468, 1574.56, 396.468)
 
 [node name="TransitionArea" parent="." instance=ExtResource("16_1cfxr")]
-position = Vector2(435, 201)
+position = Vector2(398, 221)
 scale = Vector2(2, 2)
 next_level = ExtResource("17_0aamh")
+
+[node name="TransitionArea2" parent="." instance=ExtResource("16_1cfxr")]
+position = Vector2(723, -64)
+scale = Vector2(2, 2)
+next_level = ExtResource("18_3gjwt")
+
+[node name="TransitionArea3" parent="." instance=ExtResource("16_1cfxr")]
+position = Vector2(-305, -51)
+scale = Vector2(2, 2)
+next_level = ExtResource("19_faepy")
 
 [connection signal="lever_toggled" from="Levers/LeverSwitch1" to="." method="_on_lever_switch_lever_toggled"]
 [connection signal="lever_toggled" from="Levers/LeverSwitch2" to="." method="_on_lever_switch_lever_toggled"]
