@@ -7,65 +7,65 @@ extends Node2D
 @export var flip_sprite := false
 
 const lines_1: Array[String] = [
-	"you've been chosen as the sacrifice, huh?",
-	"tough luck",
-	"well, it had to be someone",
-	"meet the rest of us over by the cliff side"
+	"You've been chosen as the sacrifice, huh?",
+	"Tough luck",
+	"Well, it had to be someone",
+	"Meet the rest of us over by the cliff side"
 ]
 
 const lines_2: Array[String] = [
-	"i've been stuck here for a while now",
-	"can't seem to get this jump..."
+	"I've been stuck here for a while now",
+	"Can't seem to get this jump..."
 ]
 
 const lines_3: Array[String] = [
-	"this is so exciting! im new here, but...",
-	"i heard the sacrifice happens every decade",
-	"it's my first time seeing it!!!",
-	"oh wait, it's you? umm... sorry."
+	"This is so exciting! I'm new here, but...",
+	"I heard the sacrifice happens every decade",
+	"It's my first time seeing it!!!",
+	"Oh wait, it's you? umm... sorry."
 ]
 
 const lines_4: Array[String] = [
-	"we're not really sure why it wants kids",
-	"but who are we to argue",
-	"i heard once we offered an adult",
+	"We're not really sure why it wants kids",
+	"but who are we to argue?",
+	"I heard once we offered an adult...",
 	"and the whole village burned down"
 ]
 
 const lines_5: Array[String] = [
-	"hurry up and get to the edge",
-	"we don't want to be late",
+	"Hurry up and get to the edge",
+	"We don't want to be late",
 	"...what",
-	"stop wasting my time"
+	"Stop wasting my time"
 ]
 
 const lines_6: Array[String] = [
-	"you're so young...",
-	"im sorry, child"
+	"You're so young...",
+	"I'm sorry, child"
 ]
 
 const lines_7: Array[String] = [
-	"i knew the last kid that went in",
+	"I knew the last kid that went in",
 	"wonder how he's doing",
-	"probably poop now or something"
+	"Probably poop now or something"
 ]
 
 const lines_8: Array[String] = [
-	"you look nervous",
-	"don't worry!",
-	"you'll probably be dead in like 5 minutes"
+	"You look nervous",
+	"Don't worry!",
+	"It will all be over soon..."
 ]
 
 const lines_9: Array[String] = [
 	"ohmygod ohmygod ohmygod",
 	"please hurry and jump!!!",
-	"im scared it'll get mad at us"
+	"it'll get mad at us"
 ]
 
 const lines_10: Array[String] = [
-	"you're finally here",
-	"move to the very edge!",
-	"we'll start soon"
+	"You're here",
+	"Move to the very edge and we can start",
+	"I'm sorry"
 ]
 
 
