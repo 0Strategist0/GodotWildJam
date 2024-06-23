@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b56ad0a7axq28"]
+[gd_scene load_steps=57 format=3 uid="uid://b56ad0a7axq28"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_hyjqt"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="1_r4c1n"]
@@ -18,8 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://dxaacdtwh4ia4" path="res://GameScenes/Levels/level_e1.tscn" id="15_pnyp7"]
 [ext_resource type="PackedScene" uid="uid://cfbgqr2bhcf4y" path="res://GameScenes/Objects/Movables/platform.tscn" id="16_k5rw6"]
 [ext_resource type="PackedScene" uid="uid://c1tsd86p4rqem" path="res://GameScenes/Objects/Movables/static_platform.tscn" id="17_rausi"]
-[ext_resource type="PackedScene" uid="uid://c7a84huofxckc" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="19_gbsri"]
-[ext_resource type="PackedScene" uid="uid://3pfcpur44wod" path="res://GameScenes/Objects/Blocks/breakable_object.tscn" id="19_sgqgj"]
 [ext_resource type="PackedScene" uid="uid://cusycd8j05p7" path="res://GameScenes/death_area.tscn" id="20_e7vao"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="21_flhw6"]
 [ext_resource type="Texture2D" uid="uid://bmaibao06omck" path="res://GameScenes/Levels/spikes.svg" id="23_mxs7r"]
@@ -361,7 +359,7 @@ size = Vector2(16, 336)
 size = Vector2(16, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8y00"]
-size = Vector2(129, 16)
+size = Vector2(144, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2flgu"]
 size = Vector2(224, 16)
@@ -846,7 +844,7 @@ texture = ExtResource("6_0e2hp")
 polygon = PackedVector2Array(-527, -68, -470, -59, -376, 9, -342, -35, -198, -27, -128, -54, -47, -30, -6, -61, 113, -54, 153, -38, 217, -54, 321, -50, 348, -74, 421, -70, 542, -36, 587, -61, 716, -54, 742, -45, 746, 229, -554, 219)
 
 [node name="FogLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(433, 286)
+position = Vector2(426, 299)
 motion_scale = Vector2(0.4, 0.4)
 metadata/_edit_group_ = true
 
@@ -1009,7 +1007,6 @@ scale = Vector2(11.9688, 1.67188)
 texture = ExtResource("7_byp5q")
 
 [node name="Character" parent="." instance=ExtResource("9_n23bq")]
-visible = false
 position = Vector2(-429, 12)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1027,7 +1024,7 @@ polygon = PackedVector2Array(221.383, -170.248, 539.777, -170.248, 539.777, -58.
 position = Vector2(255, 29)
 scale = Vector2(0.161618, 0.183857)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(996.173, -505.827, 996.176, 1414.14, 2184.16, 1414.14, 2184.16, 973.583, 4609.63, 973.583, 4609.63, 538.462, 1095.18, 538.462, 1095.18, -505.828, 1788.17, -505.828, 1788.17, -853.924, 2580.16, -853.924, 2580.16, -505.828, 3669.15, -505.828, 3669.15, -853.924, 6045.12, -853.924, 6045.12, 2414.92, -389.808, 2414.92, -389.807, -505.827, -290.808, -505.827, -290.808, -244.755, 105.186, -244.755, 105.186, -505.827, 204.185, -505.828, 204.185, -244.755, 600.181, -244.755, 600.181, -505.828, 600.181, -592.852, 699.179, -592.852, 699.179, -505.828)
+polygon = PackedVector2Array(996.173, -505.827, 1095.18, -505.828, 1788.17, -505.828, 1788.17, -853.924, 2580.16, -853.924, 2580.16, -505.828, 3669.15, -505.828, 3669.15, -853.924, 6045.12, -853.924, 6045.12, 2414.92, -389.808, 2414.92, -389.807, -505.827, -290.808, -505.827, -290.808, -244.755, 105.186, -244.755, 105.186, -505.827, 204.185, -505.828, 204.185, -244.755, 600.181, -244.755, 600.181, -505.828, 600.181, -592.852, 699.179, -592.852, 699.179, -505.828)
 
 [node name="Tilemap Baker" type="StaticBody2D" parent="."]
 script = ExtResource("10_ygpfd")
@@ -1102,7 +1099,7 @@ position = Vector2(440, 32)
 shape = SubResource("RectangleShape2D_d7qyr")
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="Tilemap Baker"]
-position = Vector2(495.5, -56)
+position = Vector2(488, -56)
 shape = SubResource("RectangleShape2D_l8y00")
 
 [node name="CollisionShape2D43" type="CollisionShape2D" parent="Tilemap Baker"]
@@ -1153,13 +1150,8 @@ shape = SubResource("RectangleShape2D_5vra1")
 position = Vector2(360, -64)
 shape = SubResource("RectangleShape2D_rxq2r")
 
-[node name="GoToD3" parent="." instance=ExtResource("14_vbm01")]
-position = Vector2(864, 256)
-scale = Vector2(3, 3)
-next_level = ExtResource("15_pnyp7")
-
 [node name="GoToD2" parent="." instance=ExtResource("14_vbm01")]
-position = Vector2(1199, -214)
+position = Vector2(1094, -245)
 scale = Vector2(3, 3)
 next_level = ExtResource("15_pnyp7")
 
@@ -1189,20 +1181,6 @@ position = Vector2(-169, -63)
 points = [NodePath("../Marker2D2"), NodePath("../Marker2D3")]
 
 [node name="Bottom End Platform" type="Node" parent="."]
-
-[node name="Platform2" parent="Bottom End Platform" node_paths=PackedStringArray("points") instance=ExtResource("16_k5rw6")]
-position = Vector2(569, 269)
-uses_switch = true
-points = [NodePath("../Marker2D2"), NodePath("../Marker2D5")]
-
-[node name="Marker2D5" type="Marker2D" parent="Bottom End Platform"]
-position = Vector2(569, 270)
-
-[node name="Marker2D2" type="Marker2D" parent="Bottom End Platform"]
-position = Vector2(569, 195)
-
-[node name="LeverSwitch" parent="Bottom End Platform" instance=ExtResource("19_gbsri")]
-position = Vector2(482, 279)
 
 [node name="Top End Platform" type="Node" parent="."]
 
@@ -1539,14 +1517,17 @@ texture = ExtResource("21_flhw6")
 region_enabled = true
 region_rect = Rect2(540, 0, 177, 794)
 
+[node name="Widegrass60" type="Sprite2D" parent="Grass"]
+position = Vector2(436, -94)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("21_flhw6")
+region_enabled = true
+region_rect = Rect2(210, 0, 708, 794)
+
 [node name="Objects" type="Node" parent="."]
 
 [node name="Pushable Object3" parent="Objects" instance=ExtResource("14_01u01")]
-position = Vector2(474, -73)
+position = Vector2(406, -71)
 
-[node name="Pushable Object" parent="Objects" instance=ExtResource("19_sgqgj")]
-position = Vector2(424, -56)
-
-[connection signal="lever_toggled" from="Bottom End Platform/LeverSwitch" to="Bottom End Platform/Platform2" method="_on_lever_switch_lever_toggled"]
 [connection signal="body_entered" from="Top End Platform/PlateSwitch" to="Top End Platform/Platform3" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="Top End Platform/PlateSwitch" to="Top End Platform/Platform3" method="_on_plate_switch_body_exited"]

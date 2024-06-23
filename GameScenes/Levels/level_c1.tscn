@@ -1727,18 +1727,21 @@ position = Vector2(1223, -298)
 position = Vector2(1118, -140)
 
 [node name="Breakable Object" parent="Section4" instance=ExtResource("22_h7atp")]
-position = Vector2(973.125, -100.995)
+position = Vector2(968, -88)
 
 [node name="Breakable Object2" parent="Section4" instance=ExtResource("22_h7atp")]
-position = Vector2(992.62, -100.995)
+position = Vector2(984, -88)
 
 [node name="Breakable Object3" parent="Section4" instance=ExtResource("22_h7atp")]
-position = Vector2(1012.29, -100.995)
+position = Vector2(1000, -88)
+
+[node name="Breakable Object4" parent="Section4" instance=ExtResource("22_h7atp")]
+position = Vector2(1016, -88)
 
 [node name="Transitions" type="Node2D" parent="."]
 
 [node name="GoToC2" parent="Transitions" instance=ExtResource("23_eehj7")]
-position = Vector2(940.411, -20.8325)
+position = Vector2(938, -1)
 next_level = ExtResource("24_8ef55")
 
 [node name="GoToD1_1" parent="Transitions" instance=ExtResource("23_eehj7")]
