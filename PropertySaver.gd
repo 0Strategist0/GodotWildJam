@@ -15,8 +15,6 @@ func _ready() -> void:
 	
 	for var_name: String in variables_to_save:
 		parent.set(var_name, Progress.object_variables[parent.owner.get_meta("level")][parent.name][var_name])
-		print(var_name, " was ", parent.get(var_name))
-		print("set ", var_name, " to ", Progress.object_variables[parent.owner.get_meta("level")][parent.name][var_name])
 
 func _physics_process(_delta: float) -> void:
 	for var_name: String in variables_to_save:

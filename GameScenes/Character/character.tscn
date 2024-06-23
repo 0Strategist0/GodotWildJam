@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://fj66b0r304fq"]
+[gd_scene load_steps=45 format=3 uid="uid://fj66b0r304fq"]
 
 [ext_resource type="Script" path="res://GameScenes/Character/character.gd" id="1_1kgrh"]
 [ext_resource type="PackedScene" uid="uid://b373kfvbfcsgd" path="res://GameScenes/Character/character_sprite.tscn" id="2_seolr"]
@@ -548,9 +548,136 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8)
 }
 
+[sub_resource type="Animation" id="Animation_1seel"]
+resource_name = "GetUp"
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Offset/Body:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-15, -0.25, 0, 0.25, 0, -15, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0, -0.318376, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.5, 2.6, 3.3, 4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Offset/Body:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(35, -0.25, 0, 0.25, 0, 25, -0.25, 0, 0.25, 0, 25, -0.25, 0, 0.25, 0, 2.10613, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.5, 2.6, 3.3, 4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/Offset/Body:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1.51794, -0.25, 0, 0.25, 0, 0.967833, -0.25, 0, 0.25, 0, 0.456707, -0.25, 0, 0.25, 0, 0.00553339, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.5, 2.6, 3.3, 4)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/Offset/Body/Head:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.632246, -0.25, 0, 0.25, 0, -0.0174015, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.5, 2.6, 4)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite/Offset/Body/RArm:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-3.06602, -0.25, 0, 0.25, 0, -3.79549, -0.25, 0, 0.25, 0, -1.71661, -0.25, 0, 0.25, 0, -0.780723, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.5, 2.6, 3.3, 4)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite/Offset/Body/LArm:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-2.70352, -0.25, 0, 0.25, 0, -0.688782, -0.25, 0, 0.25, 0, 0.172565, -0.25, 0, 0.25, 0, 0.216088, -0.25, 0, 0.25, 0, 0.623099, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.5, 2.6, 3, 3.3, 4)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite/Offset/Body/RThigh:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-1.10733, -0.25, 0, 0.25, 0, -1.17877, -0.25, 0, 0.25, 0, -1.09033, -0.25, 0, 0.25, 0, -0.621074, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.5, 2.6, 3.3, 4)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite/Offset/Body/RThigh/RLeg:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-0.367751, -0.25, 0, 0.25, 0, 0.42982, -0.25, 0, 0.25, 0, 0.78932, -0.25, 0, 0.25, 0, -0.639506, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.5, 2.6, 3.3, 4)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sprite/Offset/Body/LThigh:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.14408, -0.25, 0, 0.25, 0, -1.20556, -0.25, 0, 0.25, 0, -1.14556, -0.25, 0, 0.25, 0, 0.38131, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.5, 2.6, 3, 3.3, 4)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Sprite/Offset/Body/LThigh/LLeg:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.882482, -0.25, 0, 0.25, 0, 1.39464, -0.25, 0, 0.25, 0, 1.12624, -0.25, 0, 0.25, 0, -0.414319, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.5, 2.6, 3, 3.3, 4)
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:getting_up")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_owntt"]
 _data = {
 "Death": SubResource("Animation_lqil8"),
+"GetUp": SubResource("Animation_1seel"),
 "RESET": SubResource("Animation_cxuy8"),
 "climb": SubResource("Animation_nujvq"),
 "hold": SubResource("Animation_h48qo"),
@@ -558,6 +685,9 @@ _data = {
 "jump": SubResource("Animation_dawe4"),
 "run": SubResource("Animation_kle77")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_keu2u"]
+animation = &"GetUp"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_htli2"]
 animation = &"climb"
@@ -629,23 +759,33 @@ xfade_time = 0.1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lxqcg"]
 xfade_time = 0.1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jskg8"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1jv1v"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_a3ffe"]
 states/End/position = Vector2(751, 61)
-states/Start/position = Vector2(220.5, 125.5)
+states/GetUp/node = SubResource("AnimationNodeAnimation_keu2u")
+states/GetUp/position = Vector2(485.812, -60)
+states/Start/position = Vector2(108.5, 96)
 states/climb/node = SubResource("AnimationNodeAnimation_htli2")
 states/climb/position = Vector2(473, 380)
 states/hold/node = SubResource("AnimationNodeAnimation_lkl5s")
 states/hold/position = Vector2(473.75, 499)
 states/idle/node = SubResource("AnimationNodeAnimation_sxv1i")
-states/idle/position = Vector2(459.25, 62)
+states/idle/position = Vector2(487.25, 62.75)
 states/jump/node = SubResource("AnimationNodeAnimation_piw2e")
 states/jump/position = Vector2(594.5, 227.34)
 states/run/node = SubResource("AnimationNodeAnimation_k8vrn")
 states/run/position = Vector2(348, 227.672)
-transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_gvysv"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_ypswp"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_dtr71"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_8xbm8"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_gdvlw"), "jump", "run", SubResource("AnimationNodeStateMachineTransition_nm88m"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_n7vpq"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_uco2r"), "run", "climb", SubResource("AnimationNodeStateMachineTransition_kbt8l"), "climb", "run", SubResource("AnimationNodeStateMachineTransition_utwr5"), "climb", "jump", SubResource("AnimationNodeStateMachineTransition_3c8x6"), "jump", "climb", SubResource("AnimationNodeStateMachineTransition_6yo5t"), "idle", "climb", SubResource("AnimationNodeStateMachineTransition_c1o4m"), "climb", "idle", SubResource("AnimationNodeStateMachineTransition_k3gga"), "climb", "hold", SubResource("AnimationNodeStateMachineTransition_fmyf0"), "hold", "climb", SubResource("AnimationNodeStateMachineTransition_lxqcg")]
-graph_offset = Vector2(138, 174)
+transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_gvysv"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_ypswp"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_dtr71"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_8xbm8"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_gdvlw"), "jump", "run", SubResource("AnimationNodeStateMachineTransition_nm88m"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_n7vpq"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_uco2r"), "run", "climb", SubResource("AnimationNodeStateMachineTransition_kbt8l"), "climb", "run", SubResource("AnimationNodeStateMachineTransition_utwr5"), "climb", "jump", SubResource("AnimationNodeStateMachineTransition_3c8x6"), "jump", "climb", SubResource("AnimationNodeStateMachineTransition_6yo5t"), "idle", "climb", SubResource("AnimationNodeStateMachineTransition_c1o4m"), "climb", "idle", SubResource("AnimationNodeStateMachineTransition_k3gga"), "climb", "hold", SubResource("AnimationNodeStateMachineTransition_fmyf0"), "hold", "climb", SubResource("AnimationNodeStateMachineTransition_lxqcg"), "idle", "GetUp", SubResource("AnimationNodeStateMachineTransition_jskg8"), "GetUp", "idle", SubResource("AnimationNodeStateMachineTransition_1jv1v")]
+graph_offset = Vector2(52, -102)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wmpk0"]
+graph_offset = Vector2(-90.1329, 17.7654)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_a3ffe")
 nodes/StateMachine/position = Vector2(20, 110)
 nodes/output/position = Vector2(240, 120)
@@ -780,6 +920,28 @@ shape = SubResource("CapsuleShape2D_nvfka")
 
 [node name="Sprite" parent="." instance=ExtResource("2_seolr")]
 
+[node name="Body" parent="Sprite/Offset" index="0"]
+position = Vector2(2.08165e-12, 2)
+rotation = 0.0
+
+[node name="RArm" parent="Sprite/Offset/Body" index="1"]
+rotation = -1.92187
+
+[node name="LArm" parent="Sprite/Offset/Body" index="2"]
+rotation = -0.51105
+
+[node name="RThigh" parent="Sprite/Offset/Body" index="3"]
+rotation = -0.337309
+
+[node name="RLeg" parent="Sprite/Offset/Body/RThigh" index="0"]
+rotation = -0.783019
+
+[node name="LThigh" parent="Sprite/Offset/Body" index="4"]
+rotation = 0.0
+
+[node name="LLeg" parent="Sprite/Offset/Body/LThigh" index="0"]
+rotation = 0.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_owntt")
@@ -810,3 +972,5 @@ libraries = {
 }
 
 [connection signal="animation_finished" from="TransitionAnimations" to="." method="_on_death_animation_animation_finished"]
+
+[editable path="Sprite"]

@@ -24,6 +24,7 @@ const HARD_FALL_TIME := 0.2
 @onready var camera := $Camera2D
 
 @export var can_jump: bool = true
+@export var getting_up := false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -84,12 +85,17 @@ func _ready() -> void:
 	
 	# Fade in
 	$TransitionAnimations.play("Life")
+	if owner.get_meta("level") == "b1":
+		getting_up = true
+		state_machine.travel("GetUp")
 
 func _physics_process(delta: float) -> void:
 	# TEMP <- debug kill button
 	if Input.is_action_just_pressed("debug_kill"):
 		kill()
 	
+	if getting_up:
+		return
 	
 	# Check if you are climbing
 	if (Input.is_action_pressed("up") 
@@ -160,6 +166,8 @@ func _physics_process(delta: float) -> void:
 	
 	# TEMP DEV HAX
 	if Input.is_action_pressed("devhax"):
+		state_machine.travel("GetUp")
+		print("travelling")
 		if Input.is_action_pressed("jump"):
 			velocity.y = JUMP_VELOCITY
 		var direction := Input.get_axis("left", "right")

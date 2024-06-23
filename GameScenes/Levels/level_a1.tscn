@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b757fjeorrns1"]
+[gd_scene load_steps=46 format=3 uid="uid://b757fjeorrns1"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_03xtt"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_bts5d"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c7a84huofxckc" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="15_n10tj"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="16_as37r"]
 [ext_resource type="PackedScene" uid="uid://cbvluptdpl86h" path="res://GameScenes/NPCs/NPC.tscn" id="17_p3r6a"]
+[ext_resource type="Script" path="res://GameScenes/Levels/SacrificeAnimation.gd" id="20_rfxg2"]
 
 [sub_resource type="Shader" id="Shader_n1rnj"]
 code = "/*
@@ -167,6 +168,11 @@ shader_parameter/ray2_intensity = 0.3
 shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
 shader_parameter/hdr = false
 shader_parameter/seed = 5.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_554ha"]
+resource_local_to_scene = true
+radius = 4.0
+height = 22.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tr1go"]
 texture = ExtResource("2_2vguc")
@@ -597,6 +603,383 @@ size = Vector2(544, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekqqe"]
 size = Vector2(16, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sg7pd"]
+size = Vector2(27, 212)
+
+[sub_resource type="Animation" id="Animation_23shh"]
+resource_name = "YeetChild"
+length = 7.0
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 2.02, 2.06, 5.96, 6, 6.14, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1251.27, -140.049), Vector2(1254, -140), Vector2(1275, -140), Vector2(1275, -140), Vector2(1275, -140), Vector2(1275, -140), Vector2(1285, -139), Vector2(1354, 55)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VillageNPCs/NPC10:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4, 4.4, 4.82, 5.12, 5.42, 5.72, 6, 6.26),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1141, -142), Vector2(1153, -143), Vector2(1165, -142), Vector2(1177, -143), Vector2(1188, -142), Vector2(1200, -143), Vector2(1211, -142), Vector2(1223, -143), Vector2(1234, -142), Vector2(1246, -143), Vector2(1258, -142), Vector2(1258, -143), Vector2(1258, -142), Vector2(1258, -143), Vector2(1258, -142), Vector2(1258, -143), Vector2(1258, -142), Vector2(1268, -142)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:rotation")
+tracks/2/interp = 4
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(6, 6.14, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.443197, 2.18617]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VillageNPCs/NPC10/Sprite/Offset/Body/RArm:rotation")
+tracks/3/interp = 4
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4, 5.98, 6, 6.06, 6.26, 6.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.664376, -0.94986, -1.341, -0.981075, -0.591058, -0.89029, -1.21268, -0.837428, -0.507558, -0.871185, -0.909698, -0.776216, -0.776216, -2.09987, -2.09987, -1.05873]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VillageNPCs/NPC10/Sprite/Offset/Body/LArm:rotation")
+tracks/4/interp = 4
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6, 2.4, 3.2, 4, 5.98, 6, 6.08, 6.28, 6.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.329866, 1.17754, 0.430634, 0.990387, 0.366659, 0.67795, 0.499128, 0.499128, -0.57113, -0.57113, 0.522066]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VillageNPCs/NPC10/Sprite/Offset/Body/Head:rotation")
+tracks/5/interp = 4
+tracks/5/loop_wrap = false
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.02, 3.98, 4, 4.4, 4.82, 5.34, 5.76, 6.26, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.173788, 0.0485723, 0.115964, 0.0110821, 0.0110184, 0.419988]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Character/Sprite/Offset/Body/RThigh:rotation")
+tracks/6/interp = 4
+tracks/6/loop_wrap = false
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2.02, 2.2, 2.24, 4.82),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.505743, 0.0315385, -0.558005, 5.28688, 5.7058, 6.32611, -0.831961, 5.4169, 5.80207, 6.17375, 5.76982, 5.76982, 5.0141]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Character/Sprite/Offset/Body/RThigh/RLeg:rotation")
+tracks/7/interp = 4
+tracks/7/loop_wrap = false
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2.02, 2.1, 2.2, 2.24, 4.82),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.72398, 5.53961, 6.49679, -0.602699, 5.78213, 5.53209, 6.61509, -0.773642, 5.70306, 5.49591, 5.80586, 5.47784, 5.47784, 6.53926]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Character/Sprite/Offset/Body/LThigh/LLeg:rotation")
+tracks/8/interp = 4
+tracks/8/loop_wrap = false
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.38, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2.02, 2.2, 2.24, 4.82),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.197423, 6.63148, 5.89061, 5.79848, -0.361003, 6.80382, -0.46798, 5.67122, 5.79533, 6.69879, 5.74619, 5.78218, 5.78218, 6.88271]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Character/Sprite/Offset/Body/LThigh:rotation")
+tracks/9/interp = 4
+tracks/9/loop_wrap = false
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.38, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2.02, 2.2, 2.24, 4.82),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.204925, 0.12721, 0.592847, 1.23431, 0.50297, 0.261126, 0.652317, 1.13019, 0.381915, 0.500988, 0.498382, 0.498382, -0.214658]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Character/Sprite/Offset/Body/RArm:rotation")
+tracks/10/interp = 4
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.38, 0.8, 1.2, 1.6, 2.02, 4.82),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.741317, -1.03064, -0.762196, -1.152, -0.723704, -0.968279, 4.99419]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Character/Sprite/Offset/Body/LArm:rotation")
+tracks/11/interp = 4
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.38, 0.8, 1.2, 1.6, 2.02, 4.82),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.712199, 1.0049, 0.626136, 0.884922, 0.606282, 0.849538, 0.482367]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Character/Sprite/Offset/Body:position")
+tracks/12/interp = 2
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(2.06, 4.82),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2), Vector2(5, 15)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Character/Sprite/Offset/Body:rotation")
+tracks/13/interp = 4
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(2.06, 4.82),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.180261]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Character/Sprite/Offset/Body/Head:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(2.2, 5.92),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.439036]
+}
+
+[sub_resource type="Animation" id="Animation_wtnp3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -29)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VillageNPCs/NPC10:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1141, -142)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VillageNPCs/NPC10/Sprite/Offset/Body/RArm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.776216]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VillageNPCs/NPC10/Sprite/Offset/Body/LArm:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.499128]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VillageNPCs/NPC10/Sprite/Offset/Body/Head:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Character/Sprite/Offset/Body/RThigh:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.505743]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Character/Sprite/Offset/Body/RThigh/RLeg:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.72398]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Character/Sprite/Offset/Body/LThigh/LLeg:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.197423]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Character/Sprite/Offset/Body/LThigh:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.204925]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Character/Sprite/Offset/Body/RArm:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.741317]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Character/Sprite/Offset/Body/LArm:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.712199]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Character/Sprite/Offset/Body:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Character/Sprite/Offset/Body:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Character/Sprite/Offset/Body/Head:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u6a3b"]
+_data = {
+"RESET": SubResource("Animation_wtnp3"),
+"YeetChild": SubResource("Animation_23shh")
+}
 
 [node name="TownLevel" type="Node2D"]
 script = ExtResource("1_03xtt")
@@ -1242,7 +1625,31 @@ polygon = PackedVector2Array(4383.87, 1638.71, 4096.77, 3712.9, 7764.52, 3674.19
 uv = PackedVector2Array(4383.87, 1638.71, 4096.77, 3712.9, 7764.52, 3674.19, 7512.9, 1909.68, 5932.26, 1658.06)
 
 [node name="Character" parent="." instance=ExtResource("1_bts5d")]
-position = Vector2(8, -26)
+position = Vector2(0, -29)
+
+[node name="CollisionShape2D" parent="Character" index="0"]
+shape = SubResource("CapsuleShape2D_554ha")
+
+[node name="CollisionShape2D" parent="Character/CharacterArea" index="0"]
+shape = SubResource("CapsuleShape2D_554ha")
+
+[node name="RArm" parent="Character/Sprite/Offset/Body" index="1"]
+rotation = -0.741317
+
+[node name="LArm" parent="Character/Sprite/Offset/Body" index="2"]
+rotation = 0.712199
+
+[node name="RThigh" parent="Character/Sprite/Offset/Body" index="3"]
+rotation = -0.505743
+
+[node name="RLeg" parent="Character/Sprite/Offset/Body/RThigh" index="0"]
+rotation = -0.72398
+
+[node name="LThigh" parent="Character/Sprite/Offset/Body" index="4"]
+rotation = 0.204925
+
+[node name="LLeg" parent="Character/Sprite/Offset/Body/LThigh" index="0"]
+rotation = -0.197423
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_m2078")
@@ -1318,8 +1725,15 @@ shape = SubResource("RectangleShape2D_ekqqe")
 [node name="Transitions" type="Node2D" parent="."]
 
 [node name="GoToB1" parent="Transitions" instance=ExtResource("4_22sb1")]
-position = Vector2(1271, -139)
+position = Vector2(1291, -132)
 next_level = ExtResource("5_iircx")
+
+[node name="ThrowOffCutscene" type="Area2D" parent="Transitions"]
+position = Vector2(1263, -173)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transitions/ThrowOffCutscene"]
+position = Vector2(3.5, -56)
+shape = SubResource("RectangleShape2D_sg7pd")
 
 [node name="FirstBridgePlatform" type="Node2D" parent="."]
 
@@ -1487,4 +1901,22 @@ adult_num = 9
 position = Vector2(1141, -142)
 adult_num = 10
 
+[node name="RArm" parent="VillageNPCs/NPC10/Sprite/Offset/Body" index="1"]
+rotation = -0.776216
+
+[node name="LArm" parent="VillageNPCs/NPC10/Sprite/Offset/Body" index="2"]
+rotation = 0.499128
+
+[node name="SacrificeAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u6a3b")
+}
+script = ExtResource("20_rfxg2")
+
+[connection signal="body_entered" from="Transitions/ThrowOffCutscene" to="SacrificeAnimation" method="_on_throw_off_cutscene_body_entered"]
 [connection signal="lever_toggled" from="FirstLeverPlatform/LeverSwitch" to="FirstLeverPlatform/Platform" method="_on_lever_switch_lever_toggled"]
+
+[editable path="Character"]
+[editable path="Character/Sprite"]
+[editable path="VillageNPCs/NPC10"]
+[editable path="VillageNPCs/NPC10/Sprite"]
