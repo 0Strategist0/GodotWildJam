@@ -1144,7 +1144,7 @@ texture = ExtResource("8_kmitc")
 region_filter_clip_enabled = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_offset = Vector2(-10235.8, 1441.7)
+scroll_offset = Vector2(-9347.48, 6102.72)
 
 [node name="TreeLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color(0.59261, 0.725878, 0.616676, 1)
@@ -1762,7 +1762,7 @@ scale = Vector2(10, 1)
 texture = ExtResource("7_ebtph")
 
 [node name="Pushable Object" parent="." instance=ExtResource("15_degu0")]
-position = Vector2(744, -155)
+position = Vector2(707, -159)
 
 [node name="PropertySaver" parent="Pushable Object" instance=ExtResource("18_6yl13")]
 variables_to_save = Array[String](["position"])

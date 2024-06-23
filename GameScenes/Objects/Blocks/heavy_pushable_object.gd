@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const ACCELERATION = 0.1
+const ACCELERATION = 0.3
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
