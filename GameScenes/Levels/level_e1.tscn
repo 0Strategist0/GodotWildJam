@@ -1476,7 +1476,6 @@ scale = Vector2(10, 1)
 texture = ExtResource("7_c714f")
 
 [node name="Character" parent="." instance=ExtResource("9_767c3")]
-visible = false
 position = Vector2(-235, -150)
 metadata/_edit_group_ = true
 
