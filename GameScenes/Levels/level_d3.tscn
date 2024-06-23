@@ -1328,7 +1328,7 @@ scale = Vector2(10, 1)
 texture = ExtResource("7_gnlfk")
 
 [node name="Character" parent="." instance=ExtResource("9_vcsjh")]
-position = Vector2(56, -702)
+position = Vector2(-724, 346)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_sufv7")
