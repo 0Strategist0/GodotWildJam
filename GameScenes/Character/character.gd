@@ -188,7 +188,10 @@ func _physics_process(delta: float) -> void:
 		
 	for i in get_slide_collision_count():
 		var c := get_slide_collision(i)
-		if c.get_collider() is CharacterBody2D and c.get_collider().is_in_group("pushable") and lockout == 0.0:
+		if (c.get_collider() is CharacterBody2D 
+				and (c.get_collider().is_in_group("pushable") 
+				or (c.get_collider().is_in_group("heavy") and is_strong)) 
+				and lockout == 0.0):
 			lockout += .1
 			if (position.x + get_node("CollisionShape2D").shape.radius 
 					+ (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2) 
@@ -199,7 +202,8 @@ func _physics_process(delta: float) -> void:
 					> c.get_collider().position.x):
 				c.get_collider().velocity.x = min(stored_speed, -MIN_SPEED)
 		if c.get_collider() is StaticBody2D and c.get_collider().is_in_group("breakable") and stored_fall > 1.0 and is_fat:
-			c.get_collider().queue_free()
+			c.get_collider().visible = false
+			c.get_collider().get_node("CollisionShape2D").disabled = true
 		if c.get_collider() is StaticBody2D and c.get_collider().is_in_group("dropdown") and Input.is_action_pressed("down"):
 			#c.get_collider().area.set_deferred("monitoring", true)
 			position.y += 1

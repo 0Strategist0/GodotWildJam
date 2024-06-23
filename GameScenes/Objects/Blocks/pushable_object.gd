@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 3.0
+const ACCELERATION = 0.1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -13,6 +13,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 		velocity.x = velocity.x
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = lerp(velocity.x, 0.0, pow(ACCELERATION, 60.0 * delta))
 	
 	move_and_slide()

@@ -1725,7 +1725,7 @@ shape = SubResource("RectangleShape2D_ekqqe")
 [node name="Transitions" type="Node2D" parent="."]
 
 [node name="GoToB1" parent="Transitions" instance=ExtResource("4_22sb1")]
-position = Vector2(1283, -55)
+position = Vector2(1294, -58)
 next_level = ExtResource("5_iircx")
 
 [node name="ThrowOffCutscene" type="Area2D" parent="Transitions"]
