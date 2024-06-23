@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="9_vcsjh"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="10_0xs3t"]
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="10_d1c4g"]
-[ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="11_3ifwu"]
+[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="11_3ifwu"]
 [ext_resource type="PackedScene" uid="uid://cusycd8j05p7" path="res://GameScenes/death_area.tscn" id="12_ualf3"]
 [ext_resource type="PackedScene" uid="uid://dxaacdtwh4ia4" path="res://GameScenes/Levels/level_e1.tscn" id="14_01fc2"]
 [ext_resource type="PackedScene" uid="uid://c1tsd86p4rqem" path="res://GameScenes/Objects/Movables/static_platform.tscn" id="15_bl3pm"]
@@ -2215,11 +2215,11 @@ position = Vector2(96, 231)
 [node name="Teleporter" type="Node" parent="."]
 
 [node name="Teleporter" parent="Teleporter" node_paths=PackedStringArray("teleport_location") instance=ExtResource("24_2l3je")]
-position = Vector2(-535, 357)
+position = Vector2(-529, 355)
 teleport_location = NodePath("../TeleportLocation")
 
 [node name="TeleportLocation" parent="Teleporter" instance=ExtResource("25_npbty")]
-position = Vector2(-488, 229)
+position = Vector2(-491, 239)
 
 [connection signal="body_entered" from="Vertical Platform/PlateSwitch" to="Vertical Platform/Platform2" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="Vertical Platform/PlateSwitch" to="Vertical Platform/Platform2" method="_on_plate_switch_body_exited"]

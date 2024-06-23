@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://b56ad0a7axq28"]
+[gd_scene load_steps=94 format=3 uid="uid://b56ad0a7axq28"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_6g5l3"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="1_eccx6"]
@@ -19,8 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://mm3djlck2npl" path="res://GameScenes/Objects/Teleporter/teleport_location.tscn" id="18_ojvvd"]
 [ext_resource type="PackedScene" uid="uid://cqay0ugttwink" path="res://GameScenes/Objects/Teleporter/teleporter.tscn" id="19_mkecm"]
 [ext_resource type="PackedScene" uid="uid://c7a84huofxckc" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="19_snasv"]
+[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="22_6p4jb"]
+[ext_resource type="PackedScene" uid="uid://b56ad0a7axq28" path="res://GameScenes/Levels/level_c2.tscn" id="23_cla05"]
 [ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/Blocks/pushable_object.tscn" id="23_knr2a"]
 [ext_resource type="PackedScene" uid="uid://blempiyqsp5tu" path="res://GameScenes/Objects/Switches/plate_switch.tscn" id="24_4n5ok"]
+[ext_resource type="PackedScene" uid="uid://db44wgy2to8bm" path="res://GameScenes/Levels/level_d1.tscn" id="24_6bvqi"]
 
 [sub_resource type="Shader" id="Shader_vo8rx"]
 code = "/*
@@ -1722,6 +1725,34 @@ position = Vector2(1223, -298)
 [node name="Marker2D2" type="Marker2D" parent="Section4"]
 position = Vector2(1118, -140)
 
+[node name="Transitions" type="Node2D" parent="."]
+
+[node name="GoToC2" parent="Transitions" instance=ExtResource("22_6p4jb")]
+position = Vector2(942, -6)
+next_level = ExtResource("23_cla05")
+
+[node name="GoToD1_1" parent="Transitions" instance=ExtResource("22_6p4jb")]
+position = Vector2(1379, -151)
+next_level = ExtResource("24_6bvqi")
+
+[node name="GoToD1_2" parent="Transitions" instance=ExtResource("22_6p4jb")]
+position = Vector2(1386, -330)
+next_level = ExtResource("24_6bvqi")
+
+[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@70776" to="TileMap/@Area2D@70776" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@70777" to="TileMap/@Area2D@70777" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@70778" to="TileMap/@Area2D@70778" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@70779" to="TileMap/@Area2D@70779" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@70780" to="TileMap/@Area2D@70780" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@70781" to="TileMap/@Area2D@70781" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@70782" to="TileMap/@Area2D@70782" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@70783" to="TileMap/@Area2D@70783" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@70784" to="TileMap/@Area2D@70784" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@70785" to="TileMap/@Area2D@70785" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@70786" to="TileMap/@Area2D@70786" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@70787" to="TileMap/@Area2D@70787" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@70788" to="TileMap/@Area2D@70788" method="_on_body_entered"]
 [connection signal="body_entered" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_exited"]
 [connection signal="lever_toggled" from="Section4/LeverSwitch" to="Section4/Platform" method="_on_lever_switch_lever_toggled"]

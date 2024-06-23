@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b56ad0a7axq28"]
+[gd_scene load_steps=60 format=3 uid="uid://b56ad0a7axq28"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_hyjqt"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="1_r4c1n"]
@@ -13,9 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="10_iaj45"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="10_ygpfd"]
 [ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/Blocks/pushable_object.tscn" id="14_01u01"]
-[ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="14_vbm01"]
+[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="14_vbm01"]
 [ext_resource type="PackedScene" uid="uid://blempiyqsp5tu" path="res://GameScenes/Objects/Switches/plate_switch.tscn" id="15_2edlc"]
-[ext_resource type="PackedScene" uid="uid://b0kxtk2p027ml" path="res://GameScenes/Levels/level_b1.tscn" id="15_2n5n3"]
+[ext_resource type="PackedScene" uid="uid://d35bwgvoepnqf" path="res://GameScenes/Levels/level_d3.tscn" id="15_2vus1"]
+[ext_resource type="PackedScene" uid="uid://baxs24dippmn" path="res://GameScenes/Levels/level_d2.tscn" id="16_6n45c"]
 [ext_resource type="PackedScene" uid="uid://cfbgqr2bhcf4y" path="res://GameScenes/Objects/Movables/platform.tscn" id="16_k5rw6"]
 [ext_resource type="PackedScene" uid="uid://bqenn1xn8mpei" path="res://GameScenes/Objects/Blocks/pullable_object.tscn" id="17_6exim"]
 [ext_resource type="PackedScene" uid="uid://c1tsd86p4rqem" path="res://GameScenes/Objects/Movables/static_platform.tscn" id="17_rausi"]
@@ -1130,15 +1131,15 @@ shape = SubResource("RectangleShape2D_b1gcc")
 position = Vector2(280, -39)
 shape = SubResource("RectangleShape2D_ctqjo")
 
-[node name="TransitionArea" parent="." instance=ExtResource("14_vbm01")]
-position = Vector2(718, 174)
+[node name="GoToD3" parent="." instance=ExtResource("14_vbm01")]
+position = Vector2(907, 263)
 scale = Vector2(3, 3)
-next_level = ExtResource("15_2n5n3")
+next_level = ExtResource("15_2vus1")
 
-[node name="TransitionArea2" parent="." instance=ExtResource("14_vbm01")]
-position = Vector2(1016, -160)
+[node name="GoToD2" parent="." instance=ExtResource("14_vbm01")]
+position = Vector2(1199, -214)
 scale = Vector2(3, 3)
-next_level = ExtResource("15_2n5n3")
+next_level = ExtResource("16_6n45c")
 
 [node name="Static Platform" parent="." instance=ExtResource("17_rausi")]
 position = Vector2(-163, -4)
