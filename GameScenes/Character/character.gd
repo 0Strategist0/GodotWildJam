@@ -10,6 +10,7 @@ const JUMP_INPUT_BUFFERING := 0.2
 const IDLE_SPEED_SQUARED := 100.0
 const FLIP_SPEED := 1.0
 const MIN_SPEED := 80
+const PROBABLY_SOFTLOCKED_TIME := 5.0
 
 const FAST_SPEED_MULTIPLE := 1.5
 const SMALL_SIZE_MULTIPLE := 0.7
@@ -90,11 +91,6 @@ func _physics_process(delta: float) -> void:
 		kill()
 	
 	
-	
-	# Don't let the player move if they're talking to someone - FIX LATER
-	if DialogManager.is_dialog_active:
-		return
-	
 	# Check if you are climbing
 	if (Input.is_action_pressed("up") 
 			or Input.is_action_pressed("down")
@@ -118,9 +114,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		peaked = false
 		bottomed = false
-	
+
 	# Climb or add gravity
-	if climbing:
+	if climbing and not DialogManager.is_dialog_active:
 		if Input.is_action_pressed("up") and not peaked:
 			velocity.y = -climb_speed
 		elif Input.is_action_pressed("down") and not bottomed:
@@ -131,7 +127,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = min(velocity.y + gravity * delta, MAX_FALL_SPEED)
 
 	# Handle jump.
-	if can_jump:
+	if can_jump and not DialogManager.is_dialog_active:
 		if climbing or is_on_floor():
 			coyote_time = 0.0
 			jumped = false
@@ -144,14 +140,15 @@ func _physics_process(delta: float) -> void:
 			last_jump_press += delta
 		
 		if (last_jump_press <= JUMP_INPUT_BUFFERING
-				and coyote_time <= MAX_COYOTE_TIME
-				and not jumped):
+				and (coyote_time <= MAX_COYOTE_TIME
+					and not jumped)
+				or coyote_time > PROBABLY_SOFTLOCKED_TIME):
 			velocity.y = JUMP_VELOCITY
 			climbing = false
 			jumped = true
 	
 	# Get the input direction and handle the movement/deceleration.
-	if not climbing:
+	if not climbing and not DialogManager.is_dialog_active:
 		var direction := Input.get_axis("left", "right")
 		if direction:
 			velocity.x = lerp(velocity.x, direction * speed, 
