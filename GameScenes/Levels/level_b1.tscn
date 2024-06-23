@@ -1937,22 +1937,6 @@ texture = ExtResource("20_rqtdn")
 position = Vector2(1339, -79)
 next_level_uid = "uid://b56ad0a7axq28"
 
-[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25599" to="TileMap/@Area2D@25599" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25600" to="TileMap/@Area2D@25600" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25601" to="TileMap/@Area2D@25601" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25602" to="TileMap/@Area2D@25602" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25603" to="TileMap/@Area2D@25603" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25604" to="TileMap/@Area2D@25604" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25605" to="TileMap/@Area2D@25605" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25606" to="TileMap/@Area2D@25606" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25607" to="TileMap/@Area2D@25607" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25608" to="TileMap/@Area2D@25608" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25609" to="TileMap/@Area2D@25609" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25610" to="TileMap/@Area2D@25610" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25611" to="TileMap/@Area2D@25611" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25612" to="TileMap/@Area2D@25612" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@25613" to="TileMap/@Area2D@25613" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
 
