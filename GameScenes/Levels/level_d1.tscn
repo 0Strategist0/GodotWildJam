@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://db44wgy2to8bm"]
+[gd_scene load_steps=81 format=3 uid="uid://db44wgy2to8bm"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_ixe5q"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="1_qnh6e"]
@@ -20,8 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cfbgqr2bhcf4y" path="res://GameScenes/Objects/Movables/platform.tscn" id="17_vejot"]
 [ext_resource type="PackedScene" uid="uid://cqay0ugttwink" path="res://GameScenes/Objects/Teleporter/teleporter.tscn" id="18_m6vmm"]
 [ext_resource type="PackedScene" uid="uid://mm3djlck2npl" path="res://GameScenes/Objects/Teleporter/teleport_location.tscn" id="19_ral1o"]
-[ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="21_3ap51"]
-[ext_resource type="PackedScene" uid="uid://dxaacdtwh4ia4" path="res://GameScenes/Levels/level_e1.tscn" id="22_bd44f"]
+[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="21_3ap51"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="23_b8imx"]
 [ext_resource type="Texture2D" uid="uid://bmaibao06omck" path="res://GameScenes/Levels/spikes.svg" id="24_4gitw"]
 [ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="24_6tix1"]
@@ -1327,6 +1326,9 @@ material = SubResource("ShaderMaterial_7x66a")
 scale = Vector2(10, 1)
 texture = ExtResource("7_qom30")
 
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-209, -216)
+
 [node name="Character" parent="." instance=ExtResource("9_mci2d")]
 position = Vector2(-136, -28)
 
@@ -1590,6 +1592,18 @@ shape = SubResource("RectangleShape2D_5j17h")
 position = Vector2(40, -184)
 shape = SubResource("RectangleShape2D_wm824")
 
+[node name="CollisionShape2D95" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1176, -240)
+shape = SubResource("RectangleShape2D_pud1m")
+
+[node name="CollisionShape2D96" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-312, -17)
+shape = SubResource("RectangleShape2D_pud1m")
+
+[node name="CollisionShape2D97" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-312, -258)
+shape = SubResource("RectangleShape2D_pud1m")
+
 [node name="TopSection" type="Node2D" parent="."]
 
 [node name="Pushable Object" parent="TopSection" instance=ExtResource("14_uabmc")]
@@ -1680,8 +1694,8 @@ position = Vector2(606, -238)
 [node name="Transitions" type="Node2D" parent="."]
 
 [node name="GoToE1" parent="Transitions" instance=ExtResource("21_3ap51")]
-position = Vector2(1165, -245)
-next_level = ExtResource("22_bd44f")
+position = Vector2(1139, -247)
+next_level_uid = "uid://dxaacdtwh4ia4"
 
 [node name="Decorations" type="Node2D" parent="."]
 
@@ -2171,6 +2185,28 @@ shape = SubResource("RectangleShape2D_fgxdv")
 [node name="Polygon2D" type="Polygon2D" parent="Vines/Branch3"]
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-5, 46, -1, 76, -2, 101, 0, 138, -1, 177, 4, 141, 2, 103, 3, 71, -1, 47)
+
+[node name="TransitionArea" parent="." instance=ExtResource("21_3ap51")]
+position = Vector2(-390, -21)
+next_level_uid = "uid://b56ad0a7axq28"
+load_position = Vector2(1343, -119)
+
+[node name="TransitionArea2" parent="." instance=ExtResource("21_3ap51")]
+position = Vector2(-387, -260)
+next_level_uid = "uid://b56ad0a7axq28"
+load_position = Vector2(1343, -300)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(1347, -229)
+polygon = PackedVector2Array(-224, 6, -224, 12, -209, 12, -209, 18, -197, 9, -209, 0, -209, 6)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-1385, 224)
+polygon = PackedVector2Array(1117, -223, 1117, -217, 1101, -217, 1101, -212, 1089, -220, 1101, -229, 1101, -223)
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+position = Vector2(-1380, -23)
+polygon = PackedVector2Array(1117, -223, 1117, -217, 1108, -217, 1101, -217, 1101, -212, 1089, -220, 1101, -229, 1101, -223)
 
 [connection signal="lever_toggled" from="TopSection/LeverSwitch" to="TopSection/Platform" method="_on_lever_switch_lever_toggled"]
 [connection signal="body_entered" from="BottomSection/PlateSwitch" to="BottomSection/Platform" method="_on_plate_switch_body_entered"]

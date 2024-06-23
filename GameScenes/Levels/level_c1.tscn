@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://b56ad0a7axq28"]
+[gd_scene load_steps=93 format=3 uid="uid://b56ad0a7axq28"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_4qtoc"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="2_6n4tb"]
@@ -22,7 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://cqay0ugttwink" path="res://GameScenes/Objects/Teleporter/teleporter.tscn" id="19_mh2a4"]
 [ext_resource type="PackedScene" uid="uid://cfbgqr2bhcf4y" path="res://GameScenes/Objects/Movables/platform.tscn" id="20_ge7nr"]
 [ext_resource type="PackedScene" uid="uid://c7a84huofxckc" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="21_6wyfj"]
-[ext_resource type="PackedScene" uid="uid://3pfcpur44wod" path="res://GameScenes/Objects/Blocks/breakable_object.tscn" id="22_h7atp"]
 [ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="23_eehj7"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="26_i7d11"]
 [ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="27_nyqex"]
@@ -716,13 +715,7 @@ size = Vector2(32, 16)
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kfxs"]
-size = Vector2(48, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ti3uq"]
-size = Vector2(16, 224)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_snh3s"]
-size = Vector2(16, 224)
+size = Vector2(112, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y13tm"]
 size = Vector2(16, 128)
@@ -1380,7 +1373,7 @@ layer_0/tile_data = PackedInt32Array(131097, 0, 0, 131096, 0, 0, 131095, 0, 0, 1
 position = Vector2(-170, 105.929)
 scale = Vector2(0.402018, 0.428786)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(820.859, -172.415, 1417.85, -172.415, 1417.85, -508.247, 1577.13, -508.247, 1577.04, -433.617, 1855.64, -433.617, 1855.64, -508.247, 1975.04, -508.247, 1975.04, -433.617, 2253.63, -433.617, 2253.63, -508.247, 2333.23, -508.247, 2333.23, -545.561, 2373.03, -545.561, 2373.03, -657.505, 2651.62, -657.505, 2651.62, -582.876, 2691.42, -582.876, 2691.42, -508.247, 2810.82, -508.247, 2810.82, 51.4732, 2970.02, 49.1411, 2970.02, -508.247, 3885.4, -508.247, 3885.12, -658.68, 3835.23, -669.686, 3773.32, -685.702, 3639.77, -685.646, 3580.48, -672.988, 3505.94, -671.337, 3487.41, -620.19, 3447.61, -596.494, 3447.61, -545.561, 3288.41, -545.561, 3288.41, -918.708, 3925.2, -918.708, 3923.65, -1077.69, 3885.4, -1137.93, 3803.31, -1487.76, 3855.55, -1788.61, 4221.2, -3059.64, 5755.96, -3085.29, 5805.71, 1355.15, -1957.62, 1191.9, -1771.06, -3085.29, 4086.88, -3073.63, 2957.58, -1769.95, 2813.31, -1296.52, 2756.1, -1042.31, 2646.65, -928.036, 2475.01, -937.365, 2373.03, -956.022, 2373.03, -993.337, 2572.02, -993.337, 2572.02, -1107.61, 2482.48, -1156.59, 2415.31, -1142.6, 2335.09, -1105.28, 1477.55, -1105.28, 1435.26, -909.379, 1340.74, -862.736, 1298.45, -797.435, 1298.45, -247.044, 940.256, -247.044, 940.256, -657.505, 661.662, -657.505, 661.662, -844.078, 577.089, -949.026, 524.852, -1123.94, 403.887, -1132.68, 278.527, -1173.82, 103.704, -1130.35, -54.7239, -1217.22, -54.7239, -2380.98, -251.233, -2404.3, -253.72, -1217.22, -427.842, -1175.25, -492.515, -1105.28, -492.515, -732.134, -452.716, -732.134, -452.716, -657.505, -412.917, -657.505, -412.917, -508.247, -54.7239, -508.247, -54.7239, -470.932, 383.067, -470.932, 383.067, -508.247, 820.859, -508.247)
+polygon = PackedVector2Array(820.859, -172.415, 1417.85, -172.415, 1417.85, -508.247, 1577.13, -508.247, 1577.04, -433.617, 1855.64, -433.617, 1855.64, -508.247, 1975.04, -508.247, 1975.04, -433.617, 2253.63, -433.617, 2253.63, -508.247, 2333.23, -508.247, 2333.23, -545.561, 2373.03, -545.561, 2373.03, -657.505, 2651.62, -657.505, 2651.62, -582.876, 2691.42, -582.876, 2691.42, -508.247, 3885.4, -508.247, 3885.12, -658.68, 3835.23, -669.686, 3773.32, -685.702, 3639.77, -685.646, 3580.48, -672.988, 3505.94, -671.337, 3487.41, -620.19, 3447.61, -596.494, 3447.61, -545.561, 3288.41, -545.561, 3288.41, -918.708, 3925.2, -918.708, 3923.65, -1077.69, 3885.4, -1137.93, 3803.31, -1487.76, 3855.55, -1788.61, 4221.2, -3059.64, 5755.96, -3085.29, 5805.71, 1355.15, -1957.62, 1191.9, -1771.06, -3085.29, 4086.88, -3073.63, 2957.58, -1769.95, 2813.31, -1296.52, 2756.1, -1042.31, 2646.65, -928.036, 2475.01, -937.365, 2373.03, -956.022, 2373.03, -993.337, 2572.02, -993.337, 2572.02, -1107.61, 2482.48, -1156.59, 2415.31, -1142.6, 2335.09, -1105.28, 1477.55, -1105.28, 1435.26, -909.379, 1340.74, -862.736, 1298.45, -797.435, 1298.45, -247.044, 940.256, -247.044, 940.256, -657.505, 661.662, -657.505, 661.662, -844.078, 577.089, -949.026, 524.852, -1123.94, 403.887, -1132.68, 278.527, -1173.82, 103.704, -1130.35, -54.7239, -1217.22, -54.7239, -2380.98, -251.233, -2404.3, -253.72, -1217.22, -427.842, -1175.25, -492.515, -1105.28, -492.515, -732.134, -452.716, -732.134, -452.716, -657.505, -412.917, -657.505, -412.917, -508.247, -54.7239, -508.247, -54.7239, -470.932, 383.067, -470.932, 383.067, -508.247, 820.859, -508.247)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 script = ExtResource("13_haa2d")
@@ -1583,16 +1576,8 @@ position = Vector2(904, -120)
 shape = SubResource("RectangleShape2D_gd5vn")
 
 [node name="CollisionShape2D96" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(936, -104)
+position = Vector2(968, -104)
 shape = SubResource("RectangleShape2D_3kfxs")
-
-[node name="CollisionShape2D101" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(952, 16)
-shape = SubResource("RectangleShape2D_ti3uq")
-
-[node name="CollisionShape2D102" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1032, 16)
-shape = SubResource("RectangleShape2D_snh3s")
 
 [node name="CollisionShape2D103" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1160, -208)
@@ -1633,6 +1618,10 @@ shape = SubResource("RectangleShape2D_t72p1")
 [node name="CollisionShape2D71" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(440.021, -87.8432)
 shape = SubResource("RectangleShape2D_t72p1")
+
+[node name="CollisionShape2D104" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1416, -336)
+shape = SubResource("RectangleShape2D_y13tm")
 
 [node name="Section1" type="Node2D" parent="."]
 position = Vector2(0, -1)
@@ -1737,28 +1726,17 @@ variables_to_save = Array[String](["activated"])
 [node name="Marker2D2" type="Marker2D" parent="Section4"]
 position = Vector2(1118, -140)
 
-[node name="Breakable Object" parent="Section4" instance=ExtResource("22_h7atp")]
-position = Vector2(968, -88)
-
-[node name="Breakable Object2" parent="Section4" instance=ExtResource("22_h7atp")]
-position = Vector2(984, -88)
-
-[node name="Breakable Object3" parent="Section4" instance=ExtResource("22_h7atp")]
-position = Vector2(1000, -88)
-
-[node name="Breakable Object4" parent="Section4" instance=ExtResource("22_h7atp")]
-position = Vector2(1016, -88)
-
 [node name="Transitions" type="Node2D" parent="."]
 
-[node name="GoToC2" parent="Transitions" instance=ExtResource("23_eehj7")]
-position = Vector2(938, -1)
-
 [node name="GoToD1_1" parent="Transitions" instance=ExtResource("23_eehj7")]
-position = Vector2(1371.5, -151)
+position = Vector2(1380, -162)
+next_level_uid = "uid://db44wgy2to8bm"
+load_position = Vector2(-209, 21)
 
 [node name="GoToD1_2" parent="Transitions" instance=ExtResource("23_eehj7")]
-position = Vector2(1386, -330)
+position = Vector2(1385, -342)
+next_level_uid = "uid://db44wgy2to8bm"
+load_position = Vector2(-209, -216)
 
 [node name="Grass" type="Node2D" parent="."]
 
@@ -1924,6 +1902,11 @@ texture = ExtResource("26_i7d11")
 hframes = 3
 frame = 2
 
+[node name="Widegrass30" type="Sprite2D" parent="Grass/WidegrassGroup"]
+position = Vector2(1001, -142)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("26_i7d11")
+
 [node name="EdgegrassGroup" type="Node2D" parent="Grass"]
 
 [node name="Edgegrass10" type="Sprite2D" parent="Grass/EdgegrassGroup"]
@@ -2057,20 +2040,17 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("28_c51gs")
 region_filter_clip_enabled = true
 
-[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20895" to="TileMap/@Area2D@20895" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20896" to="TileMap/@Area2D@20896" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20897" to="TileMap/@Area2D@20897" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20898" to="TileMap/@Area2D@20898" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20899" to="TileMap/@Area2D@20899" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20900" to="TileMap/@Area2D@20900" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20901" to="TileMap/@Area2D@20901" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20902" to="TileMap/@Area2D@20902" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20903" to="TileMap/@Area2D@20903" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20904" to="TileMap/@Area2D@20904" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20905" to="TileMap/@Area2D@20905" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20906" to="TileMap/@Area2D@20906" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20907" to="TileMap/@Area2D@20907" method="_on_body_entered"]
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(1343, -300)
+
+[node name="Arrow" type="Polygon2D" parent="."]
+position = Vector2(69, 1)
+polygon = PackedVector2Array(1307, -315, 1307, -311, 1320, -311, 1320, -306, 1330, -313, 1320, -320, 1320, -315)
+
+[node name="Arrow2" type="Polygon2D" parent="."]
+position = Vector2(56, 180)
+polygon = PackedVector2Array(1307, -315, 1307, -311, 1320, -311, 1320, -306, 1330, -313, 1320, -320, 1320, -315)
+
 [connection signal="body_entered" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_exited"]
 [connection signal="lever_toggled" from="Section4/LeverSwitch" to="Section4/Platform" method="_on_lever_switch_lever_toggled"]
