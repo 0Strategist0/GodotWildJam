@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dxaacdtwh4ia4"]
+[gd_scene load_steps=72 format=3 uid="uid://dxaacdtwh4ia4"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_et1d1"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="1_pybly"]
@@ -20,7 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://cehhyt3n0gsel" path="res://GameScenes/Hunter/HunterNest.svg" id="17_78cxn"]
 [ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/Blocks/pushable_object.tscn" id="17_q84jf"]
 [ext_resource type="PackedScene" uid="uid://vvgu5uljd6j7" path="res://GameScenes/Objects/Blocks/heavy_pushable_object.tscn" id="18_kigjh"]
+[ext_resource type="Script" path="res://GameScenes/Levels/Endgame.gd" id="18_lgdqs"]
 [ext_resource type="PackedScene" uid="uid://cfbgqr2bhcf4y" path="res://GameScenes/Objects/Movables/platform.tscn" id="18_nvo18"]
+[ext_resource type="PackedScene" uid="uid://cp6sqwlcu0q1w" path="res://GameScenes/escape_ending.tscn" id="19_tim53"]
 
 [sub_resource type="Shader" id="Shader_b5qdx"]
 code = "/*
@@ -285,6 +287,84 @@ size = Vector2(16, 272)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0yxrt"]
 size = Vector2(1488, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yha85"]
+size = Vector2(20, 261)
+
+[sub_resource type="Animation" id="Animation_a7vvs"]
+resource_name = "Ending"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/EscapeEnding:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Character")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"kill"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/EscapeEnding:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1xa0h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/EscapeEnding:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/EscapeEnding:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xsvv0"]
+_data = {
+"Ending": SubResource("Animation_a7vvs"),
+"RESET": SubResource("Animation_1xa0h")
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0p1ww"]
 texture = ExtResource("10_0ca6t")
@@ -1289,7 +1369,7 @@ scale = Vector2(10, 1)
 texture = ExtResource("7_c714f")
 
 [node name="Character" parent="." instance=ExtResource("9_767c3")]
-position = Vector2(147, -230)
+position = Vector2(826, -5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" parent="Character" index="0"]
@@ -1477,6 +1557,26 @@ position = Vector2(617, -265)
 [node name="HeavyPushableObject" parent="Interactibles" instance=ExtResource("18_kigjh")]
 position = Vector2(114, -229)
 
+[node name="Endgame" type="Area2D" parent="Interactibles"]
+position = Vector2(877, -15)
+script = ExtResource("18_lgdqs")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactibles/Endgame"]
+position = Vector2(0, -59.5)
+shape = SubResource("RectangleShape2D_yha85")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interactibles/Endgame"]
+libraries = {
+"": SubResource("AnimationLibrary_xsvv0")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Interactibles/Endgame"]
+layer = 3
+
+[node name="EscapeEnding" parent="Interactibles/Endgame/CanvasLayer" instance=ExtResource("19_tim53")]
+modulate = Color(1, 1, 1, 0)
+
 [node name="Hunter" parent="." instance=ExtResource("16_lkoo2")]
 position = Vector2(319, 14)
 rotation = 0.298836
@@ -1594,6 +1694,7 @@ layer_0/tile_data = PackedInt32Array(131078, 0, 0, 131077, 0, 0, 131076, 0, 0, 1
 [connection signal="lever_toggled" from="Interactibles/LeverSwitch" to="Platforms/Platform1" method="_on_lever_switch_lever_toggled"]
 [connection signal="body_entered" from="Interactibles/PlateSwitch" to="Platforms/Platform2" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="Interactibles/PlateSwitch" to="Platforms/Platform2" method="_on_plate_switch_body_exited"]
+[connection signal="body_entered" from="Interactibles/Endgame" to="Interactibles/Endgame" method="_on_body_entered"]
 
 [editable path="Character"]
 [editable path="Character/Sprite"]
