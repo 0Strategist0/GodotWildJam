@@ -91,11 +91,6 @@ func _physics_process(delta: float) -> void:
 		kill()
 	
 	
-	
-	# Don't let the player move if they're talking to someone - FIX LATER
-	if DialogManager.is_dialog_active:
-		return
-	
 	# Check if you are climbing
 	if (Input.is_action_pressed("up") 
 			or Input.is_action_pressed("down")
@@ -119,9 +114,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		peaked = false
 		bottomed = false
-	
+
 	# Climb or add gravity
-	if climbing:
+	if climbing and not DialogManager.is_dialog_active:
 		if Input.is_action_pressed("up") and not peaked:
 			velocity.y = -climb_speed
 		elif Input.is_action_pressed("down") and not bottomed:
@@ -132,7 +127,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = min(velocity.y + gravity * delta, MAX_FALL_SPEED)
 
 	# Handle jump.
-	if can_jump:
+	if can_jump and not DialogManager.is_dialog_active:
 		if climbing or is_on_floor():
 			coyote_time = 0.0
 			jumped = false
@@ -153,7 +148,7 @@ func _physics_process(delta: float) -> void:
 			jumped = true
 	
 	# Get the input direction and handle the movement/deceleration.
-	if not climbing:
+	if not climbing and not DialogManager.is_dialog_active:
 		var direction := Input.get_axis("left", "right")
 		if direction:
 			velocity.x = lerp(velocity.x, direction * speed, 
