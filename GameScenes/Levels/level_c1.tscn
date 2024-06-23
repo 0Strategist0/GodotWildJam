@@ -2049,6 +2049,20 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("28_c51gs")
 region_filter_clip_enabled = true
 
+[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@21535" to="TileMap/@Area2D@21535" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@21536" to="TileMap/@Area2D@21536" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@21537" to="TileMap/@Area2D@21537" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@21538" to="TileMap/@Area2D@21538" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@21539" to="TileMap/@Area2D@21539" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@21540" to="TileMap/@Area2D@21540" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@21541" to="TileMap/@Area2D@21541" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@21542" to="TileMap/@Area2D@21542" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@21543" to="TileMap/@Area2D@21543" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@21544" to="TileMap/@Area2D@21544" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@21545" to="TileMap/@Area2D@21545" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@21546" to="TileMap/@Area2D@21546" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@21547" to="TileMap/@Area2D@21547" method="_on_body_entered"]
 [connection signal="body_entered" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_exited"]
 [connection signal="lever_toggled" from="Section4/LeverSwitch" to="Section4/Platform" method="_on_lever_switch_lever_toggled"]
