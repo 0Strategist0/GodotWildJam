@@ -1,17 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0qappnyuuly6"]
+[gd_scene load_steps=5 format=3 uid="uid://d0qappnyuuly6"]
 
 [ext_resource type="Script" path="res://Menus/TitlePage/StartButton.gd" id="1_nveqe"]
 [ext_resource type="FontFile" uid="uid://c2xicsbvnm0lv" path="res://assets/Cute Love.otf" id="1_omxbu"]
-[ext_resource type="Script" path="res://Menus/TitlePage/Settings.gd" id="2_osxgx"]
-[ext_resource type="Script" path="res://Menus/TitlePage/OptionsButton.gd" id="3_xdrxg"]
 [ext_resource type="Texture2D" uid="uid://by6ruwsq0ykt7" path="res://assets/title.svg" id="5_2icup"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7cl5m"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ym7v"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0bpq"]
-bg_color = Color(0.0477884, 0.0803887, 0.0541797, 1)
 
 [node name="TitlePage" type="Control"]
 layout_mode = 3
@@ -64,10 +57,10 @@ metadata/_edit_use_anchors_ = true
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.15377
-anchor_top = 0.60336
-anchor_right = 0.34377
-anchor_bottom = 0.81036
+anchor_left = 0.162368
+anchor_top = 0.664969
+anchor_right = 0.352368
+anchor_bottom = 0.87197
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
@@ -78,7 +71,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_omxbu")
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 200
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7cl5m")
 text = "Start"
 flat = true
@@ -107,106 +100,8 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("1_omxbu")
-theme_override_font_sizes/font_size = 150
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6ym7v")
-text = "Options"
-flat = true
-script = ExtResource("3_xdrxg")
-
-[node name="Label" type="Label" parent="VBoxContainer/OptionsButton"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -331.0
-offset_top = -64.0
-offset_right = -159.0
-offset_bottom = 355.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_omxbu")
-theme_override_font_sizes/font_size = 150
-text = ">"
-
-[node name="Settings" type="PanelContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.05
-anchor_right = 0.95
-anchor_bottom = 0.95
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_g0bpq")
-script = ExtResource("2_osxgx")
-metadata/_edit_use_anchors_ = true
-metadata/_edit_group_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Settings/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.1
-
-[node name="SettingsTitle" type="Label" parent="Settings/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("1_omxbu")
-theme_override_font_sizes/font_size = 150
-text = "SETTINGS"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Exit" type="Button" parent="Settings/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_stretch_ratio = 0.05
-theme_override_fonts/font = ExtResource("1_omxbu")
-theme_override_font_sizes/font_size = 150
-text = "X"
-flat = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Fog" type="HBoxContainer" parent="Settings/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="FogCheck" type="CheckButton" parent="Settings/VBoxContainer/VBoxContainer/Fog"]
-layout_mode = 2
-size_flags_vertical = 3
-button_pressed = true
-
-[node name="Label" type="Label" parent="Settings/VBoxContainer/VBoxContainer/Fog"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_omxbu")
-theme_override_font_sizes/font_size = 100
-text = "Fog (can slow down lower-end computers)"
-
 [connection signal="focus_entered" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_focus_entered"]
 [connection signal="focus_exited" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_focus_exited"]
 [connection signal="mouse_entered" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_pressed"]
-[connection signal="focus_entered" from="VBoxContainer/OptionsButton" to="VBoxContainer/OptionsButton" method="_on_focus_entered"]
-[connection signal="focus_exited" from="VBoxContainer/OptionsButton" to="VBoxContainer/OptionsButton" method="_on_focus_exited"]
-[connection signal="mouse_entered" from="VBoxContainer/OptionsButton" to="VBoxContainer/OptionsButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/OptionsButton" to="VBoxContainer/OptionsButton" method="_on_mouse_exited"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton" to="Settings" method="_on_options_button_pressed"]
-[connection signal="pressed" from="Settings/VBoxContainer/HBoxContainer/Exit" to="Settings" method="_on_exit_pressed"]
-[connection signal="toggled" from="Settings/VBoxContainer/VBoxContainer/Fog/FogCheck" to="Settings" method="_on_fog_check_toggled"]
