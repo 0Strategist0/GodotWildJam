@@ -166,8 +166,6 @@ func _physics_process(delta: float) -> void:
 	
 	# TEMP DEV HAX
 	if Input.is_action_pressed("devhax"):
-		state_machine.travel("GetUp")
-		print("travelling")
 		if Input.is_action_pressed("jump"):
 			velocity.y = JUMP_VELOCITY
 		var direction := Input.get_axis("left", "right")
