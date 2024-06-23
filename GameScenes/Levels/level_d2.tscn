@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://baxs24dippmn"]
+[gd_scene load_steps=29 format=3 uid="uid://baxs24dippmn"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/level_d2.gd" id="1_7fbjy"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="2_tpa4f"]
@@ -15,8 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c1tsd86p4rqem" path="res://GameScenes/Objects/Movables/static_platform.tscn" id="13_87317"]
 [ext_resource type="PackedScene" uid="uid://di53u75kivwsj" path="res://GameScenes/Objects/Movables/door.tscn" id="14_0x14e"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="15_63bli"]
-[ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="16_1cfxr"]
-[ext_resource type="PackedScene" uid="uid://dxaacdtwh4ia4" path="res://GameScenes/Levels/level_e1.tscn" id="17_3u1m8"]
+[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="16_1cfxr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yokt"]
 texture = ExtResource("3_p1l6e")
@@ -1172,7 +1171,6 @@ polygon = PackedVector2Array(74.6235, -191.238, 1465.11, -193.57, 1465.11, -380.
 [node name="GoToE1" parent="." instance=ExtResource("16_1cfxr")]
 position = Vector2(436, -21)
 scale = Vector2(3, 3)
-next_level = ExtResource("17_3u1m8")
 
 [connection signal="lever_toggled" from="Levers/LeverSwitch1" to="." method="_on_lever_switch_lever_toggled"]
 [connection signal="lever_toggled" from="Levers/LeverSwitch2" to="." method="_on_lever_switch_lever_toggled"]
