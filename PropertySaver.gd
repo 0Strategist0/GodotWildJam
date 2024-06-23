@@ -6,6 +6,7 @@ extends Node
 
 
 func _ready() -> void:
+	print("wtf")
 	if (not Progress.object_variables.has(parent.owner.get_meta("level")) 
 			or not Progress.object_variables[parent.owner.get_meta("level")].has(parent.name)):
 		var variables := {}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://b757fjeorrns1"]
+[gd_scene load_steps=45 format=3 uid="uid://b757fjeorrns1"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_03xtt"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="1_bts5d"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dpkw18k4iisp1" path="res://GameScenes/Levels/Houses.svg" id="2_p7fl1"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="3_3n02r"]
 [ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="4_22sb1"]
-[ext_resource type="PackedScene" uid="uid://b0kxtk2p027ml" path="res://GameScenes/Levels/level_b1.tscn" id="5_iircx"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="6_c4xv2"]
 [ext_resource type="Texture2D" uid="uid://bb2eted15mh1c" path="res://GameScenes/Levels/tree2.svg" id="7_wdwpx"]
 [ext_resource type="Texture2D" uid="uid://cosfl00qlxjvc" path="res://GameScenes/Levels/tree3.svg" id="8_5bssn"]
@@ -1726,7 +1725,7 @@ shape = SubResource("RectangleShape2D_ekqqe")
 
 [node name="GoToB1" parent="Transitions" instance=ExtResource("4_22sb1")]
 position = Vector2(1294, -58)
-next_level = ExtResource("5_iircx")
+next_level_uid = "uid://b0kxtk2p027ml"
 
 [node name="ThrowOffCutscene" type="Area2D" parent="Transitions"]
 position = Vector2(1263, -173)

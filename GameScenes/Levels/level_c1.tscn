@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://b56ad0a7axq28"]
+[gd_scene load_steps=96 format=3 uid="uid://b56ad0a7axq28"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_4qtoc"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="2_6n4tb"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cusycd8j05p7" path="res://GameScenes/death_area.tscn" id="12_ycix1"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="13_haa2d"]
 [ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/Blocks/pushable_object.tscn" id="14_1h8bb"]
+[ext_resource type="PackedScene" uid="uid://0sl86j4i2eum" path="res://GameScenes/property_saver.tscn" id="15_2xo34"]
 [ext_resource type="PackedScene" uid="uid://blempiyqsp5tu" path="res://GameScenes/Objects/Switches/plate_switch.tscn" id="15_sdkur"]
 [ext_resource type="PackedScene" uid="uid://di53u75kivwsj" path="res://GameScenes/Objects/Movables/door.tscn" id="16_v5xcr"]
 [ext_resource type="PackedScene" uid="uid://c1tsd86p4rqem" path="res://GameScenes/Objects/Movables/static_platform.tscn" id="17_sj125"]
@@ -23,8 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://c7a84huofxckc" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="21_6wyfj"]
 [ext_resource type="PackedScene" uid="uid://3pfcpur44wod" path="res://GameScenes/Objects/Blocks/breakable_object.tscn" id="22_h7atp"]
 [ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="23_eehj7"]
-[ext_resource type="PackedScene" uid="uid://b56ad0a7axq28" path="res://GameScenes/Levels/level_c2.tscn" id="24_8ef55"]
-[ext_resource type="PackedScene" uid="uid://db44wgy2to8bm" path="res://GameScenes/Levels/level_d1.tscn" id="25_jou1l"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="26_i7d11"]
 [ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="27_nyqex"]
 [ext_resource type="Texture2D" uid="uid://bmaibao06omck" path="res://GameScenes/Levels/spikes.svg" id="28_c51gs"]
@@ -1641,6 +1640,9 @@ position = Vector2(0, -1)
 [node name="Pushable Object" parent="Section1" instance=ExtResource("14_1h8bb")]
 position = Vector2(-79, -108)
 
+[node name="PropertySaver" parent="Section1/Pushable Object" instance=ExtResource("15_2xo34")]
+variables_to_save = Array[String](["position"])
+
 [node name="PlateSwitch" parent="Section1" instance=ExtResource("15_sdkur")]
 position = Vector2(-145, -101)
 
@@ -1648,6 +1650,9 @@ position = Vector2(-145, -101)
 position = Vector2(106, -162)
 distance = 70
 speed = 60
+
+[node name="PropertySaver" parent="Section1/Door" instance=ExtResource("15_2xo34")]
+variables_to_save = Array[String](["position"])
 
 [node name="Section2" type="Node2D" parent="."]
 
@@ -1720,8 +1725,14 @@ position = Vector2(1118, -281)
 uses_switch = true
 points = [NodePath("../Marker2D"), NodePath("../Marker2D2")]
 
+[node name="PropertySaver" parent="Section4/Platform" instance=ExtResource("15_2xo34")]
+variables_to_save = Array[String](["activated"])
+
 [node name="LeverSwitch" parent="Section4" instance=ExtResource("21_6wyfj")]
 position = Vector2(1223, -298)
+
+[node name="PropertySaver" parent="Section4/LeverSwitch" instance=ExtResource("15_2xo34")]
+variables_to_save = Array[String](["activated"])
 
 [node name="Marker2D2" type="Marker2D" parent="Section4"]
 position = Vector2(1118, -140)
@@ -1742,15 +1753,12 @@ position = Vector2(1016, -88)
 
 [node name="GoToC2" parent="Transitions" instance=ExtResource("23_eehj7")]
 position = Vector2(938, -1)
-next_level = ExtResource("24_8ef55")
 
 [node name="GoToD1_1" parent="Transitions" instance=ExtResource("23_eehj7")]
 position = Vector2(1371.5, -151)
-next_level = ExtResource("25_jou1l")
 
 [node name="GoToD1_2" parent="Transitions" instance=ExtResource("23_eehj7")]
 position = Vector2(1386, -330)
-next_level = ExtResource("25_jou1l")
 
 [node name="Grass" type="Node2D" parent="."]
 
@@ -2049,6 +2057,20 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("28_c51gs")
 region_filter_clip_enabled = true
 
+[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20895" to="TileMap/@Area2D@20895" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20896" to="TileMap/@Area2D@20896" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20897" to="TileMap/@Area2D@20897" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20898" to="TileMap/@Area2D@20898" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20899" to="TileMap/@Area2D@20899" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20900" to="TileMap/@Area2D@20900" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20901" to="TileMap/@Area2D@20901" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20902" to="TileMap/@Area2D@20902" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20903" to="TileMap/@Area2D@20903" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20904" to="TileMap/@Area2D@20904" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20905" to="TileMap/@Area2D@20905" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20906" to="TileMap/@Area2D@20906" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@20907" to="TileMap/@Area2D@20907" method="_on_body_entered"]
 [connection signal="body_entered" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_exited"]
 [connection signal="lever_toggled" from="Section4/LeverSwitch" to="Section4/Platform" method="_on_lever_switch_lever_toggled"]
