@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="11_xuogp"]
 [ext_resource type="PackedScene" uid="uid://c1tsd86p4rqem" path="res://GameScenes/Objects/Movables/static_platform.tscn" id="12_wi6oh"]
 [ext_resource type="PackedScene" uid="uid://c7a84huofxckc" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="14_xwb6i"]
-[ext_resource type="PackedScene" uid="uid://3pfcpur44wod" path="res://GameScenes/Objects/Blocks/breakable_object.tscn" id="15_aq373"]
 [ext_resource type="PackedScene" uid="uid://blempiyqsp5tu" path="res://GameScenes/Objects/Switches/plate_switch.tscn" id="16_5fe53"]
 [ext_resource type="PackedScene" uid="uid://bodgm7uio32y" path="res://GameScenes/Hunter/hunter.tscn" id="16_lkoo2"]
 [ext_resource type="PackedScene" uid="uid://0sl86j4i2eum" path="res://GameScenes/property_saver.tscn" id="17_7x3m7"]
@@ -317,6 +316,9 @@ size = Vector2(16, 272)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epn68"]
 size = Vector2(1488, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhk1r"]
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yha85"]
 size = Vector2(20, 261)
@@ -1474,6 +1476,7 @@ scale = Vector2(10, 1)
 texture = ExtResource("7_c714f")
 
 [node name="Character" parent="." instance=ExtResource("9_767c3")]
+visible = false
 position = Vector2(-235, -150)
 metadata/_edit_group_ = true
 
@@ -1682,8 +1685,32 @@ single_use = true
 [node name="PropertySaver" parent="Interactibles/LeverSwitch" instance=ExtResource("17_7x3m7")]
 variables_to_save = Array[String](["activated"])
 
-[node name="Breakable Object" parent="Interactibles" instance=ExtResource("15_aq373")]
-position = Vector2(296, -136)
+[node name="BetterBreakableObject" type="StaticBody2D" parent="Interactibles" groups=["breakable"]]
+position = Vector2(306, -137)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Interactibles/BetterBreakableObject"]
+texture = ExtResource("10_0ca6t")
+region_enabled = true
+region_rect = Rect2(16, 32, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactibles/BetterBreakableObject"]
+shape = SubResource("RectangleShape2D_vhk1r")
+
+[node name="PropertySaver" parent="Interactibles/BetterBreakableObject/CollisionShape2D" instance=ExtResource("17_7x3m7")]
+variables_to_save = Array[String](["disabled"])
+
+[node name="Black" type="Polygon2D" parent="Interactibles/BetterBreakableObject"]
+color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+polygon = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
+
+[node name="Polygon2D" type="Polygon2D" parent="Interactibles/BetterBreakableObject"]
+position = Vector2(0, -1)
+color = Color(0.329158, 0.329158, 0.329158, 1)
+polygon = PackedVector2Array(-6, -5, -4, -5, 0, -1, 4, -5, 6, -5, 6, -3, 2, 1, 6, 5, 6, 7, 4, 7, 0, 3, -4, 7, -6, 7, -6, 5, -2, 1, -6, -3)
+
+[node name="PropertySaver" parent="Interactibles/BetterBreakableObject" instance=ExtResource("17_7x3m7")]
+variables_to_save = Array[String](["visible"])
 
 [node name="PlateSwitch" parent="Interactibles" instance=ExtResource("16_5fe53")]
 position = Vector2(648, -261)
