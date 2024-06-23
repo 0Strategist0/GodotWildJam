@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://b56ad0a7axq28"]
+[gd_scene load_steps=97 format=3 uid="uid://b56ad0a7axq28"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_6g5l3"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="1_eccx6"]
@@ -25,6 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://blempiyqsp5tu" path="res://GameScenes/Objects/Switches/plate_switch.tscn" id="24_4n5ok"]
 [ext_resource type="PackedScene" uid="uid://db44wgy2to8bm" path="res://GameScenes/Levels/level_d1.tscn" id="24_6bvqi"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="25_slyan"]
+[ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="25_sm0wd"]
+[ext_resource type="Texture2D" uid="uid://bmaibao06omck" path="res://GameScenes/Levels/spikes.svg" id="27_dvb5y"]
+[ext_resource type="PackedScene" uid="uid://3pfcpur44wod" path="res://GameScenes/Objects/Blocks/breakable_object.tscn" id="28_sst2w"]
 
 [sub_resource type="Shader" id="Shader_vo8rx"]
 code = "/*
@@ -746,8 +749,8 @@ size = Vector2(176, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdfwp"]
 size = Vector2(16, 80)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1a28"]
-size = Vector2(3.5, 265)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p232x"]
+size = Vector2(5, 236.769)
 
 [node name="LevelC2" type="Node2D"]
 script = ExtResource("1_6g5l3")
@@ -1203,7 +1206,7 @@ texture = ExtResource("6_6qg2m")
 polygon = PackedVector2Array(-527, -68, -470, -59, -376, 9, -342, -35, -198, -27, -128, -54, -47, -30, -6, -61, 113, -54, 153, -38, 217, -54, 321, -50, 348, -74, 421, -70, 542, -36, 587, -61, 716, -54, 742, -45, 746, 229, -554, 219)
 
 [node name="FogLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(482.984, 295.189)
+position = Vector2(448.018, 308.013)
 motion_scale = Vector2(0.4, 0.4)
 metadata/_edit_group_ = true
 
@@ -1365,7 +1368,6 @@ scale = Vector2(10, 1)
 texture = ExtResource("7_q7s23")
 
 [node name="Character" parent="." instance=ExtResource("9_f3vmp")]
-visible = false
 position = Vector2(-232, -648)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1379,7 +1381,7 @@ layer_0/tile_data = PackedInt32Array(131097, 0, 0, 131096, 0, 0, 131095, 0, 0, 1
 position = Vector2(-170, 105.929)
 scale = Vector2(0.402018, 0.428786)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(820.859, -172.415, 1417.85, -172.415, 1417.85, -508.247, 1577.13, -508.247, 1577.04, -433.617, 1855.64, -433.617, 1855.64, -508.247, 1975.04, -508.247, 1975.04, -433.617, 2253.63, -433.617, 2253.63, -508.247, 2333.23, -508.247, 2333.23, -545.561, 2373.03, -545.561, 2373.03, -657.505, 2651.62, -657.505, 2651.62, -582.876, 2691.42, -582.876, 2691.42, -508.247, 2810.82, -508.247, 2810.82, 51.4732, 2970.02, 49.1411, 2970.02, -508.247, 3885.4, -508.247, 3885.4, -694.82, 3487.41, -694.82, 3487.41, -620.19, 3447.61, -620.19, 3447.61, -545.561, 3288.41, -545.561, 3288.41, -918.708, 3925.2, -918.708, 3923.65, -1077.69, 3885.4, -1137.93, 3803.31, -1487.76, 3855.55, -1788.61, 4221.2, -3059.64, 5755.96, -3085.29, 5805.71, 1355.15, -1957.62, 1191.9, -1771.06, -3085.29, 4086.88, -3073.63, 2957.58, -1769.95, 2813.31, -1296.52, 2756.1, -1042.31, 2646.65, -928.036, 2475.01, -937.365, 2373.03, -956.022, 2373.03, -993.337, 2572.02, -993.337, 2572.02, -1107.61, 2482.48, -1156.59, 2415.31, -1142.6, 2335.09, -1105.28, 1477.55, -1105.28, 1435.26, -909.379, 1340.74, -862.736, 1298.45, -797.435, 1298.45, -247.044, 940.256, -247.044, 940.256, -657.505, 661.662, -657.505, 661.662, -844.078, 577.089, -949.026, 524.852, -1123.94, 415.404, -1161.25, -54.7239, -1217.22, -54.7239, -2380.98, -251.233, -2404.3, -253.72, -1217.22, -427.842, -1175.25, -492.515, -1105.28, -492.515, -732.134, -452.716, -732.134, -452.716, -657.505, -412.917, -657.505, -412.917, -508.247, -54.7239, -508.247, -54.7239, -470.932, 383.067, -470.932, 383.067, -508.247, 820.859, -508.247)
+polygon = PackedVector2Array(820.859, -172.415, 1417.85, -172.415, 1417.85, -508.247, 1577.13, -508.247, 1577.04, -433.617, 1855.64, -433.617, 1855.64, -508.247, 1975.04, -508.247, 1975.04, -433.617, 2253.63, -433.617, 2253.63, -508.247, 2333.23, -508.247, 2333.23, -545.561, 2373.03, -545.561, 2373.03, -657.505, 2651.62, -657.505, 2651.62, -582.876, 2691.42, -582.876, 2691.42, -508.247, 2810.82, -508.247, 2810.82, 51.4732, 2970.02, 49.1411, 2970.02, -508.247, 3885.4, -508.247, 3885.12, -658.68, 3835.23, -669.686, 3773.32, -685.702, 3639.77, -685.646, 3580.48, -672.988, 3505.94, -671.337, 3487.41, -620.19, 3447.61, -596.494, 3447.61, -545.561, 3288.41, -545.561, 3288.41, -918.708, 3925.2, -918.708, 3923.65, -1077.69, 3885.4, -1137.93, 3803.31, -1487.76, 3855.55, -1788.61, 4221.2, -3059.64, 5755.96, -3085.29, 5805.71, 1355.15, -1957.62, 1191.9, -1771.06, -3085.29, 4086.88, -3073.63, 2957.58, -1769.95, 2813.31, -1296.52, 2756.1, -1042.31, 2646.65, -928.036, 2475.01, -937.365, 2373.03, -956.022, 2373.03, -993.337, 2572.02, -993.337, 2572.02, -1107.61, 2482.48, -1156.59, 2415.31, -1142.6, 2335.09, -1105.28, 1477.55, -1105.28, 1435.26, -909.379, 1340.74, -862.736, 1298.45, -797.435, 1298.45, -247.044, 940.256, -247.044, 940.256, -657.505, 661.662, -657.505, 661.662, -844.078, 577.089, -949.026, 524.852, -1123.94, 403.887, -1132.68, 278.527, -1173.82, 103.704, -1130.35, -54.7239, -1217.22, -54.7239, -2380.98, -251.233, -2404.3, -253.72, -1217.22, -427.842, -1175.25, -492.515, -1105.28, -492.515, -732.134, -452.716, -732.134, -452.716, -657.505, -412.917, -657.505, -412.917, -508.247, -54.7239, -508.247, -54.7239, -470.932, 383.067, -470.932, 383.067, -508.247, 820.859, -508.247)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 script = ExtResource("12_08exj")
@@ -1625,6 +1627,14 @@ shape = SubResource("RectangleShape2D_bo41g")
 position = Vector2(1400, -152)
 shape = SubResource("RectangleShape2D_kdfwp")
 
+[node name="CollisionShape2D70" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(600, -87.8432)
+shape = SubResource("RectangleShape2D_t72p1")
+
+[node name="CollisionShape2D71" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(440.021, -87.8432)
+shape = SubResource("RectangleShape2D_t72p1")
+
 [node name="Section1" type="Node2D" parent="."]
 position = Vector2(0, -1)
 
@@ -1642,60 +1652,56 @@ speed = 60
 [node name="Section2" type="Node2D" parent="."]
 
 [node name="Static Platform" parent="Section2" instance=ExtResource("15_087te")]
-position = Vector2(184, -109)
+position = Vector2(184.354, -2.967)
 
 [node name="Static Platform4" parent="Section2" instance=ExtResource("15_087te")]
 position = Vector2(376, -3)
 
 [node name="Section3" type="Node2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="Section3" groups=["climbable"]]
-position = Vector2(-143, 70)
+[node name="Branch" type="Area2D" parent="Section3" groups=["climbable"]]
+position = Vector2(376.205, -202.255)
 
-[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Section3/Area2D"]
-position = Vector2(518.25, -264.5)
-shape = SubResource("RectangleShape2D_a1a28")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Section3/Branch"]
+position = Vector2(0.5, 52.3843)
+shape = SubResource("RectangleShape2D_p232x")
 
-[node name="Polygon2D" type="Polygon2D" parent="Section3/Area2D"]
-position = Vector2(-3, -8)
+[node name="Polygon2D" type="Polygon2D" parent="Section3/Branch"]
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(521, -304, 517, -242, 519, -172, 522, -123, 524, -170, 522, -240, 527, -305, 523, -397, 515, -404)
+polygon = PackedVector2Array(-2.67715, -67.0182, -1.91187, -45.6432, -0.204529, -6.72388, -2.57928, 31.1102, 0.257263, 61.8115, -2.07706, 106.038, -0.37027, 140.368, -1.78607, 171.28, 3.79178, 143.119, 1.69299, 108.618, 3.7612, 64.4812, 1.5921, 29.9422, 3.92804, -7.43326, 1.75894, -48.146, 4.26178, -68.1686)
 
-[node name="Area2D2" type="Area2D" parent="Section3" groups=["climbable"]]
-position = Vector2(-1, 27)
+[node name="Branch2" type="Area2D" parent="Section3" groups=["climbable"]]
+position = Vector2(522.066, -304.097)
 
-[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Section3/Area2D2"]
-position = Vector2(518.25, -264.5)
-shape = SubResource("RectangleShape2D_a1a28")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Section3/Branch2"]
+position = Vector2(0.5, 52.3843)
+shape = SubResource("RectangleShape2D_p232x")
 
-[node name="Polygon2D" type="Polygon2D" parent="Section3/Area2D2"]
-position = Vector2(-3, -8)
+[node name="Polygon2D" type="Polygon2D" parent="Section3/Branch2"]
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(521, -304, 517, -242, 519, -172, 522, -123, 524, -170, 522, -240, 527, -305, 523, -397, 515, -404)
+polygon = PackedVector2Array(-2.67715, -67.0182, -0.361755, -47.4199, -2.32605, -3.9245, -1.20355, 31.433, -2.18561, 65.5278, -0.221375, 81.9439, -0.782532, 106.498, -2.32593, 137.927, 2.5611, 171.173, 1.854, 140.944, 2.72516, 107.761, 3.28632, 78.9974, 1.04144, 64.4054, 2.7251, 30.7315, 1.88324, -3.9245, 3.84747, -51.4888, 4.26178, -68.1686)
 
-[node name="Area2D3" type="Area2D" parent="Section3" groups=["climbable"]]
-position = Vector2(161, 25)
+[node name="Branch3" type="Area2D" parent="Section3" groups=["climbable"]]
+position = Vector2(679.926, -302.508)
 
-[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Section3/Area2D3"]
-position = Vector2(518.25, -264.5)
-shape = SubResource("RectangleShape2D_a1a28")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Section3/Branch3"]
+position = Vector2(0.5, 52.3843)
+shape = SubResource("RectangleShape2D_p232x")
 
-[node name="Polygon2D" type="Polygon2D" parent="Section3/Area2D3"]
-position = Vector2(-3, -8)
+[node name="Polygon2D" type="Polygon2D" parent="Section3/Branch3"]
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(521, -304, 517, -242, 519, -172, 522, -123, 524, -170, 522, -240, 527, -305, 523, -397, 515, -404)
+polygon = PackedVector2Array(-4.12341, -69.9051, -0.856079, -45.9678, -2.44342, -25.9268, -0.657654, -0.925232, -2.84027, 23.8779, 0.136047, 46.1016, -1.25287, 67.9283, -2.04663, 97.2953, -1.05444, 140.552, -0.856079, 167.141, 4.50146, 133.409, 2.71558, 103.248, 2.91406, 71.8969, 3.90613, 47.8874, 1.72351, 21.1, 4.10455, -8.86224, 2.91406, -31.4827, 4.10461, -46.563, 4.37146, -69.9051)
 
-[node name="Area2D4" type="Area2D" parent="Section3" groups=["climbable"]]
-position = Vector2(234, -125)
+[node name="Branch4" type="Area2D" parent="Section3" groups=["climbable"]]
+position = Vector2(741.095, -440.238)
 
-[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Section3/Area2D4"]
-position = Vector2(518.25, -264.5)
-shape = SubResource("RectangleShape2D_a1a28")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Section3/Branch4"]
+position = Vector2(0.5, 52.3843)
+shape = SubResource("RectangleShape2D_p232x")
 
-[node name="Polygon2D" type="Polygon2D" parent="Section3/Area2D4"]
-position = Vector2(-3, -8)
+[node name="Polygon2D" type="Polygon2D" parent="Section3/Branch4"]
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(521, -304, 517, -242, 519, -172, 522, -123, 524, -170, 522, -240, 527, -305, 523, -397, 515, -404)
+polygon = PackedVector2Array(-2.67715, -67.0182, -1.91187, -45.6432, -0.204529, -6.72388, -2.57928, 31.1102, 0.257263, 61.8115, -2.4975, 88.6116, -0.135193, 110.345, -2.02502, 143.576, -0.135193, 176.649, 3.79178, 143.119, 4.27454, 111.133, 1.75476, 85.3044, 3.7612, 64.4812, 1.5921, 29.9422, 3.92804, -7.43326, 1.75894, -48.146, 4.26178, -68.1686)
 
 [node name="Section4" type="Node2D" parent="."]
 
@@ -1720,14 +1726,23 @@ position = Vector2(1223, -298)
 [node name="Marker2D2" type="Marker2D" parent="Section4"]
 position = Vector2(1118, -140)
 
+[node name="Breakable Object" parent="Section4" instance=ExtResource("28_sst2w")]
+position = Vector2(973.125, -100.995)
+
+[node name="Breakable Object2" parent="Section4" instance=ExtResource("28_sst2w")]
+position = Vector2(992.62, -100.995)
+
+[node name="Breakable Object3" parent="Section4" instance=ExtResource("28_sst2w")]
+position = Vector2(1012.29, -100.995)
+
 [node name="Transitions" type="Node2D" parent="."]
 
 [node name="GoToC2" parent="Transitions" instance=ExtResource("22_6p4jb")]
-position = Vector2(942, -6)
+position = Vector2(940.411, -20.8325)
 next_level = ExtResource("23_cla05")
 
 [node name="GoToD1_1" parent="Transitions" instance=ExtResource("22_6p4jb")]
-position = Vector2(1379, -151)
+position = Vector2(1371.5, -151)
 next_level = ExtResource("24_6bvqi")
 
 [node name="GoToD1_2" parent="Transitions" instance=ExtResource("22_6p4jb")]
@@ -1736,110 +1751,315 @@ next_level = ExtResource("24_6bvqi")
 
 [node name="Grass" type="Node2D" parent="."]
 
-[node name="Widegrass" type="Sprite2D" parent="Grass"]
+[node name="WidegrassGroup" type="Node2D" parent="Grass"]
+
+[node name="Widegrass" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(-290.219, -141.64)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass2" type="Sprite2D" parent="Grass"]
+[node name="Widegrass2" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(-243.379, -141.64)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass3" type="Sprite2D" parent="Grass"]
+[node name="Widegrass3" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(-146.705, -125.709)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass4" type="Sprite2D" parent="Grass"]
+[node name="Widegrass4" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(-58.5913, -125.709)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass5" type="Sprite2D" parent="Grass"]
+[node name="Widegrass5" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(35.1995, -141.489)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass6" type="Sprite2D" parent="Grass"]
+[node name="Widegrass6" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(108.949, -141.489)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass7" type="Sprite2D" parent="Grass"]
+[node name="Widegrass7" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(206.474, 2.14913)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass8" type="Sprite2D" parent="Grass"]
+[node name="Widegrass8" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(296.85, 2.14913)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass9" type="Sprite2D" parent="Grass"]
+[node name="Widegrass9" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(361.741, 2.14913)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass10" type="Sprite2D" parent="Grass"]
+[node name="Widegrass10" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(1075.07, -141.905)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass11" type="Sprite2D" parent="Grass"]
+[node name="Widegrass11" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(1165.57, -141.905)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass12" type="Sprite2D" parent="Grass"]
+[node name="Widegrass12" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(1254.57, -141.905)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass13" type="Sprite2D" parent="Grass"]
+[node name="Widegrass13" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(1345.18, -141.905)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass14" type="Sprite2D" parent="Grass"]
+[node name="Widegrass14" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(1203.34, -317.528)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass15" type="Sprite2D" parent="Grass"]
+[node name="Widegrass15" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(1296.34, -317.528)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass16" type="Sprite2D" parent="Grass"]
+[node name="Widegrass16" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(1385.98, -317.528)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass17" type="Sprite2D" parent="Grass"]
+[node name="Widegrass17" type="Sprite2D" parent="Grass/WidegrassGroup"]
 position = Vector2(834.963, -348.786)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
-[node name="Widegrass18" type="Sprite2D" parent="Grass"]
-position = Vector2(840.165, -205.226)
+[node name="Widegrass18" type="Sprite2D" parent="Grass/WidegrassGroup"]
+position = Vector2(835.12, -205.226)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("25_slyan")
 
+[node name="Widegrass19" type="Sprite2D" parent="Grass/WidegrassGroup"]
+position = Vector2(-387.133, -206.134)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("25_slyan")
+
+[node name="Widegrass20" type="Sprite2D" parent="Grass/WidegrassGroup"]
+position = Vector2(-404.104, -238.484)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("25_slyan")
+
+[node name="Widegrass21" type="Sprite2D" parent="Grass/WidegrassGroup"]
+position = Vector2(426.048, -141.321)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("25_slyan")
+hframes = 2
+
+[node name="Widegrass22" type="Sprite2D" parent="Grass/WidegrassGroup"]
+position = Vector2(593.27, -141.353)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("25_slyan")
+hframes = 3
+frame = 1
+
+[node name="Widegrass23" type="Sprite2D" parent="Grass/WidegrassGroup"]
+position = Vector2(761.847, -140.835)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("25_slyan")
+hframes = 2
+
+[node name="Widegrass24" type="Sprite2D" parent="Grass/WidegrassGroup"]
+position = Vector2(793.438, -157.085)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("25_slyan")
+hframes = 2
+
+[node name="Widegrass25" type="Sprite2D" parent="Grass/WidegrassGroup"]
+position = Vector2(879.04, -205.181)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("25_slyan")
+hframes = 3
+frame = 2
+
+[node name="Widegrass26" type="Sprite2D" parent="Grass/WidegrassGroup"]
+position = Vector2(894.89, -173.945)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("25_slyan")
+hframes = 3
+frame = 2
+
+[node name="Widegrass27" type="Sprite2D" parent="Grass/WidegrassGroup"]
+position = Vector2(934.568, -141.543)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("25_slyan")
+hframes = 2
+frame = 1
+
+[node name="Widegrass28" type="Sprite2D" parent="Grass/WidegrassGroup"]
+position = Vector2(446.713, -141.52)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("25_slyan")
+hframes = 3
+frame = 2
+
+[node name="Widegrass29" type="Sprite2D" parent="Grass/WidegrassGroup"]
+position = Vector2(606.886, -141.435)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("25_slyan")
+hframes = 3
+frame = 2
+
+[node name="EdgegrassGroup" type="Node2D" parent="Grass"]
+
+[node name="Edgegrass10" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(784.465, -178.032)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+
+[node name="Edgegrass11" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(768.733, -129.993)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+
+[node name="Edgegrass12" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(736.858, -113.743)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+
+[node name="Edgegrass13" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(784.207, -321.44)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+
+[node name="Edgegrass14" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(576.156, -113.615)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+
+[node name="Edgegrass15" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(400.369, -113.706)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+
+[node name="Edgegrass16" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(-15.7564, -114.004)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+
+[node name="Edgegrass17" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(-191.864, -113.693)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+flip_h = true
+
+[node name="Edgegrass18" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(-336.036, -178.006)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+flip_h = true
+
+[node name="Edgegrass19" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(-352.224, -210.801)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+flip_h = true
+
+[node name="Edgegrass20" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(159.43, -113.468)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+flip_h = true
+
+[node name="Edgegrass21" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(463.867, -113.914)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+flip_h = true
+
+[node name="Edgegrass22" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(624.429, -113.583)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+flip_h = true
+
+[node name="Edgegrass23" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(896.238, -177.537)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+flip_h = true
+
+[node name="Edgegrass24" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(911.732, -145.799)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+flip_h = true
+
+[node name="Edgegrass25" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(959.874, -114.055)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+flip_h = true
+
+[node name="Edgegrass8" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(1024.56, -114.393)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+
+[node name="Edgegrass9" type="Sprite2D" parent="Grass/EdgegrassGroup"]
+position = Vector2(1152.45, -289.896)
+rotation = 3.14159
+scale = Vector2(0.05, -0.05)
+texture = ExtResource("25_sm0wd")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(519.483, -93.403)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("27_dvb5y")
+region_filter_clip_enabled = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
+position = Vector2(672.316, -93.403)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("27_dvb5y")
+region_filter_clip_enabled = true
+
 [connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@171063" to="TileMap/@Area2D@171063" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@171064" to="TileMap/@Area2D@171064" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@171065" to="TileMap/@Area2D@171065" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@171066" to="TileMap/@Area2D@171066" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@171067" to="TileMap/@Area2D@171067" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@171068" to="TileMap/@Area2D@171068" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@171069" to="TileMap/@Area2D@171069" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@171070" to="TileMap/@Area2D@171070" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@171071" to="TileMap/@Area2D@171071" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@171072" to="TileMap/@Area2D@171072" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@171073" to="TileMap/@Area2D@171073" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@171074" to="TileMap/@Area2D@171074" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@171075" to="TileMap/@Area2D@171075" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@320162" to="TileMap/@Area2D@320162" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@320163" to="TileMap/@Area2D@320163" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@320164" to="TileMap/@Area2D@320164" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@320165" to="TileMap/@Area2D@320165" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@320166" to="TileMap/@Area2D@320166" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@320167" to="TileMap/@Area2D@320167" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@320168" to="TileMap/@Area2D@320168" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@320169" to="TileMap/@Area2D@320169" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@320170" to="TileMap/@Area2D@320170" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@320171" to="TileMap/@Area2D@320171" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@320172" to="TileMap/@Area2D@320172" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@320173" to="TileMap/@Area2D@320173" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@320174" to="TileMap/@Area2D@320174" method="_on_body_entered"]
 [connection signal="body_entered" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_exited"]
 [connection signal="lever_toggled" from="Section4/LeverSwitch" to="Section4/Platform" method="_on_lever_switch_lever_toggled"]

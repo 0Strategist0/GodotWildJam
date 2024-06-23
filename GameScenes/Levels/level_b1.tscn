@@ -1051,6 +1051,7 @@ script = ExtResource("1_843t4")
 metadata/level = "b1"
 
 [node name="Character" parent="." instance=ExtResource("2_w6cac")]
+visible = false
 z_index = 2
 position = Vector2(2.08165e-12, 4)
 
@@ -1938,22 +1939,6 @@ texture = ExtResource("20_rqtdn")
 position = Vector2(1339, -79)
 next_level = ExtResource("25_k72ks")
 
-[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211666" to="TileMap/@Area2D@211666" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211667" to="TileMap/@Area2D@211667" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211668" to="TileMap/@Area2D@211668" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211669" to="TileMap/@Area2D@211669" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211670" to="TileMap/@Area2D@211670" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211671" to="TileMap/@Area2D@211671" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211672" to="TileMap/@Area2D@211672" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211673" to="TileMap/@Area2D@211673" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211674" to="TileMap/@Area2D@211674" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211675" to="TileMap/@Area2D@211675" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211676" to="TileMap/@Area2D@211676" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211677" to="TileMap/@Area2D@211677" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211678" to="TileMap/@Area2D@211678" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211679" to="TileMap/@Area2D@211679" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@211680" to="TileMap/@Area2D@211680" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
 
