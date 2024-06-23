@@ -169,7 +169,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 		var direction := Input.get_axis("left", "right")
 		if direction:
-			velocity.x = lerp(velocity.x, direction * speed * 4.0, 
+			velocity.x = lerp(velocity.x, direction * speed * 6.0, 
 					pow(ACCELERATION, 60.0 * delta))
 		else:
 			velocity.x = lerp(velocity.x, 0.0, pow(ACCELERATION, 60.0 * delta))

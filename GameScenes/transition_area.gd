@@ -1,6 +1,7 @@
 extends Area2D
 
-@export var next_level: PackedScene
+@export var next_level_uid: String
+@export var load_position: Vector2
 
 @onready var main := GlobalNodeReferences.main
 
@@ -15,5 +16,9 @@ func _on_body_entered(body: Node2D) -> void:
 		await TransitionScreen.on_transition_finished
 		
 		# Move to next scene
-		main.call_deferred("add_child", next_level.instantiate())
+		var next_scene : Node2D = load(next_level_uid).instantiate()
+		if load_position != Vector2.ZERO:
+			next_scene.get_node("Character").position = load_position
+		main.call_deferred("add_child", next_scene)
+		
 		owner.call_deferred("queue_free")
