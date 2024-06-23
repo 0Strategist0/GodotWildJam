@@ -15,3 +15,12 @@ region_rect = Rect2(16, 32, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vhk1r")
+
+[node name="Black" type="Polygon2D" parent="."]
+color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+polygon = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(0, -1)
+color = Color(0.329158, 0.329158, 0.329158, 1)
+polygon = PackedVector2Array(-6, -5, -4, -5, 0, -1, 4, -5, 6, -5, 6, -3, 2, 1, 6, 5, 6, 7, 4, 7, 0, 3, -4, 7, -6, 7, -6, 5, -2, 1, -6, -3)

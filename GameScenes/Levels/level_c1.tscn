@@ -1367,6 +1367,7 @@ scale = Vector2(10, 1)
 texture = ExtResource("7_q7s23")
 
 [node name="Character" parent="." instance=ExtResource("9_f3vmp")]
+visible = false
 position = Vector2(-232, -648)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1739,20 +1740,6 @@ next_level = ExtResource("24_6bvqi")
 position = Vector2(1386, -330)
 next_level = ExtResource("24_6bvqi")
 
-[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@70776" to="TileMap/@Area2D@70776" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@70777" to="TileMap/@Area2D@70777" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@70778" to="TileMap/@Area2D@70778" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@70779" to="TileMap/@Area2D@70779" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@70780" to="TileMap/@Area2D@70780" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@70781" to="TileMap/@Area2D@70781" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@70782" to="TileMap/@Area2D@70782" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@70783" to="TileMap/@Area2D@70783" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@70784" to="TileMap/@Area2D@70784" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@70785" to="TileMap/@Area2D@70785" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@70786" to="TileMap/@Area2D@70786" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@70787" to="TileMap/@Area2D@70787" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@70788" to="TileMap/@Area2D@70788" method="_on_body_entered"]
 [connection signal="body_entered" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_exited"]
 [connection signal="lever_toggled" from="Section4/LeverSwitch" to="Section4/Platform" method="_on_lever_switch_lever_toggled"]
