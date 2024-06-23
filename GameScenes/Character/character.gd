@@ -188,7 +188,10 @@ func _physics_process(delta: float) -> void:
 		
 	for i in get_slide_collision_count():
 		var c := get_slide_collision(i)
-		if c.get_collider() is CharacterBody2D and c.get_collider().is_in_group("pushable") and lockout == 0.0:
+		if (c.get_collider() is CharacterBody2D 
+				and (c.get_collider().is_in_group("pushable") 
+				or (c.get_collider().is_in_group("heavy") and is_strong)) 
+				and lockout == 0.0):
 			lockout += .1
 			if (position.x + get_node("CollisionShape2D").shape.radius 
 					+ (c.get_collider().get_node("CollisionShape2D").shape.size.x / 2) 
