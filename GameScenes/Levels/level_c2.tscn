@@ -1528,6 +1528,13 @@ texture = ExtResource("21_flhw6")
 region_enabled = true
 region_rect = Rect2(210, 0, 708, 794)
 
+[node name="Widegrass61" type="Sprite2D" parent="Grass"]
+position = Vector2(898, -158)
+scale = Vector2(-0.09, 0.09)
+texture = ExtResource("21_flhw6")
+region_enabled = true
+region_rect = Rect2(18, 0, 1096, 794)
+
 [node name="Objects" type="Node" parent="."]
 
 [node name="Pushable Object3" parent="Objects" instance=ExtResource("14_01u01")]
