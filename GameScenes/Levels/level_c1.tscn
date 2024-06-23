@@ -2040,7 +2040,6 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("28_c51gs")
 region_filter_clip_enabled = true
 
-
 [node name="Node2D2" type="Node2D" parent="."]
 position = Vector2(1343, -300)
 
@@ -2051,7 +2050,6 @@ polygon = PackedVector2Array(1307, -315, 1307, -311, 1320, -311, 1320, -306, 133
 [node name="Arrow2" type="Polygon2D" parent="."]
 position = Vector2(56, 180)
 polygon = PackedVector2Array(1307, -315, 1307, -311, 1320, -311, 1320, -306, 1330, -313, 1320, -320, 1320, -315)
-
 
 [connection signal="body_entered" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_exited"]
