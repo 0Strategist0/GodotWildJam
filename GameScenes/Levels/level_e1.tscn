@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://dxaacdtwh4ia4"]
+[gd_scene load_steps=81 format=3 uid="uid://dxaacdtwh4ia4"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/BodySpawner.gd" id="1_et1d1"]
 [ext_resource type="Texture2D" uid="uid://dpqaaspw8jaxh" path="res://GameScenes/Levels/tree1.svg" id="1_pybly"]
@@ -25,6 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://cfbgqr2bhcf4y" path="res://GameScenes/Objects/Movables/platform.tscn" id="18_nvo18"]
 [ext_resource type="PackedScene" uid="uid://cp6sqwlcu0q1w" path="res://GameScenes/escape_ending.tscn" id="19_tim53"]
 [ext_resource type="Script" path="res://GameScenes/Hunter/hunter_end.gd" id="21_kx3pu"]
+[ext_resource type="Script" path="res://GameScenes/Levels/TrueEnding.gd" id="26_ernif"]
+[ext_resource type="AudioStream" uid="uid://bthw6tqyuqxot" path="res://GameScenes/Hunter/demonic-woman-scream-6333.mp3" id="26_tks8c"]
+[ext_resource type="FontFile" uid="uid://c2xicsbvnm0lv" path="res://assets/Cute Love.otf" id="27_5yr2s"]
+[ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="29_xr81p"]
 
 [sub_resource type="Shader" id="Shader_b5qdx"]
 code = "/*
@@ -755,6 +759,81 @@ texture = ExtResource("10_0ca6t")
 [sub_resource type="TileSet" id="TileSet_il5md"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0p1ww")
+
+[sub_resource type="Animation" id="Animation_nvwew"]
+resource_name = "TrueEnding"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TrueEnding/AudioStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TrueEnding/CanvasLayer/TrueEnding:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TrueEnding")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_start_again"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tjs0t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TrueEnding/AudioStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TrueEnding/CanvasLayer/TrueEnding:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_epg52"]
+_data = {
+"RESET": SubResource("Animation_tjs0t"),
+"TrueEnding": SubResource("Animation_nvwew")
+}
 
 [node name="LevelE1" type="Node2D"]
 script = ExtResource("1_et1d1")
@@ -1560,7 +1639,7 @@ position = Vector2(617, -265)
 variables_to_save = Array[String](["position"])
 
 [node name="HeavyPushableObject" parent="Interactibles" instance=ExtResource("18_kigjh")]
-position = Vector2(114, -229)
+position = Vector2(128, -231)
 
 [node name="PropertySaver" parent="Interactibles/HeavyPushableObject" instance=ExtResource("17_7x3m7")]
 variables_to_save = Array[String](["position"])
@@ -1588,6 +1667,8 @@ modulate = Color(1, 1, 1, 0)
 [node name="Hunter" parent="." instance=ExtResource("16_lkoo2")]
 position = Vector2(319, 14)
 rotation = 0.298836
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("21_kx3pu")
 
 [node name="Head" parent="Hunter/HunterSprite/Body" index="0"]
@@ -1638,13 +1719,14 @@ texture = ExtResource("17_78cxn")
 
 [node name="Platform1" parent="Platforms" node_paths=PackedStringArray("points") instance=ExtResource("18_nvo18")]
 position = Vector2(189, -200)
+uses_switch = true
 points = [NodePath("../Marker2D"), NodePath("../Marker2D2")]
 
 [node name="PropertySaver" parent="Platforms/Platform1" instance=ExtResource("17_7x3m7")]
 variables_to_save = Array[String](["activated"])
 
 [node name="Marker2D" type="Marker2D" parent="Platforms"]
-position = Vector2(190, -167)
+position = Vector2(190, -163)
 
 [node name="Marker2D2" type="Marker2D" parent="Platforms"]
 position = Vector2(190, -200)
@@ -1706,6 +1788,200 @@ format = 2
 layer_0/tile_data = PackedInt32Array(131078, 0, 0, 131077, 0, 0, 131076, 0, 0, 131075, 0, 0, 131074, 0, 0, 131073, 0, 0, 131072, 0, 0, 196607, 0, 0, 196606, 0, 0, 196605, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 0, 0, 131089, 0, 0, 131090, 0, 0, 131091, 0, 0, 131092, 0, 0, 131093, 0, 0, 131094, 0, 0, 131095, 0, 0, 131096, 0, 0, 131097, 0, 0, 131098, 0, 0, 131099, 0, 0, 131101, 0, 0, 131102, 0, 0, 131103, 0, 0, 131104, 0, 0, 131100, 0, 0, 131105, 0, 0, 131106, 0, 0, 131107, 0, 0, 131108, 0, 0, 131109, 0, 0, 131110, 0, 0, 131111, 0, 0, 131112, 0, 0, 131113, 0, 0, 131114, 0, 0, 131115, 0, 0, 131116, 0, 0, 131117, 0, 0, 131118, 0, 0, 131119, 0, 0, 131120, 0, 0, 131121, 0, 0, 131122, 0, 0, 131123, 0, 0, 131124, 0, 0, 131125, 0, 0, 131126, 0, 0, 131127, 0, 0, 131128, 0, 0, 131129, 0, 0, 131130, 0, 0, 131131, 0, 0, 131132, 0, 0, 131133, 0, 0, 131134, 0, 0, 131135, 0, 0, 131136, 0, 0, 131137, 0, 0, 65533, 0, 0, 131069, 0, 0, 131138, 0, 0, 131139, 0, 0, 131140, 0, 0, 131141, 0, 0, 131142, 0, 0, 131143, 0, 0, 131144, 0, 0, 131145, 0, 0, 131146, 0, 0, 131147, 0, 0, 131148, 0, 0, 131149, 0, 0, 131150, 0, 0, 65532, 0, 0, 65531, 0, 0, 65530, 0, 0, 65529, 0, 0, 65528, 0, 0, -458760, 0, 0, -458759, 0, 0, -458758, 0, 0, -458757, 0, 0, -458756, 0, 0, -458755, 0, 0, -458754, 0, 0, -458753, 0, 0, -524288, 0, 0, -524287, 0, 0, -524286, 0, 0, -524285, 0, 0, -524284, 0, 0, -524283, 0, 0, -524282, 0, 0, -524281, 0, 0, -524280, 0, 0, -524279, 0, 0, -524278, 0, 0, -524277, 0, 0, -524276, 0, 0, -524275, 0, 0, -524274, 0, 0, -524273, 0, 0, -524272, 0, 0, -524271, 0, 0, -524270, 0, 0, -1114092, 0, 0, -1114093, 0, 0, -1114094, 0, 0, -1114095, 0, 0, -1114096, 0, 0, -1114097, 0, 0, -1114098, 0, 0, -1114099, 0, 0, -1114100, 0, 0, -1114101, 0, 0, -1114104, 0, 0, -1114105, 0, 0, -1114106, 0, 0, -1114107, 0, 0, -1114108, 0, 0, -1114109, 0, 0, -1114110, 0, 0, -1114111, 0, 0, -1114112, 0, 0, -1048580, 0, 0, -1048581, 0, 0, -1048582, 0, 0, -1048583, 0, 0, -1048584, 0, 0, -1048579, 0, 0, -1048578, 0, 0, -1048577, 0, 0, -1114103, 0, 0, -1114102, 0, 0, -524265, 0, 0, -524264, 0, 0, -524263, 0, 0, -524262, 0, 0, -786407, 0, 0, -983019, 0, 0, -1048556, 0, 0, -524261, 0, 0, -524260, 0, 0, -655331, 0, 0, -720867, 0, 0, -786404, 0, 0, -786405, 0, 0, -786406, 0, 0, -786409, 0, 0, -720873, 0, 0, -655337, 0, 0, -589801, 0, 0, -786408, 0, 0, -524259, 0, 0, 65527, 0, 0, 65526, 0, 0, 65525, 0, 0, 65524, 0, 0, 65523, 0, 0, -458765, 0, 0, -458764, 0, 0, -458763, 0, 0, -458762, 0, 0, -458761, 0, 0, -1048585, 0, 0, -1048586, 0, 0, -1048587, 0, 0, -1048588, 0, 0, -1048589, 0, 0, 131151, 0, 0, 131152, 0, 0, 131153, 0, 0, 131154, 0, 0, 131155, 0, 0, 131156, 0, 0, 131157, 0, 0, 131158, 0, 0, 131159, 0, 0, 131160, 0, 0, 131161, 0, 0, 65522, 0, 0, 65521, 0, 0, 65520, 0, 0, -458768, 0, 0, -458767, 0, 0, -458766, 0, 0, -1048592, 0, 0, -1048591, 0, 0, -1048590, 0, 0, -786403, 0, 0, -1048555, 0, 0, -1114091, 0, 0, -1114090, 0, 0, -1114087, 0, 0, -1114088, 0, 0, -1114089, 0, 0, -1114086, 0, 0, -1114085, 0, 0, -1114084, 0, 0, -1114083, 0, 0, -1048547, 0, 0, -983011, 0, 0, -1114076, 0, 0, -1048540, 0, 0, -983004, 0, 0, -917468, 0, 0, -851932, 0, 0, -786396, 0, 0, -720860, 0, 0, -655324, 0, 0, -589788, 0, 0, -524252, 0, 0, -524255, 0, 0, -524254, 0, 0, -524253, 0, 0, -589790, 0, 0, -589789, 0, 0, -655325, 0, 0, -720861, 0, 0, -786397, 0, 0, -851964, 0, 0, -851963, 0, 0, -851962, 0, 0, -851961, 0, 0, -851960, 0, 0, -851959, 0, 0, -458729, 0, 0, -458728, 0, 0, -458727, 0, 0, -458726, 0, 0, -458725, 0, 0, -458734, 0, 0, -458735, 0, 0, -458736, 0, 0, -458737, 0, 0, -458738, 0, 0, -458739, 0, 0, -458740, 0, 0, -458741, 0, 0, -458742, 0, 0, -458743, 0, 0, -458744, 0, 0, -458745, 0, 0, -1048539, 0, 0, -1048538, 0, 0, -1048537, 0, 0, -1048536, 0, 0, -1048535, 0, 0, -1114071, 0, 0, -524258, 0, 0, -458722, 0, 0, -393186, 0, 0, -327650, 0, 0, -327649, 0, 0, -327648, 0, 0, -327647, 0, 0, -262111, 0, 0, -196575, 0, 0, -196574, 0, 0, -196573, 0, 0, -131037, 0, 0, -65501, 0, 0, -65500, 0, 0, -65499, 0, 0, 37, 0, 0, 65573, 0, 0, 65574, 0, 0, 65575, 0, 0, -393189, 0, 0, -393188, 0, 0, -327652, 0, 0, -262116, 0, 0, -196579, 0, 0, -196578, 0, 0, -131042, 0, 0, -65506, 0, 0, 30, 0, 0, 31, 0, 0, 65567, 0, 0, 65566, 0, 0, -262115, 0, 0, -983018, 0, 0, -983017, 0, 0, -983016, 0, 0, -983015, 0, 0, -983014, 0, 0, -983013, 0, 0, -983012, 0, 0, -458733, 0, 0, -524269, 0, 0, -1114070, 0, 0, -1179606, 0, 0, -1245142, 0, 0, -1310678, 0, 0, -1376214, 0, 0, -1441750, 0, 0, -1507286, 0, 0, -1572822, 0, 0, -1638358, 0, 0, -1703894, 0, 0, -1769430, 0, 0, -1834966, 0, 0, -1900502, 0, 0, -1966038, 0, 0, -2031574, 0, 0, -2097110, 0, 0, -2162646, 0, 0, -2228182, 0, 0)
 
 [node name="TrueEnding" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_epg52")
+}
+script = ExtResource("26_ernif")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TrueEnding"]
+stream = ExtResource("26_tks8c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="TrueEnding"]
+layer = 2
+
+[node name="TrueEnding" type="Control" parent="TrueEnding/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="TrueEnding/CanvasLayer/TrueEnding"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TrueEnding/CanvasLayer/TrueEnding/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("27_5yr2s")
+theme_override_font_sizes/font_size = 100
+text = "Finally, after years of fear and sacrifice, 
+generations of children were able to work together across time
+to kill the monster that had been terrorizing their village.
+
+Never again will a child be thrown from the cliff
+
+THE END"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Grass" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Grass"]
+position = Vector2(5, -1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Grass"]
+position = Vector2(-89, -34)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Grass"]
+position = Vector2(-201, -33)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Grass"]
+position = Vector2(-200, -161)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Grass"]
+position = Vector2(-93, -161)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Grass"]
+position = Vector2(16, -161)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Grass"]
+position = Vector2(125, -162)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Grass"]
+position = Vector2(233, -162)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Grass"]
+position = Vector2(264, -162)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Grass"]
+position = Vector2(111, -235)
+scale = Vector2(0.085, 0.085)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Grass"]
+position = Vector2(425, -225)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Grass"]
+position = Vector2(435, -161)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D17" type="Sprite2D" parent="Grass"]
+position = Vector2(423, -306)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Grass"]
+position = Vector2(318, -307)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D19" type="Sprite2D" parent="Grass"]
+position = Vector2(211, -306)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D20" type="Sprite2D" parent="Grass"]
+position = Vector2(105, -307)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D21" type="Sprite2D" parent="Grass"]
+position = Vector2(-2.99999, -306)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D22" type="Sprite2D" parent="Grass"]
+position = Vector2(-112, -307)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D23" type="Sprite2D" parent="Grass"]
+position = Vector2(-200, -306)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D24" type="Sprite2D" parent="Grass"]
+position = Vector2(698, -2)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D25" type="Sprite2D" parent="Grass"]
+position = Vector2(805, -2)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D26" type="Sprite2D" parent="Grass"]
+position = Vector2(914, -1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D27" type="Sprite2D" parent="Grass"]
+position = Vector2(1022, -1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D28" type="Sprite2D" parent="Grass"]
+position = Vector2(1132, -2)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D29" type="Sprite2D" parent="Grass"]
+position = Vector2(1240, -2)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Grass"]
+position = Vector2(117, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Grass"]
+position = Vector2(224, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Grass"]
+position = Vector2(332, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Grass"]
+position = Vector2(441, -2)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("29_xr81p")
 
 [connection signal="lever_toggled" from="Interactibles/LeverSwitch" to="Platforms/Platform1" method="_on_lever_switch_lever_toggled"]
 [connection signal="body_entered" from="Interactibles/PlateSwitch" to="Platforms/Platform2" method="_on_plate_switch_body_entered"]
