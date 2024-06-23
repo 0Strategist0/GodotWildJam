@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
-enum {DEFAULT, BOB, MESSY, CURLY, PONY, BALD}
-
+enum {DEFAULT, BOB, MESSY, CURLY, BALD, PONY}
 const ACCELERATION := 0.3 # out of 0.0 to 1.0
 const JUMP_VELOCITY := -300.0
 const MAX_FALL_SPEED := 500.0
@@ -248,7 +247,6 @@ func kill() -> void:
 
 func _on_death_animation_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Death":
-		CharacterAttributes.randomize_attributes()
-		var reloaded_scene : Node2D = load("uid://b0kxtk2p027ml").instantiate()
+		var reloaded_scene : Control = load("uid://i7s5tj205axq").instantiate()
 		GlobalNodeReferences.main.call_deferred("add_child", reloaded_scene)
 		owner.queue_free()

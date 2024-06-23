@@ -1051,7 +1051,7 @@ metadata/level = "b1"
 
 [node name="Character" parent="." instance=ExtResource("2_w6cac")]
 z_index = 2
-position = Vector2(0, 4)
+position = Vector2(2.08165e-12, 4)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_i5pvu")
