@@ -1756,9 +1756,12 @@ position = Vector2(938, -1)
 
 [node name="GoToD1_1" parent="Transitions" instance=ExtResource("23_eehj7")]
 position = Vector2(1371.5, -151)
+next_level_uid = "uid://db44wgy2to8bm"
 
 [node name="GoToD1_2" parent="Transitions" instance=ExtResource("23_eehj7")]
 position = Vector2(1386, -330)
+next_level_uid = "uid://db44wgy2to8bm"
+load_position = Vector2(-288.041, -232.582)
 
 [node name="Grass" type="Node2D" parent="."]
 
@@ -2057,20 +2060,6 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("28_c51gs")
 region_filter_clip_enabled = true
 
-[connection signal="body_entered" from="TileMap/DeathArea" to="TileMap/DeathArea" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20895" to="TileMap/@Area2D@20895" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20896" to="TileMap/@Area2D@20896" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20897" to="TileMap/@Area2D@20897" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20898" to="TileMap/@Area2D@20898" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20899" to="TileMap/@Area2D@20899" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20900" to="TileMap/@Area2D@20900" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20901" to="TileMap/@Area2D@20901" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20902" to="TileMap/@Area2D@20902" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20903" to="TileMap/@Area2D@20903" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20904" to="TileMap/@Area2D@20904" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20905" to="TileMap/@Area2D@20905" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20906" to="TileMap/@Area2D@20906" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@20907" to="TileMap/@Area2D@20907" method="_on_body_entered"]
 [connection signal="body_entered" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_entered"]
 [connection signal="body_exited" from="Section1/PlateSwitch" to="Section1/Door" method="_on_plate_switch_body_exited"]
 [connection signal="lever_toggled" from="Section4/LeverSwitch" to="Section4/Platform" method="_on_lever_switch_lever_toggled"]

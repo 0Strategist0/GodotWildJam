@@ -15,13 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://cusycd8j05p7" path="res://GameScenes/death_area.tscn" id="11_k8y7r"]
 [ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/Blocks/pushable_object.tscn" id="14_uabmc"]
 [ext_resource type="PackedScene" uid="uid://c1tsd86p4rqem" path="res://GameScenes/Objects/Movables/static_platform.tscn" id="15_n2wlp"]
+[ext_resource type="PackedScene" uid="uid://0sl86j4i2eum" path="res://GameScenes/property_saver.tscn" id="15_una1w"]
 [ext_resource type="PackedScene" uid="uid://c7a84huofxckc" path="res://GameScenes/Objects/Switches/lever_switch.tscn" id="16_ebcke"]
 [ext_resource type="PackedScene" uid="uid://blempiyqsp5tu" path="res://GameScenes/Objects/Switches/plate_switch.tscn" id="17_2h87l"]
 [ext_resource type="PackedScene" uid="uid://cfbgqr2bhcf4y" path="res://GameScenes/Objects/Movables/platform.tscn" id="17_vejot"]
 [ext_resource type="PackedScene" uid="uid://cqay0ugttwink" path="res://GameScenes/Objects/Teleporter/teleporter.tscn" id="18_m6vmm"]
 [ext_resource type="PackedScene" uid="uid://mm3djlck2npl" path="res://GameScenes/Objects/Teleporter/teleport_location.tscn" id="19_ral1o"]
-[ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="21_3ap51"]
-[ext_resource type="PackedScene" uid="uid://dxaacdtwh4ia4" path="res://GameScenes/Levels/level_e1.tscn" id="22_bd44f"]
+[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="21_3ap51"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="23_b8imx"]
 [ext_resource type="Texture2D" uid="uid://bmaibao06omck" path="res://GameScenes/Levels/spikes.svg" id="24_4gitw"]
 [ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="24_6tix1"]
@@ -1330,9 +1330,6 @@ texture = ExtResource("7_qom30")
 [node name="Character" parent="." instance=ExtResource("9_mci2d")]
 position = Vector2(-136, -28)
 
-[node name="Camera2D2" type="Camera2D" parent="Character"]
-zoom = Vector2(7, 7)
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_67eta")
 format = 2
@@ -1595,13 +1592,22 @@ shape = SubResource("RectangleShape2D_wm824")
 [node name="Pushable Object" parent="TopSection" instance=ExtResource("14_uabmc")]
 position = Vector2(248.721, -148.821)
 
+[node name="PropertySaver" parent="TopSection/Pushable Object" instance=ExtResource("15_una1w")]
+variables_to_save = Array[String](["position"])
+
 [node name="LeverSwitch" parent="TopSection" instance=ExtResource("16_ebcke")]
 position = Vector2(246, -202.75)
+
+[node name="PropertySaver" parent="TopSection/LeverSwitch" instance=ExtResource("15_una1w")]
+variables_to_save = Array[String](["activated"])
 
 [node name="Platform" parent="TopSection" node_paths=PackedStringArray("points") instance=ExtResource("17_vejot")]
 position = Vector2(248, -134.495)
 uses_switch = true
 points = [NodePath("../Marker2D3"), NodePath("../Marker2D2")]
+
+[node name="PropertySaver" parent="TopSection/Platform" instance=ExtResource("15_una1w")]
+variables_to_save = Array[String](["activated", "position"])
 
 [node name="Marker2D2" type="Marker2D" parent="TopSection"]
 position = Vector2(304, -136)
@@ -1611,6 +1617,9 @@ position = Vector2(304, -144)
 
 [node name="Pushable Object2" parent="TopSection" instance=ExtResource("14_uabmc")]
 position = Vector2(349.23, -206.719)
+
+[node name="PropertySaver" parent="TopSection/Pushable Object2" instance=ExtResource("15_una1w")]
+variables_to_save = Array[String](["position"])
 
 [node name="BottomSection" type="Node2D" parent="."]
 position = Vector2(230, -161)
@@ -1626,6 +1635,9 @@ position = Vector2(401, 173.264)
 uses_switch = true
 points = [NodePath("../Marker2D2"), NodePath("../Marker2D")]
 speed = 40
+
+[node name="PropertySaver" parent="BottomSection/Platform" instance=ExtResource("15_una1w")]
+variables_to_save = Array[String](["activated", "position"])
 
 [node name="Marker2D2" type="Marker2D" parent="BottomSection"]
 position = Vector2(739, 173.264)
@@ -1652,8 +1664,14 @@ position = Vector2(682, -24)
 uses_switch = true
 points = [NodePath("../Marker2D"), NodePath("../Marker2D2")]
 
+[node name="PropertySaver" parent="EndSection/EndPlatform/Platform" instance=ExtResource("15_una1w")]
+variables_to_save = Array[String](["activated", "position"])
+
 [node name="LeverSwitch" parent="EndSection/EndPlatform" instance=ExtResource("16_ebcke")]
 position = Vector2(791, -42)
+
+[node name="PropertySaver" parent="EndSection/EndPlatform/LeverSwitch" instance=ExtResource("15_una1w")]
+variables_to_save = Array[String](["activated"])
 
 [node name="Marker2D2" type="Marker2D" parent="EndSection/EndPlatform"]
 position = Vector2(568, -24)
@@ -1681,7 +1699,7 @@ position = Vector2(606, -238)
 
 [node name="GoToE1" parent="Transitions" instance=ExtResource("21_3ap51")]
 position = Vector2(1165, -245)
-next_level = ExtResource("22_bd44f")
+next_level_uid = "uid://dxaacdtwh4ia4"
 
 [node name="Decorations" type="Node2D" parent="."]
 
