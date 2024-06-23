@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0qappnyuuly6"]
+[gd_scene load_steps=8 format=3 uid="uid://d0qappnyuuly6"]
 
 [ext_resource type="Script" path="res://Menus/TitlePage/StartButton.gd" id="1_nveqe"]
 [ext_resource type="FontFile" uid="uid://c2xicsbvnm0lv" path="res://assets/Cute Love.otf" id="1_omxbu"]
 [ext_resource type="Script" path="res://Menus/TitlePage/Settings.gd" id="2_osxgx"]
 [ext_resource type="Script" path="res://Menus/TitlePage/OptionsButton.gd" id="3_xdrxg"]
+[ext_resource type="Texture2D" uid="uid://by6ruwsq0ykt7" path="res://assets/title.svg" id="5_2icup"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7cl5m"]
 
@@ -29,30 +30,29 @@ color = Color(0, 0, 0, 1)
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.159
-offset_top = 347.0
-offset_bottom = 476.724
+anchor_left = 0.0591931
+anchor_top = 0.101324
+anchor_right = 0.647487
+anchor_bottom = 0.496945
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_omxbu")
-theme_override_font_sizes/font_size = 350
-text = "SCARY GAME"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 300
+text = "Boneyard of the
+Innocent"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -672.0
-offset_top = 131.0
-offset_right = -282.0
-offset_bottom = 545.0
+anchors_preset = -1
+anchor_left = 0.15377
+anchor_top = 0.60336
+anchor_right = 0.34377
+anchor_bottom = 0.81036
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -61,7 +61,7 @@ size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_omxbu")
 theme_override_font_sizes/font_size = 150
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7cl5m")
-text = "start"
+text = "Start"
 flat = true
 script = ExtResource("1_nveqe")
 
@@ -95,7 +95,7 @@ size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_omxbu")
 theme_override_font_sizes/font_size = 150
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6ym7v")
-text = "options"
+text = "Options"
 flat = true
 script = ExtResource("3_xdrxg")
 
@@ -179,6 +179,22 @@ size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_omxbu")
 theme_override_font_sizes/font_size = 100
 text = "Fog (can slow down lower-end computers)"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1810.0
+offset_top = -2130.0
+offset_right = 5749.0
+offset_bottom = 7319.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("5_2icup")
 
 [connection signal="focus_entered" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_focus_entered"]
 [connection signal="focus_exited" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_focus_exited"]
