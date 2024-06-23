@@ -1007,7 +1007,6 @@ scale = Vector2(11.9688, 1.67188)
 texture = ExtResource("7_byp5q")
 
 [node name="Character" parent="." instance=ExtResource("9_n23bq")]
-visible = false
 position = Vector2(-411, -316)
 
 [node name="TileMap" type="TileMap" parent="."]
