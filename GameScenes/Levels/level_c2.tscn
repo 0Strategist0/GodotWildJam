@@ -13,9 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://ce20bx8qiacem" path="res://assets/world_tileset.png" id="10_iaj45"]
 [ext_resource type="Script" path="res://scripts/TilemapCollisionBaker.gd" id="10_ygpfd"]
 [ext_resource type="PackedScene" uid="uid://bxv8ppef5x7rj" path="res://GameScenes/Objects/Blocks/pushable_object.tscn" id="14_01u01"]
-[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="14_vbm01"]
+[ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="14_vbm01"]
 [ext_resource type="PackedScene" uid="uid://blempiyqsp5tu" path="res://GameScenes/Objects/Switches/plate_switch.tscn" id="15_2edlc"]
-[ext_resource type="PackedScene" uid="uid://dxaacdtwh4ia4" path="res://GameScenes/Levels/level_e1.tscn" id="15_pnyp7"]
+[ext_resource type="PackedScene" uid="uid://baxs24dippmn" path="res://GameScenes/Levels/level_d2.tscn" id="15_w0anm"]
 [ext_resource type="PackedScene" uid="uid://cfbgqr2bhcf4y" path="res://GameScenes/Objects/Movables/platform.tscn" id="16_k5rw6"]
 [ext_resource type="PackedScene" uid="uid://c1tsd86p4rqem" path="res://GameScenes/Objects/Movables/static_platform.tscn" id="17_rausi"]
 [ext_resource type="PackedScene" uid="uid://cusycd8j05p7" path="res://GameScenes/death_area.tscn" id="20_e7vao"]
@@ -1155,9 +1155,9 @@ position = Vector2(-376, -289.5)
 shape = SubResource("RectangleShape2D_j5hpr")
 
 [node name="GoToD2" parent="." instance=ExtResource("14_vbm01")]
-position = Vector2(1094, -245)
+position = Vector2(1016, -171)
 scale = Vector2(3, 3)
-next_level = ExtResource("15_pnyp7")
+next_level = ExtResource("15_w0anm")
 
 [node name="Static Platform" parent="." instance=ExtResource("17_rausi")]
 position = Vector2(-83, -64)

@@ -13,14 +13,12 @@ var puzzle := []
 var current := []
 var solved : bool = false
 @onready var Levers := []
-@onready var Lights : Array[PointLight2D] = []
 
 var timer := Timer.new()
 
 func _ready() -> void:
 	for i : int in range(9):
 		var num : int = i + 1
-		Lights.append(get_node("Levers/LeverSwitch" + str(num) + "/PointLight2D"))
 		Levers.append(get_node("Levers/LeverSwitch" + str(num)))
 	
 	var bodies : Dictionary = (Progress.bodies[get_meta("level")] 
@@ -66,18 +64,18 @@ func load_puzzle() -> void:
 		door_hitbox.disabled = true
 
 func reset_switches() -> void:
-	for num : int in current:
-		if Levers[num-1].activated != false:
-			Levers[num-1].flip_lever(false)
-			Levers[num-1].activated = false
+	for lever in Levers:
+		if lever.activated != false:
+			lever.flip_lever(false)
+			lever.activated = false
 	
 func show_puzzle() -> void:
 	await get_tree().create_timer(2.0).timeout
 	for num : int in puzzle:
 		#print(num)
-		Lights[num-1].enabled = true
+		Levers[num-1].flip_lever(true)
 		await get_tree().create_timer(0.5).timeout
-		Lights[num-1].enabled = false
+		Levers[num-1].flip_lever(false)
 		await get_tree().create_timer(0.5).timeout
 	# re-enable levers
 	for lever in Levers:
@@ -90,20 +88,20 @@ func check_solution() -> void:
 			sound_player.stream = fail_sound
 			sound_player.play()
 			for num : int in current:
-				Lights[num-1].enabled = false
+				Levers[num-1].flip_lever(false)
 			reset_switches()
 			current.clear()
 			show_puzzle()
 			return
-	# flash all lights if correct
+	# flip all levers if correct
 	sound_player.stream = success_sound
 	await get_tree().create_timer(1.0).timeout
 	sound_player.play()
-	for light in Lights:
-		light.enabled = true
+	for lever in Levers:
+		if lever.activated != true:
+			lever.flip_lever(true)
+			lever.activated = true
 	await get_tree().create_timer(1.5).timeout
-	for light in Lights:
-		light.enabled = false
 	reset_switches()
 	# create next puzzle
 	puzzle_length += 1
@@ -113,7 +111,7 @@ func _on_lever_switch_lever_toggled(number: int) -> void:
 	current.append(number)
 	#print(current)
 	if !solved:
-		Lights[number-1].enabled = true
+		Levers[number-1].activated = true
 		if len(current) == len(puzzle):
 			for lever in Levers:
 				lever.enabled = false

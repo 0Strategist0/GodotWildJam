@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://baxs24dippmn"]
+[gd_scene load_steps=30 format=3 uid="uid://baxs24dippmn"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/level_d2.gd" id="1_7fbjy"]
 [ext_resource type="PackedScene" uid="uid://fj66b0r304fq" path="res://GameScenes/Character/character.tscn" id="2_tpa4f"]
@@ -15,8 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://c1tsd86p4rqem" path="res://GameScenes/Objects/Movables/static_platform.tscn" id="13_87317"]
 [ext_resource type="PackedScene" uid="uid://di53u75kivwsj" path="res://GameScenes/Objects/Movables/door.tscn" id="14_0x14e"]
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="15_63bli"]
-[ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="16_1cfxr"]
-[ext_resource type="PackedScene" uid="uid://d35bwgvoepnqf" path="res://GameScenes/Levels/level_d3.tscn" id="17_0aamh"]
+[ext_resource type="PackedScene" path="res://GameScenes/transition_area.tscn" id="16_1cfxr"]
+[ext_resource type="PackedScene" uid="uid://dxaacdtwh4ia4" path="res://GameScenes/Levels/level_e1.tscn" id="17_3u1m8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yokt"]
 texture = ExtResource("3_p1l6e")
@@ -414,15 +414,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0yokt")
 sources/1 = SubResource("TileSetScenesCollectionSource_p1fmf")
 
-[sub_resource type="Gradient" id="Gradient_24fyr"]
-offsets = PackedFloat32Array(0, 0.77686)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ps6wq"]
-gradient = SubResource("Gradient_24fyr")
-fill = 1
-fill_from = Vector2(0.5, 0.508547)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grtdg"]
 size = Vector2(16, 96)
 
@@ -455,9 +446,8 @@ script = ExtResource("1_7fbjy")
 metadata/level = "d2"
 
 [node name="Character" parent="." instance=ExtResource("2_tpa4f")]
-visible = false
 z_index = 2
-position = Vector2(-57, -134)
+position = Vector2(-55, -4)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_i5pvu")
@@ -1038,81 +1028,45 @@ position = Vector2(120, 7)
 lever_number = 1
 single_use = true
 
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch1"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
-
 [node name="LeverSwitch2" parent="Levers" instance=ExtResource("11_n8nea")]
 position = Vector2(120, -40)
 lever_number = 2
 single_use = true
-
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch2"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
 
 [node name="LeverSwitch3" parent="Levers" instance=ExtResource("11_n8nea")]
 position = Vector2(120, -88)
 lever_number = 3
 single_use = true
 
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch3"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
-
 [node name="LeverSwitch4" parent="Levers" instance=ExtResource("11_n8nea")]
 position = Vector2(200, -88)
 lever_number = 4
 single_use = true
-
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch4"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
 
 [node name="LeverSwitch5" parent="Levers" instance=ExtResource("11_n8nea")]
 position = Vector2(200, -40)
 lever_number = 5
 single_use = true
 
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch5"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
-
 [node name="LeverSwitch6" parent="Levers" instance=ExtResource("11_n8nea")]
 position = Vector2(200, 7)
 lever_number = 6
 single_use = true
-
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch6"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
 
 [node name="LeverSwitch7" parent="Levers" instance=ExtResource("11_n8nea")]
 position = Vector2(280, 7)
 lever_number = 7
 single_use = true
 
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch7"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
-
 [node name="LeverSwitch8" parent="Levers" instance=ExtResource("11_n8nea")]
 position = Vector2(280, -40)
 lever_number = 8
 single_use = true
 
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch8"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
-
 [node name="LeverSwitch9" parent="Levers" instance=ExtResource("11_n8nea")]
 position = Vector2(281, -88)
 lever_number = 9
 single_use = true
-
-[node name="PointLight2D" type="PointLight2D" parent="Levers/LeverSwitch9"]
-enabled = false
-texture = SubResource("GradientTexture2D_ps6wq")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 script = ExtResource("12_q3407")
@@ -1213,12 +1167,12 @@ texture = ExtResource("15_63bli")
 position = Vector2(-109, 99)
 scale = Vector2(0.402018, 0.428786)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(72.1361, -191.072, 1584.51, -193.57, 1584.51, -380.143, 1106.92, -380.143, 1094.48, -555.055, 1014.88, -608.695, 1002.44, -666.999, 957.668, -806.929, 843.246, -832.583, 721.361, -848.908, -87.0608, -1534.56, 2452.63, -1473.93, 2440.19, 405.962, -878.07, 403.63, -982.543, -1287.36, 79.5984, -1434.28, 639.275, -967.849, 731.31, -846.576, 654.199, -748.625, 504.952, -697.318, 435.304, -611.027, 432.816, -380.143, 74.6235, -377.811)
+polygon = PackedVector2Array(74.6235, -191.238, 1465.11, -193.57, 1465.11, -380.143, 1106.92, -380.143, 1101.94, -520.073, 1012.39, -578.377, 1002.44, -666.999, 957.668, -748.625, 853.196, -785.94, 731.31, -839.58, -87.0608, -1534.56, 2452.63, -1473.93, 2440.19, 405.962, -878.07, 403.63, -982.543, -1287.36, 79.5984, -1434.28, 639.275, -967.849, 736.285, -837.247, 676.587, -701.982, 544.752, -664.667, 480.078, -566.716, 432.816, -377.811, 74.6235, -377.811)
 
-[node name="TransitionArea" parent="." instance=ExtResource("16_1cfxr")]
-position = Vector2(480, -72)
-scale = Vector2(2, 2)
-next_level = ExtResource("17_0aamh")
+[node name="GoToE1" parent="." instance=ExtResource("16_1cfxr")]
+position = Vector2(436, -21)
+scale = Vector2(3, 3)
+next_level = ExtResource("17_3u1m8")
 
 [connection signal="lever_toggled" from="Levers/LeverSwitch1" to="." method="_on_lever_switch_lever_toggled"]
 [connection signal="lever_toggled" from="Levers/LeverSwitch2" to="." method="_on_lever_switch_lever_toggled"]
