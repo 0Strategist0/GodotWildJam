@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://3q8l86n10e11" path="res://GameScenes/Levels/widegrass.svg" id="19_jlvb2"]
 [ext_resource type="Texture2D" uid="uid://xd0lwikupart" path="res://GameScenes/Levels/edgegrass.svg" id="20_rqtdn"]
 [ext_resource type="PackedScene" uid="uid://6x8awf2lrngh" path="res://GameScenes/transition_area.tscn" id="24_vpq12"]
-[ext_resource type="PackedScene" uid="uid://b56ad0a7axq28" path="res://GameScenes/Levels/level_c2.tscn" id="25_k72ks"]
+[ext_resource type="PackedScene" uid="uid://b56ad0a7axq28" path="res://GameScenes/Levels/level_c1.tscn" id="25_i6mqg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yokt"]
 texture = ExtResource("3_yy0pf")
@@ -1051,7 +1051,6 @@ script = ExtResource("1_843t4")
 metadata/level = "b1"
 
 [node name="Character" parent="." instance=ExtResource("2_w6cac")]
-visible = false
 z_index = 2
 position = Vector2(2.08165e-12, 4)
 
@@ -1937,7 +1936,7 @@ texture = ExtResource("20_rqtdn")
 
 [node name="TransitionArea" parent="." instance=ExtResource("24_vpq12")]
 position = Vector2(1339, -79)
-next_level = ExtResource("25_k72ks")
+next_level = ExtResource("25_i6mqg")
 
 [connection signal="body_entered" from="EventTriggers/TriggerHunt" to="Hunter" method="_on_trigger_hunt_body_entered"]
 [connection signal="body_entered" from="Hunter" to="Hunter" method="_on_body_entered"]
