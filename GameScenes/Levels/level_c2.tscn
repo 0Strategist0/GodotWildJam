@@ -308,7 +308,7 @@ sources/0 = SubResource("TileSetAtlasSource_lc45b")
 sources/1 = SubResource("TileSetScenesCollectionSource_mhjdp")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5hpr"]
-size = Vector2(16, 144)
+size = Vector2(16, 425)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7uiir"]
 size = Vector2(176, 16)
@@ -1007,7 +1007,8 @@ scale = Vector2(11.9688, 1.67188)
 texture = ExtResource("7_byp5q")
 
 [node name="Character" parent="." instance=ExtResource("9_n23bq")]
-position = Vector2(-429, 12)
+visible = false
+position = Vector2(-411, -316)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_xm67n")
@@ -1018,7 +1019,7 @@ layer_0/tile_data = PackedInt32Array(196584, 131072, 0, 196583, 131072, 0, 19658
 position = Vector2(-329, 105)
 scale = Vector2(0.402018, 0.428786)
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(221.383, -170.248, 539.777, -170.248, 539.777, -58.3041, 1295.96, -58.3041, 1890.46, 1042.48, 452.716, 1058.8, -1532.27, 946.859, -1776.04, -1774.78, -278.594, -1702.48, -296.007, -170.248, 101.986, -170.248, 101.986, -58.3041, 221.383, -58.3041)
+polygon = PackedVector2Array(221.383, -170.248, 539.777, -170.248, 539.777, -58.3041, 1295.96, -58.3041, 1890.46, 1042.48, 452.716, 1058.8, -1532.27, 946.859, -1776.04, -1774.78, -296.007, -1774.78, 773.597, -1884.39, 499.978, -1075.13, 203.971, -715.975, 57.2114, -694.985, 17.4122, -569.048, -52.2365, -522.405, -82.0858, -450.108, -99.498, -412.793, -136.81, -450.108, -136.81, -1413.29, -296.007, -1413.29, -296.007, -891.065, -296.007, -170.248, 101.986, -170.248, 101.986, -58.3041, 221.383, -58.3041)
 
 [node name="Ground2" type="Polygon2D" parent="."]
 position = Vector2(255, 29)
@@ -1031,7 +1032,7 @@ script = ExtResource("10_ygpfd")
 tilemap_nodepath = NodePath("../TileMap")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tilemap Baker"]
-position = Vector2(-456, -40)
+position = Vector2(-456, -181)
 shape = SubResource("RectangleShape2D_j5hpr")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Tilemap Baker"]
@@ -1149,6 +1150,10 @@ shape = SubResource("RectangleShape2D_5vra1")
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="Tilemap Baker"]
 position = Vector2(360, -64)
 shape = SubResource("RectangleShape2D_rxq2r")
+
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="Tilemap Baker"]
+position = Vector2(-376, -289.5)
+shape = SubResource("RectangleShape2D_j5hpr")
 
 [node name="GoToD2" parent="." instance=ExtResource("14_vbm01")]
 position = Vector2(1094, -245)
