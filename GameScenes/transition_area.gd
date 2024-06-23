@@ -7,6 +7,7 @@ extends Area2D
 # Move the player to specified scene when coming in contact with collision shape 
 func _on_body_entered(body: Node2D) -> void:
 	if body == GlobalNodeReferences.character:
+		print("hello")
 		HunterSignalling.end_hunt.emit()
 		
 		# Play fade animation
