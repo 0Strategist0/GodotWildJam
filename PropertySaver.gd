@@ -11,7 +11,7 @@ func _ready() -> void:
 		var variables := {}
 		for var_name: String in variables_to_save:
 			variables[var_name] = parent.get(var_name)
-		Progress.object_variables[parent.owner.get_meta("level")] = {parent.name: variables}
+		Progress.object_variables[parent.owner.get_meta("level")][parent.name] = variables
 	
 	for var_name: String in variables_to_save:
 		parent.set(var_name, Progress.object_variables[parent.owner.get_meta("level")][parent.name][var_name])

@@ -905,7 +905,7 @@ _data = {
 
 [node name="Character2" type="CharacterBody2D"]
 position = Vector2(0, -12)
-collision_mask = 17
+collision_mask = 21
 floor_max_angle = 1.05592
 script = ExtResource("1_1kgrh")
 
