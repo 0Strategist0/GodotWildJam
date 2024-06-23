@@ -459,7 +459,7 @@ metadata/level = "d2"
 
 [node name="Character" parent="." instance=ExtResource("2_tpa4f")]
 z_index = 2
-position = Vector2(-55, -134)
+position = Vector2(-57, -134)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_i5pvu")
